@@ -13,5 +13,23 @@ window.Çerezİşleri = {
             son = "";
         }
         document.cookie = ad + "=" + değer + "; " + son + "path=/"; 
+    },
+
+    ÇerezOku: function(ad)
+    {
+        var çAd = ad + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; ca.length(); i++)
+        {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(çAd) == 0) {
+                return c.substring(çAd.length, c.length);
+              }
+        }
+        return "";
     }
 }
