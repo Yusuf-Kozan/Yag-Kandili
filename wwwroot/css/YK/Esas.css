@@ -1,0 +1,30 @@
+/*GirişTaslak.razor*/
+.giriş-header {
+	height: 10%;
+	border-bottom: solid #ff6600;
+	display: block;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	align-items: center;
+}
+.giriş-header img {
+	height: 90%;
+	width: auto;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-top: 0.25%;
+	margin-bottom: 0.25%;
+	float: left;
+}
+.giriş-header h2 {
+	vertical-align: middle;
+	color: black;
+	float: left;
+	display: table-cell;
+}
+.giriş-body {
+    height: 90%;
+    margin-top: 5%;
+}

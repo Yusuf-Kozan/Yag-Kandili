@@ -1,0 +1,11 @@
+﻿
+<Router AppAssembly="@typeof(Program).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(GirişTaslak)" />
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(GirişTaslak)">
+            <p>Buralarda in cin top oynuyor.</p>
+        </LayoutView>
+    </NotFound>
+</Router>

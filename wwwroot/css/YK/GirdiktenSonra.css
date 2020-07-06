@@ -1,0 +1,227 @@
+@media(orientation:landscape) and (min-width: 1100px) {
+	.geçici {
+		margin: 30px;
+		/*box-shadow: 0 4px 8px 0 rgba(255, 160, 0, 1), 0 6px 20px 0 rgba(255, 160, 0, 1);*/
+		box-shadow: 0 4px 8px 0 #ff6600, 0 6px 20px 0 #ff6600;
+		padding: 15px;
+		padding-top: 10px;
+		overflow: hidden;
+		border-radius: 0;
+	}
+
+	.geçici h3 {
+		margin: 0;
+	}
+	.yeter {
+		width: 50%;
+		float: left;
+		padding: 0;
+	}
+	/*#geçici a {
+		width: 50%;
+	}*/
+	.geçici p {
+		font-size: 10pt;
+		text-align: justify;
+		line-height: 1.3;
+		float: left;
+	}
+	.MetinKutusu {
+		background-color: transparent;
+		color: rgb(0,0,0);
+		border-radius: 5px;
+		border: solid 1px rgb(200,200,200);
+		font-size: 10pt;
+		margin: 5px;
+		padding: 5px;
+		width: 70%;
+		max-width: 250px;
+		font-family: monospace;
+	}
+	/*#paylaşımYap {
+		width: 35%;
+		min-width: 200px;
+		margin: auto;
+		margin-top: 30px;
+		background-color: rgb(50,150,250);
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius: 10px;
+		border: solid rgb(200,200,200);
+		border-width: 1px;
+		padding: 8px;
+		text-align: center;
+		color: rgb(255,255,255);
+		z-index: 999;
+		position: sticky;
+	}*/
+	#paylaşımYap {
+		width: 70%;
+		min-width: 200px;
+		margin: auto;
+		margin-top: 50%;
+		background-color: rgb(50,150,250);
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius: 10px;
+		border: solid rgb(200,200,200);
+		border-width: 1px;
+		padding: 8px;
+		text-align: center;
+		color: rgb(255,255,255);
+		z-index: 999;
+		position: relative;
+		padding-top: 32px;
+	}
+	#paylaş_kutu_kapat {
+		background-color: transparent;
+		border: none;
+		color: #ffffff;
+		font-family: Helvetica;
+		font-size: 12pt;
+		position: absolute;
+		right: 5px;
+		top: 10px;
+		cursor: pointer;
+	}
+	/*#paylaş_kutu_kapat {
+		background-color: transparent;
+		border: none;
+		color: #ffffff;
+		font-family: Helvetica;
+		font-size: 12pt;
+		position: absolute;
+		right: 5px;
+		top: 10px;
+		cursor: pointer;
+	}*/
+	#paylaş_içerik {
+		text-align: justify;
+	}
+	#paylaş_kutu_kapat:hover {
+		font-family: Times New Roman;
+		font-size: 13pt;
+	}
+
+	.iç1 {
+		min-height: 100px;
+		float: left;
+		width: 33%; 
+	}
+	.iç2 {
+		min-height: 100px;
+		float: left;
+		width: 34%;
+	}
+	.kulBil {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius: 5px;
+		padding: 10px;
+		font-family: Helvetica;
+		text-align: center;
+		font-size: 15pt;
+		display: box;
+		position: fixed;
+		width: 34%;
+	}
+	.PFoto {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 20%;
+		height: auto;
+	}
+}
+@media(orientation:landscape) {
+	.yollar {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		padding: 10px;
+	}
+	.ortaYol {
+		width: 321px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.but {
+		text-align: center;
+		font-size: 10pt;
+
+		background-color: rgb(200,0,0);
+		color: rgb(255,255,255);
+		border: solid 2px;
+		border-radius: 50%;
+		height: 60px;
+		width: 60px;
+		cursor: pointer;
+	}
+	#çıkışYap {
+		background-color: rgb(200,0,0);
+		color: rgb(255,255,255);
+		border: rgb(200,0,0);
+	}
+	#çıkışYap:hover {
+		background-color: rgb(255,200,200);
+		color: rgb(200,0,0);
+		font-weight: bold;
+	}
+	#yPaylaş {
+		background-color: rgb(255,160,0);
+		color: rgb(255,255,255);
+		border: rgb(200,150,0);
+	}
+	#yPaylaş:hover {
+		background-color: rgb(255,230,100);
+		color: rgb(225,120,0);
+		font-weight: bold;
+	}
+	#aramaYap {
+		background-color: rgb(0,200,0);
+		color: rgb(255,255,255);
+		border: rgb(0,200,0);
+	}
+	#aramaYap:hover {
+		background-color: rgb(140,240,140);
+		color: rgb(0,200,0);
+		font-weight: bold;
+	}
+	#b {
+		background-color: rgb(0,200,200);
+		color: rgb(255,255,255);
+		border: rgb(200,0,0);
+	}
+	#b:hover {
+		background-color: rgb(150,220,220);
+		color: rgb(0,200,200);
+		font-weight: bold;
+	}
+	#a {
+		background-color: rgb(0,0,200);
+		color: rgb(255,255,255);
+		border: rgb(0,0,200);
+	}
+	#a:hover {
+		background-color: rgb(100,100,220);
+		color: rgb(0,0,200);
+		font-weight: bold;
+	}
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	min-width: 100%;
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+img {
+	pointer-events: none;
+}

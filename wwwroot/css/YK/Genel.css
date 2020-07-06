@@ -1,0 +1,48 @@
+﻿.D2 {
+	border:none;
+	background-color: transparent;
+	/*text-decoration: underline;*/
+	font-family: Helvetica;
+	color: rgb(10,140,10);
+	cursor: pointer;
+	margin: 3px;
+}
+.D2:hover {
+	text-decoration: none;
+	color: rgb(20,170,20);
+}
+.D1 {
+	border: solid;
+	border-radius: 5px;
+	border-width: 1px;
+	padding: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-family: Helvetica;
+	color: rgb(255,255,255);
+	background-color: rgb(0,120,0);
+	border-color: rgb(0,120,0);
+	cursor: pointer;
+	margin: 3px;
+}
+.D1:hover {
+	color: rgb(0,120,0);
+	background-color: transparent;
+	border-width: 3px;
+}
+.MetinKutusu1 {
+	border: solid 2px rgb(0,120,0);
+	border-radius: 4px;
+	padding: 3px;
+	color: rgb(0,120,0);
+	font-size: 11pt;
+	margin: 3px;
+}
+@media (orientation: landscape) and (min-width: 1000px) {
+	.D2 {
+		font-size: 10pt;
+	}
+	.D2:hover {
+		font-size: 11pt;
+	}
+}

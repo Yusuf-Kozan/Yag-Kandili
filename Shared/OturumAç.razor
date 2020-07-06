@@ -1,0 +1,47 @@
+@using Esas
+@using Kilnevüg
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpContextAccessor
+
+@namespace Bileşenler
+
+<div>
+    @if(Başlık == "Giriş Yap")
+    {
+        <h4 class="formBaşlık" style="color:rgb(0,120,0)">@Başlık</h4>
+    }
+    else
+    {
+        <h4 class="formBaşlık" style="color:#4169e1">@Başlık</h4>
+    }
+    <input type="text" placeholder="Kullanıcı Adı" id="cKullanıcıAdı" class="MetinKutusu1" @bind="kulad"/>
+    <input type="password" placeholder="Parola" id="cParola" class="MetinKutusu1" @bind="parol"/>
+    <button class="D1" @onclick="cGiriş">Giriş Yap</button>
+    <button class="D2" @onclick="cParolaSıfırla">Parola Sıfırla</button>
+</div>
+
+@code {
+    private string Başlık = "Giriş Yap";
+    private string kulad {get; set;}
+    private string parol {get; set;}
+    private void cGiriş()
+    {
+        if (TabanlıVeri.KPDoğru(kulad,parol))
+        {
+            Başlık = "Giriş Yap";
+            string kilmik = Kilnevüg.YeniEşsizKimlik(kulad);
+            
+            
+            httpContextAccessor.HttpContext.Response.Cookies.Append("Kulad", kulad, new CookieOptions{Expires = DateTime.Now.AddHours(12)});
+            httpContextAccessor.HttpContext.Response.Cookies.Append("Parol", kilmik, new CookieOptions{Expires = DateTime.Now.AddHours(12)});
+
+        }
+        else
+        {
+            Başlık = "Kullanıcı Adınızı veya Parolanızı Hatalı Girdiniz";
+        }
+    }
+
+    private void cParolaSıfırla()
+    {}
+}
