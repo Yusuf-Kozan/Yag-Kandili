@@ -1,6 +1,7 @@
 @using Esas
 @using Kilnevüg
 @inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
 
 @namespace Bileşenler
 
@@ -20,6 +21,9 @@
 </div>
 
 @code {
+    [Parameter]
+    public string yön {get; set;}
+
     private string Başlık = "Giriş Yap";
     private string kulad {get; set;}
     private string parol {get; set;}
@@ -31,6 +35,10 @@
             string kilmik = Kilnevüg.YeniEşsizKimlik(kulad);
             Çerezler çerez = new Çerezler(JSRuntime);
             çerez.ÇerezYap(kulad, kilmik, 12);
+            if(String.IsNullOrWhiteSpace(yön))
+                NavigationManager.NavigateTo("/ana");
+            else
+                NavigationManager.NavigateTo(yön);
         }
         else
         {
