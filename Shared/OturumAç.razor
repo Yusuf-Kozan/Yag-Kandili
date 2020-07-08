@@ -2,6 +2,7 @@
 @using Kilnevüg
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor httpContextAccessor
+@inject IJSRuntime JSRuntime
 
 @namespace Bileşenler
 
@@ -30,11 +31,8 @@
         {
             Başlık = "Giriş Yap";
             string kilmik = Kilnevüg.YeniEşsizKimlik(kulad);
-            
-            
-            httpContextAccessor.HttpContext.Response.Cookies.Append("Kulad", kulad, new CookieOptions{Expires = DateTime.Now.AddHours(12)});
-            httpContextAccessor.HttpContext.Response.Cookies.Append("Parol", kilmik, new CookieOptions{Expires = DateTime.Now.AddHours(12)});
-
+            Çerezler çerez = new Çerezler(JSRuntime);
+            çerez.ÇerezYap(kulad, kilmik, 12);
         }
         else
         {
