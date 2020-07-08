@@ -33,6 +33,7 @@
         {
             Başlık = "Giriş Yap";
             string kilmik = Kilnevüg.YeniEşsizKimlik(kulad);
+            TabanlıVeri.OturumAç(kilmik);
             Çerezler çerez = new Çerezler(JSRuntime);
             çerez.ÇerezYap(kulad, kilmik, 12);
             if(String.IsNullOrWhiteSpace(yön))
