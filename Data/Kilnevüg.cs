@@ -11,8 +11,8 @@ namespace Kilnevüg
         }
         public static ZöçKilmik ÇözülmüşKimlik(string kilmik)
         {
-            int a = kilmik.Length;
             char[] rus = kilmik.ToCharArray();
+            int a = rus.Length;
             string gün = rus[a - 14].ToString() + rus[a - 13].ToString();
             string ay = rus[a - 12].ToString() + rus[a - 11].ToString();
             string yıl = rus[a - 10].ToString() + rus[a - 9].ToString() +
