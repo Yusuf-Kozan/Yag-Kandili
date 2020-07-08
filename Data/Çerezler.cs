@@ -1,5 +1,6 @@
 using System;
 using Microsoft.JSInterop;
+using System.Threading.Tasks;
 
 namespace Esas
 {
@@ -17,6 +18,14 @@ namespace Esas
             var değişken = new object[3];
             değişken[0] = ad; değişken[1] = değer; değişken[2] = kaçSaat;
             await jsRuntime.InvokeVoidAsync("Çerezİşleri.ÇerezYap", değişken);
+        }
+        public async Task<string> ÇerezOku(string çerezAdı)
+        {
+            return await jsRuntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", çerezAdı);
+        }
+        public async void ÇerezSil(string çerezAdı)
+        {
+            await jsRuntime.InvokeVoidAsync("Çerezİşleri.ÇerezSil", çerezAdı);
         }
     }
 }
