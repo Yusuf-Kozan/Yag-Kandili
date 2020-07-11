@@ -77,6 +77,13 @@ using YağKandili.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 10 "/home/kozan/Projects/YKb/YağKandili/_Imports.razor"
+using Esas;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "/home/kozan/Projects/YKb/YağKandili/Pages/FetchData.razor"
 using YağKandili.Data;
 

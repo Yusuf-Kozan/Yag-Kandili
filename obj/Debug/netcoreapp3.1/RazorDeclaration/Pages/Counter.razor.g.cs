@@ -76,6 +76,13 @@ using YağKandili.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "/home/kozan/Projects/YKb/YağKandili/_Imports.razor"
+using Esas;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
     public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
     {

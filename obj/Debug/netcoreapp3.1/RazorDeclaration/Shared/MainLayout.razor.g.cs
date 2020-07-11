@@ -76,6 +76,13 @@ using YağKandili.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "/home/kozan/Projects/YKb/YağKandili/_Imports.razor"
+using Esas;
+
+#line default
+#line hidden
+#nullable disable
     public partial class MainLayout : LayoutComponentBase
     {
         #pragma warning disable 1998

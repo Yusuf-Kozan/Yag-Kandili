@@ -28,3 +28,12 @@
     height: 90%;
     margin-top: 5%;
 }
+/*Giriş.razor*/
+.giriş-iki {
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+input {
+	display: block;
+}

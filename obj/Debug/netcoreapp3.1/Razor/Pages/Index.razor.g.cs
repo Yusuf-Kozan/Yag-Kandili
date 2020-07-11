@@ -72,6 +72,13 @@ using YağKandili.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "/home/kozan/Projects/YKb/YağKandili/_Imports.razor"
+using Esas;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/index")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
