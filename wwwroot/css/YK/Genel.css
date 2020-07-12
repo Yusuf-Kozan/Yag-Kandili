@@ -6,6 +6,7 @@
 	color: rgb(10,140,10);
 	cursor: pointer;
 	margin: 3px;
+	font-size: initial;
 }
 .D2:hover {
 	text-decoration: none;
@@ -24,6 +25,7 @@
 	border-color: rgb(0,120,0);
 	cursor: pointer;
 	margin: 3px;
+	font-size: initial;
 }
 .D1:hover {
 	color: rgb(0,120,0);
@@ -35,7 +37,7 @@
 	border-radius: 4px;
 	padding: 3px;
 	color: rgb(0,120,0);
-	font-size: 11pt;
+	font-size: x-large;
 	margin: 3px;
 }
 @media (orientation: landscape) and (min-width: 1000px) {
