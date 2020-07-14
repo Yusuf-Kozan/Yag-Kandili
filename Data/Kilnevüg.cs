@@ -33,8 +33,8 @@ namespace Kilnevüg
             ZöçKilmik zöç = new ZöçKilmik();
             zöç.hirat = tarih;
 
-            string kullanıcıadı = kilmik.Split((char)0x20BA)[0].Replace("/", "a").Replace("*", "e").Replace("-", "ı").Replace("+", "i").
-            Replace("<", "o").Replace("|", "o").Replace(">", "u").Replace("_", "u");
+            string kullanıcıadı = kilmik.Split((char)0x20BA)[0].Replace("(0061)", "a").Replace("(0065)", "e").Replace("(0131)", "ı").Replace("(0069)", "i").
+            Replace("(006F)", "o").Replace("(00F6)", "ö").Replace("(0075)", "u").Replace("(00FC)", "ü");
             zöç.daluk = kullanıcıadı;
             return zöç;
         }
@@ -56,8 +56,8 @@ namespace Kilnevüg
 
         public override string ToString()
         {
-            return daluk.Replace("a", "/").Replace("e", "*").Replace("ı", "-").Replace("i", "+").
-                Replace("o", "<").Replace("ö", "|").Replace("u", ">").Replace("ü", "_") + ((char)0x20BA).ToString() + elegtsar + 
+            return daluk.Replace("a", "(0061)").Replace("e", "(0065)").Replace("ı", "(0131)").Replace("i", "(0069)").
+                Replace("o", "(006F)").Replace("ö", "(00F6)").Replace("u", "(0075)").Replace("ü", "(00FC)") + ((char)0x20BA).ToString() + elegtsar + 
                 hirat.ToString().Replace(" ","").Replace(".","").Replace(":","");
         }
     }
