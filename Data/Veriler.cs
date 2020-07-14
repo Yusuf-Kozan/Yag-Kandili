@@ -12,6 +12,8 @@ namespace Esas
             return a.Year.ToString() + "-" + a.Month.ToString() + "-" + a.Day.ToString() +
                 " " + a.Hour.ToString() + ":" + a.Minute.ToString() + ":" + a.Second.ToString();
         }
+        private static string bağlantıDizesi = "Server=127.0.0.1;Database=yagkandili;User ID=YagKandili;Pooling=false;";
+        private static IDbConnection Bağlantı = new MySqlConnection(bağlantıDizesi);
 
         public static void Üyek(ÜyeBil üye)
         {
@@ -97,12 +99,10 @@ namespace Esas
         public static bool KPDoğru(string kullanıcı_adı, string parola)
         {
             //Girilen kullanıcı adı ile parolayı kullanan bir üyelik kaydı olup olmadığı denetleniyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
-            IDbConnection bağ = new MySqlConnection(bağlantı);
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı +
                 "' AND Parola = '" + parola + "';";
-            bağ.Open();
-            IDbCommand komut = bağ.CreateCommand();
+            Bağlantı.Open();
+            IDbCommand komut = Bağlantı.CreateCommand();
             komut.CommandText = ek;
             IDataReader oku = komut.ExecuteReader();
             int i = 0;
@@ -114,8 +114,8 @@ namespace Esas
             oku = null;
             komut.Dispose();
             komut = null;
-            bağ.Close();
-            bağ = null;
+            Bağlantı.Close();
+            Bağlantı = null;
             if (i != 1)
                 return false;
             else
