@@ -15,6 +15,7 @@ namespace Esas
 
         public static void Üyek(ÜyeBil üye)
         {
+            //Üyelik veri tabanına yeni üye kaydı yapılıyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
                 + "Pooling=false;";
             IDbConnection vtbağ = new MySqlConnection(bağlantı);
@@ -35,6 +36,7 @@ namespace Esas
 
         public static void YazılıPaylaş(yazpay paylaşım)
         {
+            //Paylaşım veri tabanına yeni paylaşım yazılıyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;"
             + "charset=utf8;";
             IDbConnection vtbağ = new MySqlConnection(bağlantı);
@@ -55,6 +57,7 @@ namespace Esas
 
         public static void OturumAç(string kilmik)
         {
+            //Oturum veri tabanına yeni oturum kaydı ekleniyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
             ZöçKilmik zöç = Kilnevüg.Kilnevüg.ÇözülmüşKimlik(kilmik);
             IDbConnection bağ = new MySqlConnection(bağlantı);
@@ -74,6 +77,7 @@ namespace Esas
         }
         public static void OturumKapat(string kilmik)
         {
+            //Kimlikle eşleşen oturum kaydı "kapalı" olarak işaretleniyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
             IDbConnection bağ = new MySqlConnection(bağlantı);
             string ek = "UPDATE oturumlar " + "SET Kapandı_Mı = '1' , Kapanma_Tarihi = '" + DateTime.Now.ToString() +
@@ -92,6 +96,7 @@ namespace Esas
 
         public static bool KPDoğru(string kullanıcı_adı, string parola)
         {
+            //Girilen kullanıcı adı ile parolayı kullanan bir üyelik kaydı olup olmadığı denetleniyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
             IDbConnection bağ = new MySqlConnection(bağlantı);
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı +
@@ -120,6 +125,7 @@ namespace Esas
         public static string sonn = null;
         public static bool DoğruMu2(string kullanıcı_adı, string kilmik)
         {
+            //Kullanıcı adı ve oturum kimliğiyle eşleşen açık bir oturum olup olmadığı denetleniyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
             IDbConnection bağ = new MySqlConnection(bağlantı);
             bağ.Open();
@@ -153,6 +159,7 @@ namespace Esas
 
         public static bool DoğruMu(string kullanıcı_adı)
         {
+            //Girilen kullanıcı adının kullanımda olup olmadığını denetliyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
             IDbConnection bağ = new MySqlConnection(bağlantı);
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı + "';";
@@ -178,6 +185,7 @@ namespace Esas
 
         public static bool DoğruMu2(string e_posta)
         {
+            //Girilen e-posta adresinin kullanımda olup olmadığı denetleniyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
             IDbConnection bağ = new MySqlConnection(bağlantı);
             string ek = "SELECT * FROM üyelik WHERE E_Posta = '" + e_posta + "';";
@@ -203,6 +211,7 @@ namespace Esas
 
         public static ÜyeBil Bilüyom(string kilmik)
         {
+            //Oturum kimliği girilen kullanıcının bilgileri ÜyeBil türünde döndürülüyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
                 + "Pooling=false;";
             IDbConnection vtbağ = new MySqlConnection(bağlantı);
@@ -232,6 +241,7 @@ namespace Esas
         }
         public static ÜyeBil Bilüyom1(string kullanıcı_adı)
         {
+            //Kullanıcı adı girilen kullanıcının bilgileri ÜyeBil türünde döndürülüyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
                 + "Pooling=false;";
             IDbConnection vtbağ = new MySqlConnection(bağlantı);
@@ -261,6 +271,7 @@ namespace Esas
         public static string pylşck;
         public static string Gönderiler()
         {
+            //Yapılan bütün yazılı paylaşımlar HTML listesi ögeleri biçiminde dödürülüyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
                 + "Pooling=false;";
             IDbConnection vtbağ = new MySqlConnection(bağlantı);
