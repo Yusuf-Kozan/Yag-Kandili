@@ -3,9 +3,24 @@
 @using Bileşenler
 @inject NavigationManager NavigationManager
 
-<div id="giriş-yap" class="giriş-iki">
+<div>
+    <div style="text-align: center;">
+        <button class="D3 gir2" @onclick="gir">Giriş Yap</button>
+        <button class="D1 gir2" @onclick="gir">Bir Kandil Yak</button>
+    </div>
+    <div></div>
+</div>
+
+@code {
+    private void gir()
+    {
+
+    }
+}
+
+@*<div id="giriş-yap" class="giriş-iki">
 <OturumAç yön="/ana" />
 </div>
 <div id="üye-ol" class="giriş-iki">
 
-</div>
+</div>*@

@@ -26,7 +26,7 @@
 }
 .giriş-body {
     height: 90%;
-    margin-top: 5%;
+    margin-bottom: 5%;
 }
 /*Giriş.razor*/
 .giriş-iki {
@@ -37,3 +37,11 @@
 input {
 	display: block;
 }
+/*.gir2 {
+	border-radius: 7px !important; 
+	padding-top: 3px !important;
+	padding-bottom: 3px !important;
+	padding-right: 11px !important;
+	padding-left: 11px !important;
+	font-size: large !important;
+}*/
