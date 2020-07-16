@@ -27,5 +27,11 @@ namespace Esas
         {
             await jsRuntime.InvokeVoidAsync("Çerezİşleri.ÇerezSil", çerezAdı);
         }
+        public bool ÇerezVar(string çerezAdı)
+        {
+            if (!String.IsNullOrWhiteSpace(ÇerezOku(çerezAdı).ToString()))
+                return true;
+            return false;
+        }
     }
 }
