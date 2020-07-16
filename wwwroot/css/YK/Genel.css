@@ -26,6 +26,7 @@
 	cursor: pointer;
 	margin: 4px;
 	font-size: large;
+	font-weight: bold;
 }
 .D1:hover {
 	color: rgb(0,120,0);
@@ -54,6 +55,7 @@
 	cursor: pointer;
 	margin: 4px;
 	font-size: large;
+	font-weight: bold;
 }
 .D3:hover {
 	background-color: rgb(0,120,0);

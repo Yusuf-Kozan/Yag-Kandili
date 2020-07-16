@@ -4,17 +4,40 @@
 @inject NavigationManager NavigationManager
 
 <div>
-    <div style="text-align: center;">
+    <div style="text-align: center; position: sticky;">
         <button class="D3 gir2" @onclick="gir">Giriş Yap</button>
-        <button class="D1 gir2" @onclick="gir">Bir Kandil Yak</button>
+        <button class="D1 gir2" @onclick="yak">Bir Kandil Yak</button>
     </div>
-    <div></div>
+    @if (düğme == 0)
+    {
+        <div></div>
+    }
+    else if (düğme == 1)
+    {
+        <OturumAç yön="/ana" />
+    }
+    else if (düğme == 2)
+    {
+        <div></div>
+    }
 </div>
 
 @code {
+    private static int düğme {get; set;} = 0;
     private void gir()
     {
-
+        if (düğme != 1)
+            düğme = 1;
+    }
+    private void yak()
+    {
+        if (düğme != 2)
+            düğme = 2;
+    }
+    private void dön()
+    {
+        if (düğme != 0)
+            düğme = 0;
     }
 }
 
