@@ -1,0 +1,29 @@
+@using Esas
+@using Kilnevüg
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+@namespace Bileşenler
+
+<div class="form" style="display: block; text-align: center;">
+    @if(Başlık == "Bir Kandil Yak")
+    {
+        <h4 class="formBaşlık" style="color:rgb(0,120,0); font-size: x-large;">@Başlık</h4>
+    }
+    else
+    {
+        <h4 class="formBaşlık" style="color:#4169e1; font-size: x-large;">@Başlık</h4>
+    }
+    <p style="color: #cc0000;">Fotoğraf dışındaki tüm alanları doldurulmanız zorunludur.</p>
+    <div><input type="text" placeholder="Adınız" id="cKullanıcıAdı" class="MetinKutusu1" /></div>
+    <div><input type="text" placeholder="Soyadınız" id="cParola" class="MetinKutusu1" /></div>
+    <div><input type="text" placeholder="E-Posta Adresiniz" id="cParola" class="MetinKutusu1" /></div>
+    <div><input type="text" placeholder="Kullanıcı Adınız" id="cParola" class="MetinKutusu1" /></div>
+    <div><input type="password" placeholder="Parolanız" id="cParola" class="MetinKutusu1" /></div>
+    <div><input type="password" placeholder="Parolanız (Tekrar)" id="cParola" class="MetinKutusu1" /></div>
+    <div><button class="D1" >Bir Kandil Yak</button></div>
+</div>
+
+@code {
+    private string Başlık {get; set;} = "Bir Kandil Yak";
+}

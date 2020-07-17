@@ -92,3 +92,5 @@
 /home/kozan/Projects/YKb/YağKandili/bin/Debug/netcoreapp3.1/System.IO.Pipelines.dll
 /home/kozan/Projects/YKb/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Ana.razor.g.cs
 /home/kozan/Projects/YKb/YağKandili/obj/Debug/netcoreapp3.1/Razor/Pages/Ana.razor.g.cs
+/home/kozan/Projects/YKb/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/KandilYak.razor.g.cs
+/home/kozan/Projects/YKb/YağKandili/obj/Debug/netcoreapp3.1/Razor/Shared/KandilYak.razor.g.cs
