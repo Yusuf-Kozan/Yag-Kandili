@@ -13,14 +13,14 @@
     "TagHelpers": [
       {
         "Kind": "Components.Component",
-        "Name": "YağKandili.App",
+        "Name": "YağKandili.Pages.Ana",
         "AssemblyName": "YağKandili",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "App",
+            "TagName": "Ana",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -32,19 +32,19 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.App"
+          "Common.TypeName": "YağKandili.Pages.Ana"
         }
       },
       {
         "Kind": "Components.Component",
-        "Name": "YağKandili.App",
+        "Name": "YağKandili.Pages.Ana",
         "AssemblyName": "YağKandili",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "YağKandili.App",
+            "TagName": "YağKandili.Pages.Ana",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -56,105 +56,7 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.App",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Counter",
-        "AssemblyName": "YağKandili",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Counter"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Counter",
-        "AssemblyName": "YağKandili",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "YağKandili.Pages.Counter",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Error",
-        "AssemblyName": "YağKandili",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Error",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Error"
-        }
-      },
-      {
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Error",
-        "AssemblyName": "YağKandili",
-        "Documentation": null,
-        "TagOutputHint": null,
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "YağKandili.Pages.Error",
-            "ParentTag": null,
-            "TagStructure": 0,
-            "Attributes": [],
-            "Diagnostics": []
-          }
-        ],
-        "BoundAttributes": [],
-        "AllowedChildTags": [],
-        "Diagnostics": [],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Error",
+          "Common.TypeName": "YağKandili.Pages.Ana",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -258,14 +160,14 @@
       },
       {
         "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Ana",
+        "Name": "YağKandili.Pages.Counter",
         "AssemblyName": "YağKandili",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Ana",
+            "TagName": "Counter",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -277,19 +179,19 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Ana"
+          "Common.TypeName": "YağKandili.Pages.Counter"
         }
       },
       {
         "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Ana",
+        "Name": "YağKandili.Pages.Counter",
         "AssemblyName": "YağKandili",
         "Documentation": null,
         "TagOutputHint": null,
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "YağKandili.Pages.Ana",
+            "TagName": "YağKandili.Pages.Counter",
             "ParentTag": null,
             "TagStructure": 0,
             "Attributes": [],
@@ -301,7 +203,56 @@
         "Diagnostics": [],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Ana",
+          "Common.TypeName": "YağKandili.Pages.Counter",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "YağKandili.Pages.Error",
+        "AssemblyName": "YağKandili",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Error",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.Pages.Error"
+        }
+      },
+      {
+        "Kind": "Components.Component",
+        "Name": "YağKandili.Pages.Error",
+        "AssemblyName": "YağKandili",
+        "Documentation": null,
+        "TagOutputHint": null,
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "YağKandili.Pages.Error",
+            "ParentTag": null,
+            "TagStructure": 0,
+            "Attributes": [],
+            "Diagnostics": []
+          }
+        ],
+        "BoundAttributes": [],
+        "AllowedChildTags": [],
+        "Diagnostics": [],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.Pages.Error",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

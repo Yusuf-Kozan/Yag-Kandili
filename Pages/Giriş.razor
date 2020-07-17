@@ -4,20 +4,28 @@
 @inject NavigationManager NavigationManager
 
 <div>
-    <div style="text-align: center; position: sticky;">
-        <button class="D3 gir2" @onclick="gir">Giriş Yap</button>
-        <button class="D1 gir2" @onclick="yak">Bir Kandil Yak</button>
-    </div>
-    @if (düğme == 0)
+    @if (düğme == 0) //ana sayfa
     {
-        <div></div>
+        <div style="text-align: center; position: sticky;">
+            <button class="D3 gir2" @onclick="gir">Giriş Yap</button>
+            <button class="D1 gir2" @onclick="yak">Bir Kandil Yak</button>
+        </div>
+        <div>ana</div>
     }
-    else if (düğme == 1)
+    else if (düğme == 1) //giriş formu
     {
+        <div style="text-align: center; position: sticky;">
+            <button class="D3g gir2" @onclick="dön">Geri Dön</button>
+            <button class="D1 gir2" @onclick="yak">Bir Kandil Yak</button>
+        </div>
         <OturumAç yön="/ana" />
     }
-    else if (düğme == 2)
+    else if (düğme == 2) //kayıt formu
     {
+        <div style="text-align: center; position: sticky;">
+            <button class="D3g gir2" @onclick="dön">Geri Dön</button>
+            <button class="D1 gir2" @onclick="gir">Giriş Yap</button>
+        </div>
         <div></div>
     }
 </div>
