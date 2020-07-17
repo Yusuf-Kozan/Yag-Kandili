@@ -5,7 +5,7 @@
 
 @namespace Bileşenler
 
-<div class="form" style="display: inline-block;">
+<div class="form" style="display: block; text-align: center;">
     @if(Başlık == "Giriş Yap")
     {
         <h4 class="formBaşlık" style="color:rgb(0,120,0); font-size: x-large;">@Başlık</h4>
@@ -14,10 +14,10 @@
     {
         <h4 class="formBaşlık" style="color:#4169e1; font-size: x-large;">@Başlık</h4>
     }
-    <input type="text" placeholder="Kullanıcı Adı" id="cKullanıcıAdı" class="MetinKutusu1" @bind="kulad"/>
-    <input type="password" placeholder="Parola" id="cParola" class="MetinKutusu1" @bind="parol"/>
-    <button class="D1" @onclick="cGiriş">Giriş Yap</button>
-    <button class="D2" @onclick="cParolaSıfırla">Parola Sıfırla</button>
+    <div><input type="text" placeholder="Kullanıcı Adı" id="cKullanıcıAdı" class="MetinKutusu1" @bind="kulad"/></div>
+    <div><input type="password" placeholder="Parola" id="cParola" class="MetinKutusu1" @bind="parol"/></div>
+    <div><button class="D1" @onclick="cGiriş">Giriş Yap</button>
+    <button class="D2" @onclick="cParolaSıfırla">Parola Sıfırla</button></div>
 </div>
 
 @code {
