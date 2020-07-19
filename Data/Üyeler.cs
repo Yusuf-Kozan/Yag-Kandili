@@ -53,6 +53,17 @@ namespace Esas
             BAŞLANGIÇ = başlangıç;
             RESİM = resim;
         }
+        public ÜyeBil(Üye üye)
+        {
+            AD = üye.AD;
+            SOYADI = üye.SOYADI;
+            KULLANICI_ADI = üye.KULLANICI_ADI;
+            PAROLA = üye.PAROLA;
+            E_POSTA = üye.E_POSTA;
+            ÜSTÜNLÜK = üye.ÜSTÜNLÜK;
+            BAŞLANGIÇ = üye.BAŞLANGIÇ;
+            RESİM = üye.RESİM;
+        }
         public ÜyeBil() { }
 
         public override string ToString()
@@ -65,6 +76,30 @@ namespace Esas
         {
             string üstDizin = @"./Kullanıcılar";
             return System.IO.Path.Combine(üstDizin, KULLANICI_ADI);
+        }
+    }
+
+    public struct Üye
+    {
+        public string AD;
+        public string SOYADI;
+        public string KULLANICI_ADI;
+        public string PAROLA;
+        public string E_POSTA;
+        public string ÜSTÜNLÜK;
+        public DateTime BAŞLANGIÇ;
+        public string RESİM;
+
+        public string DizinYolu()
+        {
+            string üstDizin = @"./Kullanıcılar";
+            return System.IO.Path.Combine(üstDizin, KULLANICI_ADI);
+        }
+        public override string ToString()
+        {
+            return "Ad: " + AD + " | Soyadı: " + SOYADI +
+            " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA + " | Üstünlük: "
+            + ÜSTÜNLÜK + " | Başlangıç: " + BAŞLANGIÇ.ToString();
         }
     }
 
