@@ -31,7 +31,7 @@
     {
         if (!String.IsNullOrWhiteSpace(kulad) && !String.IsNullOrWhiteSpace(parol))
         {
-            if (kulad.Contains(";") || parol.Contains(";"))
+            if (!Girdiler.metinUygun(kulad) || !Girdiler.metinUygun(parol))
             {
                 Başlık = "Kullanıcı Adınızı veya Parolanızı Hatalı Girdiniz";
             }

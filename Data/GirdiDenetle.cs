@@ -2,9 +2,9 @@ using System;
 
 namespace Kilnevüg
 {
-    class Girdiler
+    public class Girdiler
     {
-        public bool metinUygun(string metin)
+        public static bool metinUygun(string metin)
         {
             char[] mtn = metin.ToCharArray();
             int hataSayısı = 0;
