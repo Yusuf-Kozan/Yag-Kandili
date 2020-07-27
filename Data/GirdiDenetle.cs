@@ -20,5 +20,20 @@ namespace Kilnevüg
                 return true;
             return false;
         }
+        public static bool tümMetinlerUygun(string[] metinler)
+        {
+            int hataSayısı = 0;
+            for (int i = 0; i < metinler.Length; i++)
+            {
+                if (!metinUygun(metinler[i]))
+                {
+                    hataSayısı++;
+                    return false;
+                }
+            }
+            if (hataSayısı == 0)
+                return true;
+            return false;
+        }
     }
 }
