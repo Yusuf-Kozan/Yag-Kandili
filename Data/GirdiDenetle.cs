@@ -22,6 +22,7 @@ namespace Kilnevüg
         }
         public static bool tümMetinlerUygun(string[] metinler)
         {
+            //Tüm metinler uygunsa true, herhangi biri uygun değilse false değerini döndürür.
             int hataSayısı = 0;
             for (int i = 0; i < metinler.Length; i++)
             {
@@ -34,6 +35,18 @@ namespace Kilnevüg
             if (hataSayısı == 0)
                 return true;
             return false;
+        }
+        public static bool allIsNullOrWhiteSpace(string[] metinler)
+        {
+            //Tüm metinler boşsa true, herhangi biri doluysa false değerini döndürür.
+            for (int i = 0; i < metinler.Length; i++)
+            {
+                if (!String.IsNullOrWhiteSpace(metinler[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
