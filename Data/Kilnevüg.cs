@@ -11,7 +11,7 @@ namespace Kilnevüg
         }
         public static ZöçKilmik ÇözülmüşKimlik(string kilmik)
         {
-            char[] rus = kilmik.ToCharArray();
+            /*char[] rus = kilmik.ToCharArray();
             int a = rus.Length;
             string gün = rus[a - 14].ToString() + rus[a - 13].ToString();
             string ay = rus[a - 12].ToString() + rus[a - 11].ToString();
@@ -19,8 +19,15 @@ namespace Kilnevüg
                             rus[a - 8].ToString() + rus[a - 7].ToString();
             string saat = rus[a - 6].ToString() + rus[a - 5].ToString();
             string dakika = rus[a - 4].ToString() + rus[a - 3].ToString();
-            string saniye = rus[a - 2].ToString() + rus[a - 1].ToString();
+            string saniye = rus[a - 2].ToString() + rus[a - 1].ToString();*/
             //k<z/l/kn/z₺53703314423052020131333
+            int a = kilmik.Length;
+            string gün = string.Concat(kilmik[a - 14], kilmik[a - 13]);
+            string ay = string.Concat(kilmik[a-12], kilmik[a-11]);
+            string yıl = string.Concat(string.Concat(kilmik[a-10], kilmik[a-9]), kilmik[a-8], kilmik[a-7]);
+            string saat = string.Concat(kilmik[a-6], kilmik[a-5]);
+            string dakika = string.Concat(kilmik[a-4], kilmik[a-3]);
+            string saniye = string.Concat(kilmik[a-2], kilmik[a-1]);
             DateTime tarih = new DateTime
             (
                 Convert.ToInt32(yıl),
