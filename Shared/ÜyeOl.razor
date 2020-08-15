@@ -1,0 +1,33 @@
+@using Esas
+@using Kilnevüg
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+@namespace Bileşenler
+
+<div class="form" style="display: block; text-align: center;">
+    @if(Başlık == "Bir Kandil Yak")
+    {
+        <h4 class="formBaşlık" style="color:rgb(0,120,0); font-size: x-large;">@Başlık</h4>
+    }
+    else
+    {
+        <h4 class="formBaşlık" style="color:#4169e1; font-size: x-large;">@Başlık</h4>
+    }
+    <p style="color: #cc0000;">Fotoğraf dışındaki tüm alanları doldurulmanız zorunludur.</p>
+    <div><input type="text" placeholder="Adınız" class="MetinKutusu1" @bind="üye.AD"/></div>
+    <div><input type="text" placeholder="Soyadınız" class="MetinKutusu1" @bind="üye.SOYADI"/></div>
+    <div><input type="text" placeholder="E-Posta Adresiniz" class="MetinKutusu1" @bind="üye.E_POSTA"/></div>
+    <div><input type="text" placeholder="Kullanıcı Adınız" class="MetinKutusu1" @bind="üye.KULLANICI_ADI"/></div>
+    <div><input type="password" placeholder="Parolanız" class="MetinKutusu1" @bind="üye.PAROLA"/></div>
+    <div><input type="password" placeholder="Parolanız (Tekrar)" class="MetinKutusu1" @bind="diğerParola"/></div>
+    <div><button class="D1" @onclick="kandilYak">Bir Kandil Yak</button></div>
+</div>
+
+@code {
+    private string Başlık {get; set;} = "Bir Kandil Yak";
+    private ÜyeBil üye = new ÜyeBil();
+    private string diğerParola {get; set;}
+    private void kandilYak()
+    {}
+}
