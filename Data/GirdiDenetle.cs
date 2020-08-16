@@ -36,7 +36,7 @@ namespace Kilnevüg
                 return true;
             return false;
         }
-        public static bool allIsNullOrWhiteSpace(string[] metinler)
+        public static bool allAreNullOrWhiteSpace(string[] metinler)
         {
             //Tüm metinler boşsa true, herhangi biri doluysa false değerini döndürür.
             for (int i = 0; i < metinler.Length; i++)
@@ -45,6 +45,22 @@ namespace Kilnevüg
                 {
                     return false;
                 }
+            }
+            return true;
+        }
+        public static bool someAreNullOrWhiteSpace(string[] metinler)
+        {
+            int sayaç = 0;
+            for (int i = 0; i < metinler.Length; i++)
+            {
+                if (String.IsNullOrWhiteSpace(metinler[i]))
+                {
+                    sayaç++;
+                }
+            }
+            if (sayaç != 0)
+            {
+                return false;
             }
             return true;
         }
