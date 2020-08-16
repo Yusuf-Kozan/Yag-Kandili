@@ -6,19 +6,26 @@ namespace Kilnevüg
     {
         public static bool metinUygun(string metin)
         {
-            char[] mtn = metin.ToCharArray();
-            int hataSayısı = 0;
-            for (int i = 0; i < mtn.Length; i++)
+            if (!String.IsNullOrWhiteSpace(metin))
             {
-                if ( (mtn[i] == ';') || (mtn[i] == '(') || (mtn[i] == ')') )
+                char[] mtn = metin.ToCharArray();
+                int hataSayısı = 0;
+                for (int i = 0; i < mtn.Length; i++)
                 {
-                    hataSayısı++;
-                    return false;
+                    if ( (mtn[i] == ';') || (mtn[i] == '(') || (mtn[i] == ')') )
+                    {
+                        hataSayısı++;
+                        return false;
+                    }
                 }
+                if (hataSayısı == 0)
+                    return true;
+                return false;
             }
-            if (hataSayısı == 0)
-                return true;
-            return false;
+            else
+            {
+                return false;
+            }
         }
         public static bool tümMetinlerUygun(string[] metinler)
         {
@@ -61,9 +68,9 @@ namespace Kilnevüg
             }
             if (sayaç != 0)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }

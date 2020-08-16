@@ -15,10 +15,10 @@
         <h4 class="formBaşlık" style="color:#4169e1; font-size: x-large;">@Başlık</h4>
     }
     <p style="color: #cc0000;"></p>
-    @if (sayaç == 0)
+    @*@if (sayaç == 0) 
     {
-    <div><input type="text" placeholder="Adınız" class="MetinKutusu1" @bind="Üye.AD"/></div>
-    <div><input type="text" placeholder="Soyadınız" class="MetinKutusu1" @bind="Üye.SOYADI"/></div>
+        <div><div><input type="text" placeholder="Adınız" class="MetinKutusu1" @bind="Üye.AD"/></div>
+        <div><input type="text" placeholder="Soyadınız" class="MetinKutusu1" @bind="Üye.SOYADI"/></div></div>
     }
     else if (sayaç == 1)
     {
@@ -30,14 +30,21 @@
     <div><input type="password" placeholder="Parolanız" class="MetinKutusu1" @bind="Üye.PAROLA"/></div>
     <div><input type="password" placeholder="Parolanız (Tekrar)" class="MetinKutusu1" @bind="diğerParola"/></div>
     }
+    else
+    {
+        <h5>HEY</h5>
+    }*@
+    <div><input type="text" placeholder="@ph1" class="MetinKutusu1" @bind="bir"/></div>
+    <div><input type="text" placeholder="@ph2" class="MetinKutusu1" @bind="iki"/></div>
     <div><button class="D1" @onclick="kandilYak">@Düğme</button></div>
 </div>
 
 @code {
     private string Başlık {get; set;} = "Bir Kandil Yak";
     private string Düğme {get; set;} = "İlerle";
-    private string p {get; set;} = "";
-    private ÜyeBil Üye {get; set;}
+    private string p {get; set;} = "Noktalı virgül ve yay ayraç kullanılamaz. Bütün alanlar doldurulmalıdır.";
+    private string bir, iki, ph1 = "Adınız", ph2 = "Soyadınız";
+    private ÜyeBil üye {get; set;} = new ÜyeBil();
     //private Üye Üye {get; set;}
     private string diğerParola {get; set;}
     private int sayaç = 0; // 0->Ad, Soyadı | 1-> E Posta, Kullanıcı Adı | 2->Parola
@@ -47,18 +54,43 @@
         {
             if (sayaç == 0)
             {
-                string[] metinler = new string[]{Üye.AD, Üye.SOYADI};
-                if (!Girdiler.someAreNullOrWhiteSpace(metinler) && Girdiler.tümMetinlerUygun(metinler))
-                {}
+                string[] metinler = new string[]{bir, iki};
+                if (!Girdiler.someAreNullOrWhiteSpace(metinler))
+                {
+                    if(!Girdiler.tümMetinlerUygun(metinler))
+                    {
+                        üye.AD = bir; üye.SOYADI = iki;
+                        ph1 = "E-Posta Adresiniz"; ph2 = "Yeni Kullanıcı Adınız"; sayaç++;
+                    }
+                    else {bir = null; iki = null; Başlık = "Adınız ve Soyadınız Uygun Değil";}
+                }
                 else
                 {
-
+                    bir = null; iki = null; Başlık = "Adınız ve Soyadınız Uygun Değil.";
                 }
             }
             else if (sayaç == 1)
-            {}
+            {
+                string[] metinler = new string[]{bir, iki};
+                if (!Girdiler.someAreNullOrWhiteSpace(metinler))
+                {
+                    if (Girdiler.tümMetinlerUygun(metinler))
+                    {
+                        üye.E_POSTA = bir; üye.KULLANICI_ADI = iki;
+                        sayaç++; ph1 = "Parolanızı Belirleyin"; ph2 = "Parolanızı Doğrulayın";
+                    }
+                    else {bir = null; iki = null; Başlık = "E-Posta Adresiniz ve Kullanıcı Adınız Uygun Değil";}
+                }
+                else
+                {
+                    bir = null; iki = null; Başlık = "E-Posta Adresiniz ve Kullanıcı Adınız Uygun Değil";
+                }
+                metinler = null;
+            }
             else
-            {}
+            {
+                Başlık = "Bir Hatayla Karşılaşıldı. Sayfayı Yenileyin";
+            }
         }
         else if (Düğme == "Bir Kandil Yak")
         {
