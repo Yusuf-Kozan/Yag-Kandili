@@ -50,6 +50,7 @@ namespace Kilnevüg
         }
         public static bool someAreNullOrWhiteSpace(string[] metinler)
         {
+            //Herhangi bir metin boşsa true, tüm metinler doluysa false değerini döndürür.
             int sayaç = 0;
             for (int i = 0; i < metinler.Length; i++)
             {
