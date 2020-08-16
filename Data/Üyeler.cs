@@ -77,16 +77,16 @@ namespace Esas
             string üstDizin = @"./Kullanıcılar";
             return System.IO.Path.Combine(üstDizin, KULLANICI_ADI);
         }
-        public string[] MetinKümesiYap()
+        /*public string[] MetinKümesiYap()
         {
-            string[] küme = new string{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString()};
+            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString()};
             return küme;
-        }
+        }*/
     }
 
     public struct Üye
     {
-        public string AD;
+        public string AD {get; set;}
         public string SOYADI;
         public string KULLANICI_ADI;
         public string PAROLA;
@@ -106,11 +106,11 @@ namespace Esas
             " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA + " | Üstünlük: "
             + ÜSTÜNLÜK + " | Başlangıç: " + BAŞLANGIÇ.ToString();
         }
-        public string[] MetinKümesiYap()
+        /*public string[] MetinKümesiYap()
         {
             string[] küme = new string{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString()};
             return küme;
-        }
+        }*/
     }
 
 }
