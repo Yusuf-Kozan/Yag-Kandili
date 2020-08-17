@@ -14,94 +14,53 @@
     {
         <h4 class="formBaşlık" style="color:#4169e1; font-size: x-large;">@Başlık</h4>
     }
-    <p style="color: #cc0000;"></p>
-    @*@if (sayaç == 0) 
-    {
-        <div><div><input type="text" placeholder="Adınız" class="MetinKutusu1" @bind="Üye.AD"/></div>
-        <div><input type="text" placeholder="Soyadınız" class="MetinKutusu1" @bind="Üye.SOYADI"/></div></div>
-    }
-    else if (sayaç == 1)
-    {
-    <div><input type="text" placeholder="E-Posta Adresiniz" class="MetinKutusu1" @bind="Üye.E_POSTA"/></div>
-    <div><input type="text" placeholder="Kullanıcı Adınız" class="MetinKutusu1" @bind="Üye.KULLANICI_ADI"></div>
-    }
-    else if (sayaç == 2)
-    {
-    <div><input type="password" placeholder="Parolanız" class="MetinKutusu1" @bind="Üye.PAROLA"/></div>
-    <div><input type="password" placeholder="Parolanız (Tekrar)" class="MetinKutusu1" @bind="diğerParola"/></div>
-    }
-    else
-    {
-        <h5>HEY</h5>
-    }*@
-    <div><input type="text" placeholder="@ph1" class="MetinKutusu1" @bind="bir"/></div>
-    <div><input type="text" placeholder="@ph2" class="MetinKutusu1" @bind="iki"/></div>
+    <p style="color: #cc0000;">@p</p>
+    <div><input type="text" placeholder="Adınız" class="MetinKutusu1" @bind="bilgiler[0]"/></div>
+    <div><input type="text" placeholder="Soyadınız" class="MetinKutusu1" @bind="bilgiler[1]"/></div>
+    <div><input type="text" placeholder="E-Posta Adresiniz" class="MetinKutusu1" @bind="bilgiler[2]"/></div>
+    <div><input type="text" placeholder="Kullanıcı Adınız" class="MetinKutusu1" @bind="bilgiler[3]"></div>
+    <div><input type="password" placeholder="Parolanız" class="MetinKutusu1" @bind="bilgiler[4]"/></div>
+    <div><input type="password" placeholder="Parolanız (Tekrar)" class="MetinKutusu1" @bind="bilgiler[5]"/></div>
+    
+    @*<div><input type="text" placeholder="@ph1" class="MetinKutusu1" @bind="bir"/></div>
+    <div><input type="text" placeholder="@ph2" class="MetinKutusu1" @bind="iki"/></div>*@
     <div><button class="D1" @onclick="kandilYak">@Düğme</button></div>
 </div>
 
 @code {
     private string Başlık {get; set;} = "Bir Kandil Yak";
-    private string Düğme {get; set;} = "İlerle";
+    private string Düğme {get; set;} = "Bir Kandil Yak";
     private string p {get; set;} = "Noktalı virgül ve yay ayraç kullanılamaz. Bütün alanlar doldurulmalıdır.";
-    private string bir, iki, ph1 = "Adınız", ph2 = "Soyadınız";
-    private ÜyeBil üye {get; set;} = new ÜyeBil();
-    //private Üye Üye {get; set;}
-    private string diğerParola {get; set;}
-    private int sayaç = 0; // 0->Ad, Soyadı | 1-> E Posta, Kullanıcı Adı | 2->Parola
+    private string[] bilgiler = new string[6]; //ad, soyadı, e-posta, kullanıcı adı, parola, parola(tekrar)
     private void kandilYak()
     {
-        if (Düğme == "İlerle")
+        if (Girdiler.tümMetinlerUygun(bilgiler))
         {
-            if (sayaç == 0)
+            if (bilgiler[4] == bilgiler[5])
             {
-                string[] metinler = new string[]{bir, iki};
-                if (!Girdiler.someAreNullOrWhiteSpace(metinler))
+                bool kulanıcıVar = TabanlıVeri.Kullanıcı_Var(bilgiler[3]), ePostaVar = TabanlıVeri.ePosta_Var(bilgiler[2]); 
+                if (!kullanıcıVar && !ePostaVar)
                 {
-                    if(!Girdiler.tümMetinlerUygun(metinler))
-                    {
-                        üye.AD = bir; üye.SOYADI = iki;
-                        ph1 = "E-Posta Adresiniz"; ph2 = "Yeni Kullanıcı Adınız"; sayaç++;
-                    }
-                    else {bir = null; iki = null; Başlık = "Adınız ve Soyadınız Uygun Değil";}
+                    
                 }
-                else
+                else if (kulanıcıVar)
                 {
-                    bir = null; iki = null; Başlık = "Adınız ve Soyadınız Uygun Değil.";
+                    Başlık = "Bu Kullanıcı Adı Başkası Tarafından Kullanılıyor"; bilgiler[3] = null;
                 }
-            }
-            else if (sayaç == 1)
-            {
-                string[] metinler = new string[]{bir, iki};
-                if (!Girdiler.someAreNullOrWhiteSpace(metinler))
+                else if (ePostaVar)
                 {
-                    if (Girdiler.tümMetinlerUygun(metinler))
-                    {
-                        üye.E_POSTA = bir; üye.KULLANICI_ADI = iki;
-                        sayaç++; ph1 = "Parolanızı Belirleyin"; ph2 = "Parolanızı Doğrulayın";
-                    }
-                    else {bir = null; iki = null; Başlık = "E-Posta Adresiniz ve Kullanıcı Adınız Uygun Değil";}
+                    Başlık = "Bu E-Posta Adresi Başkası Tarafından Kullanılıyor"; bilgiler[2] = null;
                 }
-                else
-                {
-                    bir = null; iki = null; Başlık = "E-Posta Adresiniz ve Kullanıcı Adınız Uygun Değil";
-                }
-                metinler = null;
             }
             else
             {
-                Başlık = "Bir Hatayla Karşılaşıldı. Sayfayı Yenileyin";
+                Başlık = "Girilen iki parola aynı değil";
+                bilgiler[4] = null; bilgiler[5] = null;
             }
-        }
-        else if (Düğme == "Bir Kandil Yak")
-        {
-            if (sayaç == 2)
-            {}
-            else
-            {}
         }
         else
         {
-            sayaç = 0; Başlık = "Bir Kandil Yak"; Düğme = "İlerle";
+            Başlık = "Şartlara Uygun Bilgi Verin";
         }
     }
 }

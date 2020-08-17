@@ -15,7 +15,7 @@ namespace Esas
         private static string bağlantıDizesi = "Server=127.0.0.1;Database=yagkandili;User ID=YagKandili;Pooling=false;";
         private static IDbConnection Bağlantı = new MySqlConnection(bağlantıDizesi);
 
-        public static void Üyek(ÜyeBil üye)
+        public static void Üye_Ekle(ÜyeBil üye)
         {
             //Üyelik veri tabanına yeni üye kaydı yapılıyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
@@ -36,9 +36,9 @@ namespace Esas
             vtbağ = null;
         }
 
-        public static void YazılıPaylaş(yazpay paylaşım)
+        public static void Yazılı_Paylaşım_Yap(yazpay paylaşım)
         {
-            //Paylaşım veri tabanına yeni paylaşım yazılıyor.
+            //Paylaşım veri tabanına yeni yazılı paylaşım yazılıyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;"
             + "charset=utf8;";
             IDbConnection vtbağ = new MySqlConnection(bağlantı);
@@ -96,7 +96,7 @@ namespace Esas
             bağ = null;
         }
 
-        public static bool KPDoğru(string kullanıcı_adı, string parola)
+        public static bool KP_Kullanımda(string kullanıcı_adı, string parola)
         {
             //Girilen kullanıcı adı ile parolayı kullanan bir üyelik kaydı olup olmadığı denetleniyor.
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı +
@@ -123,7 +123,7 @@ namespace Esas
         }
 
         public static string sonn = null;
-        public static bool DoğruMu2(string kullanıcı_adı, string kilmik)
+        public static bool KK_Doğru(string kullanıcı_adı, string kilmik)
         {
             //Kullanıcı adı ve oturum kimliğiyle eşleşen açık bir oturum olup olmadığı denetleniyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
@@ -157,7 +157,7 @@ namespace Esas
             return true;
         }
 
-        public static bool DoğruMu(string kullanıcı_adı)
+        public static bool Kullanıcı_Var(string kullanıcı_adı)
         {
             //Girilen kullanıcı adının kullanımda olup olmadığını denetliyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
@@ -183,7 +183,7 @@ namespace Esas
             return true;
         }
 
-        public static bool DoğruMu2(string e_posta)
+        public static bool ePosta_Var(string e_posta)
         {
             //Girilen e-posta adresinin kullanımda olup olmadığı denetleniyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
@@ -209,7 +209,7 @@ namespace Esas
             return true;
         }
 
-        public static ÜyeBil Bilüyom(string kilmik)
+        public static ÜyeBil Kilmikten_ÜyeBil(string kilmik)
         {
             //Oturum kimliği girilen kullanıcının bilgileri ÜyeBil türünde döndürülüyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
@@ -239,7 +239,7 @@ namespace Esas
             vtbağ = null;
             return üye;
         }
-        public static ÜyeBil Bilüyom1(string kullanıcı_adı)
+        public static ÜyeBil KullanıcıAdından_ÜyeBil(string kullanıcı_adı)
         {
             //Kullanıcı adı girilen kullanıcının bilgileri ÜyeBil türünde döndürülüyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
@@ -269,7 +269,7 @@ namespace Esas
             return üye;
         }
         public static string pylşck;
-        public static string Gönderiler()
+        public static string Tüm_Yazılı_Paylaşımlar()
         {
             //Yapılan bütün yazılı paylaşımlar HTML listesi ögeleri biçiminde dödürülüyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
