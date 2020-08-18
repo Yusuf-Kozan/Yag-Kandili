@@ -63,7 +63,7 @@ namespace Esas
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
             ZöçKilmik zöç = Kilnevüg.Kilnevüg.ÇözülmüşKimlik(kilmik);
             IDbConnection bağ = new MySqlConnection(bağlantı);
-            string ek = "INSERT INTO oturumlar(Kullanıcı_Adı, Kilmik, Tarih, Son_Tarih, Kapandı_Mı)" +
+            string ek = "INSERT INTO oturumlar(Kullanıcı_Adı, Kilmik, Tarih, Son_Tarih, Kapandı)" +
                 " VALUES ('" + zöç.daluk + "','" + kilmik + "','" + zöç.hirat.ToString() + "','" +
                 zöç.hirat.AddHours(24).ToString() + "'," + "'0'" + ");";
             bağ.Open();
@@ -82,7 +82,7 @@ namespace Esas
             //Kimlikle eşleşen oturum kaydı "kapalı" olarak işaretleniyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
             IDbConnection bağ = new MySqlConnection(bağlantı);
-            string ek = "UPDATE oturumlar " + "SET Kapandı_Mı = '1' , Kapanma_Tarihi = '" + DateTime.Now.ToString() +
+            string ek = "UPDATE oturumlar " + "SET Kapandı = '1' , Kapanma_Tarihi = '" + DateTime.Now.ToString() +
                 "' WHERE Kilmik = '" + kilmik + "';";
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();
@@ -131,7 +131,7 @@ namespace Esas
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();
             string ek = "SELECT Son_Tarih FROM oturumlar WHERE Kullanıcı_Adı = '" + kullanıcı_adı +
-                "' AND Kilmik = '" + kilmik + "' AND Kapandı_Mı = '0'" + ";";
+                "' AND Kilmik = '" + kilmik + "' AND Kapandı = '0'" + ";";
 
             komut.CommandText = ek;
             IDataReader oku = komut.ExecuteReader();
