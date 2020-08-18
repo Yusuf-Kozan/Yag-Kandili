@@ -8,15 +8,17 @@ namespace Esas
         public string BAŞLIK;
         public string İÇERİK;
         public string PAYLAŞAN;
+        public string KİLMİK;
         public DateTime TARİH;
 
         public yazıPaylaş() { }
 
-        public yazıPaylaş(string başlık, string içerik, string paylaşan, DateTime tarih)
+        public yazıPaylaş(string başlık, string içerik, string paylaşan, string kilmik, DateTime tarih)
         {
             BAŞLIK = başlık;
             İÇERİK = içerik;
             PAYLAŞAN = paylaşan;
+            KİLMİK = kilmik;
             TARİH = tarih;
         }
 
@@ -25,6 +27,7 @@ namespace Esas
             BAŞLIK = pay.BAŞLIK;
             İÇERİK = pay.İÇERİK;
             PAYLAŞAN = pay.PAYLAŞAN;
+            KİLMİK = pay.KİLMİK;
             TARİH = pay.TARİH;
         }
 
@@ -33,6 +36,7 @@ namespace Esas
             a.BAŞLIK = BAŞLIK;
             a.İÇERİK = İÇERİK;
             a.PAYLAŞAN = PAYLAŞAN;
+            a.KİLMİK = KİLMİK;
             a.TARİH = TARİH;
 
             return a;
@@ -44,6 +48,7 @@ namespace Esas
         public string BAŞLIK;
         public string İÇERİK;
         public string PAYLAŞAN;
+        public string KİLMİK;
         public DateTime TARİH;
     }
 }

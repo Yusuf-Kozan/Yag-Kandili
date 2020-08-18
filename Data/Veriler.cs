@@ -42,9 +42,9 @@ namespace Esas
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;"
             + "charset=utf8;";
             IDbConnection vtbağ = new MySqlConnection(bağlantı);
-            string ek = "INSERT INTO yazılı_paylaşım(Başlık, İçerik, Paylaşan, Tarih)" +
+            string ek = "INSERT INTO yazılı_paylaşım(Başlık, İçerik, Paylaşan, Kilmik, Tarih)" +
                 " VALUES ('" + paylaşım.BAŞLIK + "','" + paylaşım.İÇERİK + "','" + paylaşım.PAYLAŞAN +
-                "','" + paylaşım.TARİH.ToString() + "');";
+                "','" + paylaşım.KİLMİK + "','" + paylaşım.TARİH.ToString() + "');";
             vtbağ.Open();
             IDbCommand komut = vtbağ.CreateCommand();
             komut.CommandText = ek;
