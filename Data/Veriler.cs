@@ -12,39 +12,35 @@ namespace Esas
             return a.Year.ToString() + "-" + a.Month.ToString() + "-" + a.Day.ToString() +
                 " " + a.Hour.ToString() + ":" + a.Minute.ToString() + ":" + a.Second.ToString();
         }
+
         private static string bağlantıDizesi = "Server=127.0.0.1;Database=yagkandili;User ID=YagKandili;Pooling=false;";
-        private static IDbConnection Bağlantı = new MySqlConnection(bağlantıDizesi);
 
         public static void Üye_Ekle(ÜyeBil üye)
         {
             //Üyelik veri tabanına yeni üye kaydı yapılıyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
-                + "Pooling=false;";
-            IDbConnection vtbağ = new MySqlConnection(bağlantı);
-            vtbağ.Open();
             string ek = "INSERT INTO üyelik(Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, E_Posta, Başlangıç)" +
                     " VALUES ('" + üye.KULLANICI_ADI + "','" + üye.AD + "','" + üye.SOYADI + "','" + üye.PAROLA +
                     "','" + üye.ÜSTÜNLÜK + "','" + üye.E_POSTA + "','" + üye.BAŞLANGIÇ.ToString() + "');";
-            IDbCommand komut = vtbağ.CreateCommand();
+            IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
+            bağ.Open();
+            IDbCommand komut = bağ.CreateCommand();
             komut.CommandText = ek;
             IDataReader oku = komut.ExecuteReader();
             oku.Close();
             oku = null;
             komut.Dispose();
             komut = null;
-            vtbağ.Close();
-            vtbağ = null;
+            bağ.Close();
+            bağ = null;
         }
 
         public static void Yazılı_Paylaşım_Yap(yazpay paylaşım)
         {
             //Paylaşım veri tabanına yeni yazılı paylaşım yazılıyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;"
-            + "charset=utf8;";
-            IDbConnection vtbağ = new MySqlConnection(bağlantı);
             string ek = "INSERT INTO yazılı_paylaşım(Başlık, İçerik, Paylaşan, Kilmik, Tarih)" +
                 " VALUES ('" + paylaşım.BAŞLIK + "','" + paylaşım.İÇERİK + "','" + paylaşım.PAYLAŞAN +
                 "','" + paylaşım.KİLMİK + "','" + paylaşım.TARİH.ToString() + "');";
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
             vtbağ.Open();
             IDbCommand komut = vtbağ.CreateCommand();
             komut.CommandText = ek;
@@ -60,12 +56,11 @@ namespace Esas
         public static void OturumAç(string kilmik)
         {
             //Oturum veri tabanına yeni oturum kaydı ekleniyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
             ZöçKilmik zöç = Kilnevüg.Kilnevüg.ÇözülmüşKimlik(kilmik);
-            IDbConnection bağ = new MySqlConnection(bağlantı);
             string ek = "INSERT INTO oturumlar(Kullanıcı_Adı, Kilmik, Tarih, Son_Tarih, Kapandı)" +
                 " VALUES ('" + zöç.daluk + "','" + kilmik + "','" + zöç.hirat.ToString() + "','" +
                 zöç.hirat.AddHours(24).ToString() + "'," + "'0'" + ");";
+            IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();
             komut.CommandText = ek;
@@ -80,8 +75,7 @@ namespace Esas
         public static void OturumKapat(string kilmik)
         {
             //Kimlikle eşleşen oturum kaydı "kapalı" olarak işaretleniyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
-            IDbConnection bağ = new MySqlConnection(bağlantı);
+            IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
             string ek = "UPDATE oturumlar " + "SET Kapandı = '1' , Kapanma_Tarihi = '" + DateTime.Now.ToString() +
                 "' WHERE Kilmik = '" + kilmik + "';";
             bağ.Open();
@@ -101,8 +95,8 @@ namespace Esas
             //Girilen kullanıcı adı ile parolayı kullanan bir üyelik kaydı olup olmadığı denetleniyor.
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı +
                 "' AND Parola = '" + parola + "';";
-            Bağlantı.Open();
-            IDbCommand komut = Bağlantı.CreateCommand();
+            IDbConnection bağlantı = new MySqlConnection(bağlantıDizesi);
+            IDbCommand komut = bağlantı.CreateCommand();
             komut.CommandText = ek;
             IDataReader oku = komut.ExecuteReader();
             int i = 0;
@@ -114,8 +108,8 @@ namespace Esas
             oku = null;
             komut.Dispose();
             komut = null;
-            Bağlantı.Close();
-            Bağlantı = null;
+            bağlantı.Close();
+            bağlantı = null;
             if (i != 1)
                 return false;
             else
