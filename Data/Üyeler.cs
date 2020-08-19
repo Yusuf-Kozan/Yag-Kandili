@@ -133,6 +133,12 @@ namespace Esas
         public DateTime BAŞLANGIÇ;
         public string ÜSTÜNLÜK;
 
+        public çÜye(string ad, string soyadı, string kullanıcı_adı, string parola, string e_posta, DateTime Başlangıç, string üstünlük)
+        {
+            this.AD = ad; this.SOYADI = soyadı; this.KULLANICI_ADI = kullanıcı_adı;
+            this.PAROLA = parola; this.E_POSTA = e_posta; this.BAŞLANGIÇ = Başlangıç;
+            this.ÜSTÜNLÜK = üstünlük;
+        }
         public string DizinYolu()
         {
             string üstDizin = @"./Kullanıcılar";
