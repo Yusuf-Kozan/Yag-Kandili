@@ -33,6 +33,24 @@ namespace Esas
             bağ.Close();
             bağ = null;
         }
+        public static void Üye_Ekle(çÜye üye)
+        {
+            //Üye_Ekle fonksiyonunun ÜyeBil yerine çÜye kullanan hâli
+            string ek = "INSERT INTO üyelik(Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, E_Posta, Başlangıç)" +
+                    " VALUES ('" + üye.KULLANICI_ADI + "','" + üye.AD + "','" + üye.SOYADI + "','" + üye.PAROLA +
+                    "','" + üye.ÜSTÜNLÜK + "','" + üye.E_POSTA + "','" + üye.BAŞLANGIÇ.ToString() + "');";
+            IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
+            bağ.Open();
+            IDbCommand komut = bağ.CreateCommand();
+            komut.CommandText = ek;
+            IDataReader oku = komut.ExecuteReader();
+            oku.Close();
+            oku = null;
+            komut.Dispose();
+            komut = null;
+            bağ.Close();
+            bağ = null;
+        }
 
         public static void Yazılı_Paylaşım_Yap(yazpay paylaşım)
         {
