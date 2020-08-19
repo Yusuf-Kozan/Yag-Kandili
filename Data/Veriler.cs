@@ -16,12 +16,12 @@ namespace Esas
 
         private static string bağlantıDizesi = "Server=127.0.0.1;Database=yagkandili;User ID=YagKandili;Pooling=false;";
 
-        public static void Üye_Ekle(ÜyeBil üye)
+        public static void Üye_Ekle(ÜyeBil üye, string kimlik)
         {
             //Üyelik veri tabanına yeni üye kaydı yapılıyor.
-            string ek = "INSERT INTO üyelik(Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, E_Posta, Başlangıç)" +
+            string ek = "INSERT INTO üyelik(Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, E_Posta, Başlangıç, Kimlik)" +
                     " VALUES ('" + üye.KULLANICI_ADI + "','" + üye.AD + "','" + üye.SOYADI + "','" + üye.PAROLA +
-                    "','" + üye.ÜSTÜNLÜK + "','" + üye.E_POSTA + "','" + üye.BAŞLANGIÇ.ToString() + "');";
+                    "','" + üye.ÜSTÜNLÜK + "','" + üye.E_POSTA + "','" + üye.BAŞLANGIÇ.ToString() + "','" + kimlik + "');";
             IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();
@@ -34,12 +34,12 @@ namespace Esas
             bağ.Close();
             bağ = null;
         }
-        public static void Üye_Ekle(çÜye üye)
+        public static void Üye_Ekle(çÜye üye, string kimlik)
         {
             //Üye_Ekle fonksiyonunun ÜyeBil yerine çÜye kullanan hâli
-            string ek = "INSERT INTO üyelik(Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, E_Posta, Başlangıç)" +
+            string ek = "INSERT INTO üyelik(Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, E_Posta, Başlangıç, Kimlik)" +
                     " VALUES ('" + üye.KULLANICI_ADI + "','" + üye.AD + "','" + üye.SOYADI + "','" + üye.PAROLA +
-                    "','" + üye.ÜSTÜNLÜK + "','" + üye.E_POSTA + "','" + üye.BAŞLANGIÇ.ToString() + "');";
+                    "','" + üye.ÜSTÜNLÜK + "','" + üye.E_POSTA + "','" + üye.BAŞLANGIÇ.ToString() + "','" + kimlik + "');";
             IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();
