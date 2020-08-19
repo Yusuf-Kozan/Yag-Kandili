@@ -146,7 +146,7 @@ namespace Esas
         }
         public string[] MetinKümesiYap()
         {
-            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, BAŞLANGIÇ.ToString(), ÜSTÜNLÜK};
+            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString()};
             return küme;
         }
     }
