@@ -7,7 +7,7 @@ namespace YK_Arşiv
 {
     public class kullanıcı
     {
-        public void Oluştur(çÜye üye, string kimlik)
+        public static void Oluştur(çÜye üye, string kimlik)
         {
             string[] belge = new string[] {
                 "YKA+0+001",
