@@ -72,6 +72,7 @@ namespace Esas
             PAROLA = üye.PAROLA;
             E_POSTA = üye.E_POSTA;
             BAŞLANGIÇ = üye.BAŞLANGIÇ;
+            ÜSTÜNLÜK = üye.ÜSTÜNLÜK;
         }
         public ÜyeBil() { }
 
@@ -130,6 +131,7 @@ namespace Esas
         public string PAROLA;
         public string E_POSTA;
         public DateTime BAŞLANGIÇ;
+        public string ÜSTÜNLÜK;
 
         public string DizinYolu()
         {
@@ -139,11 +141,12 @@ namespace Esas
         public override string ToString()
         {
             return "Ad: " + AD + " | Soyadı: " + SOYADI +
-            " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA + " | Başlangıç: " + BAŞLANGIÇ.ToString();
+            " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA +
+            " | Üstünlük: " + ÜSTÜNLÜK + " | Başlangıç: " + BAŞLANGIÇ.ToString();
         }
         public string[] MetinKümesiYap()
         {
-            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, BAŞLANGIÇ.ToString()};
+            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, BAŞLANGIÇ.ToString(), ÜSTÜNLÜK};
             return küme;
         }
     }
