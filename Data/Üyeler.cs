@@ -64,6 +64,15 @@ namespace Esas
             BAŞLANGIÇ = üye.BAŞLANGIÇ;
             RESİM = üye.RESİM;
         }
+        public ÜyeBil(çÜye üye)
+        {
+            AD = üye.AD;
+            SOYADI = üye.SOYADI;
+            KULLANICI_ADI = üye.KULLANICI_ADI;
+            PAROLA = üye.PAROLA;
+            E_POSTA = üye.E_POSTA;
+            BAŞLANGIÇ = üye.BAŞLANGIÇ;
+        }
         public ÜyeBil() { }
 
         public override string ToString()
