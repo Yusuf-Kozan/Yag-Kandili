@@ -1,6 +1,7 @@
 using System;
 using Esas;
 using Kilnevüg;
+using YK_Arşiv;
 
 namespace İşlemler
 {
@@ -11,6 +12,7 @@ namespace İşlemler
             Kullanıcı_Kimliği kimlik = new Kullanıcı_Kimliği(üye);
             TabanlıVeri.Üye_Ekle(üye, kimlik.Kimlik);
             TabanlıVeri.Kullanıcı_Dizini_Oluştur(üye);
+            YK_Arşiv.kullanıcı.Oluştur(üye, kimlik.Kimlik);
         }
     }
 }
