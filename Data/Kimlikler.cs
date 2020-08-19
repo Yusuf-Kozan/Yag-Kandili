@@ -10,7 +10,7 @@ namespace Kilnevüg
         public DateTime Başlangıç;
         public string Dosya_Yolu;
         public string Kimlik;
-        public Kullanıcı_Kimliği(string kullanıcı_adı, string üstünlük, DateTime başlangıç, string dosya_yolu)
+        public yeni_Kullanıcı_Kimliği(string kullanıcı_adı, string üstünlük, DateTime başlangıç, string dosya_yolu)
         {
             this.Kullanıcı_Adı = kullanıcı_adı;
             this.Üstünlük = üstünlük;
@@ -18,7 +18,15 @@ namespace Kilnevüg
             this.Dosya_Yolu = dosya_yolu;
             this.Kimlik = kimlikYap(kullanıcı_adı, üstünlük, başlangıç, dosya_yolu);
         }
-        public string kimlikYap(string kullanıcı_adı, string üstünlük, DateTime başlangıç, string dosya_yolu)
+        public yeni_Kullanıcı_Kimliği(çÜye üye)
+        {
+            this.Kullanıcı_Adı = üye.KULLANICI_ADI;
+            this.Üstünlük = üye.ÜSTÜNLÜK;
+            this.Başlangıç = üye.BAŞLANGIÇ;
+            this.Dosya_Yolu = üye.DizinYolu();
+            this.Kimlik = kimlikYap(üye.KULLANICI_ADI, üye.ÜSTÜNLÜK, üye.BAŞLANGIÇ, üye.DizinYolu());
+        }
+        private string kimlikYap(string kullanıcı_adı, string üstünlük, DateTime başlangıç, string dosya_yolu)
         {
             string üst = null;
             if (üstünlük == "kullanıcı") {üst = "k";} else if (üstünlük == "yönetici") {üst = "y";} else {üst = "a";}
