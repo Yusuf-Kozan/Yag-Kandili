@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Kilnevüg;
@@ -337,6 +338,13 @@ namespace Esas
             vtbağ.Close();
             vtbağ = null;
             return pylşck;
+        }
+        public void Kullanıcı_Dizini_Oluştur(çÜye üye)
+        {
+            if (!Directory.Exists(üye.DizinYolu()))
+            {
+                Directory.CreateDirectory(üye.DizinYolu());
+            }
         }
     } 
 }
