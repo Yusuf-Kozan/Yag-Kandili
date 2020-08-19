@@ -292,7 +292,7 @@ namespace Esas
             IDbCommand komut = vtbağ.CreateCommand();
             komut.CommandText = ek;
             IDataReader oku = komut.ExecuteReader();
-            çÜye üye;
+            çÜye üye = new çÜye();
             while (oku.Read())
             {
                 üye.AD = oku["Ad"].ToString();
@@ -339,7 +339,7 @@ namespace Esas
             vtbağ = null;
             return pylşck;
         }
-        public void Kullanıcı_Dizini_Oluştur(çÜye üye)
+        public static void Kullanıcı_Dizini_Oluştur(çÜye üye)
         {
             if (!Directory.Exists(üye.DizinYolu()))
             {
