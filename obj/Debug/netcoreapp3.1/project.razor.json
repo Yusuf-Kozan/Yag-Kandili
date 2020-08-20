@@ -177,39 +177,6 @@
         }
       },
       {
-        "HashCode": -2051583592,
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Giriş",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Giriş"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Giriş"
-        }
-      },
-      {
-        "HashCode": -1973564800,
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Giriş",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "YağKandili.Pages.Giriş"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Giriş",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -2028878603,
         "Kind": "Components.Component",
         "Name": "YağKandili.Pages.Index",
@@ -239,6 +206,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "YağKandili.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -2051583592,
+        "Kind": "Components.Component",
+        "Name": "YağKandili.Pages.Giriş",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Giriş"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.Pages.Giriş"
+        }
+      },
+      {
+        "HashCode": -1973564800,
+        "Kind": "Components.Component",
+        "Name": "YağKandili.Pages.Giriş",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "YağKandili.Pages.Giriş"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.Pages.Giriş",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
