@@ -12,35 +12,35 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 618471078,
+        "HashCode": -2051583592,
         "Kind": "Components.Component",
-        "Name": "YağKandili.App",
+        "Name": "YağKandili.Pages.Giriş",
         "AssemblyName": "YağKandili",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "App"
+            "TagName": "Giriş"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.App"
+          "Common.TypeName": "YağKandili.Pages.Giriş"
         }
       },
       {
-        "HashCode": 88774665,
+        "HashCode": -1973564800,
         "Kind": "Components.Component",
-        "Name": "YağKandili.App",
+        "Name": "YağKandili.Pages.Giriş",
         "AssemblyName": "YağKandili",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "YağKandili.App"
+            "TagName": "YağKandili.Pages.Giriş"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.App",
+          "Common.TypeName": "YağKandili.Pages.Giriş",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -177,39 +177,6 @@
         }
       },
       {
-        "HashCode": -2051583592,
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Giriş",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Giriş"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Giriş"
-        }
-      },
-      {
-        "HashCode": -1973564800,
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Giriş",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "YağKandili.Pages.Giriş"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Giriş",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -2028878603,
         "Kind": "Components.Component",
         "Name": "YağKandili.Pages.Index",
@@ -239,6 +206,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "YağKandili.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 618471078,
+        "Kind": "Components.Component",
+        "Name": "YağKandili.App",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.App"
+        }
+      },
+      {
+        "HashCode": 88774665,
+        "Kind": "Components.Component",
+        "Name": "YağKandili.App",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "YağKandili.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -521,72 +521,6 @@
         }
       },
       {
-        "HashCode": 269879353,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.BIKTIM",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BIKTIM"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.BIKTIM"
-        }
-      },
-      {
-        "HashCode": 558676857,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.BIKTIM",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Bileşenler.BIKTIM"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.BIKTIM",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -109603881,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.KandilYak",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "KandilYak"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.KandilYak"
-        }
-      },
-      {
-        "HashCode": -67674807,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.KandilYak",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Bileşenler.KandilYak"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.KandilYak",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -372043793,
         "Kind": "Components.Component",
         "Name": "Bileşenler.OturumAç",
@@ -669,6 +603,72 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Bileşenler.ÜyeOl",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 269879353,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.BIKTIM",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BIKTIM"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.BIKTIM"
+        }
+      },
+      {
+        "HashCode": 558676857,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.BIKTIM",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Bileşenler.BIKTIM"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.BIKTIM",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -109603881,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.KandilYak",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "KandilYak"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.KandilYak"
+        }
+      },
+      {
+        "HashCode": -67674807,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.KandilYak",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Bileşenler.KandilYak"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.KandilYak",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
