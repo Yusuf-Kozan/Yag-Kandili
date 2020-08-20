@@ -39,10 +39,7 @@
             else if (TabanlıVeri.KP_Kullanımda(kulad,parol))
             {
                 Başlık = "Giriş Yap";
-                string kilmik = Kilnevüg.YeniEşsizKimlik(kulad);
-                TabanlıVeri.OturumAç(kilmik);
-                Çerezler çerez = new Çerezler(JSRuntime);
-                çerez.ÇerezYap(kulad, kilmik, 12);
+                İşlemler.Oturumİşlemleri.Oturum_Başlat(kulad, JSRuntime);
                 if(String.IsNullOrWhiteSpace(yön))
                     NavigationManager.NavigateTo("/ana");
                 else
