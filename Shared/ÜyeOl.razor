@@ -42,8 +42,12 @@
                 bool kullanıcıVar = TabanlıVeri.Kullanıcı_Var(bilgiler[3]), ePostaVar = TabanlıVeri.ePosta_Var(bilgiler[2]); 
                 if (!kullanıcıVar && !ePostaVar)
                 {
+                    Başlık = "Bir Kandil Yak";
                     çÜye yeniüye = new çÜye(bilgiler[0], bilgiler[1], bilgiler[3], bilgiler[4], bilgiler[2], DateTime.Now, "kullanıcı");
+                    bilgiler = null;
                     Oturumİşlemleri.Üye_Oluştur(yeniüye);
+                    Oturumİşlemleri.Oturum_Başlat(yeniüye.KULLANICI_ADI, JSRuntime);
+                    NavigationManager.NavigateTo("/ana");
                 }
                 else if (kullanıcıVar)
                 {
