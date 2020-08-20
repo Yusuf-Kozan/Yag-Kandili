@@ -2,6 +2,7 @@ using System;
 using Esas;
 using Kilnevüg;
 using YK_Arşiv;
+using Microsoft.JSInterop;
 
 namespace İşlemler
 {
@@ -13,6 +14,13 @@ namespace İşlemler
             TabanlıVeri.Üye_Ekle(üye, kimlik.Kimlik);
             TabanlıVeri.Kullanıcı_Dizini_Oluştur(üye);
             YK_Arşiv.kullanıcı.Oluştur(üye, kimlik.Kimlik);
+        }
+        public static void Oturum_Başlat(string kullanıcı_adı, IJSRuntime jsRuntime)
+        {
+            string kilmik = Kilnevüg.Kilnevüg.YeniEşsizKimlik(kullanıcı_adı);
+            TabanlıVeri.OturumAç(kilmik);
+            Çerezler çerez = new Çerezler(jsRuntime);
+            çerez.ÇerezYap(kullanıcı_adı, kilmik, 12);
         }
     }
 }

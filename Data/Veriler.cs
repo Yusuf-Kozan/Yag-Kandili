@@ -115,6 +115,7 @@ namespace Esas
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı +
                 "' AND Parola = '" + parola + "';";
             IDbConnection bağlantı = new MySqlConnection(bağlantıDizesi);
+            bağlantı.Open();
             IDbCommand komut = bağlantı.CreateCommand();
             komut.CommandText = ek;
             IDataReader oku = komut.ExecuteReader();
