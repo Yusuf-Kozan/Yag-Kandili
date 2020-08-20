@@ -78,7 +78,7 @@ namespace Esas
             ZöçKilmik zöç = Kilnevüg.Kilnevüg.ÇözülmüşKimlik(kilmik);
             string ek = "INSERT INTO oturumlar(Kullanıcı_Adı, Kilmik, Tarih, Son_Tarih, Kapandı)" +
                 " VALUES ('" + zöç.daluk + "','" + kilmik + "','" + zöç.hirat.ToString() + "','" +
-                zöç.hirat.AddHours(24).ToString() + "'," + "'0'" + ");";
+                zöç.hirat.AddHours(12).ToString() + "'," + "'0'" + ");";
             IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();
