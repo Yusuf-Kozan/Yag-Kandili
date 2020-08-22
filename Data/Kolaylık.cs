@@ -20,7 +20,8 @@ namespace İşlemler
             string kilmik = Kilnevüg.Kilnevüg.YeniEşsizKimlik(kullanıcı_adı);
             TabanlıVeri.OturumAç(kilmik);
             Çerezler çerez = new Çerezler(jsRuntime);
-            çerez.ÇerezYap(kullanıcı_adı, kilmik, 12);
+            çerez.ÇerezYap("kullanıcı_adı", kullanıcı_adı, 12);
+            çerez.ÇerezYap("parola", kilmik, 12);
         }
     }
 }
