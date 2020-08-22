@@ -18,7 +18,7 @@ namespace YK_Arşiv
                 "Soyadı:"+üye.SOYADI,
                 "E_Posta:"+üye.E_POSTA,
                 "Başlangıç:"+üye.BAŞLANGIÇ.ToString(),
-                "Resim:"
+                "Resim:resimler/kulllanıcı/0069ff.png"
             };
             string dosyaAdı = üye.KULLANICI_ADI + ".yka";
             string esasYol = System.IO.Path.Combine(üye.DizinYolu(), dosyaAdı);
