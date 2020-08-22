@@ -314,7 +314,7 @@ namespace Esas
         public static string pylşck;
         public static string Tüm_Yazılı_Paylaşımlar()
         {
-            //Yapılan bütün yazılı paylaşımlar HTML listesi ögeleri biçiminde dödürülüyor.
+            //Yapılan bütün yazılı paylaşımlar HTML listesi ögeleri biçiminde döndürülüyor.
             string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
                 + "Pooling=false;";
             IDbConnection vtbağ = new MySqlConnection(bağlantı);
