@@ -157,7 +157,7 @@ namespace Esas
                 sonn += "?" + (string)oku["Son_Tarih"];
             }
             string[] sonnn = new string[a];
-            sonnn = sonn.Split((char)0x003B);
+            sonnn = sonn.Split('?');//(char)0x003B
             DateTime[] tarr = new DateTime[a];
             for (int i = 1; i < a; i++)
             {

@@ -45,39 +45,6 @@
         }
       },
       {
-        "HashCode": 239377339,
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Ana",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Ana"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Ana"
-        }
-      },
-      {
-        "HashCode": -188646734,
-        "Kind": "Components.Component",
-        "Name": "YağKandili.Pages.Ana",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "YağKandili.Pages.Ana"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.Pages.Ana",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 659121262,
         "Kind": "Components.Component",
         "Name": "YağKandili.Pages.Counter",
