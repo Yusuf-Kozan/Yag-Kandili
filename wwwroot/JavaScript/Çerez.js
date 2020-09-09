@@ -20,7 +20,7 @@ window.Çerezİşleri = {
         var çAd = ad + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(';');
-        for (var i = 0; ca.length(); i++)
+        for (var i = 0; ca.length; i++)
         {
             var c = ca[i];
             while (c.charAt(0) == ' ') {

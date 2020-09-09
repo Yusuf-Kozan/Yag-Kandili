@@ -8,20 +8,21 @@ namespace Esas
     {
         private readonly IJSRuntime jsRuntime;
 
+        private string çDeğeri;
         public Çerezler(IJSRuntime jsRuntime)
         {
             this.jsRuntime = jsRuntime;
         }
-
         public async void ÇerezYap(string ad, string değer, int kaçSaat)
         {
             var değişken = new object[3];
             değişken[0] = ad; değişken[1] = değer; değişken[2] = kaçSaat;
             await jsRuntime.InvokeVoidAsync("Çerezİşleri.ÇerezYap", değişken);
         }
-        public async Task<string> ÇerezOku(string çerezAdı)
+        private async void ÇerezOku(string çerezAdı)
         {
-            return await jsRuntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", çerezAdı);
+            var a = await jsRuntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", çerezAdı);
+            çDeğeri = a.ToString();
         }
         public async void ÇerezSil(string çerezAdı)
         {
@@ -29,7 +30,8 @@ namespace Esas
         }
         public bool ÇerezVar(string çerezAdı)
         {
-            if (!String.IsNullOrWhiteSpace(ÇerezOku(çerezAdı).ToString()))
+            ÇerezOku(çerezAdı);
+            if (!String.IsNullOrWhiteSpace(çDeğeri))
                 return true;
             return false;
         }

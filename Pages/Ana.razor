@@ -5,31 +5,17 @@
 @inject IJSRuntime JSruntime
 @inject NavigationManager NavigationManager
 
-@if (oturum_açık())
-{
+
     <h1>@a</h1>
-    <h2>@b</h2>
-}
-else
-{
-    NavigationManager.NavigateTo("/");
-}
+
 
 @code {
-    private string a, b;
-    private bool oturum_açık()
+    private string a;
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        Çerezler çerez = new Çerezler(JSruntime);
-        string[] kulad_kilmik = new string[] {çerez.ÇerezOku("kullanıcı_adı").ToString(),
-                çerez.ÇerezOku("parola").ToString()};
-        if (Girdiler.tümMetinlerUygun(kulad_kilmik))
-        {
-            a = JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı_adı").ToString();
-            b = JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "parola").ToString();
-            return true;
-            //return TabanlıVeri.KK_Doğru(kulad_kilmik[0], kulad_kilmik[1]);
-        }
-        else
-            return false;
+        var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı_adı");
+        a = c.ToString();
+        StateHasChanged();
     }
 }

@@ -43,6 +43,24 @@ namespace Kilnevüg
                 return true;
             return false;
         }
+        public static bool kilmikOlabilir(string kilmik)
+        {
+            if (kilmik.Contains('₺') && !kilmik.Contains(';'))
+            {
+                if(kilmik.Split('₺')[1].Length > 14 && metinUygun(kilmik.Split('₺')[1]))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static bool allAreNullOrWhiteSpace(string[] metinler)
         {
             //Tüm metinler boşsa true, herhangi biri doluysa false değerini döndürür.
