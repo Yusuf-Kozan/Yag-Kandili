@@ -21,13 +21,7 @@ namespace İşlemler
             string kilmik = Kilnevüg.Kilnevüg.YeniEşsizKimlik(kullanıcı_adı);
             çerez.ÇerezYap("kullanıcı_adı", kullanıcı_adı, 4);
             çerez.ÇerezYap("parola", kilmik, 4);
-            TabanlıVeri.OturumAç(kilmik);
-            /*var değişken = new object[3];
-            değişken[0] = "kullanıcı_adı"; değişken[1] = kullanıcı_adı; değişken[2] = 4;
-            jsRuntime.InvokeVoidAsync("Çerezİşleri.ÇerezYap", değişken);
-            değişken[0] = "parola"; değişken[1] = kilmik; değişken[2] = 4;
-            jsRuntime.InvokeVoidAsync("Çerezİşleri.ÇerezYap", değişken);*/
-            
+            TabanlıVeri.OturumAç(kilmik);            
         }
     }
 }
