@@ -18,11 +18,10 @@ namespace İşlemler
         public static void Oturum_Başlat(string kullanıcı_adı, IJSRuntime jsRuntime)
         {
             Çerezler çerez = new Çerezler(jsRuntime);
-            çerez.ÇerezYap("kullanıcı_adı", kullanıcı_adı, 4);
-            //çerez.ÇerezYap("parola", kilmik, 4);
             string kilmik = Kilnevüg.Kilnevüg.YeniEşsizKimlik(kullanıcı_adı);
+            çerez.ÇerezYap("kullanıcı_adı", kullanıcı_adı, 4);
+            çerez.ÇerezYap("parola", kilmik, 4);
             TabanlıVeri.OturumAç(kilmik);
-            
             /*var değişken = new object[3];
             değişken[0] = "kullanıcı_adı"; değişken[1] = kullanıcı_adı; değişken[2] = 4;
             jsRuntime.InvokeVoidAsync("Çerezİşleri.ÇerezYap", değişken);

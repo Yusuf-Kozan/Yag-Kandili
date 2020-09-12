@@ -57,7 +57,6 @@
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/FetchData.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Giriş.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/Index.razor.g.cs
-/media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/BIKTIM.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/GirişTaslak.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/KandilYak.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/MainLayout.razor.g.cs
@@ -77,7 +76,6 @@
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Pages/FetchData.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Pages/Giriş.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Pages/Index.razor.g.cs
-/media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Shared/BIKTIM.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Shared/GirişTaslak.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Shared/KandilYak.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Shared/MainLayout.razor.g.cs

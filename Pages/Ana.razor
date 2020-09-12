@@ -7,15 +7,19 @@
 
 
     <h1>@a</h1>
+    <h1>@b</h1>
+    <h2>@DateTime.Now.ToString("ddMMyyyyHHmmss")</h2>
 
 
 @code {
-    private string a;
+    private string a, b;
     
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı_adı");
-        a = c.ToString();
+        a = c.ToString(); c = null;
+        var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "parola");
+        b = d.ToString(); d = null;
         StateHasChanged();
     }
 }

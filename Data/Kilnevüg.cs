@@ -37,7 +37,7 @@ namespace Kilnevüg
                 Convert.ToInt32(dakika),
                 Convert.ToInt32(saniye)
             );
-            ZöçKilmik zöç = new ZöçKilmik();
+            ZöçKilmik zöç;
             zöç.hirat = tarih;
 
             string kullanıcıadı = kilmik.Split((char)0x20BA)[0].Replace("(0061)", "a").Replace("(0065)", "e").Replace("(0131)", "ı").Replace("(0069)", "i").
@@ -65,7 +65,7 @@ namespace Kilnevüg
         {
             return daluk.Replace("a", "(0061)").Replace("e", "(0065)").Replace("ı", "(0131)").Replace("i", "(0069)").
                 Replace("o", "(006F)").Replace("ö", "(00F6)").Replace("u", "(0075)").Replace("ü", "(00FC)") + ((char)0x20BA).ToString() + elegtsar + 
-                hirat.ToString().Replace(" ","").Replace(".","").Replace(":","");
+                hirat.ToString("ddMMyyyyHHmmss");
         }
     }
     public struct ZöçKilmik
