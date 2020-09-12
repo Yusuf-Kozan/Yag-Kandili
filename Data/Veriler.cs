@@ -311,6 +311,33 @@ namespace Esas
             vtbağ = null;
             return üye;
         }
+        public static Üye KullanıcıAdından_Üye(string kullanıcı_adı)
+        {
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            vtbağ.Open();
+            string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı + "';";
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek;
+            IDataReader oku = komut.ExecuteReader();
+            Üye üye = new Üye();
+            while (oku.Read())
+            {
+                üye.AD = oku["Ad"].ToString();
+                üye.SOYADI = oku["Soyadı"].ToString();
+                üye.KULLANICI_ADI = oku["Kullanıcı_Adı"].ToString();
+                üye.E_POSTA = oku["E_Posta"].ToString();
+                üye.ÜSTÜNLÜK = oku["Üstünlük"].ToString();
+                üye.BAŞLANGIÇ = Convert.ToDateTime((string)oku["Başlangıç"]);
+                üye.RESİM = oku["Resim"].ToString();
+            }
+            oku.Close();
+            oku = null;
+            komut.Dispose();
+            komut = null;
+            vtbağ.Close();
+            vtbağ = null;
+            return üye;
+        }
         public static string pylşck;
         public static string Tüm_Yazılı_Paylaşımlar()
         {
