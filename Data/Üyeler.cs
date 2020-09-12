@@ -116,15 +116,15 @@ namespace Esas
             " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA + " | Üstünlük: "
             + ÜSTÜNLÜK + " | Başlangıç: " + BAŞLANGIÇ.ToString();
         }
-        /*public string[] MetinKümesiYap()
+        public string[] MetinKümesiYap()
         {
-            string[] küme = new string{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString()};
+            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString(), RESİM};
             return küme;
-        }*/
+        }
     }
     public struct çÜye
     {
-        //Üye bilgisi çekirdeği: Sonraki sürümlerde kullanılacak olan Üstünlük ve Resim değişkenlerini taşımıyor.
+        //Üye bilgisi çekirdeği: Aslında pek de gerekli olmayan Resim değişkenini taşımıyor.
         public string AD {get; set;}
         public string SOYADI;
         public string KULLANICI_ADI;
