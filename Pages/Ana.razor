@@ -1,18 +1,19 @@
 @page "/ana"
+@using System.Threading.Tasks
 @using Esas
 @using Kilnevüg
 @using Bileşenler
 @inject IJSRuntime JSruntime
 @inject NavigationManager NavigationManager
 
-
     <h1>@a</h1>
     <h1>@b</h1>
     <h2>@DateTime.Now.ToString("ddMMyyyyHHmmss")</h2>
-
+    <h2>@oturum_açık.ToString()</h2>
 
 @code {
-    private string a, b;
+    private string a, b; //a == kullanıcı adı && b == kilmik
+    private bool oturum_açık;
     
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -20,6 +21,9 @@
         a = c.ToString(); c = null;
         var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "parola");
         b = d.ToString(); d = null;
+        oturum_açık = İşlemler.Oturumİşlemleri.Oturum_Uygun(a, b);
+        if (!oturum_açık)
+            NavigationManager.NavigateTo("/");
         StateHasChanged();
     }
 }
