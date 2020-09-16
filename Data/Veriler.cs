@@ -156,7 +156,14 @@ namespace Esas
                 a++;
                 sonn += "?" + (string)oku["Son_Tarih"];
             }
-            string[] sonnn = new string[a];
+            a--;
+            string esas_son_tarih = sonn.Split('?')[a];
+            DateTime est = Convert.ToDateTime(esas_son_tarih);
+            if (est > DateTime.Now)
+                return true;
+            else
+                return false;
+            /*string[] sonnn = new string[a];
             sonnn = sonn.Split('?');//(char)0x003B
             DateTime[] tarr = new DateTime[a];
             for (int i = 1; i < a; i++)
@@ -168,7 +175,7 @@ namespace Esas
                 }
                 
             }
-            return true;
+            return true;*/
         }
 
         public static bool Kullanıcı_Var(string kullanıcı_adı)
