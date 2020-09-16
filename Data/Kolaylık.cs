@@ -23,5 +23,24 @@ namespace İşlemler
             çerez.ÇerezYap("parola", kilmik, 4);
             TabanlıVeri.OturumAç(kilmik);            
         }
+        public static bool Oturum_Uygun(string kullanıcı_adı, string kilmik)
+        {
+            if (!String.IsNullOrWhiteSpace(kullanıcı_adı) && !String.IsNullOrWhiteSpace(kilmik))
+            {
+                if (Girdiler.metinUygun(kullanıcı_adı))
+                {
+                    if (Girdiler.kilmikOlabilir(kilmik))
+                    {
+                        return TabanlıVeri.KK_Doğru(kullanıcı_adı, kilmik);
+                    }
+                    else
+                        return false;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
     }
 }
