@@ -112,9 +112,10 @@ namespace Esas
         public static bool KP_Kullanımda(string kullanıcı_adı, string parola)
         {
             //Girilen kullanıcı adı ile parolayı kullanan bir üyelik kaydı olup olmadığı denetleniyor.
+            string bag = "Server=127.0.0.1;Database=yagkandili;User ID=YagKandili;Pooling=false;";
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı +
                 "' AND Parola = '" + parola + "';";
-            IDbConnection bağlantı = new MySqlConnection(bağlantıDizesi);
+            IDbConnection bağlantı = new MySqlConnection(bag);
             bağlantı.Open();
             IDbCommand komut = bağlantı.CreateCommand();
             komut.CommandText = ek;
@@ -156,7 +157,13 @@ namespace Esas
                 a++;
                 sonn += "?" + (string)oku["Son_Tarih"];
             }
-            a--;
+            oku.Close();
+            oku = null;
+            komut.Dispose();
+            komut = null;
+            bağ.Close();
+            bağ = null;
+            
             string esas_son_tarih = sonn.Split('?')[a];
             DateTime est = Convert.ToDateTime(esas_son_tarih);
             if (est > DateTime.Now)
@@ -169,13 +176,13 @@ namespace Esas
             for (int i = 1; i < a; i++)
             {
                 tarr[i] = Convert.ToDateTime(sonnn[i]);
-                if (tarr[i] <= DateTime.Now)
+                if (tarr[i] > DateTime.Now)
                 {
-                    return false;
+                    return true;
                 }
                 
             }
-            return true;*/
+            return false;*/
         }
 
         public static bool Kullanıcı_Var(string kullanıcı_adı)
