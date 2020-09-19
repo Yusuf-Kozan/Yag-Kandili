@@ -36,5 +36,17 @@ window.Çerezİşleri = {
     ÇerezSil: function(ad)
     {
         document.cookie = ad + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    },
+
+    ÇerezVar: function(ad)
+    {
+        if (this.ÇerezOku(ad) === "")
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
