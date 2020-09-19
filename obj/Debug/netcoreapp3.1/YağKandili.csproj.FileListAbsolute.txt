@@ -84,3 +84,5 @@
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/YağKandili.dll
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/YağKandili.pdb
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/YağKandili.genruntimeconfig.cache
+/media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/AnaTaslak.razor.g.cs
+/media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Shared/AnaTaslak.razor.g.cs
