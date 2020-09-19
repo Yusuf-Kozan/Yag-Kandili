@@ -33,6 +33,28 @@
 	background-color: #ffffff;
 	/*border-width: 3px;*/
 }
+.D1yk {
+	border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: sans-serif;
+	color: rgb(255,255,255);
+	background-color: #ff6600;
+	border-color: #ff6600;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+}
+.D1yk:hover {
+	color: #ff6600;
+	background-color: #ffd3b5;
+	border-color: #ffd3b5;
+	/*border-width: 3px;*/
+}
 .MetinKutusu1 {
 	border: solid 2px rgb(0,120,0);
 	border-radius: 4px;

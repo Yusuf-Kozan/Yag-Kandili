@@ -35,6 +35,21 @@
 	text-align: center;
 }
 
+/*AnaTaslak.razor*/
+.ana-altlık {
+	height: 10%;
+	border-bottom: solid #ff6600;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	align-items: center;
+}
+.ana-beden {
+    height: 90%;
+    margin-bottom: 5%;
+}
+
 /*.gir2 {
 	border-radius: 7px !important; 
 	padding-top: 3px !important;
