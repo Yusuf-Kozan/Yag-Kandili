@@ -12,6 +12,39 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
+        "HashCode": 618471078,
+        "Kind": "Components.Component",
+        "Name": "YağKandili.App",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.App"
+        }
+      },
+      {
+        "HashCode": 88774665,
+        "Kind": "Components.Component",
+        "Name": "YağKandili.App",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "YağKandili.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 601418072,
         "Kind": "Components.Component",
         "Name": "YağKandili.Pages.Error",
@@ -78,35 +111,35 @@
         }
       },
       {
-        "HashCode": 618471078,
+        "HashCode": 239377339,
         "Kind": "Components.Component",
-        "Name": "YağKandili.App",
+        "Name": "YağKandili.Pages.Ana",
         "AssemblyName": "YağKandili",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "App"
+            "TagName": "Ana"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.App"
+          "Common.TypeName": "YağKandili.Pages.Ana"
         }
       },
       {
-        "HashCode": 88774665,
+        "HashCode": -188646734,
         "Kind": "Components.Component",
-        "Name": "YağKandili.App",
+        "Name": "YağKandili.Pages.Ana",
         "AssemblyName": "YağKandili",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "YağKandili.App"
+            "TagName": "YağKandili.Pages.Ana"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "YağKandili.App",
+          "Common.TypeName": "YağKandili.Pages.Ana",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

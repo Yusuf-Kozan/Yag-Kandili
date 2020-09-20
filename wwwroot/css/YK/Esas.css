@@ -44,10 +44,21 @@
 	bottom: 0;
 	left: 0;
 	align-items: center;
+	z-index: 1;
 }
 .ana-beden {
     height: 90%;
     margin-bottom: 5%;
+}
+.her_şey_bölgesi {
+	height: 0;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.9);
+	transition: 0.8s;
 }
 
 /*.gir2 {
