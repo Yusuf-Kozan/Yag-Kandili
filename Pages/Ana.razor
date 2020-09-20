@@ -25,13 +25,18 @@ else
     
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı_adı");
-        a = c.ToString(); c = null;
-        var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "parola");
-        b = d.ToString(); d = null;
-        oturum_açık = İşlemler.Oturumİşlemleri.Oturum_Uygun(a, b);
-        if (!oturum_açık)
+        try
+        {
+            var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı_adı");
+            a = c.ToString(); c = null;
+            var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "parola");
+            b = d.ToString(); d = null;
+            oturum_açık = İşlemler.Oturumİşlemleri.Oturum_Uygun(a, b);
+            StateHasChanged();
+        }
+        catch
+        {
             NavigationManager.NavigateTo("/");
-        StateHasChanged();
+        }
     }
 }
