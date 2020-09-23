@@ -240,6 +240,39 @@
         }
       },
       {
+        "HashCode": 557731919,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.ÜyeOl",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ÜyeOl"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.ÜyeOl"
+        }
+      },
+      {
+        "HashCode": 1684412548,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.ÜyeOl",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Bileşenler.ÜyeOl"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.ÜyeOl",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -372043793,
         "Kind": "Components.Component",
         "Name": "Bileşenler.OturumAç",
@@ -293,68 +326,87 @@
         }
       },
       {
-        "HashCode": 557731919,
+        "HashCode": 581665075,
         "Kind": "Components.Component",
-        "Name": "Bileşenler.ÜyeOl",
+        "Name": "Bileşenler.HerŞey",
         "AssemblyName": "YağKandili",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ÜyeOl"
+            "TagName": "HerŞey"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Nerede",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Nerede"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Genişlik",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Genişlik"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Yükseklik",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Yükseklik"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.ÜyeOl"
+          "Common.TypeName": "Bileşenler.HerŞey"
         }
       },
       {
-        "HashCode": 1684412548,
+        "HashCode": -2075005165,
         "Kind": "Components.Component",
-        "Name": "Bileşenler.ÜyeOl",
+        "Name": "Bileşenler.HerŞey",
         "AssemblyName": "YağKandili",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Bileşenler.ÜyeOl"
+            "TagName": "Bileşenler.HerŞey"
           }
         ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.ÜyeOl",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1208150952,
-        "Kind": "Components.Component",
-        "Name": "sayfa.Ana",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
+        "BoundAttributes": [
           {
-            "TagName": "Ana"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "sayfa.Ana"
-        }
-      },
-      {
-        "HashCode": -789778198,
-        "Kind": "Components.Component",
-        "Name": "sayfa.Ana",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
+            "Kind": "Components.Component",
+            "Name": "Nerede",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Nerede"
+            }
+          },
           {
-            "TagName": "sayfa.Ana"
+            "Kind": "Components.Component",
+            "Name": "Genişlik",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Genişlik"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Yükseklik",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Yükseklik"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "sayfa.Ana",
+          "Common.TypeName": "Bileşenler.HerŞey",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -451,6 +503,39 @@
           "Runtime.Name": "Components.None",
           "Common.TypeName": "sayfa.AnaTaslak.Body",
           "Components.IsSpecialKind": "Components.ChildContent",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1208150952,
+        "Kind": "Components.Component",
+        "Name": "sayfa.Ana",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Ana"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "sayfa.Ana"
+        }
+      },
+      {
+        "HashCode": -789778198,
+        "Kind": "Components.Component",
+        "Name": "sayfa.Ana",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "sayfa.Ana"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "sayfa.Ana",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -14852,6 +14937,11 @@
     {
       "FilePath": "/media/yusuf/Depo/yusuf/projeler/YağKandili/Shared/ÜyeOl.razor",
       "TargetPath": "Shared\\ÜyeOl.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/media/yusuf/Depo/yusuf/projeler/YağKandili/Shared/HerŞey.razor",
+      "TargetPath": "Shared\\HerŞey.razor",
       "FileKind": "component"
     },
     {

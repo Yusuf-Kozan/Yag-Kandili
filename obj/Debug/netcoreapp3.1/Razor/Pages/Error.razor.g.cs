@@ -79,6 +79,13 @@ using Esas;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "/media/yusuf/Depo/yusuf/projeler/YağKandili/_Imports.razor"
+using Bileşenler;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/error")]
     public partial class Error : Microsoft.AspNetCore.Components.ComponentBase
     {

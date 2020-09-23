@@ -83,6 +83,13 @@ using Esas;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "/media/yusuf/Depo/yusuf/projeler/YağKandili/_Imports.razor"
+using Bileşenler;
+
+#line default
+#line hidden
+#nullable disable
     public partial class GirişTaslak : LayoutComponentBase
     {
         #pragma warning disable 1998
