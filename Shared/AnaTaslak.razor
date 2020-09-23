@@ -1,4 +1,5 @@
 @inherits LayoutComponentBase
+@namespace sayfa
 
 <div class="ana-beden">
     @Body
@@ -12,6 +13,7 @@
 
 @code {
     private string hş_tasarım = null;
+    private ÜyeBil aÜye = Ana.üye;
     private void her_şeyin_düğmesi()
     {
         if (hş_tasarım != "height: 100%;")

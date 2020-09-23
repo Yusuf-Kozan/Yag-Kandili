@@ -6,6 +6,7 @@
 @using Bileşenler
 @inject IJSRuntime JSruntime
 @inject NavigationManager NavigationManager
+@namespace sayfa
 
 @if (oturum_açık)
 {
@@ -22,6 +23,7 @@ else
 @code {
     private string a, b; //a == kullanıcı adı && b == kilmik
     private bool oturum_açık;
+    public static ÜyeBil üye {get; private set;}
     
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
