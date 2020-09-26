@@ -88,3 +88,5 @@
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Shared/AnaTaslak.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/HerŞey.razor.g.cs
 /media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Shared/HerŞey.razor.g.cs
+/media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/RazorDeclaration/Shared/Kim.razor.g.cs
+/media/yusuf/Depo/yusuf/projeler/YağKandili/obj/Debug/netcoreapp3.1/Razor/Shared/Kim.razor.g.cs

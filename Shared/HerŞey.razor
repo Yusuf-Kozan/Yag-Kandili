@@ -1,12 +1,16 @@
 @namespace Bileşenler
 
-<div></div>
+<div>
+    <Kim kişi="@Kim"/>
+</div>
 
 @code {
     [Parameter]
-    public string Nerede {get; set;} = "/ana";
+    public string Nerede {private get; set;} = "/ana";
     [Parameter]
-    public string Genişlik {get; set;} = "60%";
+    public string Genişlik {private get; set;} = "60%";
     [Parameter]
-    public string Yükseklik {get; set;} = "100%";
+    public string Yükseklik {private get; set;} = "100%";
+    [Parameter]
+    public ÜyeBil Kim {private get; set;}
 }

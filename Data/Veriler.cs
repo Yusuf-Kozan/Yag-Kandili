@@ -258,6 +258,7 @@ namespace Esas
                 üye.E_POSTA = oku["E_Posta"].ToString();
                 üye.ÜSTÜNLÜK = oku["Üstünlük"].ToString();
                 üye.BAŞLANGIÇ = Convert.ToDateTime((string)oku["Başlangıç"]);
+                üye.RESİM = oku["Resim"].ToString();
             }
             oku.Close();
             oku = null;
