@@ -1,0 +1,29 @@
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSruntime
+@namespace sayfa
+
+<div class="her_şey_bölgesi" style="@hş_tasarım">
+    <HerŞey Kim="@aÜye"/>
+</div>
+<div class="ana-altlık">
+    <button class="D1yk" style="width: 90%; margin-left: 5%;
+    margin-right: 5%;"
+    @onclick="her_şeyin_düğmesi">HER ŞEY</button>
+</div>
+
+@code {
+    [Parameter]
+    public ÜyeBil aÜye {get; set;}
+    private string hş_tasarım = null;
+    private void her_şeyin_düğmesi()
+    {
+        if (hş_tasarım != "height: 100%;")
+        {
+            hş_tasarım = "height: 100%;";
+        }
+        else
+        {
+            hş_tasarım = "height: 0%;";
+        }
+    }
+}

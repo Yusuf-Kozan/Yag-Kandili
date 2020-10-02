@@ -1,6 +1,6 @@
 @namespace Bileşenler
 
-<div>
+<div style="@üstBiçim">
     <Kim kişi="@Kim"/>
 </div>
 
@@ -8,9 +8,13 @@
     [Parameter]
     public string Nerede {private get; set;} = "/ana";
     [Parameter]
-    public string Genişlik {private get; set;} = "60%";
+    public static string yGenişlik {private get; set;} = "60";
     [Parameter]
-    public string Yükseklik {private get; set;} = "100%";
+    public static string yYükseklik {private get; set;} = "100";
     [Parameter]
     public ÜyeBil Kim {private get; set;}
+
+    private string üstBiçim = $"height: {yYükseklik}%; width: {yGenişlik}%;" +
+    $"margin-left: {((100 - Convert.ToInt32(yGenişlik))/2).ToString()}%;" +
+    $"margin-right: {((100 - Convert.ToInt32(yGenişlik))/2).ToString()}%;";
 }

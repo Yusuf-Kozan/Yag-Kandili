@@ -8,23 +8,28 @@
 @inject NavigationManager NavigationManager
 @namespace sayfa
 
-@if (oturum_açık)
-{
-    <h1>@a</h1>
-    <h1>@b</h1>
-    <h2>@DateTime.Now.ToString("ddMMyyyyHHmmss")</h2>
-    <h2>@oturum_açık.ToString()</h2>
-}
-else
-{
-    <h1>Oturum açık değil</h1>
-}
+
+    @if (oturum_açık)
+    {
+        <div class="ana-beden">
+            <h1>@a</h1>
+            <h1>@b</h1>
+            <h2>@DateTime.Now.ToString("ddMMyyyyHHmmss")</h2>
+            <h2>@oturum_açık.ToString()</h2>
+        </div>
+        <EnHerŞey aÜye="üye"/>
+    }
+    else
+    {
+        <h1>Oturum açık değil</h1>
+    }
+
+
 
 @code {
     private string a, b; //a == kullanıcı adı && b == kilmik
     private bool oturum_açık;
-    public static ÜyeBil üye {get; private set;}
-    
+    public static ÜyeBil üye {get; set;}
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
@@ -33,12 +38,21 @@ else
             a = c.ToString(); c = null;
             var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "parola");
             b = d.ToString(); d = null;
-            oturum_açık = İşlemler.Oturumİşlemleri.Oturum_Uygun(a, b);
+            devam(a, b);
             StateHasChanged();
         }
         catch
         {
             NavigationManager.NavigateTo("/");
         }
+    }
+    private void devam(string kullanıcı_adı, string kilmik)
+    {
+        oturum_açık = İşlemler.Oturumİşlemleri.Oturum_Uygun(kullanıcı_adı, kilmik);
+        if (!oturum_açık)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        üye = TabanlıVeri.Kilmikten_ÜyeBil(kilmik);
     }
 }

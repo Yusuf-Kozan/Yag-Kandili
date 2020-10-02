@@ -1,30 +1,3 @@
 @inherits LayoutComponentBase
-@namespace sayfa
 
-<div class="ana-beden">
-    @Body
-</div>
-<div class="her_şey_bölgesi" style="@hş_tasarım">
-    <HerŞey Kim="@aÜye"/>
-</div>
-<div class="ana-altlık">
-    <button class="D1yk" style="width: 90%; margin-left: 5%;
-    margin-right: 5%;"
-    @onclick="her_şeyin_düğmesi">HER ŞEY</button>
-</div>
-
-@code {
-    private string hş_tasarım = null;
-    private ÜyeBil aÜye = Ana.üye;
-    private void her_şeyin_düğmesi()
-    {
-        if (hş_tasarım != "height: 100%;")
-        {
-            hş_tasarım = "height: 100%;";
-        }
-        else
-        {
-            hş_tasarım = "height: 0%;";
-        }
-    }
-}
+@Body

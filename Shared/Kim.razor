@@ -1,8 +1,15 @@
 @namespace Bileşenler
 
-<div></div>
+<div>
+    <div style="float: left; width: 30%; @ortakBiçim">
+        <img src="@(kişi.RESİM)"/>
+    </div>
+    <div style="float: left; width: 70%; @ortakBiçim"></div>
+</div>
 
 @code {
     [Parameter]
     public ÜyeBil kişi {private get; set;}
+
+    private string ortakBiçim = "height: auto;";
 }

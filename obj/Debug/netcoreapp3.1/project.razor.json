@@ -111,6 +111,102 @@
         }
       },
       {
+        "HashCode": 812399740,
+        "Kind": "Components.Component",
+        "Name": "YağKandili.Shared.AnaTaslak",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "AnaTaslak"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Body",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
+            "Metadata": {
+              "Common.PropertyName": "Body",
+              "Components.ChildContent": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.Shared.AnaTaslak"
+        }
+      },
+      {
+        "HashCode": 1776208012,
+        "Kind": "Components.Component",
+        "Name": "YağKandili.Shared.AnaTaslak",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "YağKandili.Shared.AnaTaslak"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Body",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
+            "Metadata": {
+              "Common.PropertyName": "Body",
+              "Components.ChildContent": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "YağKandili.Shared.AnaTaslak",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 383942344,
+        "Kind": "Components.ChildContent",
+        "Name": "YağKandili.Shared.AnaTaslak.Body",
+        "AssemblyName": "YağKandili",
+        "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Body",
+            "ParentTag": "AnaTaslak"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.None",
+          "Common.TypeName": "YağKandili.Shared.AnaTaslak.Body",
+          "Components.IsSpecialKind": "Components.ChildContent"
+        }
+      },
+      {
+        "HashCode": -1998669132,
+        "Kind": "Components.ChildContent",
+        "Name": "YağKandili.Shared.AnaTaslak.Body",
+        "AssemblyName": "YağKandili",
+        "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Body",
+            "ParentTag": "YağKandili.Shared.AnaTaslak"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.None",
+          "Common.TypeName": "YağKandili.Shared.AnaTaslak.Body",
+          "Components.IsSpecialKind": "Components.ChildContent",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -785803867,
         "Kind": "Components.Component",
         "Name": "YağKandili.Shared.GirişTaslak",
@@ -207,6 +303,161 @@
         }
       },
       {
+        "HashCode": 1208150952,
+        "Kind": "Components.Component",
+        "Name": "sayfa.Ana",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Ana"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "sayfa.Ana"
+        }
+      },
+      {
+        "HashCode": -789778198,
+        "Kind": "Components.Component",
+        "Name": "sayfa.Ana",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "sayfa.Ana"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "sayfa.Ana",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -814506776,
+        "Kind": "Components.Component",
+        "Name": "sayfa.EnHerŞey",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "EnHerŞey"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "aÜye",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "aÜye"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "sayfa.EnHerŞey"
+        }
+      },
+      {
+        "HashCode": -670917370,
+        "Kind": "Components.Component",
+        "Name": "sayfa.EnHerŞey",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "sayfa.EnHerŞey"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "aÜye",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "aÜye"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "sayfa.EnHerŞey",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1718460007,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.HerŞey",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "HerŞey"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Nerede",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Nerede"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Kim",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "Kim"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.HerŞey"
+        }
+      },
+      {
+        "HashCode": 1250024396,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.HerŞey",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Bileşenler.HerŞey"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Nerede",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Nerede"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Kim",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "Kim"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.HerŞey",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -109603881,
         "Kind": "Components.Component",
         "Name": "Bileşenler.KandilYak",
@@ -236,6 +487,59 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Bileşenler.KandilYak",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1296670062,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.Kim",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Kim"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "kişi",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "kişi"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.Kim"
+        }
+      },
+      {
+        "HashCode": -1602168879,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.Kim",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Bileşenler.Kim"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "kişi",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "kişi"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.Kim",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -322,289 +626,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Bileşenler.ÜyeOl",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1805933951,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.HerŞey",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "HerŞey"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Nerede",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Nerede"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Genişlik",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Genişlik"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Yükseklik",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Yükseklik"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Kim",
-            "TypeName": "Esas.ÜyeBil",
-            "Metadata": {
-              "Common.PropertyName": "Kim"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.HerŞey"
-        }
-      },
-      {
-        "HashCode": 2107788285,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.HerŞey",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Bileşenler.HerŞey"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Nerede",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Nerede"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Genişlik",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Genişlik"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Yükseklik",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Yükseklik"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Kim",
-            "TypeName": "Esas.ÜyeBil",
-            "Metadata": {
-              "Common.PropertyName": "Kim"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.HerŞey",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1296670062,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.Kim",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Kim"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "kişi",
-            "TypeName": "Esas.ÜyeBil",
-            "Metadata": {
-              "Common.PropertyName": "kişi"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.Kim"
-        }
-      },
-      {
-        "HashCode": -1602168879,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.Kim",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Bileşenler.Kim"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "kişi",
-            "TypeName": "Esas.ÜyeBil",
-            "Metadata": {
-              "Common.PropertyName": "kişi"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.Kim",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -473095511,
-        "Kind": "Components.Component",
-        "Name": "sayfa.AnaTaslak",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "AnaTaslak"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Body",
-            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
-            "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
-            "Metadata": {
-              "Common.PropertyName": "Body",
-              "Components.ChildContent": "True"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "sayfa.AnaTaslak"
-        }
-      },
-      {
-        "HashCode": -9879730,
-        "Kind": "Components.Component",
-        "Name": "sayfa.AnaTaslak",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "sayfa.AnaTaslak"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Body",
-            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
-            "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
-            "Metadata": {
-              "Common.PropertyName": "Body",
-              "Components.ChildContent": "True"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "sayfa.AnaTaslak",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1566180593,
-        "Kind": "Components.ChildContent",
-        "Name": "sayfa.AnaTaslak.Body",
-        "AssemblyName": "YağKandili",
-        "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Body",
-            "ParentTag": "AnaTaslak"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Common.TypeName": "sayfa.AnaTaslak.Body",
-          "Components.IsSpecialKind": "Components.ChildContent"
-        }
-      },
-      {
-        "HashCode": -1860390267,
-        "Kind": "Components.ChildContent",
-        "Name": "sayfa.AnaTaslak.Body",
-        "AssemblyName": "YağKandili",
-        "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Body",
-            "ParentTag": "sayfa.AnaTaslak"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Common.TypeName": "sayfa.AnaTaslak.Body",
-          "Components.IsSpecialKind": "Components.ChildContent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1208150952,
-        "Kind": "Components.Component",
-        "Name": "sayfa.Ana",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Ana"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "sayfa.Ana"
-        }
-      },
-      {
-        "HashCode": -789778198,
-        "Kind": "Components.Component",
-        "Name": "sayfa.Ana",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "sayfa.Ana"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "sayfa.Ana",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -14988,6 +15009,11 @@
   },
   "RootNamespace": "YağKandili",
   "Documents": [
+    {
+      "FilePath": "/media/yusuf/Depo/yusuf/projeler/YağKandili/Shared/EnHerŞey.razor",
+      "TargetPath": "Shared\\EnHerŞey.razor",
+      "FileKind": "component"
+    },
     {
       "FilePath": "/media/yusuf/Depo/yusuf/projeler/YağKandili/Pages/Error.razor",
       "TargetPath": "Pages\\Error.razor",
