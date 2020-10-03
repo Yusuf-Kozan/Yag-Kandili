@@ -1,15 +1,12 @@
 @namespace Bileşenler
 
-<div>
-    <div style="float: left; width: 30%; @ortakBiçim">
-        <img src="@(kişi.RESİM)"/>
-    </div>
-    <div style="float: left; width: 70%; @ortakBiçim"></div>
+<div style="text-align: center; height: 20%; color: white;">
+    <img src="@kişi.RESİM" style="height: 100%;"/>
+    <h1>@($"{kişi.AD} {kişi.SOYADI}")</h1>
+    <h2>@kişi.KULLANICI_ADI</h2>
 </div>
 
 @code {
     [Parameter]
     public ÜyeBil kişi {private get; set;}
-
-    private string ortakBiçim = "height: auto;";
 }

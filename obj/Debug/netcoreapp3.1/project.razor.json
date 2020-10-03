@@ -389,75 +389,6 @@
         }
       },
       {
-        "HashCode": -1718460007,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.HerŞey",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "HerŞey"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Nerede",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Nerede"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Kim",
-            "TypeName": "Esas.ÜyeBil",
-            "Metadata": {
-              "Common.PropertyName": "Kim"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.HerŞey"
-        }
-      },
-      {
-        "HashCode": 1250024396,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.HerŞey",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Bileşenler.HerŞey"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Nerede",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Nerede"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Kim",
-            "TypeName": "Esas.ÜyeBil",
-            "Metadata": {
-              "Common.PropertyName": "Kim"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.HerŞey",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -109603881,
         "Kind": "Components.Component",
         "Name": "Bileşenler.KandilYak",
@@ -487,59 +418,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Bileşenler.KandilYak",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1296670062,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.Kim",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Kim"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "kişi",
-            "TypeName": "Esas.ÜyeBil",
-            "Metadata": {
-              "Common.PropertyName": "kişi"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.Kim"
-        }
-      },
-      {
-        "HashCode": -1602168879,
-        "Kind": "Components.Component",
-        "Name": "Bileşenler.Kim",
-        "AssemblyName": "YağKandili",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Bileşenler.Kim"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "kişi",
-            "TypeName": "Esas.ÜyeBil",
-            "Metadata": {
-              "Common.PropertyName": "kişi"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Bileşenler.Kim",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -626,6 +504,128 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Bileşenler.ÜyeOl",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1718460007,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.HerŞey",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "HerŞey"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Nerede",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Nerede"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Kim",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "Kim"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.HerŞey"
+        }
+      },
+      {
+        "HashCode": 1250024396,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.HerŞey",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Bileşenler.HerŞey"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Nerede",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Nerede"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Kim",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "Kim"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.HerŞey",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1296670062,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.Kim",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Kim"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "kişi",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "kişi"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.Kim"
+        }
+      },
+      {
+        "HashCode": -1602168879,
+        "Kind": "Components.Component",
+        "Name": "Bileşenler.Kim",
+        "AssemblyName": "YağKandili",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Bileşenler.Kim"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "kişi",
+            "TypeName": "Esas.ÜyeBil",
+            "Metadata": {
+              "Common.PropertyName": "kişi"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Bileşenler.Kim",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
