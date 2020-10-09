@@ -1,3 +1,8 @@
 # Yağ Kandili
 ---
-Yağ Kandili'ni derleyip kullanabilmek için .NET Core SDK ve MySQL kurulumu gereklidir.
+### Derleme
+Yağ Kandili'ni derlemek için öncelikle çalışan bir .NET Core 3.1 ve MySQL sunucusu kurulumu gerekmektedir.
+
+#### .NET Core kurulumu
+
+#### MySQL kurulumu
