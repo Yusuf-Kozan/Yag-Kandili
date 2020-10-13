@@ -15,7 +15,7 @@ Yağ Kandili'ni derlemek ve kullanmak için öncelikle çalışan bir .NET Core 
 Yağ Kandili, .NET'in özgür dağıtımı olan .NET Core'un 3.1 sürümü üzerinde yapılmıştır. .NET 5'in kararlı sürümü yayınlandığında yine MIT lisansıyla devam ediyor olursa .NET 5'e geçiş yapılacaktır.
 Kurulumdan önce bir terminalde `dotnet --info` komutunu çalıştırın. Sisteminizde yüklüyse, sürüm bilgisini verecektir. SDK sürümünün 3.1.x olması gerekiyor. .NET Core SDK yüklü değilse veya sürümü 3.1.x değilse bu adımı uygulayın.
 
-* Pardus için [bu bağlantıdaki](https://forum.pardus.org.tr/t/pardus-ile-c-kullanmak/15804) anlatımın `yazılım geliştirme için` başlığının anltında yazan adımları uygulayın.
+* Pardus için [bu bağlantıdaki](https://forum.pardus.org.tr/t/pardus-ile-c-kullanmak/15804) anlatımın `yazılım geliştirme için` başlığının altında yazan adımları uygulayın.
 
 * Windows için [bu adresten](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.402-windows-x64-installer) kurulum aracını indirin ve kurulumu gerçekleştirin.
 * Ubuntu, Alpine, CentOS, Debian, Fedora, OpenSUSE, RHEL veya SLES kullanıyorsanız [bu sayfadaki](https://docs.microsoft.com/tr-tr/dotnet/core/install/linux) anlatımlarla .NET Core SDK 3.1 kurulumu yapın.
