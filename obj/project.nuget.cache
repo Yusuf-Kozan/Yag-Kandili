@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6i2Vb1p0gKdMd3XmJjcA+/2lUrqvJZmn2oSEFplA0WbF5UORdr12arL+x33o5TlFtpnlLIOFbYopsPD/UdUf5g==",
+  "dgSpecHash": "r4UaejjR00BPVWO5SVjwpExatZLgPIRVTx7Wc3KZlKHQPabiygz6HzE0Ub5SFFayf1K2BnF8uax+EOr/1cBJTw==",
   "success": true,
-  "projectFilePath": "/media/yusuf/Depo/yusuf/projeler/YağKandili/YağKandili.csproj",
+  "projectFilePath": "/media/yusuf/Depo/yusuf/projeler/Yag-Kandili/YağKandili.csproj",
   "expectedPackageFiles": [
     "/home/yusuf/.nuget/packages/bouncycastle.netcore/1.8.3/bouncycastle.netcore.1.8.3.nupkg.sha512",
     "/home/yusuf/.nuget/packages/google.protobuf/3.6.1/google.protobuf.3.6.1.nupkg.sha512",

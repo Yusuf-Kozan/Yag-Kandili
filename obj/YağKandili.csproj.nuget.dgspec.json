@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/media/yusuf/Depo/yusuf/projeler/YağKandili/YağKandili.csproj": {}
+    "/media/yusuf/Depo/yusuf/projeler/Yag-Kandili/YağKandili.csproj": {}
   },
   "projects": {
-    "/media/yusuf/Depo/yusuf/projeler/YağKandili/YağKandili.csproj": {
+    "/media/yusuf/Depo/yusuf/projeler/Yag-Kandili/YağKandili.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/yusuf/Depo/yusuf/projeler/YağKandili/YağKandili.csproj",
+        "projectUniqueName": "/media/yusuf/Depo/yusuf/projeler/Yag-Kandili/YağKandili.csproj",
         "projectName": "YağKandili",
-        "projectPath": "/media/yusuf/Depo/yusuf/projeler/YağKandili/YağKandili.csproj",
+        "projectPath": "/media/yusuf/Depo/yusuf/projeler/Yag-Kandili/YağKandili.csproj",
         "packagesPath": "/home/yusuf/.nuget/packages/",
-        "outputPath": "/media/yusuf/Depo/yusuf/projeler/YağKandili/obj/",
+        "outputPath": "/media/yusuf/Depo/yusuf/projeler/Yag-Kandili/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/yusuf/.nuget/NuGet/NuGet.Config"
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
         }
       }
     }
