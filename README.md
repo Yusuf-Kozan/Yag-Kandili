@@ -28,6 +28,16 @@ Kurulum adımlarını uyguladıktan sonra bir terminalde `dotnet --info` komutun
 #### 3. MySQL kurulumu
 * Pardus ve Debian tabanlı diğer işletim sistemlerinde paket yöneticisinden `default-mysql-server` paketini yükleyin.
 
-* Windows için [bu adresten](https://dev.mysql.com/downloads/) kurulum aracını yükleyin. Kurulum sihirbazında tam kurulum gerçekleştirin.
+* Windows için [bu adresten](https://dev.mysql.com/downloads/) kurulum aracını yükleyin. Kurulum sihirbazında sunucu ve MySQL Shell kurulumu veya tam kurulum gerçekleştirin.
 
 ### Veri tabanının ayarlanması
+MySQL kurulumundan sonra veri tabanlarını oluşturmak için MySQL kabuğuna kök hesabıyla giriş yapmak gerekli. Bunun için bir terminalde `mysql -u root -p` veya `mysqlsh --sql -u root -p` komutunu çalıştırın ve parolanızı girin. Ardından şu komutları girin:
+```
+CREATE DATABASE yagkandili;
+use yagkandili;
+CREATE TABLE oturumlar(Kullanıcı_Adı TEXT NOT NULL, Kilmik TEXT NOT NULL, Tarih TEXT NOT NULL, Son_Tarih TEXT NOT NULL, Kapandı TINYINT NOT NULL, Kapanma_Tarihi TEXT);
+CREATE TABLE yazılı_paylaşım(Başlık TEXT NOT NULL, İçerik TEXT NOT NULL, Paylaşan TEXT NOT NULL, Kilmik TEXT NOT NULL, Tarih TEXT NOT NULL);
+CREATE TABLE üyelik(Kullanıcı_Adı TEXT NOT NULL, Ad TEXT NOT NULL, Soyadı TEXT NOT NULL, Parola TEXT NOT NULL, Üstünlük TEXT, E_Posta TEXT NOT NULL, Başlangıç TEXT NOT NULL, Resim TEXT, Kimlik TEXT NOT NULL);
+CREATE USER YagKandili;
+GRANT SELECT, INSERT, UPDATE ON `yagkandili`.* TO YagKandili;
+```
