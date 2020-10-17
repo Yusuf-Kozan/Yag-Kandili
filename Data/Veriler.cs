@@ -34,12 +34,13 @@ namespace Esas
             bağ.Close();
             bağ = null;
         }
-        public static void Üye_Ekle(çÜye üye, string kimlik)
+        public static void Üye_Ekle(çÜye üye, string kimlik, string resim)
         {
             //Üye_Ekle fonksiyonunun ÜyeBil yerine çÜye kullanan hâli
-            string ek = "INSERT INTO üyelik(Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, E_Posta, Başlangıç, Kimlik)" +
+            string ek = "INSERT INTO üyelik(Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, E_Posta, Başlangıç, Resim, Kimlik)" +
                     " VALUES ('" + üye.KULLANICI_ADI + "','" + üye.AD + "','" + üye.SOYADI + "','" + üye.PAROLA +
-                    "','" + üye.ÜSTÜNLÜK + "','" + üye.E_POSTA + "','" + üye.BAŞLANGIÇ.ToString() + "','" + kimlik + "');";
+                    "','" + üye.ÜSTÜNLÜK + "','" + üye.E_POSTA + "','" + üye.BAŞLANGIÇ.ToString() + "','" + resim + "','" +
+                    kimlik + "');";
             IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();

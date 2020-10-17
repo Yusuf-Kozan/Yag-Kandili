@@ -11,7 +11,7 @@ namespace İşlemler
         public static void Üye_Oluştur(çÜye üye)
         {
             Kullanıcı_Kimliği kimlik = new Kullanıcı_Kimliği(üye);
-            TabanlıVeri.Üye_Ekle(üye, kimlik.Kimlik);
+            TabanlıVeri.Üye_Ekle(üye, kimlik.Kimlik, "resimler/kulllanıcı/0069ff.png");
             TabanlıVeri.Kullanıcı_Dizini_Oluştur(üye);
             YK_Arşiv.kullanıcı.Oluştur(üye, kimlik.Kimlik);
         }
