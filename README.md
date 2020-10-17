@@ -41,3 +41,13 @@ CREATE TABLE üyelik(Kullanıcı_Adı TEXT NOT NULL, Ad TEXT NOT NULL, Soyadı T
 CREATE USER YagKandili;
 GRANT SELECT, INSERT, UPDATE ON `yagkandili`.* TO YagKandili;
 ```
+
+### Derleme
+Veri tabanı da kurulduğu için derleme aşamasına geçebilirsiniz.
+* Yağ Kandili'nin bulunmasını istediğiniz dizinde terminal açın.
+
+* `git clone https://github.com/Yusuf-Kozan/Yag-Kandili.git` komutuyla kodları alın.
+* `cd Yag-Kandili` komutuyla Yağ Kandili'nin bulunduğu dizine geçin.
+* `dotnet run` komutunu çalıştırın.
+
+Son komut önce Yağ Kandili'ni sizin sisteminize göre derleyecek, sonra da localhost üzerinde sunmaya başlayacak. Komutun çıktısında hangi adresten yayın yaptığını verecektir. O adresi bilgisayarınızdaki bir tarayıcıya girdiğinizde Yağ Kandili açılır.
