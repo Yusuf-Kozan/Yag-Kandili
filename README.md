@@ -3,7 +3,7 @@
 ## Derleme ve Kullanma
 Yağ Kandili'ni derlemek ve kullanmak için öncelikle çalışan bir .NET Core 3.1, MySQL sunucusu ve Git kurulumu gerekmektedir.
 
-**UYARI:** Windows ile ilgili adımlar PowerShell ile test edilmiştir. Büyük olasılıkla CMD ile de sorunsuz çalışacaktır.
+**UYARI:** Windows ile ilgili adımlar hem PowerShell hem de CMD ile test edilmiştir. İkisini de kullanabilirsiniz.
 
 ### Gerekli yazılımların kurulumları
 #### 1. Git kurulumu
