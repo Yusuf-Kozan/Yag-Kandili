@@ -1,5 +1,9 @@
 # Yağ Kandili
 ---
+## Yapılacaklar
+- [ ] Oturum kapatma düğmesi eklenecek
+- [ ] PostgreSQL'e göç edilecek
+---
 ## Derleme ve Kullanma
 Yağ Kandili'ni derlemek ve kullanmak için öncelikle çalışan bir .NET Core 3.1, MySQL sunucusu ve Git kurulumu gerekmektedir.
 
