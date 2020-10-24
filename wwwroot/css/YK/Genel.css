@@ -55,6 +55,28 @@
 	border-color: #ffd3b5;
 	/*border-width: 3px;*/
 }
+.D1ykK {
+	border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: sans-serif;
+	background-color: rgb(200,0,0);
+	color: rgb(255,255,255);
+	border-color: rgb(200,0,0);
+	cursor: pointer;
+	margin: 4px;
+	font-size: large;
+	font-weight: bold;
+}
+.D1ykK:hover {
+	color: rgb(200,0,0);
+	background-color: rgb(255,200,200);
+	border-color: rgb(255,200,200);
+	/*border-width: 3px;*/
+}
 .MetinKutusu1 {
 	border: solid 2px rgb(0,120,0);
 	border-radius: 4px;
