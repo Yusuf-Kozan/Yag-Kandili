@@ -2,7 +2,7 @@
 
 <div style="@üstBiçim">
     <Kim kişi="@Kim"/>
-    <OturumKapat kişi="@Kim"/>
+    <OturumKapat kişi="@Kim" nerede="@Nerede"/>
 </div>
 
 @code {
@@ -18,5 +18,5 @@
     private string üstBiçim = $"height: {yYükseklik}%; width: {yGenişlik}%;" +
     $"margin-left: {((100 - Convert.ToInt32(yGenişlik))/2).ToString()}%;" +
     $"margin-right: {((100 - Convert.ToInt32(yGenişlik))/2).ToString()}%;" +
-    " padding-top: 1%;";
+    " padding-top: 1%;" + "text-align: center;";
 }
