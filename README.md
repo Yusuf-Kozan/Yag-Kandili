@@ -2,6 +2,9 @@
 ---
 ## Yapılacaklar
 - [ ] Oturum kapatma düğmesi eklenecek
+- [ ] Paylaşım yapma özelliği eklenecek
+- [ ] Yapılan paylaşımları gösterme özelliği eklenecek
+- [ ] ML.NET kullanılarak içerik filtresi yapımına başlanacak
 - [ ] PostgreSQL'e göç edilecek
 ---
 ## Derleme ve Kullanma
