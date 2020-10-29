@@ -4,6 +4,7 @@
 - [ ] Oturum kapatma düğmesi eklenecek
 - [ ] Paylaşım yapma özelliği eklenecek
 - [ ] Yapılan paylaşımları gösterme özelliği eklenecek
+- [ ] Parolalar şifrelenerek saklanacak
 - [ ] ML.NET kullanılarak içerik filtresi yapımına başlanacak
 - [ ] PostgreSQL'e göç edilecek
 ---
