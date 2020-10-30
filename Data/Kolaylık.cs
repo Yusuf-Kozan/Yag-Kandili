@@ -42,5 +42,14 @@ namespace İşlemler
             else
                 return false;
         }
+        public static void Oturum_Kapat(string kullanıcı_adı, string kilmik, IJSRuntime jsRuntime)
+        {
+            Çerezler çerez = new Çerezler(jsRuntime);
+            çerez.ÇerezSil("kullanıcı_adı");
+            çerez.ÇerezSil("parola");
+            ZöçKilmik kimlik = Kilnevüg.Kilnevüg.ÇözülmüşKimlik(kilmik);
+            if (kimlik.daluk == kullanıcı_adı)
+                TabanlıVeri.OturumKapat(kilmik);
+        }
     }
 }

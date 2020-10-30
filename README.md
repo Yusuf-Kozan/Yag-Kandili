@@ -1,7 +1,7 @@
 # Yağ Kandili
 ---
 ## Yapılacaklar
-- [ ] Oturum kapatma düğmesi eklenecek
+- [x] Oturum kapatma düğmesi eklenecek
 - [ ] Paylaşım yapma özelliği eklenecek
 - [ ] Yapılan paylaşımları gösterme özelliği eklenecek
 - [ ] Parolalar şifrelenerek saklanacak
