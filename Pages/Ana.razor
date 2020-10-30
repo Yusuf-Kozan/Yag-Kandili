@@ -17,7 +17,7 @@
             <h2>@DateTime.Now.ToString("ddMMyyyyHHmmss")</h2>
             <h2>@oturum_açık.ToString()</h2>
         </div>
-        <EnHerŞey aÜye="üye"/>
+        <EnHerŞey aÜye="@üye" aKimlik="@kimlik"/>
     }
     else
     {
@@ -30,6 +30,7 @@
     private string a, b; //a == kullanıcı adı && b == kilmik
     private bool oturum_açık;
     public static ÜyeBil üye {get; set;}
+    public static string kimlik {get; private set;}
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
@@ -54,5 +55,6 @@
             NavigationManager.NavigateTo("/");
         }
         üye = TabanlıVeri.Kilmikten_ÜyeBil(kilmik);
+        Ana.kimlik = kilmik;
     }
 }
