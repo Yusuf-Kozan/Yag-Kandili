@@ -1,12 +1,25 @@
 # Yağ Kandili
 ---
+>
+>**Paylaşımların tasarımı güncellendi:**
+>
+> Paylaşımların iki kimliği olacak. Bunlardan biri paylaşımın sırasını belirtirken diğeri paylaşımın diğer yerlerde belirtilmesi için kullanılacak.
+>
+> Paylaşımlarda metin dışında bir şey kabul edilmeyecek ancak Yağ Kandili'nin sonraki sürümlerinde fotoğraf, video, bağlantı vb. şeylerin kabul edilmesi olasılığından dolayı eklenti sütunu eklendi.
+>
+> Eski paylaşım tablosu olan yazılı_paylaşım, bir süre daha bekledikten sonra silinecek.
+>
+> MySQL komutu: 
+>```
+>CREATE TABLE paylaşımlar(Kimlik1 BIGINT NOT NULL AUTO_INCREMENT, Kimlik2 TEXT NOT NULL, Başlık TEXT NOT NULL, İçerik TEXT NOT NULL, Eklenti TEXT NOT NULL, Paylaşan TEXT NOT NULL, Oturum TEXT NOT NULL, Tarih TEXT NOT NULL, PRIMARY KEY (Kimlik1));
+>```
+
 ## Yapılacaklar
 - [x] Oturum kapatma düğmesi eklenecek
 - [ ] Paylaşım yapma özelliği eklenecek
 - [ ] Yapılan paylaşımları gösterme özelliği eklenecek
 - [ ] Parolalar şifrelenerek saklanacak
 - [ ] ML.NET kullanılarak içerik filtresi yapımına başlanacak
-- [ ] PostgreSQL'e göç edilecek
 ---
 ## Derleme ve Kullanma
 Yağ Kandili'ni derlemek ve kullanmak için öncelikle çalışan bir .NET Core 3.1, MySQL sunucusu ve Git kurulumu gerekmektedir.
@@ -46,6 +59,7 @@ use yagkandili;
 CREATE TABLE oturumlar(Kullanıcı_Adı TEXT NOT NULL, Kilmik TEXT NOT NULL, Tarih TEXT NOT NULL, Son_Tarih TEXT NOT NULL, Kapandı TINYINT NOT NULL, Kapanma_Tarihi TEXT);
 CREATE TABLE yazılı_paylaşım(Başlık TEXT NOT NULL, İçerik TEXT NOT NULL, Paylaşan TEXT NOT NULL, Kilmik TEXT NOT NULL, Tarih TEXT NOT NULL);
 CREATE TABLE üyelik(Kullanıcı_Adı TEXT NOT NULL, Ad TEXT NOT NULL, Soyadı TEXT NOT NULL, Parola TEXT NOT NULL, Üstünlük TEXT, E_Posta TEXT NOT NULL, Başlangıç TEXT NOT NULL, Resim TEXT, Kimlik TEXT NOT NULL);
+CREATE TABLE paylaşımlar(Kimlik1 BIGINT NOT NULL AUTO_INCREMENT, Kimlik2 TEXT NOT NULL, Başlık TEXT NOT NULL, İçerik TEXT NOT NULL, Eklenti TEXT NOT NULL, Paylaşan TEXT NOT NULL, Oturum TEXT NOT NULL, Tarih TEXT NOT NULL, PRIMARY KEY (Kimlik1));
 CREATE USER YagKandili;
 GRANT SELECT, INSERT, UPDATE ON `yagkandili`.* TO YagKandili;
 ```
