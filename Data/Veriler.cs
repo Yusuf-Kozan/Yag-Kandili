@@ -53,26 +53,6 @@ namespace Esas
             bağ.Close();
             bağ = null;
         }
-
-        public static void Yazılı_Paylaşım_Yap(yazpay paylaşım)
-        {
-            //Paylaşım veri tabanına yeni yazılı paylaşım yazılıyor.
-            string ek = "INSERT INTO yazılı_paylaşım(Başlık, İçerik, Paylaşan, Kilmik, Tarih)" +
-                " VALUES ('" + paylaşım.BAŞLIK + "','" + paylaşım.İÇERİK + "','" + paylaşım.PAYLAŞAN +
-                "','" + paylaşım.KİLMİK + "','" + paylaşım.TARİH.ToString() + "');";
-            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
-            vtbağ.Open();
-            IDbCommand komut = vtbağ.CreateCommand();
-            komut.CommandText = ek;
-            IDataReader oku = komut.ExecuteReader();
-            oku.Close();
-            oku = null;
-            komut.Dispose();
-            komut = null;
-            vtbağ.Close();
-            vtbağ = null;
-        }
-
         public static void OturumAç(string kilmik)
         {
             //Oturum veri tabanına yeni oturum kaydı ekleniyor.
@@ -353,35 +333,6 @@ namespace Esas
             vtbağ.Close();
             vtbağ = null;
             return üye;
-        }
-        public static string pylşck;
-        public static string Tüm_Yazılı_Paylaşımlar()
-        {
-            //Yapılan bütün yazılı paylaşımlar HTML listesi ögeleri biçiminde döndürülüyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
-                + "Pooling=false;";
-            IDbConnection vtbağ = new MySqlConnection(bağlantı);
-            vtbağ.Open();
-            string ek = "SELECT * FROM yazılı_paylaşım;";
-            IDbCommand komut = vtbağ.CreateCommand();
-            komut.CommandText = ek;
-            IDataReader oku = komut.ExecuteReader();
-            pylşck = null;
-            while (oku.Read())
-            {
-                pylşck = "<li>" + "<div class=\"geçici\">" + "<div>" +
-                    "<div class=\"yeter\">" + "<h3>" + oku["Başlık"].ToString() + "</h3>" + "</div>" +
-                    "<div class=\"yeter\">" + "<a href=\"Başkası1.aspx?k=" + oku["Paylaşan"].ToString()
-                    + "\">" + oku["Paylaşan"].ToString() + "</a></div></div>" + "<div>" + "<p>" +
-                    oku["İçerik"].ToString().Replace("\n", "<br>") + "</p>" + "</div></div></li>" + pylşck;
-            }
-            oku.Close();
-            oku = null;
-            komut.Dispose();
-            komut = null;
-            vtbağ.Close();
-            vtbağ = null;
-            return pylşck;
         }
         public static void Kullanıcı_Dizini_Oluştur(çÜye üye)
         {
