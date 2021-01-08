@@ -77,6 +77,32 @@
 	border-color: rgb(255,200,200);
 	/*border-width: 3px;*/
 }
+.D1ykM {
+	/*Rengi açıklaşan düğmenin
+		mor renklisi*/
+	border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: sans-serif;
+	color: #ffffff;
+	background-color: #cc22b2;
+	border-color: #cc22b2;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+	
+}
+.D1ykM:hover {
+	color: #cc22b2;
+	background-color: #d6b1d0;
+	border-color: #d6b1d0;
+	/*border-width: 3px;*/
+}
+
 .MetinKutusu1 {
 	border: solid 2px rgb(0,120,0);
 	border-radius: 4px;
@@ -84,6 +110,16 @@
 	color: rgb(0,120,0);
 	font-size: x-large;
 	margin: 3px;
+}
+.MetinKutusu1m {
+	/*Morlu MetinKutusu1*/
+	border: solid 2px #cc22b2;
+	border-radius: 4px;
+	padding: 3px;
+	color: #cc22b2;
+	font-size: x-large;
+	margin: 3px;
+	/*06afda*/
 }
 .D3 {
 	border: solid;
