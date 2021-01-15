@@ -3,7 +3,7 @@
 @namespace sayfa
 
 <div class="her_şey_bölgesi" style="@hş_tasarım">
-    <HerŞey Kim="@aÜye" KimliğiNe="@aKimlik"/>
+    <HerŞey Kim="@aÜye" KimliğiNe="@aKimlik" Nerede="@aKonum"/>
 </div>
 <div class="ana-altlık">
     <button class="D1yk" style="width: 90%; margin-left: 5%;
@@ -16,6 +16,8 @@
     public ÜyeBil aÜye {get; set;}
     [Parameter]
     public string aKimlik {get; set;}
+    [Parameter]
+    public string aKonum {get; set;}
     private string hş_tasarım = null;
     private void her_şeyin_düğmesi()
     {
