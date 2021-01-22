@@ -52,4 +52,17 @@ namespace İşlemler
                 TabanlıVeri.OturumKapat(kilmik);
         }
     }
+    public class Paylaşımİşlemleri
+    {
+        public static void Paylaşım_Yap(string başlık, string içerik, string eklenti,
+                                        string paylaşan, string oturum_kimliği, DateTime tarih)
+        {
+            Paylaşım yeni_paylaşım = new Paylaşım();
+            yeni_paylaşım.KİMLİK_2 = Paylaşım_Kimliği.Kimlik_2(başlık, içerik, paylaşan, oturum_kimliği, tarih);
+            yeni_paylaşım.BAŞLIK = başlık; yeni_paylaşım.İÇERİK = içerik;
+            yeni_paylaşım.EKLENTİ = eklenti; yeni_paylaşım.PAYLAŞAN = paylaşan;
+            yeni_paylaşım.OTURUM = oturum_kimliği; yeni_paylaşım.TARİH = tarih;
+            TabanlıVeri.Paylaş(yeni_paylaşım);
+        }
+    }
 }

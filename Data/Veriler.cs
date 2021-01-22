@@ -16,6 +16,19 @@ namespace Esas
 
         private static string bağlantıDizesi = "Server=127.0.0.1;Database=yagkandili;User ID=YagKandili;Pooling=false;";
 
+        private static void komutGönder(string ek)
+        {
+            // Veri tabanına gönderilecek olan komutun gönderme
+            // kısmını yapmak için bir kolaylaştırıcı.
+            IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
+            bağ.Open();
+            IDbCommand komut = bağ.CreateCommand();
+            komut.CommandText = ek;
+            IDataReader oku = komut.ExecuteReader();
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            bağ.Close(); bağ = null;
+        }
         public static void Üye_Ekle(ÜyeBil üye, string kimlik)
         {
             //Üyelik veri tabanına yeni üye kaydı yapılıyor.
@@ -333,6 +346,16 @@ namespace Esas
             vtbağ.Close();
             vtbağ = null;
             return üye;
+        }
+        public static void Paylaş(Paylaşım paylaşım)
+        {
+            // Farklı paylaşım türlerinin ayracı Eklenti olduğundan
+            // bu fonksiyon tüm paylaşım türleri için kullanılabilmeli.
+            string ek = "INSERT INTO paylaşımlar (Kimlik2, Başlık, İçerik, Eklenti, Paylaşan, " +
+                        $"Oturum, Tarih) VALUES ({paylaşım.KİMLİK_2}, {paylaşım.BAŞLIK}, " +
+                        $"{paylaşım.İÇERİK}, {paylaşım.EKLENTİ}, {paylaşım.PAYLAŞAN}, {paylaşım.OTURUM}, " +
+                        $"{paylaşım.TARİH});";
+            komutGönder(ek);
         }
         public static void Kullanıcı_Dizini_Oluştur(çÜye üye)
         {
