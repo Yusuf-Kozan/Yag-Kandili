@@ -355,9 +355,9 @@ namespace Esas
             // Farklı paylaşım türlerinin ayracı Eklenti olduğundan
             // bu fonksiyon tüm paylaşım türleri için kullanılabilmeli.
             string ek = "INSERT INTO paylaşımlar (Kimlik2, Başlık, İçerik, Eklenti, Paylaşan, " +
-                        $"Oturum, Tarih) VALUES ({paylaşım.KİMLİK_2}, {paylaşım.BAŞLIK}, " +
-                        $"{paylaşım.İÇERİK}, {paylaşım.EKLENTİ}, {paylaşım.PAYLAŞAN}, {paylaşım.OTURUM}, " +
-                        $"{paylaşım.TARİH});";
+                        $"Oturum, Tarih) VALUES ('{paylaşım.KİMLİK_2}', '{paylaşım.BAŞLIK}', " +
+                        $"'{paylaşım.İÇERİK}', '{paylaşım.EKLENTİ}', '{paylaşım.PAYLAŞAN}', '{paylaşım.OTURUM}', " +
+                        $"'{paylaşım.TARİH}');";
             komutGönder(ek);
         }
         public static void Kullanıcı_Dizini_Oluştur(çÜye üye)
