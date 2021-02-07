@@ -12,6 +12,7 @@ namespace Esas
         public string ÜSTÜNLÜK { get; set; }
         public DateTime BAŞLANGIÇ { get; set; }
         public string RESİM { get; set; }
+        public string KİMLİK { get; set; }
 
         public ÜyeBil(string ad, string soyadı, string kullanıcıAdı, string parola, string ePosta, string üstünlük, DateTime başlangıç)
         {
