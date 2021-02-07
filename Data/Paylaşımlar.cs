@@ -14,6 +14,8 @@ namespace Esas
         public string OTURUM {get; set;} // Paylaşımın yapıldığı oturumun kimliği
         public DateTime TARİH {get; set;} // Paylaşımın yapıldığı tarih
 
+        public Paylaşım()
+        {}
         public Paylaşım (long kimlik1, string kimlik2, string başlık, string içerik, string eklenti,
                         string paylaşan, string oturum, DateTime tarih)
         {
