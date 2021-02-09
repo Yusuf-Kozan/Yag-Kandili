@@ -1,0 +1,20 @@
+.p-genel {
+    text-align: center;
+    height: 100%;
+}
+.p-başlık {
+    font-family: sans-serif, Helvetica, Arial;
+    font-size: x-large;
+    text-align: center;
+    color: #cc22b2;
+    font-weight: bold;
+    margin: 1%;
+    border: none;
+}
+/*.p-başlık:hover span {
+    display: none;
+}
+.p-başlık:hover::before {
+    content: "Geri Dön";
+    color: red;
+}*/

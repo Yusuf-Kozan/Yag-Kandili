@@ -1,0 +1,15 @@
+@namespace Bileşenler
+@inject NavigationManager NavigationManager
+
+<div style="padding: 2%; font-size: large;">
+    <button class="D1ykM" style=@tasarım @onclick="paylaş">Paylaş</button>
+</div>
+
+@code {
+    private string tasarım = "font-size: larger; word-break: break-word;";
+
+    private void paylaş()
+    {
+        NavigationManager.NavigateTo("/paylaş");
+    }
+}

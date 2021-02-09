@@ -98,8 +98,8 @@
 }
 .D1ykM:hover {
 	color: #cc22b2;
-	background-color: #d6b1d0;
-	border-color: #d6b1d0;
+	background-color: #f2c6ed;
+	border-color: #f2c6ed;/*d6b1d0*/
 	/*border-width: 3px;*/
 }
 
@@ -117,6 +117,18 @@
 	border-radius: 4px;
 	padding: 3px;
 	color: #cc22b2;
+	font-size: x-large;
+	margin: 3px;
+	/*06afda*/
+}
+.MetinKutusu1m-saydam {
+	/*Morlu MetinKutusu1
+	  Artalanı saydam*/
+	border: solid 2px #cc22b2;
+	border-radius: 4px;
+	padding: 3px;
+	color: #cc22b2;
+	background: transparent;
 	font-size: x-large;
 	margin: 3px;
 	/*06afda*/
