@@ -1,25 +1,15 @@
 # Yağ Kandili
 ---
->
->**Paylaşımların tasarımı güncellendi:**
->
-> Paylaşımların iki kimliği olacak. Bunlardan biri paylaşımın sırasını belirtirken diğeri paylaşımın diğer yerlerde belirtilmesi için kullanılacak.
->
-> Paylaşımlarda metin dışında bir şey kabul edilmeyecek ancak Yağ Kandili'nin sonraki sürümlerinde fotoğraf, video, bağlantı vb. şeylerin kabul edilmesi olasılığından dolayı eklenti sütunu eklendi.
->
-> Eski paylaşım tablosu olan yazılı_paylaşım, bir süre daha bekledikten sonra silinecek.
->
-> MySQL komutu: 
->```
->CREATE TABLE paylaşımlar(Kimlik1 BIGINT NOT NULL AUTO_INCREMENT, Kimlik2 TEXT NOT NULL, Başlık TEXT NOT NULL, İçerik TEXT NOT NULL, Eklenti TEXT NOT NULL, Paylaşan TEXT NOT NULL, Oturum TEXT NOT NULL, Tarih TEXT NOT NULL, PRIMARY KEY (Kimlik1));
->```
-
 ## Yapılacaklar
 - [x] Oturum kapatma düğmesi eklenecek
-- [ ] Paylaşım yapma özelliği eklenecek
+- [x] Paylaşım yapma özelliği eklenecek
 - [ ] Yapılan paylaşımları gösterme özelliği eklenecek
-- [ ] Parolalar şifrelenerek saklanacak
-- [ ] ML.NET kullanılarak içerik filtresi yapımına başlanacak
+- [ ] Parolalar şifrelenecek (Büyük olasılıkla Argon2id ile)
+- [ ] Hem kişinin kendi hem de başkaları için profil sayfaları oluşturulacak
+- [ ] Takip etme ve beğenme özelliği eklenecek (belki yorum da eklenebilir)
+- [ ] Tasarımı duyarlı olmayan kısımlar duyarlı biçime getirilecek
+- [ ] Paylaşımlara lisans ekleyebilme özelliği eklenecek (Creative Commons öncelikli)
+- [ ] İçerik filtresi için tasarım taslağı oluşturulacak
 ---
 ## Derleme ve Kullanma
 Yağ Kandili'ni derlemek ve kullanmak için öncelikle çalışan bir .NET Core 3.1, MySQL sunucusu ve Git kurulumu gerekmektedir.
