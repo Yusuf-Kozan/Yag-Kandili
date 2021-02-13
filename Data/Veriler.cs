@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Data;
+using System.Globalization;
 using MySql.Data.MySqlClient;
 using Kilnevüg;
 
@@ -350,6 +351,15 @@ namespace Esas
             vtbağ = null;
             return üye;
         }
+        public static void Kullanıcı_Dizini_Oluştur(çÜye üye)
+        {
+            if (!Directory.Exists(üye.DizinYolu()))
+            {
+                Directory.CreateDirectory(üye.DizinYolu());
+            }
+        }
+
+        /* Paylaşımlarla ilgili şeyler burada başlıyor. */
         public static void Paylaş(Paylaşım paylaşım)
         {
             // Farklı paylaşım türlerinin ayracı Eklenti olduğundan
@@ -357,15 +367,120 @@ namespace Esas
             string ek = "INSERT INTO paylaşımlar (Kimlik2, Başlık, İçerik, Eklenti, Paylaşan, " +
                         $"Oturum, Tarih) VALUES ('{paylaşım.KİMLİK_2}', '{paylaşım.BAŞLIK}', " +
                         $"'{paylaşım.İÇERİK}', '{paylaşım.EKLENTİ}', '{paylaşım.PAYLAŞAN}', '{paylaşım.OTURUM}', " +
-                        $"'{paylaşım.TARİH}');";
+                        $"'{paylaşım.TARİH.ToString("yyyyMMddHHmmss")}');";
             komutGönder(ek);
         }
-        public static void Kullanıcı_Dizini_Oluştur(çÜye üye)
+        public static Paylaşım[] TümPaylaşımlar()
         {
-            if (!Directory.Exists(üye.DizinYolu()))
+        //SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;
+        //SELECT * FROM paylaşımlar WHERE Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            string ek = "SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            int paylaşım_sayısı = 0;
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek;
+            IDataReader oku = komut.ExecuteReader();
+            while (oku.Read())
             {
-                Directory.CreateDirectory(üye.DizinYolu());
+                paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
             }
+            ek = "SELECT * FROM paylaşımlar WHERE Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            komut.CommandText = ek;
+            Paylaşım[] paylaşımlar = new Paylaşım[paylaşım_sayısı];
+            int sayaç = 0;
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (oku.Read())
+            {
+                paylaşımlar[sayaç].KİMLİK_1 = long.Parse(oku["Kimlik1"].ToString());
+                paylaşımlar[sayaç].KİMLİK_2 = oku["Kimlik2"].ToString();
+                paylaşımlar[sayaç].BAŞLIK = oku["Başlık"].ToString();
+                paylaşımlar[sayaç].İÇERİK = oku["İçerik"].ToString();
+                paylaşımlar[sayaç].EKLENTİ = oku["Eklenti"].ToString();
+                paylaşımlar[sayaç].PAYLAŞAN = oku["Paylaşan"].ToString();
+                paylaşımlar[sayaç].OTURUM = oku["Oturum"].ToString();
+                paylaşımlar[sayaç].TARİH = DateTime.ParseExact(oku["Tarih"].ToString(), "yyyyMMddHHmmss", TR);
+                sayaç++;
+            }
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            return paylaşımlar;
+        }
+        public static Paylaşım[] BelirliKişininPaylaşımları(ÜyeBil kişi)
+        {
+        //SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;
+        //SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            string ek = $"SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            int paylaşım_sayısı = 0;
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek;
+            IDataReader oku = komut.ExecuteReader();
+            while (oku.Read())
+            {
+                paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
+            }
+            ek = $"SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            komut.CommandText = ek;
+            Paylaşım[] paylaşımlar = new Paylaşım[paylaşım_sayısı];
+            int sayaç = 0;
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (oku.Read())
+            {
+                paylaşımlar[sayaç].KİMLİK_1 = long.Parse(oku["Kimlik1"].ToString());
+                paylaşımlar[sayaç].KİMLİK_2 = oku["Kimlik2"].ToString();
+                paylaşımlar[sayaç].BAŞLIK = oku["Başlık"].ToString();
+                paylaşımlar[sayaç].İÇERİK = oku["İçerik"].ToString();
+                paylaşımlar[sayaç].EKLENTİ = oku["Eklenti"].ToString();
+                paylaşımlar[sayaç].PAYLAŞAN = oku["Paylaşan"].ToString();
+                paylaşımlar[sayaç].OTURUM = oku["Oturum"].ToString();
+                paylaşımlar[sayaç].TARİH = DateTime.ParseExact(oku["Tarih"].ToString(), "yyyyMMddHHmmss", TR);
+                sayaç++;
+            }
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            return paylaşımlar;
+        }
+        public static Paylaşım[] BelirliKişininPaylaşımları(string kullanıcı_adı)
+        {
+        //SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;
+        //SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            ÜyeBil kişi = KullanıcıAdından_ÜyeBil(kullanıcı_adı);
+            string ek = $"SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            int paylaşım_sayısı = 0;
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek;
+            IDataReader oku = komut.ExecuteReader();
+            while (oku.Read())
+            {
+                paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
+            }
+            ek = $"SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            komut.CommandText = ek;
+            Paylaşım[] paylaşımlar = new Paylaşım[paylaşım_sayısı];
+            int sayaç = 0;
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (oku.Read())
+            {
+                paylaşımlar[sayaç].KİMLİK_1 = long.Parse(oku["Kimlik1"].ToString());
+                paylaşımlar[sayaç].KİMLİK_2 = oku["Kimlik2"].ToString();
+                paylaşımlar[sayaç].BAŞLIK = oku["Başlık"].ToString();
+                paylaşımlar[sayaç].İÇERİK = oku["İçerik"].ToString();
+                paylaşımlar[sayaç].EKLENTİ = oku["Eklenti"].ToString();
+                paylaşımlar[sayaç].PAYLAŞAN = oku["Paylaşan"].ToString();
+                paylaşımlar[sayaç].OTURUM = oku["Oturum"].ToString();
+                paylaşımlar[sayaç].TARİH = DateTime.ParseExact(oku["Tarih"].ToString(), "yyyyMMddHHmmss", TR);
+                sayaç++;
+            }
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            return paylaşımlar;
         }
     } 
 }
