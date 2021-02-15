@@ -107,10 +107,9 @@ namespace Esas
         public static bool KP_Kullanımda(string kullanıcı_adı, string parola)
         {
             //Girilen kullanıcı adı ile parolayı kullanan bir üyelik kaydı olup olmadığı denetleniyor.
-            string bag = "Server=127.0.0.1;Database=yagkandili;User ID=YagKandili;Pooling=false;";
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı +
                 "' AND Parola = '" + parola + "';";
-            IDbConnection bağlantı = new MySqlConnection(bag);
+            IDbConnection bağlantı = new MySqlConnection(bağlantıDizesi);
             bağlantı.Open();
             IDbCommand komut = bağlantı.CreateCommand();
             komut.CommandText = ek;
@@ -136,8 +135,7 @@ namespace Esas
         public static bool KK_Doğru(string kullanıcı_adı, string kilmik)
         {
             //Kullanıcı adı ve oturum kimliğiyle eşleşen açık bir oturum olup olmadığı denetleniyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
-            IDbConnection bağ = new MySqlConnection(bağlantı);
+            IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();
             string ek = "SELECT Son_Tarih FROM oturumlar WHERE Kullanıcı_Adı = '" + kullanıcı_adı +
@@ -183,8 +181,7 @@ namespace Esas
         public static bool Kullanıcı_Var(string kullanıcı_adı)
         {
             //Girilen kullanıcı adının kullanımda olup olmadığını denetliyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
-            IDbConnection bağ = new MySqlConnection(bağlantı);
+            IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı + "';";
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();
@@ -209,8 +206,7 @@ namespace Esas
         public static bool ePosta_Var(string e_posta)
         {
             //Girilen e-posta adresinin kullanımda olup olmadığı denetleniyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;" + "Pooling=false;";
-            IDbConnection bağ = new MySqlConnection(bağlantı);
+            IDbConnection bağ = new MySqlConnection(bağlantıDizesi);
             string ek = "SELECT * FROM üyelik WHERE E_Posta = '" + e_posta + "';";
             bağ.Open();
             IDbCommand komut = bağ.CreateCommand();
@@ -235,9 +231,7 @@ namespace Esas
         public static ÜyeBil Kilmikten_ÜyeBil(string kilmik)
         {
             //Oturum kimliği girilen kullanıcının bilgileri ÜyeBil türünde döndürülüyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
-                + "Pooling=false;";
-            IDbConnection vtbağ = new MySqlConnection(bağlantı);
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
             vtbağ.Open();
             ZöçKilmik kimlik = Kilnevüg.Kilnevüg.ÇözülmüşKimlik(kilmik);
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kimlik.daluk + "';";
@@ -267,9 +261,7 @@ namespace Esas
         public static ÜyeBil KullanıcıAdından_ÜyeBil(string kullanıcı_adı)
         {
             //Kullanıcı adı girilen kullanıcının bilgileri ÜyeBil türünde döndürülüyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
-                + "Pooling=false;";
-            IDbConnection vtbağ = new MySqlConnection(bağlantı);
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
             vtbağ.Open();
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı + "';";
             IDbCommand komut = vtbağ.CreateCommand();
@@ -298,9 +290,7 @@ namespace Esas
         public static çÜye KullanıcıAdından_çÜye(string kullanıcı_adı)
         {
             //Kullanıcı adı girilen kullanıcının bilgileri çÜye türünde döndürülüyor.
-            string bağlantı = "Server=127.0.0.1;" + "Database=yagkandili;" + "User ID=YagKandili;"
-                + "Pooling=false;";
-            IDbConnection vtbağ = new MySqlConnection(bağlantı);
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
             vtbağ.Open();
             string ek = "SELECT * FROM üyelik WHERE Kullanıcı_Adı = '" + kullanıcı_adı + "';";
             IDbCommand komut = vtbağ.CreateCommand();
