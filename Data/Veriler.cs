@@ -478,6 +478,114 @@ namespace Esas
             vtbağ.Close(); vtbağ = null;
             return paylaşımlar;
         }
+        public static Paylaşım[] BelirliKişininAçıkPaylaşımları(string kullanıcı_adı)
+        {
+        //SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' AND Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;
+        //SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' AND Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;
+            ÜyeBil kişi = KullanıcıAdından_ÜyeBil(kullanıcı_adı);
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            string ek = $"SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' AND Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek;
+            int paylaşım_sayısı = 0;
+            paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            vtbağ.Close();
+
+            string ek2 = $"SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' AND Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek2;
+            IDataReader oku = komut.ExecuteReader();
+            Paylaşım[] paylaşımlar = new Paylaşım[paylaşım_sayısı];
+            int sayaç = 0;
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (oku.Read())
+            {
+                paylaşımlar[sayaç] = new Paylaşım();
+                paylaşımlar[sayaç].KİMLİK_1 = Convert.ToInt64(oku["Kimlik1"]);
+                paylaşımlar[sayaç].KİMLİK_2 = oku["Kimlik2"].ToString();
+                paylaşımlar[sayaç].BAŞLIK = oku["Başlık"].ToString();
+                paylaşımlar[sayaç].İÇERİK = oku["İçerik"].ToString();
+                paylaşımlar[sayaç].EKLENTİ = oku["Eklenti"].ToString();
+                paylaşımlar[sayaç].PAYLAŞAN = oku["Paylaşan"].ToString();
+                paylaşımlar[sayaç].OTURUM = oku["Oturum"].ToString();
+                paylaşımlar[sayaç].TARİH = DateTime.ParseExact(oku["Tarih"].ToString(), "yyyyMMddHHmmss", TR);
+                sayaç++;
+            }
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            return paylaşımlar;
+        }
+        public static Paylaşım[] BelirliKişininGizliPaylaşımları(string kullanıcı_adı)
+        {
+        //SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' AND Eklenti LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;
+        //SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' AND Eklenti LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;
+            ÜyeBil kişi = KullanıcıAdından_ÜyeBil(kullanıcı_adı);
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            string ek = $"SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' AND Eklenti LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek;
+            int paylaşım_sayısı = 0;
+            paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            vtbağ.Close();
+
+            string ek2 = $"SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' AND Eklenti LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek2;
+            IDataReader oku = komut.ExecuteReader();
+            Paylaşım[] paylaşımlar = new Paylaşım[paylaşım_sayısı];
+            int sayaç = 0;
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (oku.Read())
+            {
+                paylaşımlar[sayaç] = new Paylaşım();
+                paylaşımlar[sayaç].KİMLİK_1 = Convert.ToInt64(oku["Kimlik1"]);
+                paylaşımlar[sayaç].KİMLİK_2 = oku["Kimlik2"].ToString();
+                paylaşımlar[sayaç].BAŞLIK = oku["Başlık"].ToString();
+                paylaşımlar[sayaç].İÇERİK = oku["İçerik"].ToString();
+                paylaşımlar[sayaç].EKLENTİ = oku["Eklenti"].ToString();
+                paylaşımlar[sayaç].PAYLAŞAN = oku["Paylaşan"].ToString();
+                paylaşımlar[sayaç].OTURUM = oku["Oturum"].ToString();
+                paylaşımlar[sayaç].TARİH = DateTime.ParseExact(oku["Tarih"].ToString(), "yyyyMMddHHmmss", TR);
+                sayaç++;
+            }
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            return paylaşımlar;
+        }
+        public static Paylaşım TekPaylaşım(string kimlik2)
+        {
+        //SELECT * FROM paylaşımlar WHERE Kimlik2 = {kimlik2} ORDER BY Kimlik1 DESC, Tarih DESC;
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            string ek = $"SELECT * FROM paylaşımlar WHERE Kimlik2 = {kimlik2} ORDER BY Kimlik1 DESC, Tarih DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek;
+            IDataReader oku = komut.ExecuteReader();
+            Paylaşım paylaşım = new Paylaşım();
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (oku.Read())
+            {
+                paylaşım.KİMLİK_1 = Convert.ToInt64(oku["Kimlik1"]);
+                paylaşım.KİMLİK_2 = oku["Kimlik2"].ToString();
+                paylaşım.BAŞLIK = oku["Başlık"].ToString();
+                paylaşım.İÇERİK = oku["İçerik"].ToString();
+                paylaşım.EKLENTİ = oku["Eklenti"].ToString();
+                paylaşım.PAYLAŞAN = oku["Paylaşan"].ToString();
+                paylaşım.OTURUM = oku["Oturum"].ToString();
+                paylaşım.TARİH = DateTime.ParseExact(oku["Tarih"].ToString(), "yyyyMMddHHmmss", TR);
+            }
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            return paylaşım;
+        }
     } 
 }
 /*paylaşımcık += "<li>" + "<div class=\"geçici\">" + "<div>" +
