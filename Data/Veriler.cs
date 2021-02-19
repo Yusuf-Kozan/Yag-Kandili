@@ -366,23 +366,25 @@ namespace Esas
         //SELECT * FROM paylaşımlar WHERE Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;
             IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
             string ek = "SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;";
-            int paylaşım_sayısı = 0;
             vtbağ.Open();
             IDbCommand komut = vtbağ.CreateCommand();
             komut.CommandText = ek;
+            int paylaşım_sayısı = 0;
+            paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            vtbağ.Close();
+
+            string ek2 = "SELECT * FROM paylaşımlar WHERE Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek2;
             IDataReader oku = komut.ExecuteReader();
-            while (oku.Read())
-            {
-                paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
-            }
-            ek = "SELECT * FROM paylaşımlar WHERE Eklenti NOT LIKE '%>gizli%' ORDER BY Kimlik1 DESC, Tarih DESC;";
-            komut.CommandText = ek;
             Paylaşım[] paylaşımlar = new Paylaşım[paylaşım_sayısı];
             int sayaç = 0;
             CultureInfo TR = new CultureInfo("tr-TR");
             while (oku.Read())
             {
-                paylaşımlar[sayaç].KİMLİK_1 = long.Parse(oku["Kimlik1"].ToString());
+                paylaşımlar[sayaç] = new Paylaşım();
+                paylaşımlar[sayaç].KİMLİK_1 = Convert.ToInt64(oku["Kimlik1"]);
                 paylaşımlar[sayaç].KİMLİK_2 = oku["Kimlik2"].ToString();
                 paylaşımlar[sayaç].BAŞLIK = oku["Başlık"].ToString();
                 paylaşımlar[sayaç].İÇERİK = oku["İçerik"].ToString();
@@ -403,23 +405,25 @@ namespace Esas
         //SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;
             IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
             string ek = $"SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
-            int paylaşım_sayısı = 0;
             vtbağ.Open();
             IDbCommand komut = vtbağ.CreateCommand();
             komut.CommandText = ek;
+            int paylaşım_sayısı = 0;
+            paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            vtbağ.Close();
+
+            string ek2 = $"SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek2;
             IDataReader oku = komut.ExecuteReader();
-            while (oku.Read())
-            {
-                paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
-            }
-            ek = $"SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
-            komut.CommandText = ek;
             Paylaşım[] paylaşımlar = new Paylaşım[paylaşım_sayısı];
             int sayaç = 0;
             CultureInfo TR = new CultureInfo("tr-TR");
             while (oku.Read())
             {
-                paylaşımlar[sayaç].KİMLİK_1 = long.Parse(oku["Kimlik1"].ToString());
+                paylaşımlar[sayaç] = new Paylaşım();
+                paylaşımlar[sayaç].KİMLİK_1 = Convert.ToInt64(oku["Kimlik1"]);
                 paylaşımlar[sayaç].KİMLİK_2 = oku["Kimlik2"].ToString();
                 paylaşımlar[sayaç].BAŞLIK = oku["Başlık"].ToString();
                 paylaşımlar[sayaç].İÇERİK = oku["İçerik"].ToString();
@@ -438,26 +442,28 @@ namespace Esas
         {
         //SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;
         //SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;
-            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
             ÜyeBil kişi = KullanıcıAdından_ÜyeBil(kullanıcı_adı);
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
             string ek = $"SELECT COUNT(Kimlik2) FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
-            int paylaşım_sayısı = 0;
             vtbağ.Open();
             IDbCommand komut = vtbağ.CreateCommand();
             komut.CommandText = ek;
+            int paylaşım_sayısı = 0;
+            paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            vtbağ.Close();
+
+            string ek2 = $"SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek2;
             IDataReader oku = komut.ExecuteReader();
-            while (oku.Read())
-            {
-                paylaşım_sayısı = int.Parse(komut.ExecuteScalar().ToString());
-            }
-            ek = $"SELECT * FROM paylaşımlar WHERE Paylaşan = '{kişi.KİMLİK}' ORDER BY Kimlik1 DESC, Tarih DESC;";
-            komut.CommandText = ek;
             Paylaşım[] paylaşımlar = new Paylaşım[paylaşım_sayısı];
             int sayaç = 0;
             CultureInfo TR = new CultureInfo("tr-TR");
             while (oku.Read())
             {
-                paylaşımlar[sayaç].KİMLİK_1 = long.Parse(oku["Kimlik1"].ToString());
+                paylaşımlar[sayaç] = new Paylaşım();
+                paylaşımlar[sayaç].KİMLİK_1 = Convert.ToInt64(oku["Kimlik1"]);
                 paylaşımlar[sayaç].KİMLİK_2 = oku["Kimlik2"].ToString();
                 paylaşımlar[sayaç].BAŞLIK = oku["Başlık"].ToString();
                 paylaşımlar[sayaç].İÇERİK = oku["İçerik"].ToString();
