@@ -1,0 +1,31 @@
+@namespace Bileşenler
+@inject NavigationManager NavigationManager
+@using Esas
+
+@for (int i = 0; i < tüm_paylaşımlar.Length; i++)
+{
+    <div class="MetinKutusu1yk p-kutu-bileşen" style="text-align: justify; overflow: hidden;">
+        <p class="p-başlık-bileşen">@(tüm_paylaşımlar[i].BAŞLIK)</p>
+        <p style="white-space: pre-line; color: black;">@(tüm_paylaşımlar[i].İÇERİK)</p>
+
+        <div style="text-align: left; width: 50%; float: left;">
+            @(TabanlıVeri.Kilmikten_ÜyeBil(tüm_paylaşımlar[i].OTURUM).KULLANICI_ADI)
+        </div>
+        <div style="text-align: right; width: 50%; float: left;">
+            <button class="D1ykAK" style="font-size: medium;">Beğen</button>
+            <button class="D1ykY" style="font-size: medium;">Yorumla</button>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string kip {get; set;} //hepsi, belirli açık, belirli gizli, belirli karışık
+    /*  Başlangıçta iki ana kip olacak:
+        tüm paylaşımlar ve belirli kişinin paylaşımları.
+        
+        Belirli kişinin paylaşımları üç farklı biçimde yer alacak:
+        yalnız açık, yalnız gizli ve karışık.
+    */
+    private Paylaşım[] tüm_paylaşımlar = TabanlıVeri.TümPaylaşımlar();
+}
