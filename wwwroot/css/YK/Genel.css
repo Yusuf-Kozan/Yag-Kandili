@@ -77,6 +77,29 @@
 	border-color: rgb(255,200,200);
 	/*border-width: 3px;*/
 }
+.D1ykAK {
+	/*Açık Kırmızı*/
+	border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: sans-serif;
+	background-color: rgb(255,51,51);
+	color: rgb(255,255,255);
+	border-color: rgb(255,51,51);
+	cursor: pointer;
+	margin: 4px;
+	font-size: large;
+	font-weight: bold;
+}
+.D1ykAK:hover {
+	color: rgb(255,51,51);
+	background-color: rgb(255,200,200);
+	border-color: rgb(255,200,200);
+	/*border-width: 3px;*/
+}
 .D1ykM {
 	/*Rengi açıklaşan düğmenin
 		mor renklisi*/
@@ -100,6 +123,29 @@
 	color: #cc22b2;
 	background-color: #f2c6ed;
 	border-color: #f2c6ed;/*d6b1d0*/
+	/*border-width: 3px;*/
+}
+.D1ykY {
+	/* Bu da yeşili */
+	border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: sans-serif;
+	color: rgb(255,255,255);
+	background-color: #00c800;
+	border-color: #00c800;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+}
+.D1ykY:hover {
+	color: #00bb00;
+	background-color: #ccf0cc;
+	border-color: #ccf0cc;
 	/*border-width: 3px;*/
 }
 
@@ -129,6 +175,16 @@
 	padding: 3px;
 	color: #cc22b2;
 	background: transparent;
+	font-size: x-large;
+	margin: 3px;
+	/*06afda*/
+}
+.MetinKutusu1yk {
+	/*YK rengi (#ff6600) MetinKutusu1*/
+	border: solid 2px #ff6600;
+	border-radius: 4px;
+	padding: 3px;
+	color: #ff6600;
 	font-size: x-large;
 	margin: 3px;
 	/*06afda*/

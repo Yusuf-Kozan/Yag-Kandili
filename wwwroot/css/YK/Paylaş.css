@@ -11,6 +11,26 @@
     margin: 1%;
     border: none;
 }
+.p-başlık-bileşen {
+    font-family: sans-serif, Helvetica, Arial;
+    font-size: x-large;
+    text-align: center;
+    color: #ff6600;
+    font-weight: bold;
+    margin: 1%;
+    border: none;
+}
+.p-kutu-bileşen {
+    width: 80%;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 0.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-width: 3px;
+    border-radius: 10px;
+}
 /*.p-başlık:hover span {
     display: none;
 }
