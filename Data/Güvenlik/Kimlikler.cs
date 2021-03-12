@@ -3,6 +3,16 @@ using Esas;
 
 namespace Kilnevüg
 {
+    public class TBY_Kimlikleri
+    {
+        public static string Kimlik(string tür, string kimden, string neye, string ne_zaman, string içerik, string oturum)
+        {
+            CryptHash.Net.Hash.Hash.SHA512 sha512 = new CryptHash.Net.Hash.Hash.SHA512();
+            string karılmamış = kimden + neye + ne_zaman + içerik + oturum;
+            string karılmış = sha512.ComputeHash(karılmamış).HashString;
+            return $"{karılmış}₺{tür[0]}";
+        }
+    }
     public class Paylaşım_Kimliği
     {
         //Paylaşımların Kimlik2 değişkenini hesaplamak için

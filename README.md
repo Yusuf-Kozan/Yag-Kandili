@@ -1,5 +1,8 @@
 # Yağ Kandili
 ---
+
+>**Takip, beğeni ve yorum özelliklerinin temeli atıldı. Basit bir beğenme özelliği eklendi.**
+
 ## Yapılacaklar
 - [x] Oturum kapatma düğmesi eklenecek
 - [x] Paylaşım yapma özelliği eklenecek
@@ -47,11 +50,11 @@ MySQL kurulumundan sonra veri tabanlarını oluşturmak için MySQL kabuğuna k�
 CREATE DATABASE yagkandili;
 use yagkandili;
 CREATE TABLE oturumlar(Kullanıcı_Adı TEXT NOT NULL, Kilmik TEXT NOT NULL, Tarih TEXT NOT NULL, Son_Tarih TEXT NOT NULL, Kapandı TINYINT NOT NULL, Kapanma_Tarihi TEXT);
-CREATE TABLE yazılı_paylaşım(Başlık TEXT NOT NULL, İçerik TEXT NOT NULL, Paylaşan TEXT NOT NULL, Kilmik TEXT NOT NULL, Tarih TEXT NOT NULL);
 CREATE TABLE üyelik(Kullanıcı_Adı TEXT NOT NULL, Ad TEXT NOT NULL, Soyadı TEXT NOT NULL, Parola TEXT NOT NULL, Üstünlük TEXT, E_Posta TEXT NOT NULL, Başlangıç TEXT NOT NULL, Resim TEXT, Kimlik TEXT NOT NULL);
 CREATE TABLE paylaşımlar(Kimlik1 BIGINT NOT NULL AUTO_INCREMENT, Kimlik2 TEXT NOT NULL, Başlık TEXT NOT NULL, İçerik TEXT NOT NULL, Eklenti TEXT NOT NULL, Paylaşan TEXT NOT NULL, Oturum TEXT NOT NULL, Tarih TEXT NOT NULL, PRIMARY KEY (Kimlik1));
+CREATE TABLE tby (Tür TEXT NOT NULL, Kimden TEXT NOT NULL, Neye TEXT NOT NULL, İçerik TEXT NOT NULL, Kimlik TEXT NOT NULL, Ne_Zaman TEXT NOT NULL, Oturum TEXT NOT NULL);
 CREATE USER YagKandili;
-GRANT SELECT, INSERT, UPDATE ON `yagkandili`.* TO YagKandili;
+GRANT SELECT, INSERT, UPDATE, DELETE ON `yagkandili`.* TO YagKandili;
 ```
 
 ### Derleme

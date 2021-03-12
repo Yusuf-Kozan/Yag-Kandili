@@ -349,7 +349,8 @@ namespace Esas
             }
         }
 
-        /* Paylaşımlarla ilgili şeyler burada başlıyor. */
+/*------ Paylaşımlarla ilgili şeyler burada başlıyor. ------*/
+
         public static void Paylaş(Paylaşım paylaşım)
         {
             // Farklı paylaşım türlerinin ayracı Eklenti olduğundan
@@ -560,12 +561,11 @@ namespace Esas
         }
         public static Paylaşım TekPaylaşım(string kimlik2)
         {
-        //SELECT * FROM paylaşımlar WHERE Kimlik2 = {kimlik2} ORDER BY Kimlik1 DESC, Tarih DESC;
+        //SELECT * FROM paylaşımlar WHERE Kimlik2 = '{kimlik2}' ORDER BY Kimlik1 DESC, Tarih DESC;
             IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
             vtbağ.Open();
             IDbCommand komut = vtbağ.CreateCommand();
-            string ek = $"SELECT * FROM paylaşımlar WHERE Kimlik2 = {kimlik2} ORDER BY Kimlik1 DESC, Tarih DESC;";
-            vtbağ.Open();
+            string ek = $"SELECT * FROM paylaşımlar WHERE Kimlik2 = '{kimlik2}'";
             komut.CommandText = ek;
             IDataReader oku = komut.ExecuteReader();
             Paylaşım paylaşım = new Paylaşım();
@@ -585,6 +585,80 @@ namespace Esas
             komut.Dispose(); komut = null;
             vtbağ.Close(); vtbağ = null;
             return paylaşım;
+        }
+
+/*------ Takip, Beğeni ve Yorum ile ilgili şeyler burada başlıyor. ------*/
+
+        public static void Beğen(Beğeni beğeni)
+        {
+            string ek = $"INSERT INTO tby (Tür, Kimden, Neye, İçerik, Kimlik, Ne_Zaman, Oturum) " +
+                        $"VALUES ('Beğeni', '{beğeni.KİM}', '{beğeni.NEYİ}', '-', '{beğeni.KİMLİK}', " +
+                        $"'{beğeni.NE_ZAMAN.ToString("yyyyMMddHHmmss")}', '{beğeni.OTURUM}');";
+            komutGönder(ek);
+        }
+        public static void BeğeniyiGeriAl(string kimlik2)
+        {
+            string ek = $"DELETE FROM tby WHERE Tür = 'Beğeni' AND Neye = '{kimlik2}';";
+            komutGönder(ek);
+        }
+        public static int BeğeniNiceliği(string kimlik2)
+        {
+            //SELECT COUNT(Kimlik) FROM tby WHERE Tür = 'Beğeni' AND Neye = '{kimlik2}';
+            string ek = $"SELECT COUNT(Kimlik) FROM tby WHERE Tür = 'Beğeni' AND Neye = '{kimlik2}';";
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek;
+            int nicelik =  int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            return nicelik;
+        }
+        public static bool BunuBeğenmiş(string kullanıcı_kimliği, string kimlik2)
+        {
+            //SELECT COUNT(Kimlik) FROM tby WHERE Tür = 'Beğeni' AND Kimden = '{kullanıcı_kimliği}' AND Neye = '{kimlik2}'
+            string ek = $"SELECT COUNT(Kimlik) FROM tby WHERE Tür = 'Beğeni' AND Kimden = '{kullanıcı_kimliği}' AND Neye = '{kimlik2}';";
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek;
+            int nicelik = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            if (nicelik == 0)
+                return false;
+            else
+                return true;
+        }
+        public static string[] KişininBeğendiğiPaylaşımlar(string kullanıcı_kimliği)
+        {
+            //SELECT COUNT(Neye) FROM tby WHERE Tür = 'Beğeni' AND Kimden = '{kullanıcı_kimliği}' ORDER BY Ne_Zaman DESC;
+            //SELECT Neye FROM tby WHERE Tür = 'Beğeni' AND Kimden = '{kullanıcı_kimliği}' ORDER BY Ne_Zaman DESC;
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            IDbCommand komut = vtbağ.CreateCommand();
+            string ek1 = $"SELECT COUNT(Neye) FROM tby WHERE Tür = 'Beğeni' AND Kimden = '{kullanıcı_kimliği}' ORDER BY Ne_Zaman DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek1;
+            int nicelik = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            vtbağ.Close();
+
+            string ek2 = $"SELECT Neye FROM tby WHERE Tür = 'Beğeni' AND Kimden = '{kullanıcı_kimliği}' ORDER BY Ne_Zaman DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek2;
+            IDataReader oku = komut.ExecuteReader();
+            int sayaç = 0;
+            string[] paylaşımlar = new string[nicelik];
+            while (oku.Read())
+            {
+                paylaşımlar[sayaç] = oku["Neye"].ToString();
+                sayaç++;
+            }
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+
+            return paylaşımlar;
         }
     } 
 }
