@@ -19,6 +19,7 @@
     font-weight: bold;
     margin: 1%;
     border: none;
+    text-decoration: none;
 }
 .p-kutu-bileşen {
     width: 80%;
@@ -38,3 +39,8 @@
     content: "Geri Dön";
     color: red;
 }*/
+.p-sayfa {
+    width: 80%;
+    margin: auto;
+    font-size: large;
+}

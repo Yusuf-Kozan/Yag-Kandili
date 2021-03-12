@@ -100,6 +100,23 @@
 	border-color: rgb(255,200,200);
 	/*border-width: 3px;*/
 }
+.D1ykAK2 {
+	/*Açık Kırmızı*/
+	border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: sans-serif;
+	background-color: rgb(255,200,200);
+	color: rgb(255,51,51);
+	border-color: rgb(255,200,200);
+	cursor: pointer;
+	margin: 4px;
+	font-size: large;
+	font-weight: bold;
+}
 .D1ykM {
 	/*Rengi açıklaşan düğmenin
 		mor renklisi*/

@@ -1,0 +1,117 @@
+@page "/paylaşım/{paylaşım_kimliği}"
+@layout AnaTaslak
+@using System.Threading.Tasks
+@using Esas
+@using Kilnevüg
+@using Bileşenler
+@inject IJSRuntime JSruntime
+@inject NavigationManager NavigationManager
+@namespace sayfa
+
+
+    @if (oturum_açık)
+    {
+        <div class="p-genel p-sayfa">
+            <button class="p-başlık" style="@başlık_görünüşü" @onclick="Geri_Dön">@başlık_metni</button><br/>
+            <p style="text-align: justify; white-space: pre-line; color: black;">@(esas_paylaşım.İÇERİK)</p>
+
+            <div style="text-align: end;">
+            @if (!TabanlıVeri.BunuBeğenmiş(üye.KİMLİK, esas_paylaşım.KİMLİK_2))
+            {
+                <button class="D1ykAK" style="font-size: medium;" @onclick="@(e => Beğen(@esas_paylaşım.KİMLİK_2, false))">Beğen</button>
+            }
+            else
+            {
+                <button class="D1ykAK2" style="font-size: medium;" @onclick="@(e => Beğen(@esas_paylaşım.KİMLİK_2, true))">Beğenme</button>
+            }
+            </div>
+        </div>
+    }
+    else
+    {
+        <h1>Oturum açık değil</h1>
+    }
+
+
+
+@code {
+    [Parameter]
+    public string paylaşım_kimliği {get; set;}
+    private Esas.Paylaşım esas_paylaşım {get; set;}
+    private string başlık_görünüşü = "color: black;";
+    private string başlık_metni {get; set;}
+    private int dönüş_sayacı = 0;
+    private void Geri_Dön()
+    {
+        if (dönüş_sayacı == 0)
+        {
+            başlık_görünüşü = "color: #ff6600;";
+            dönüş_sayacı++;
+        }
+        else if (dönüş_sayacı == 1)
+        {
+            başlık_görünüşü = "color: black;";
+            NavigationManager.NavigateTo($"/ana#{esas_paylaşım.KİMLİK_2}");
+            dönüş_sayacı--;
+        }
+        else
+        {
+            dönüş_sayacı = 0;
+        }
+    }
+    private void Beğen(string kimlik2, bool beğenmiş)
+    {
+        if (!beğenmiş)
+        {
+            string beğeni_kimliği = TBY_Kimlikleri.Kimlik("Beğeni", üye.KİMLİK, kimlik2, DateTime.Now.ToString("yyyyMMddHHmmss"), "-", b);
+            Beğeni beğeni = new Beğeni(üye.KİMLİK, kimlik2, DateTime.Now, b, beğeni_kimliği);
+            TabanlıVeri.Beğen(beğeni);
+        }
+        else
+        {
+            TabanlıVeri.BeğeniyiGeriAl(kimlik2);
+        }
+    }
+
+
+    private string a, b; //a == kullanıcı adı && b == kilmik
+    private bool oturum_açık;
+    public static ÜyeBil üye {get; set;}
+    public static string kimlik {get; private set;}
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı_adı");
+            a = c.ToString(); c = null;
+            var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "parola");
+            b = d.ToString(); d = null;
+            devam(a, b);
+            StateHasChanged();
+        }
+        catch
+        {
+            NavigationManager.NavigateTo("/");
+        }
+    }
+    private void devam(string kullanıcı_adı, string kilmik)
+    {
+        oturum_açık = İşlemler.Oturumİşlemleri.Oturum_Uygun(kullanıcı_adı, kilmik);
+        if (!oturum_açık)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        üye = TabanlıVeri.Kilmikten_ÜyeBil(kilmik);
+        Paylaşım.kimlik = kilmik;
+        esas_paylaşım = TabanlıVeri.TekPaylaşım(paylaşım_kimliği);
+        
+        if (dönüş_sayacı == 1)
+        {
+            başlık_metni = "Ana Sayfaya Dön";
+        }
+        else
+        {
+            başlık_metni = esas_paylaşım.BAŞLIK;
+        }
+    }
+}
