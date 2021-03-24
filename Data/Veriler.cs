@@ -660,6 +660,87 @@ namespace Esas
 
             return paylaşımlar;
         }
+
+        public static void Yorumla(Yorum yorum)
+        {
+            string ek = $"INSERT INTO tby (Tür, Kimden, Neye, İçerik, Kimlik, Ne_Zaman, Oturum) " +
+                        $"VALUES ('Yorum', '{yorum.KİM}', '{yorum.NEYE}', '{yorum.İÇERİK}', " +
+                        $"'{yorum.KİMLİK}', '{yorum.NE_ZAMAN.ToString("yyyyMMddHHmmss")}', " +
+                        $"'{yorum.OTURUM}');";
+            komutGönder(ek);
+        }
+        public static void YorumuSil(string kimlik2, string yorum_kimliği)
+        {
+            string ek = $"DELETE FROM tby WHERE Tür = 'Yorum' AND Neye = '{kimlik2}' AND Kimlik = '{yorum_kimliği}';";
+            komutGönder(ek);
+        }
+        public static Yorum[] PaylaşımınYorumları(string kimlik2)
+        {
+            //SELECT COUNT(Kimlik) FROM tby WHERE Tür = 'Yorum' AND Neye = '{kimlik2}' ORDER BY Ne_Zaman DESC;
+            //SELECT * FROM tby WHERE Tür = 'Yorum' AND Neye = '{kimlik2}' ORDER BY Ne_Zaman DESC;
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            string ek1 = $"SELECT COUNT(Kimlik) FROM tby WHERE Tür = 'Yorum' AND Neye = '{kimlik2}' ORDER BY Ne_Zaman DESC;";
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek1;
+            int yorum_niceliği = 0;
+            yorum_niceliği = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            vtbağ.Close();
+
+            string ek2 = $"SELECT * FROM tby WHERE Tür = 'Yorum' AND Neye = '{kimlik2}' ORDER BY Ne_Zaman DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek2;
+            IDataReader oku = komut.ExecuteReader();
+            Yorum[] yorumlar = new Yorum[yorum_niceliği];
+            int döngü_turu = 0;
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (oku.Read())
+            {
+                yorumlar[döngü_turu] = new Yorum();
+                yorumlar[döngü_turu].KİM = oku["Kimden"].ToString();
+                yorumlar[döngü_turu].NEYE = oku["Neye"].ToString();
+                yorumlar[döngü_turu].İÇERİK = oku["İçerik"].ToString();
+                yorumlar[döngü_turu].NE_ZAMAN = DateTime.ParseExact(oku["Ne_Zaman"].ToString(), "yyyyMMddHHmmss", TR);
+                yorumlar[döngü_turu].OTURUM = oku["Oturum"].ToString();
+                yorumlar[döngü_turu].KİMLİK = oku["Kimlik"].ToString();
+                döngü_turu++;
+            }
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            return yorumlar;
+        }
+        public string[] KişininBuPaylaşımaYaptığıYorumlar(string kimlik2, string kullanıcı_kimliği)
+        {
+            // SELECT COUNT(Neye) FROM tby WHERE Tür = 'Yorum' AND Kimden = '{kullanıcı_kimliği}' AND Neye = '{kimlik2}';
+            // SELECT Neye FROM tby WHERE Tür = 'Yorum' AND Kimden = '{kullanıcı_kimliği}' AND Neye = '{kimlik2}' ORDER BY Ne_Zaman DESC;
+            IDbConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            string ek1 = $"SELECT COUNT(Neye) FROM tby WHERE Tür = 'Yorum' AND Kimden = '{kullanıcı_kimliği}' AND Neye = '{kimlik2}';";
+            vtbağ.Open();
+            IDbCommand komut = vtbağ.CreateCommand();
+            komut.CommandText = ek1;
+            int yorum_niceliği = 0;
+            yorum_niceliği = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            vtbağ.Close();
+
+            string ek2 = $"SELECT Neye FROM tby WHERE Tür = 'Yorum' AND Kimden = '{kullanıcı_kimliği}' AND Neye = '{kimlik2}' ORDER BY Ne_Zaman DESC;";
+            vtbağ.Open();
+            komut.CommandText = ek2;
+            IDataReader oku = komut.ExecuteReader();
+            string[] yorumlar = new string[yorum_niceliği];
+            int döngü_turu = 0;
+            while (oku.Read())
+            {
+                yorumlar[0] = oku["Neye"].ToString();
+                döngü_turu++;
+            }
+            oku.Close(); oku = null;
+            komut.Dispose(); komut = null;
+            vtbağ.Close(); vtbağ = null;
+            return yorumlar;
+        }
     } 
 }
 /*paylaşımcık += "<li>" + "<div class=\"geçici\">" + "<div>" +
