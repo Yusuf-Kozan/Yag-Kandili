@@ -1,12 +1,13 @@
 # Yağ Kandili
 ---
 
->**Takip, beğeni ve yorum özelliklerinin temeli atıldı. Basit bir beğenme özelliği eklendi.**
+>**Belgeleme işlemine başlandı. [Belgeler](./Belgeler) dizininin altında yer alacaklar.**  
+Özellikler, kurallar, tasarılar ve diğer bilgilendirmeler [Belgeler](./Belgeler) dizininde yayınlanacak.
 
 ## Yapılacaklar
 - [x] Oturum kapatma düğmesi eklenecek
 - [x] Paylaşım yapma özelliği eklenecek
-- [ ] Yapılan paylaşımları gösterme özelliği eklenecek
+- [x] Yapılan paylaşımları gösterme özelliği eklenecek
 - [ ] Parolalar şifrelenecek (Büyük olasılıkla Argon2id ile)
 - [ ] Hem kişinin kendi hem de başkaları için profil sayfaları oluşturulacak
 - [ ] Takip etme ve beğenme özelliği eklenecek (belki yorum da eklenebilir)
