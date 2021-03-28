@@ -165,6 +165,29 @@
 	border-color: #ccf0cc;
 	/*border-width: 3px;*/
 }
+.D1ykG {
+	/* Bu da grisi */
+	border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: sans-serif;
+	color: rgb(255,255,255);
+	background-color: #808080;
+	border-color: #808080;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+}
+.D1ykG:hover {
+	color: #808080;
+	background-color: #e2e2e2;
+	border-color: #e2e2e2;
+	/*border-width: 3px;*/
+}
 
 .MetinKutusu1 {
 	border: solid 2px rgb(0,120,0);
@@ -205,6 +228,15 @@
 	font-size: x-large;
 	margin: 3px;
 	/*06afda*/
+}
+.MetinKutusu1g {
+	/*Gri MetinKutusu1*/
+	border: solid 2px #808080;
+	border-radius: 4px;
+	padding: 3px;
+	color: #808080;
+	font-size: x-large;
+	margin: 3px;
 }
 .D3 {
 	border: solid;
