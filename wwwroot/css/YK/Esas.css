@@ -76,7 +76,7 @@
 .Yükleniyor{
 	animation-name: yükleniyor;
 	animation-duration: 0.6s;
-	animation-iteration-count: 1;
+	animation-iteration-count: infinite;
 	text-align: center;
 	font-size: xx-large;
 	color: #ff6600;
