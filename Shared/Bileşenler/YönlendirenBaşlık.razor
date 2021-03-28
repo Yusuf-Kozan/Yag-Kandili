@@ -1,0 +1,62 @@
+@namespace Bileşenler
+@inject NavigationManager NavigationManager
+
+<button class="@css_sınıfı" style="@başlık_görünüşü" @onclick="Git">@başlık_yazısı</button>
+
+@code {
+    [Parameter]
+    public string css_sınıfı {get; set;} = "";
+    [Parameter]
+    public string şuraya_yönlendir {get; set;} = "/ana";
+    [Parameter]
+    public string ilk_başlık {get; set;}
+    [Parameter]
+    public string ikinci_başlık {get; set;}
+    [Parameter]
+    public string ilk_renk {get; set;}
+    [Parameter]
+    public string ikinci_renk {get; set;} = "#ff6600";
+    
+    private string başlık_yazısı, BaşlıkYazısınınRengi;
+    private string başlık_görünüşü;
+    private int dönüş_sayacı = 0;
+    private void Git()
+    {
+        if (dönüş_sayacı == 0)
+        {
+            dönüş_sayacı = 1;
+            başlık_yazısı = ikinci_başlık;
+            BaşlıkYazısınınRenginiDeğiştir(ikinci_renk);
+        }
+        else if (dönüş_sayacı == 1)
+        {
+            dönüş_sayacı = 0;
+            başlık_yazısı = ilk_başlık;
+            BaşlıkYazısınınRenginiDeğiştir(ilk_renk);
+            NavigationManager.NavigateTo(şuraya_yönlendir);
+        }
+        else
+        {
+            dönüş_sayacı = 0;
+        }
+    }
+    private void BaşlıkYazısınınRenginiDeğiştir(string yeni_renk)
+    {
+        BaşlıkYazısınınRengi = yeni_renk;
+        başlık_görünüşü = $"color: {BaşlıkYazısınınRengi}; font-family: sans-serif; font-size: x-large; font-weight: bold; border: none;";
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (dönüş_sayacı == 1)
+        {
+            başlık_yazısı = ikinci_başlık;
+            BaşlıkYazısınınRenginiDeğiştir(ikinci_renk);
+        }
+        else
+        {
+            başlık_yazısı = ilk_başlık;
+            BaşlıkYazısınınRenginiDeğiştir(ilk_renk);
+        }
+    }
+}

@@ -12,7 +12,8 @@
     @if (oturum_açık)
     {
         <div class="p-genel">
-            <button class="p-başlık" style="@başlık_görünüşü" @onclick="Geri_Dön">@başlık_metni</button><br/>
+            <YönlendirenBaşlık css_sınıfı="p-başlık" ilk_başlık="Paylaşım Yap"
+            ikinci_başlık="Ana Sayfaya Dön" ilk_renk="#cc22b2" ikinci_renk="#ff6600"/><br/>
             <input type="text" class="MetinKutusu1m-saydam" style="text-align: center; font-size: xx-large; width: 70%; margin: 1%;" placeholder="Başlığı Buraya Yazın" maxlength="50" @bind="başlık"/><br/>
             <textarea class="MetinKutusu1m-saydam" style="font-size: x-large; width: 80%; margin: 1%;" rows="10" placeholder="İçeriği Buraya Yazın" maxlength="2000" @bind="içerik"></textarea><br/>
             <!--Buraya lisans ekleme seçeneği gelecek. Beklediğimden uzun sürdüğü için özelliği erteledim.-->
@@ -34,29 +35,6 @@
         başlık = null;
         içerik = null;
         NavigationManager.NavigateTo("/ana");
-    }
-    private int dönüş_sayacı;
-    private string başlık_metni = "Paylaşım Yap";
-    private string başlık_görünüşü = "";
-    private void Geri_Dön()
-    {
-        if (dönüş_sayacı == 0)
-        {
-            başlık_metni = "Ana Sayfaya Dön";
-            başlık_görünüşü = "color: #ff6600;";
-            dönüş_sayacı++;
-        }
-        else if (dönüş_sayacı == 1)
-        {
-            başlık_metni = "Paylaşım Yap";
-            başlık_görünüşü = "";
-            NavigationManager.NavigateTo("/ana");
-            dönüş_sayacı--;
-        }
-        else
-        {
-            dönüş_sayacı = 0;
-        }
     }
     private string a, b; //a == kullanıcı adı && b == kilmik
     private bool oturum_açık;
