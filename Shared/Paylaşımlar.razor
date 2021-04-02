@@ -1,10 +1,11 @@
-@namespace Bileşenler
 @inject NavigationManager NavigationManager
 @using Esas
+@namespace Bileşenler
 
 @for (int i = 0; i < tüm_paylaşımlar.Length; i++)
 {
     int döngü_turu = i;
+    string kullanıcı_bağlantısı = TabanlıVeri.Kilmikten_ÜyeBil(tüm_paylaşımlar[i].OTURUM).KULLANICI_ADI;
     <div id="@(tüm_paylaşımlar[i].KİMLİK_2)"
     class="MetinKutusu1yk p-kutu-bileşen" style="text-align: justify; overflow: hidden;">
         <a style="display: block; text-align: start;"
@@ -12,7 +13,9 @@
         <p style="white-space: pre-line; color: black;">@(tüm_paylaşımlar[i].İÇERİK)</p>
 
         <div style="text-align: left; width: 50%; float: left;">
-            @(TabanlıVeri.Kilmikten_ÜyeBil(tüm_paylaşımlar[i].OTURUM).KULLANICI_ADI)
+            <a href="/kişi/@kullanıcı_bağlantısı">
+                @(kullanıcı_bağlantısı)
+            </a>
         </div>
         @if (!TabanlıVeri.BunuBeğenmiş(kim.KİMLİK, tüm_paylaşımlar[döngü_turu].KİMLİK_2))
         {
@@ -29,18 +32,10 @@
         </div>
         }
     </div>
-    <KimliğeGit/>
 }
+<KimliğeGit/>
 
 @code {
-    [Parameter]
-    public string kip {get; set;} //hepsi, belirli açık, belirli gizli, belirli karışık
-    /*  Başlangıçta iki ana kip olacak:
-        tüm paylaşımlar ve belirli kişinin paylaşımları.
-        
-        Belirli kişinin paylaşımları üç farklı biçimde yer alacak:
-        yalnız açık, yalnız gizli ve karışık.
-    */
     [Parameter]
     public ÜyeBil kim {get; set;}
     [Parameter]
