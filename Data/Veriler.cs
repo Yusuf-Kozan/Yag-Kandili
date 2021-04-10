@@ -356,10 +356,17 @@ namespace Esas
             // Farklı paylaşım türlerinin ayracı Eklenti olduğundan
             // bu fonksiyon tüm paylaşım türleri için kullanılabilmeli.
             string ek = "INSERT INTO paylaşımlar (Kimlik2, Başlık, İçerik, Eklenti, Paylaşan, " +
-                        $"Oturum, Tarih) VALUES ('{paylaşım.KİMLİK_2}', '{paylaşım.BAŞLIK}', " +
-                        $"'{paylaşım.İÇERİK}', '{paylaşım.EKLENTİ}', '{paylaşım.PAYLAŞAN}', '{paylaşım.OTURUM}', " +
+                        $"Oturum, Tarih) VALUES ('{paylaşım.KİMLİK_2}',  @başlık, @içerik, " +
+                        $"'{paylaşım.EKLENTİ}', '{paylaşım.PAYLAŞAN}', '{paylaşım.OTURUM}', " +
                         $"'{paylaşım.TARİH.ToString("yyyyMMddHHmmss")}');";
-            komutGönder(ek);
+            MySqlConnection vtbağ = new MySqlConnection(bağlantıDizesi);
+            vtbağ.Open();
+            MySqlCommand komut= new MySqlCommand(ek,vtbağ);
+            komut.Parameters.AddWithValue("@başlık", paylaşım.BAŞLIK);
+            komut.Parameters.AddWithValue("@içerik", paylaşım.İÇERİK);
+            komut.ExecuteNonQuery();
+            vtbağ.Close(); vtbağ = null;
+            komut.Dispose(); komut = null;
         }
         public static Paylaşım[] TümPaylaşımlar()
         {
