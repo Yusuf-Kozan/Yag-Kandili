@@ -10,7 +10,7 @@ namespace İşlemler
         public static void Üye_Oluştur(çÜye üye)
         {
             Kullanıcı_Kimliği kimlik = new Kullanıcı_Kimliği(üye);
-            TabanlıVeri.Üye_Ekle(üye, kimlik.Kimlik, "resimler/kulllanıcı/0069ff.png");
+            TabanlıVeri.Üye_Ekle(üye, kimlik.Kimlik, "resimler/kullanıcı/0069ff.png");
             TabanlıVeri.Kullanıcı_Dizini_Oluştur(üye);
         }
         public static void Oturum_Başlat(string kullanıcı_adı, IJSRuntime jsRuntime)
