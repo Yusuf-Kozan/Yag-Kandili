@@ -6,22 +6,23 @@
 
 @namespace Bileşenler
 
-<div class="form" style="display: block; text-align: center; font-family: sans-serif;">
+<div style="display: block; text-align: center; font-family: sans-serif; width: 90%;
+margin:auto; max-width:15cm; padding-bottom: 5%;">
     @if(Başlık == "Bir Kandil Yak")
     {
-        <h4 class="formBaşlık" style="color:rgb(0,120,0); font-size: xx-large;">@Başlık</h4>
+        <h4 style="color:rgb(0,120,0); font-size: xx-large;">@Başlık</h4>
     }
     else
     {
-        <h4 class="formBaşlık" style="color:#4169e1; font-size: xx-large;">@Başlık</h4>
+        <h4 style="color:#4169e1; font-size: xx-large;">@Başlık</h4>
     }
     <p style="color: #cc0000;">@p</p>
-    <div><input type="text" placeholder="Adınız" class="MetinKutusu1" @bind="bilgiler[0]"/></div>
-    <div><input type="text" placeholder="Soyadınız" class="MetinKutusu1" @bind="bilgiler[1]"/></div>
-    <div><input type="text" placeholder="E-Posta Adresiniz" class="MetinKutusu1" @bind="bilgiler[2]"/></div>
-    <div><input type="text" placeholder="Kullanıcı Adınız" class="MetinKutusu1" @bind="bilgiler[3]"></div>
-    <div><input type="password" placeholder="Parolanız" class="MetinKutusu1" @bind="bilgiler[4]"/></div>
-    <div><input type="password" placeholder="Parolanız (Tekrar)" class="MetinKutusu1" @bind="bilgiler[5]"/></div>
+    <div><input type="text" style="width:100%;" placeholder="Adınız" class="MetinKutusu1" @bind="bilgiler[0]"/></div>
+    <div><input type="text" style="width:100%;" placeholder="Soyadınız" class="MetinKutusu1" @bind="bilgiler[1]"/></div>
+    <div><input type="text" style="width:100%;" placeholder="E-Posta Adresiniz" class="MetinKutusu1" @bind="bilgiler[2]"/></div>
+    <div><input type="text" style="width:100%;" placeholder="Kullanıcı Adınız" class="MetinKutusu1" @bind="bilgiler[3]"></div>
+    <div><input type="password" style="width:100%;" placeholder="Parolanız" class="MetinKutusu1" @bind="bilgiler[4]"/></div>
+    <div><input type="password" style="width:100%;" placeholder="Parolanız (Tekrar)" class="MetinKutusu1" @bind="bilgiler[5]"/></div>
     
     @*<div><input type="text" placeholder="@ph1" class="MetinKutusu1" @bind="bir"/></div>
     <div><input type="text" placeholder="@ph2" class="MetinKutusu1" @bind="iki"/></div>*@
