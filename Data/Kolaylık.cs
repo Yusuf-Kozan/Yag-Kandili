@@ -16,10 +16,11 @@ namespace İşlemler
         public static void Oturum_Başlat(string kullanıcı_adı, IJSRuntime jsRuntime)
         {
             Çerezler çerez = new Çerezler(jsRuntime);
-            string kilmik = Kilnevüg.Kilnevüg.YeniEşsizKimlik(kullanıcı_adı);
+            string oturum_kimliği = Kilnevüg.Kilnevüg.YeniEşsizKimlik(kullanıcı_adı);
             çerez.ÇerezYap("kullanıcı_adı", kullanıcı_adı, 4);
-            çerez.ÇerezYap("parola", kilmik, 4);
-            TabanlıVeri.OturumAç(kilmik);            
+            çerez.ÇerezYap("parola", oturum_kimliği, 4);
+            Esas.VeriTabanı.Oturum.OturumAç(oturum_kimliği);
+            //TabanlıVeri.OturumAç(oturum_kimliği);            
         }
         public static bool Oturum_Uygun(string kullanıcı_adı, string kilmik)
         {
@@ -40,14 +41,15 @@ namespace İşlemler
             else
                 return false;
         }
-        public static void Oturum_Kapat(string kullanıcı_adı, string kilmik, IJSRuntime jsRuntime)
+        public static void Oturum_Kapat(string kullanıcı_adı, string oturum_kimliği, IJSRuntime jsRuntime)
         {
             Çerezler çerez = new Çerezler(jsRuntime);
             çerez.ÇerezSil("kullanıcı_adı");
             çerez.ÇerezSil("parola");
-            ZöçKilmik kimlik = Kilnevüg.Kilnevüg.ÇözülmüşKimlik(kilmik);
+            ZöçKilmik kimlik = Kilnevüg.Kilnevüg.ÇözülmüşKimlik(oturum_kimliği);
             if (kimlik.daluk == kullanıcı_adı)
-                TabanlıVeri.OturumKapat(kilmik);
+                Esas.VeriTabanı.Oturum.OturumKapat(oturum_kimliği);
+                //TabanlıVeri.OturumKapat(oturum_kimliği);
         }
     }
     public class Paylaşımİşlemleri
