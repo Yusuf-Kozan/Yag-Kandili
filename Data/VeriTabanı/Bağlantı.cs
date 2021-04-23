@@ -4,7 +4,10 @@ namespace Esas.VeriTabanı
 {
     public class Bağlantı
     {
-        private string[] MySQL_SunucuAdresi()
+        public static string bağlantı_dizesi = $"Server={MySQL_SunucuAdresi()[0]};Port={MySQL_SunucuAdresi()[1]};" + 
+                                        $"Database={VeriTabanınınAdı()};User ID={MySQL_KullanıcıAdıİleParola()[0]};" + 
+                                        $"Password={MySQL_KullanıcıAdıİleParola()[1]};Pooling=false;";
+        private static string[] MySQL_SunucuAdresi()
         {
             // Sunucu ve Port
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt1");
@@ -21,7 +24,7 @@ namespace Esas.VeriTabanı
                 return new string[]{String.Empty, String.Empty};
             }
         }
-        private string[] MySQL_KullanıcıAdıİleParola()
+        private static string[] MySQL_KullanıcıAdıİleParola()
         {
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt1");
             if (belge_içeriği[2].StartsWith(">") && belge_içeriği[3].StartsWith(">"))
@@ -43,7 +46,7 @@ namespace Esas.VeriTabanı
                 return new string[]{String.Empty, String.Empty};
             }
         }
-        private string VeriTabanınınAdı()
+        private static string VeriTabanınınAdı()
         {
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt2");
             if (belge_içeriği[0].StartsWith(">"))
