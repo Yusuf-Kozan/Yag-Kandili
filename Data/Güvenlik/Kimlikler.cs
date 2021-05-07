@@ -13,17 +13,17 @@ namespace Kilnevüg
             return $"{karılmış}₺{tür[0]}";
         }
     }
-    public class Paylaşım_Kimliği
+    public class PaylaşımKimliği
     {
         //Paylaşımların Kimlik2 değişkenini hesaplamak için
-        public static string Kimlik_2(Paylaşım paylaşım)
+        public static string Kimlik2(Paylaşım paylaşım)
         {
             CryptHash.Net.Hash.Hash.SHA512 sha512 = new CryptHash.Net.Hash.Hash.SHA512();
             string zaman = paylaşım.TARİH.ToString("ddMMyyyyHHmmss");
             string karılmamış = paylaşım.BAŞLIK + paylaşım.İÇERİK + paylaşım.PAYLAŞAN + paylaşım.OTURUM + zaman;
             return sha512.ComputeHash(karılmamış).HashString;
         }
-        public static string Kimlik_2(string başlık, string içerik, string paylaşan, string oturum, DateTime tarih)
+        public static string Kimlik2(string başlık, string içerik, string paylaşan, string oturum, DateTime tarih)
         {
             CryptHash.Net.Hash.Hash.SHA512 sha512 = new CryptHash.Net.Hash.Hash.SHA512();
             string zaman = tarih.ToString("ddMMyyyyHHmmss");

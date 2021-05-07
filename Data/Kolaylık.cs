@@ -59,7 +59,7 @@ namespace İşlemler
         {
             ÜyeBil paylaşan = TabanlıVeri.Kilmikten_ÜyeBil(oturum_kimliği);
             Paylaşım yeni_paylaşım = new Paylaşım();
-            yeni_paylaşım.KİMLİK_2 = Paylaşım_Kimliği.Kimlik_2(başlık, içerik, paylaşan.KİMLİK, oturum_kimliği, tarih);
+            yeni_paylaşım.KİMLİK_2 = PaylaşımKimliği.Kimlik2(başlık, içerik, paylaşan.KİMLİK, oturum_kimliği, tarih);
             yeni_paylaşım.BAŞLIK = başlık; yeni_paylaşım.İÇERİK = içerik;
             yeni_paylaşım.EKLENTİ = eklenti; yeni_paylaşım.PAYLAŞAN = paylaşan.KİMLİK;
             yeni_paylaşım.OTURUM = oturum_kimliği; yeni_paylaşım.TARİH = tarih;
