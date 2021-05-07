@@ -32,6 +32,16 @@
     border-width: 3px;
     border-radius: 10px;
 }
+.p-başlık-yeşil {
+    font-family: sans-serif, Helvetica, Arial;
+    font-size: x-large;
+    text-align: center;
+    color: rgb(0, 120, 0);
+    font-weight: bold;
+    margin: 1%;
+    border: none;
+    text-decoration: none;
+}
 /*.p-başlık:hover span {
     display: none;
 }
