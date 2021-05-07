@@ -1,0 +1,12 @@
+@using Esas
+@namespace Bileşenler
+
+@for (int kaçıncı_yorum = 0; kaçıncı_yorum < gösterilecek_yorumlar.Length; kaçıncı_yorum++)
+{
+    <TekYorum gösterilecek_yorum=@gösterilecek_yorumlar[kaçıncı_yorum]/><br/>
+}
+
+@code {
+    [Parameter]
+    public Esas.Yorum[] gösterilecek_yorumlar {get; set;}
+}

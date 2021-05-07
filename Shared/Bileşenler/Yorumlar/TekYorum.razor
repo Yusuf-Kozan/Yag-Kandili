@@ -1,0 +1,19 @@
+@using Esas
+@namespace Bileşenler
+
+<div class="birincil-yorum">
+    <p>
+        <b>@yorumlayan().KULLANICI_ADI:</b> @gösterilecek_yorum.İÇERİK <br/>
+        <span style="font-size: small;">@gösterilecek_yorum.NE_ZAMAN</span>
+    </p>
+</div>
+
+@code {
+    [Parameter]
+    public Esas.Yorum gösterilecek_yorum {get; set;}
+
+    private ÜyeBil yorumlayan()
+    {
+        return Esas.VeriTabanı.Üyelik.KimlikKimin(gösterilecek_yorum.KİM);
+    }
+}

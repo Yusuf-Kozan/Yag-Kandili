@@ -11,7 +11,7 @@
 
     @if (oturum_açık)
     {
-        <div class="p-genel p-sayfa">
+        <div class="p-genel p-sayfa" style="font-family: sans-serif;">
             <button class="p-başlık" style="@başlık_görünüşü" @onclick="Geri_Dön">@başlık_metni</button><br/>
             <p style="text-align: justify; white-space: pre-line; color: black;">@(esas_paylaşım.İÇERİK)</p>
 
@@ -24,6 +24,15 @@
             {
                 <button class="D1ykAK2" style="font-size: medium;" @onclick="@(e => Beğen(@esas_paylaşım.KİMLİK_2, true))">Beğenme</button>
             }
+            </div>
+
+            <div style="color:black; text-align: start;">
+                <p style="font-size: larger; font-weight: bold; page-break-before: always;">Yorumlar ve Söyleşi</p>
+                <input type="text" placeholder="Yorum Yaz..." class="MetinKutusu1g"
+                    style="width: 80%; font-size: large; color: black;" @bind="yorum_içeriği"/>
+                <button class="D1ykG" style="font-size: large; border-width: 2px;" @onclick="Yorumla">Yorumla</button>
+
+                <BirincilYorumlar gösterilecek_yorumlar=@Esas.VeriTabanı.Yorum.PaylaşımınBirincilYorumları(esas_paylaşım.KİMLİK_2) />
             </div>
         </div>
     }
@@ -71,6 +80,13 @@
         {
             TabanlıVeri.BeğeniyiGeriAl(kimlik2);
         }
+    }
+    private string yorum_içeriği;
+    private void Yorumla()
+    {
+        İşlemler.Yorumİşlemleri.YorumYap(üye.KİMLİK, esas_paylaşım.KİMLİK_2, yorum_içeriği,
+                                DateTime.Now, kimlik);
+        yorum_içeriği = null;
     }
 
 
