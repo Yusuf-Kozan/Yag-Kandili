@@ -1,46 +1,46 @@
 window.Çerezİşleri = {
-    ÇerezYap: function(ad, değer, kaçSaat)
+    ÇerezYap: function(çerez_adı, değer, kaç_saat)
     {
-        var son;
-        if(kaçSaat)
+        var son_tarih;
+        if(kaç_saat)
         {
             var tarih = new Date();
-            tarih.setTime(tarih.getTime() + (kaçSaat * 60 * 60 * 1000));
-            son = "expires=" + tarih.toUTCString() + "; ";
+            tarih.setTime(tarih.getTime() + (kaç_saat * 60 * 60 * 1000));
+            son_tarih = "expires=" + tarih.toUTCString() + "; ";
         }
         else
         {
-            son = "";
+            son_tarih = "";
         }
-        document.cookie = ad + "=" + değer + "; " + son + "path=/"; 
+        document.cookie = çerez_adı + "=" + değer + "; " + son_tarih + "path=/"; 
     },
 
-    ÇerezOku: function(ad)
+    ÇerezOku: function(çerez_adı)
     {
-        var çAd = ad + "=";
+        çerez_adı = çerez_adı + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(';');
-        for (var i = 0; ca.length; i++)
+        for (var i = 0; i < ca.length; i++)
         {
             var c = ca[i];
             while (c.charAt(0) == ' ') {
                 c = c.substring(1);
               }
-              if (c.indexOf(çAd) == 0) {
-                return c.substring(çAd.length, c.length);
+              if (c.indexOf(çerez_adı) == 0) {
+                return c.substring(çerez_adı.length, c.length);
               }
         }
         return "";
     },
 
-    ÇerezSil: function(ad)
+    ÇerezSil: function(çerez_adı)
     {
-        document.cookie = ad + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = çerez_adı + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     },
 
-    ÇerezVar: function(ad)
+    ÇerezVar: function(çerez_adı)
     {
-        if (this.ÇerezOku(ad) === "")
+        if (this.ÇerezOku(çerez_adı) === "")
         {
             return false;
         }
