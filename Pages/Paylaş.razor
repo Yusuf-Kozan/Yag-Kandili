@@ -44,9 +44,9 @@
     {
         try
         {
-            var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı_adı");
+            var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
             a = c.ToString(); c = null;
-            var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "parola");
+            var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
             b = d.ToString(); d = null;
             devam(a, b);
             StateHasChanged();
@@ -56,14 +56,14 @@
             NavigationManager.NavigateTo("/");
         }
     }
-    private void devam(string kullanıcı_adı, string kilmik)
+    private void devam(string kullanıcı_kimliği, string oturum_kimliği)
     {
-        oturum_açık = İşlemler.Oturumİşlemleri.Oturum_Uygun(kullanıcı_adı, kilmik);
+        oturum_açık = Esas.VeriTabanı.Oturum.BuOturumAçık(oturum_kimliği, kullanıcı_kimliği);
         if (!oturum_açık)
         {
             NavigationManager.NavigateTo("/");
         }
-        üye = TabanlıVeri.Kilmikten_ÜyeBil(kilmik);
-        Paylaş.kimlik = kilmik;
+        üye = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+        Paylaş.kimlik = oturum_kimliği;
     }
 }

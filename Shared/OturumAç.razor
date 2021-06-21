@@ -15,10 +15,10 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
     {
         <h4 style="color:#4169e1; font-size: xx-large;">@Başlık</h4>
     }
-    <div><input type="text" style="width:100%;" placeholder="Kullanıcı Adı" class="MetinKutusu1" @bind="girBil[0]"/></div>
-    <div><input type="password" style="width:100%;" placeholder="Parola" class="MetinKutusu1" @bind="girBil[1]"/></div>
-    <div><button class="D1" @onclick="cGiriş">Giriş Yap</button>
-    <button class="D2" @onclick="cParolaSıfırla">Parola Sıfırla</button></div>
+    <div><input type="text" style="width:100%;" placeholder="Kullanıcı Adı" class="MetinKutusu1" @bind="kullanıcı_adı"/></div>
+    <div><input type="password" style="width:100%;" placeholder="Parola" class="MetinKutusu1" @bind="parola"/></div>
+    <div><button class="D1" @onclick="GirişYap">Giriş Yap</button>
+    <button class="D2" @onclick="ParolaSıfırla">Parola Sıfırla</button></div>
 </div>
 
 @code {
@@ -26,21 +26,20 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
     public string yön {get; set;}
 
     private string Başlık = "Giriş Yap";
-    private string[] girBil = new string[2]; //0 = kulad, 1 = parol
-    private void cGiriş()
+    private string kullanıcı_adı, parola;
+    private void GirişYap()
     {
-        string kulad = girBil[0];
-        string parol = girBil[1];
-        if (!Girdiler.allAreNullOrWhiteSpace(girBil))
+        if (String.IsNullOrWhiteSpace(kullanıcı_adı) || String.IsNullOrWhiteSpace(parola))
         {
-            if (!Girdiler.tümMetinlerUygun(girBil))
-            {
-                Başlık = "Kullanıcı Adınızı veya Parolanızı Hatalı Girdiniz";
-            }
-            else if (TabanlıVeri.KP_Kullanımda(kulad,parol))
+            Başlık = "Giriş Reddedildi";
+        }
+        else
+        {
+            // Buraya parola karma komutu eklenecek.
+            if (Esas.VeriTabanı.Üyelik.GirişBilgileriDoğru(kullanıcı_adı, parola))
             {
                 Başlık = "Giriş Yap";
-                İşlemler.Oturumİşlemleri.Oturum_Başlat(kulad, JSRuntime);
+                İşlemler.Oturumİşlemleri.Oturum_Başlat(kullanıcı_adı, JSRuntime);
                 if(String.IsNullOrWhiteSpace(yön))
                     NavigationManager.NavigateTo("/ana");
                 else
@@ -48,17 +47,10 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
             }
             else
             {
-                Başlık = "Kullanıcı Adınızı veya Parolanızı Hatalı Girdiniz";
+                Başlık = "Giriş Reddedildi";
             }
         }
-        else
-        {
-            Başlık = "Kullanıcı Adınızı veya Parolanızı Girmediniz";
-        }
-        kulad = null;
-        parol = null;
     }
-
-    private void cParolaSıfırla()
+    private void ParolaSıfırla()
     {}
 }

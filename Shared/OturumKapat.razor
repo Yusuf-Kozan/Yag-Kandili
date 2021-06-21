@@ -10,10 +10,10 @@
     [Parameter]
     public string nerede {private get; set;} = "/ana";
     [Parameter]
-    public string kimliği_ne {private get; set;}
+    public string oturum_kimliği {private get; set;}
 
     private void oturumKapat()
     {
-        İşlemler.Oturumİşlemleri.Oturum_Kapat(kişi.KULLANICI_ADI, kimliği_ne, JSruntime);
+        İşlemler.Oturumİşlemleri.Oturum_Kapat(kişi.KİMLİK, oturum_kimliği, JSruntime);
     }
 }

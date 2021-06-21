@@ -98,18 +98,31 @@ namespace Esas
     public struct Üye
     {
         public string AD {get; set;}
-        public string SOYADI;
-        public string KULLANICI_ADI;
-        public string PAROLA;
-        public string E_POSTA;
-        public string ÜSTÜNLÜK;
-        public DateTime BAŞLANGIÇ;
-        public string RESİM;
+        public string SOYADI {get; set;}
+        public string KULLANICI_ADI {get; set;}
+        public string PAROLA {get; set;}
+        public string E_POSTA {get; set;}
+        public string ÜSTÜNLÜK {get; set;}
+        public DateTime BAŞLANGIÇ {get; set;}
+        public string RESİM {get; set;}
+
+        public Üye(string ad, string soyadı, string kullanıcı_adı, string parola,
+                    string e_posta, string üstünlük, DateTime başlangıç_tarihi, string resim)
+        {
+            AD = ad;
+            SOYADI = soyadı;
+            KULLANICI_ADI = kullanıcı_adı;
+            PAROLA = parola;
+            E_POSTA = e_posta;
+            ÜSTÜNLÜK = üstünlük;
+            BAŞLANGIÇ = başlangıç_tarihi;
+            RESİM = resim;
+        }
 
         public string DizinYolu()
         {
-            string üstDizin = @"./Kullanıcılar";
-            return System.IO.Path.Combine(üstDizin, KULLANICI_ADI);
+            string üst_dizin = @"./Kullanıcılar";
+            return System.IO.Path.Combine(üst_dizin, KULLANICI_ADI);
         }
         public override string ToString()
         {
@@ -119,7 +132,7 @@ namespace Esas
         }
         public string[] MetinKümesiYap()
         {
-            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString(), RESİM};
+            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString("yyyyMMddHHmmss"), RESİM};
             return küme;
         }
     }
