@@ -27,6 +27,7 @@
 	margin: 4px;
 	font-size: large;
 	font-weight: bold;
+	outline-style: none;
 }
 .D1:hover {
 	color: rgb(0,120,0);
@@ -48,6 +49,7 @@
 	margin: 4px;
 	font-size: x-large;
 	font-weight: bold;
+	outline-style: none;
 }
 .D1yk:hover {
 	color: #ff6600;
@@ -70,6 +72,7 @@
 	margin: 4px;
 	font-size: large;
 	font-weight: bold;
+	outline-style: none;
 }
 .D1ykK:hover {
 	color: rgb(200,0,0);
@@ -93,6 +96,7 @@
 	margin: 4px;
 	font-size: large;
 	font-weight: bold;
+	outline-style: none;
 }
 .D1ykAK:hover {
 	color: rgb(255,51,51);
@@ -116,6 +120,7 @@
 	margin: 4px;
 	font-size: large;
 	font-weight: bold;
+	outline-style: none;
 }
 .D1ykM {
 	/*Rengi açıklaşan düğmenin
@@ -134,7 +139,7 @@
 	margin: 4px;
 	font-size: x-large;
 	font-weight: bold;
-	
+	outline-style: none;
 }
 .D1ykM:hover {
 	color: #cc22b2;
@@ -158,6 +163,7 @@
 	margin: 4px;
 	font-size: x-large;
 	font-weight: bold;
+	outline-style: none;
 }
 .D1ykY:hover {
 	color: #00bb00;
@@ -181,6 +187,7 @@
 	margin: 4px;
 	font-size: x-large;
 	font-weight: bold;
+	outline-style: none;
 }
 .D1ykG:hover {
 	color: #808080;
@@ -196,6 +203,7 @@
 	color: rgb(0,120,0);
 	font-size: x-large;
 	margin: 3px;
+	outline-style: none;
 }
 .MetinKutusu1m {
 	/*Morlu MetinKutusu1*/
@@ -205,6 +213,7 @@
 	color: #cc22b2;
 	font-size: x-large;
 	margin: 3px;
+	outline-style: none;
 	/*06afda*/
 }
 .MetinKutusu1m-saydam {
@@ -217,6 +226,7 @@
 	background: transparent;
 	font-size: x-large;
 	margin: 3px;
+	outline-style: none;
 	/*06afda*/
 }
 .MetinKutusu1yk {
@@ -227,6 +237,7 @@
 	color: #ff6600;
 	font-size: x-large;
 	margin: 3px;
+	outline-style: none;
 	/*06afda*/
 }
 .MetinKutusu1g {
@@ -237,6 +248,7 @@
 	color: #808080;
 	font-size: x-large;
 	margin: 3px;
+	outline-style: none;
 }
 .D3 {
 	border: solid;
@@ -253,6 +265,7 @@
 	margin: 4px;
 	font-size: large;
 	font-weight: bold;
+	outline-style: none;
 }
 .D3:hover {
 	background-color: rgb(0,120,0);
@@ -274,6 +287,7 @@
 	margin: 4px;
 	font-size: large;
 	font-weight: bold;
+	outline-style: none;
 }
 .D3g:hover {
 	background-color: #808080;
