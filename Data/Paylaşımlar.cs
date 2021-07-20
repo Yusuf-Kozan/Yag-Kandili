@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using Kilnevüg;
 
 namespace Esas
@@ -13,6 +14,7 @@ namespace Esas
         public string PAYLAŞAN {get; set;} // Paylaşımı yapan kişinin kullanıcı kimliği
         public string OTURUM {get; set;} // Paylaşımın yapıldığı oturumun kimliği
         public DateTime TARİH {get; set;} // Paylaşımın yapıldığı tarih
+        public string LİSANS {get; set;} // Paylaşımın kullanım koşulları
 
         public Paylaşım()
         {}
@@ -28,15 +30,28 @@ namespace Esas
                 OTURUM = oturum;
                 TARİH = tarih;
         }
+        public Paylaşım (string[] paylaşım_bilgileri)
+        {
+            KİMLİK_1 = long.Parse(paylaşım_bilgileri[0]);
+            KİMLİK_2 = paylaşım_bilgileri[1];
+            BAŞLIK = paylaşım_bilgileri[2];
+            İÇERİK = paylaşım_bilgileri[3];
+            EKLENTİ = paylaşım_bilgileri[4];
+            PAYLAŞAN = paylaşım_bilgileri[5];
+            OTURUM = paylaşım_bilgileri[6];
+            CultureInfo TR = new CultureInfo("tr-TR");
+            TARİH = DateTime.ParseExact(paylaşım_bilgileri[7], "yyyyMMddHHmmss", TR);
+            LİSANS = paylaşım_bilgileri[8];
+        }
     }
     public struct paylaşım
     {
         public long KİMLİK_1;
-        public string KİMLİK_2, BAŞLIK, İÇERİK, EKLENTİ, PAYLAŞAN, OTURUM;
+        public string KİMLİK_2, BAŞLIK, İÇERİK, EKLENTİ, PAYLAŞAN, OTURUM, LİSANS;
         public DateTime TARİH;
 
         public paylaşım (long kimlik1, string kimlik2, string başlık, string içerik, string eklenti,
-                        string paylaşan, string oturum, DateTime tarih)
+                        string paylaşan, string oturum, DateTime tarih, string lisans)
         {
                 KİMLİK_1 = kimlik1;
                 KİMLİK_2 = kimlik2;
@@ -46,6 +61,38 @@ namespace Esas
                 PAYLAŞAN = paylaşan;
                 OTURUM = oturum;
                 TARİH = tarih;
+                LİSANS = lisans;
+        }
+        public paylaşım (string[] paylaşım_bilgileri)
+        {
+            KİMLİK_1 = long.Parse(paylaşım_bilgileri[0]);
+            KİMLİK_2 = paylaşım_bilgileri[1];
+            BAŞLIK = paylaşım_bilgileri[2];
+            İÇERİK = paylaşım_bilgileri[3];
+            EKLENTİ = paylaşım_bilgileri[4];
+            PAYLAŞAN = paylaşım_bilgileri[5];
+            OTURUM = paylaşım_bilgileri[6];
+            CultureInfo TR = new CultureInfo("tr-TR");
+            TARİH = DateTime.ParseExact(paylaşım_bilgileri[7], "yyyyMMddHHmmss", TR);
+            LİSANS = paylaşım_bilgileri[8];
+        }
+    }
+    public struct yeni_paylaşım
+    {
+        public string KİMLİK_2, BAŞLIK, İÇERİK, EKLENTİ, PAYLAŞAN, OTURUM, LİSANS;
+        public DateTime TARİH;
+
+        public yeni_paylaşım (string kimlik2, string başlık, string içerik, string eklenti,
+                        string paylaşan, string oturum, DateTime tarih, string lisans)
+        {
+                KİMLİK_2 = kimlik2;
+                BAŞLIK = başlık;
+                İÇERİK = içerik;
+                EKLENTİ = eklenti;
+                PAYLAŞAN = paylaşan;
+                OTURUM = oturum;
+                TARİH = tarih;
+                LİSANS = lisans;
         }
     }
 }
