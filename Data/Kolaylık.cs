@@ -36,16 +36,14 @@ namespace İşlemler
     public class Paylaşımİşlemleri
     {
         public static void Paylaşım_Yap(string başlık, string içerik, string eklenti,
-                                        string oturum_kimliği, DateTime tarih)
+                                        string oturum_kimliği, DateTime tarih, string lisans)
         {
             string kullanıcı_kimliği = Esas.VeriTabanı.Oturum.Oturumunİyesi(oturum_kimliği);
             ÜyeBil paylaşan = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
-            Paylaşım yeni_paylaşım = new Paylaşım();
-            yeni_paylaşım.KİMLİK_2 = PaylaşımKimliği.Kimlik2(başlık, içerik, paylaşan.KİMLİK, oturum_kimliği, tarih);
-            yeni_paylaşım.BAŞLIK = başlık; yeni_paylaşım.İÇERİK = içerik;
-            yeni_paylaşım.EKLENTİ = eklenti; yeni_paylaşım.PAYLAŞAN = paylaşan.KİMLİK;
-            yeni_paylaşım.OTURUM = oturum_kimliği; yeni_paylaşım.TARİH = tarih;
-            TabanlıVeri.Paylaş(yeni_paylaşım);
+            string kimlik2 = PaylaşımKimliği.Kimlik2(başlık, içerik, paylaşan.KİMLİK, oturum_kimliği, tarih);
+            yeni_paylaşım yeni_paylaşım = new yeni_paylaşım(kimlik2, başlık, içerik, eklenti, paylaşan.KİMLİK,
+                                                            oturum_kimliği, tarih, lisans);
+            Esas.VeriTabanı.Paylaşım.PaylaşımYap(yeni_paylaşım);
         }
     }
     public class Yorumİşlemleri

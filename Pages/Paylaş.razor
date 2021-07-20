@@ -29,9 +29,10 @@
 
 @code {
     private string başlık, içerik;
+    private string lisans = "CC BY-NC-ND";
     private void Paylaş_Düğmesi()
     {
-        İşlemler.Paylaşımİşlemleri.Paylaşım_Yap(başlık, içerik, "y", b, DateTime.Now);//b == kilmik
+        İşlemler.Paylaşımİşlemleri.Paylaşım_Yap(başlık, içerik, "y", b, DateTime.Now, lisans);//b == kilmik
         başlık = null;
         içerik = null;
         NavigationManager.NavigateTo("/ana");

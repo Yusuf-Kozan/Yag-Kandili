@@ -2,32 +2,34 @@
 @using Esas
 @namespace Bileşenler
 
-@for (int i = 0; i < tüm_paylaşımlar.Length; i++)
+@for (int i = 0; i < paylaşım_bilgileri.GetLength(0); i++)
 {
     int döngü_turu = i;
-    string kullanıcı_bağlantısı = TabanlıVeri.Kilmikten_ÜyeBil(tüm_paylaşımlar[i].OTURUM).KULLANICI_ADI;
-    <div id="@(tüm_paylaşımlar[i].KİMLİK_2)"
+    paylaşım paylaşım = new paylaşım(paylaşım_bilgileri[i,0]);
+    parolasız_üye paylaşan = new parolasız_üye(paylaşım_bilgileri[i,1]);
+
+    <div id="@(paylaşım.KİMLİK_2)"
     class="MetinKutusu1yk p-kutu-bileşen" style="text-align: justify; overflow: hidden;">
         <a style="display: block; text-align: start;"
-        class="p-başlık-bileşen" href="/paylaşım/@(tüm_paylaşımlar[i].KİMLİK_2)">@(tüm_paylaşımlar[i].BAŞLIK)</a>
-        <p style="white-space: pre-line; color: black;">@(tüm_paylaşımlar[i].İÇERİK)</p>
+        class="p-başlık-bileşen" href="/paylaşım/@(paylaşım.KİMLİK_2)">@(paylaşım.BAŞLIK)</a>
+        <p style="white-space: pre-line; color: black;">@(paylaşım.İÇERİK)</p>
 
         <div style="text-align: left; width: 50%; float: left;">
-            <a href="/kişi/@kullanıcı_bağlantısı">
-                @(kullanıcı_bağlantısı)
+            <a href="/kişi/@paylaşan.KULLANICI_ADI">
+                @(paylaşan.KULLANICI_ADI)
             </a>
         </div>
-        @if (!TabanlıVeri.BunuBeğenmiş(kim.KİMLİK, tüm_paylaşımlar[döngü_turu].KİMLİK_2))
+        @if (!TabanlıVeri.BunuBeğenmiş(kim.KİMLİK, paylaşım.KİMLİK_2))
         {
         <div style="text-align: right; width: 50%; float: left;">
-            <button class="D1ykAK" style="font-size: medium;" @onclick="@(e => Beğen(@tüm_paylaşımlar[döngü_turu].KİMLİK_2, false))">Beğen</button>
+            <button class="D1ykAK" style="font-size: medium;" @onclick="@(e => Beğen(@paylaşım.KİMLİK_2, false))">Beğen</button>
             <button class="D1ykY" style="font-size: medium;">Yorumla</button>
         </div>
         }
         else
         {
         <div style="text-align: right; width: 50%; float: left;">
-            <button class="D1ykAK2" style="font-size: medium;" @onclick="@(e => Beğen(@tüm_paylaşımlar[döngü_turu].KİMLİK_2, true))">Beğenme</button>
+            <button class="D1ykAK2" style="font-size: medium;" @onclick="@(e => Beğen(@paylaşım.KİMLİK_2, true))">Beğenme</button>
             <button class="D1ykY" style="font-size: medium;">Yorumla</button>
         </div>
         }
@@ -40,7 +42,7 @@
     public ÜyeBil kim {get; set;}
     [Parameter]
     public string oturum {get; set;}
-    private Paylaşım[] tüm_paylaşımlar = TabanlıVeri.TümPaylaşımlar();
+    private string[,][] paylaşım_bilgileri = Esas.VeriTabanı.Paylaşım.KullanıcıBilgileriyleTümPaylaşımlar();
 
     private void Beğen(string kimlik2, bool beğenmiş)
     {
