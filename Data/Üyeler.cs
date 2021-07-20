@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using Kilnevüg;
 namespace Esas
 {
@@ -134,6 +135,30 @@ namespace Esas
         {
             string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString("yyyyMMddHHmmss"), RESİM};
             return küme;
+        }
+    }
+    public struct parolasız_üye
+    {
+        public string AD { get; set; }
+        public string SOYADI { get; set; }
+        public string KULLANICI_ADI { get; set; }
+        public string E_POSTA { get; set; }
+        public string ÜSTÜNLÜK { get; set; }
+        public DateTime BAŞLANGIÇ { get; set; }
+        public string RESİM { get; set; }
+        public string KİMLİK { get; set; }
+
+        public parolasız_üye (string[] üye_bilgileri)
+        {
+            AD = üye_bilgileri[0];
+            SOYADI = üye_bilgileri[1];
+            KULLANICI_ADI = üye_bilgileri[2];
+            E_POSTA = üye_bilgileri[3];
+            ÜSTÜNLÜK = üye_bilgileri[4];
+            CultureInfo TR = new CultureInfo("tr-TR");
+            BAŞLANGIÇ = DateTime.ParseExact(üye_bilgileri[5], "yyyyMMddHHmmss", TR);
+            RESİM = üye_bilgileri[6];
+            KİMLİK = üye_bilgileri[7];
         }
     }
     public struct çÜye
