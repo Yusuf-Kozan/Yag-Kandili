@@ -164,7 +164,7 @@ namespace Esas.VeriTabanı
             return false;
         }
         
-        private static string TabloAdı()
+        internal static string TabloAdı()
         {
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt2");
             if (belge_içeriği.Length >= 5 && belge_içeriği[1].StartsWith("-"))
