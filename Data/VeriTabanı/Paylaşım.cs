@@ -84,6 +84,8 @@ namespace Esas.VeriTabanı
                 string tarih = veri_okuyucu["Tarih"].ToString();
                 paylaşımlar[döngü_turu].TARİH = DateTime.ParseExact(tarih, "yyyyMMddHHmmss", TR);
                 paylaşımlar[döngü_turu].LİSANS = veri_okuyucu["Lisans"].ToString();
+
+                döngü_turu++;
             }
             veri_okuyucu.Close(); veri_okuyucu.Dispose();
             komut.Dispose();
@@ -140,6 +142,8 @@ namespace Esas.VeriTabanı
                 paylaşımlar[döngü_turu, 1][5] = veri_okuyucu["Başlangıç"].ToString();
                 paylaşımlar[döngü_turu, 1][6] = veri_okuyucu["Resim"].ToString();
                 paylaşımlar[döngü_turu, 1][7] = veri_okuyucu["Kimlik"].ToString();
+
+                döngü_turu++;
             }
             veri_okuyucu.Close(); veri_okuyucu.Dispose();
             komut.Dispose();
