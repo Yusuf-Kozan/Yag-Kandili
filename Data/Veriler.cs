@@ -596,13 +596,13 @@ namespace Esas
 
 /*------ Takip, Beğeni ve Yorum ile ilgili şeyler burada başlıyor. ------*/
 
-        public static void Beğen(Beğeni beğeni)
-        {
-            string ek = $"INSERT INTO tby (Tür, Kimden, Neye, İçerik, Kimlik, Ne_Zaman, Oturum) " +
-                        $"VALUES ('Beğeni', '{beğeni.KİM}', '{beğeni.NEYİ}', '-', '{beğeni.KİMLİK}', " +
-                        $"'{beğeni.NE_ZAMAN.ToString("yyyyMMddHHmmss")}', '{beğeni.OTURUM}');";
-            komutGönder(ek);
-        }
+        //public static void Beğen(Beğeni beğeni)
+        //{
+        //    string ek = $"INSERT INTO tby (Tür, Kimden, Neye, İçerik, Kimlik, Ne_Zaman, Oturum) " +
+        //                $"VALUES ('Beğeni', '{beğeni.KİM}', '{beğeni.NEYİ}', '-', '{beğeni.KİMLİK}', " +
+        //                $"'{beğeni.NE_ZAMAN.ToString("yyyyMMddHHmmss")}', '{beğeni.OTURUM}');";
+        //    komutGönder(ek);
+        //}
         public static void BeğeniyiGeriAl(string kimlik2)
         {
             string ek = $"DELETE FROM tby WHERE Tür = 'Beğeni' AND Neye = '{kimlik2}';";
