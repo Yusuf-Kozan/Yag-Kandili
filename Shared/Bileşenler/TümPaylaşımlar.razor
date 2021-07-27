@@ -19,20 +19,7 @@
                 @(paylaşan.KULLANICI_ADI)
             </a>
         </div>
-        @if (!TabanlıVeri.BunuBeğenmiş(kim.KİMLİK, paylaşım.KİMLİK_2))
-        {
-        <div style="text-align: right; width: 50%; float: left;">
-            <button class="D1ykAK" style="font-size: medium;" @onclick="@(e => Beğen(@paylaşım.KİMLİK_2, false))">Beğen</button>
-            <button class="D1ykY" style="font-size: medium;">Yorumla</button>
-        </div>
-        }
-        else
-        {
-        <div style="text-align: right; width: 50%; float: left;">
-            <button class="D1ykAK2" style="font-size: medium;" @onclick="@(e => Beğen(@paylaşım.KİMLİK_2, true))">Beğenme</button>
-            <button class="D1ykY" style="font-size: medium;">Yorumla</button>
-        </div>
-        }
+        
     </div>
 }
 <KimliğeGit/>
@@ -44,17 +31,5 @@
     public string oturum {get; set;}
     private string[,][] paylaşım_bilgileri = Esas.VeriTabanı.Paylaşım.KullanıcıBilgileriyleTümPaylaşımlar();
 
-    private void Beğen(string kimlik2, bool beğenmiş)
-    {
-        if (!beğenmiş)
-        {
-            string beğeni_kimliği = Kilnevüg.TBY_Kimlikleri.Kimlik("Beğeni", kim.KİMLİK, kimlik2, DateTime.Now.ToString("yyyyMMddHHmmss"), "-", oturum);
-            Beğeni beğeni = new Beğeni(kim.KİMLİK, kimlik2, DateTime.Now, oturum, beğeni_kimliği);
-            TabanlıVeri.Beğen(beğeni);
-        }
-        else
-        {
-            TabanlıVeri.BeğeniyiGeriAl(kimlik2);
-        }
-    }
+    
 }

@@ -16,14 +16,7 @@
             <p style="text-align: justify; white-space: pre-line; color: black;">@(esas_paylaşım.İÇERİK)</p>
 
             <div style="text-align: end;">
-            @if (!TabanlıVeri.BunuBeğenmiş(üye.KİMLİK, esas_paylaşım.KİMLİK_2))
-            {
-                <button class="D1ykAK" style="font-size: medium;" @onclick="@(e => Beğen(@esas_paylaşım.KİMLİK_2, false))">Beğen</button>
-            }
-            else
-            {
-                <button class="D1ykAK2" style="font-size: medium;" @onclick="@(e => Beğen(@esas_paylaşım.KİMLİK_2, true))">Beğenme</button>
-            }
+            
             </div>
 
             <div style="color:black; text-align: start;">
@@ -66,19 +59,6 @@
         else
         {
             dönüş_sayacı = 0;
-        }
-    }
-    private void Beğen(string kimlik2, bool beğenmiş)
-    {
-        if (!beğenmiş)
-        {
-            string beğeni_kimliği = TBY_Kimlikleri.Kimlik("Beğeni", üye.KİMLİK, kimlik2, DateTime.Now.ToString("yyyyMMddHHmmss"), "-", b);
-            Beğeni beğeni = new Beğeni(üye.KİMLİK, kimlik2, DateTime.Now, b, beğeni_kimliği);
-            TabanlıVeri.Beğen(beğeni);
-        }
-        else
-        {
-            TabanlıVeri.BeğeniyiGeriAl(kimlik2);
         }
     }
     private string yorum_içeriği;
