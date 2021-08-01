@@ -1,0 +1,18 @@
+.değerlendirme_düğmesi {
+	background: transparent;
+    border: solid transparent;
+    color: gray;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    padding: auto;
+
+    transition: 0.3s;
+}
+.değerlendirme_düğmesi:disabled {
+    color: red;
+}
+.değerlendirme_düğmesi:enabled:hover {
+    color: salmon;
+    transition: 0.1s;
+}
