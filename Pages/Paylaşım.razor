@@ -15,8 +15,9 @@
             <button class="p-başlık" style="@başlık_görünüşü" @onclick="Geri_Dön">@başlık_metni</button><br/>
             <p style="text-align: justify; white-space: pre-line; color: black;">@(esas_paylaşım.İÇERİK)</p>
 
-            <div style="text-align: end;">
-            
+            <div style="text-align: center;">
+                <Değerlendir değerlendiren=@bakan_kullanıcı.KİMLİK değerlendirilen=@paylaşım_kimliği
+                oturum=@oturum_kimliği/>
             </div>
 
             <div style="color:black; text-align: start;">
@@ -64,16 +65,16 @@
     private string yorum_içeriği;
     private void Yorumla()
     {
-        İşlemler.Yorumİşlemleri.YorumYap(üye.KİMLİK, esas_paylaşım.KİMLİK_2, yorum_içeriği,
-                                DateTime.Now, kimlik);
+        İşlemler.Yorumİşlemleri.YorumYap(bakan_kullanıcı.KİMLİK, esas_paylaşım.KİMLİK_2, yorum_içeriği,
+                                DateTime.Now, oturum_kimliği);
         yorum_içeriği = null;
     }
 
 
     private string a, b; //a == kullanıcı adı && b == kilmik
     private bool oturum_açık;
-    public static ÜyeBil üye {get; set;}
-    public static string kimlik {get; private set;}
+    public static ÜyeBil bakan_kullanıcı {get; set;}
+    public static string oturum_kimliği {get; private set;}
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
@@ -97,8 +98,8 @@
         {
             NavigationManager.NavigateTo("/");
         }
-        üye = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
-        Paylaşım.kimlik = oturum_kimliği;
+        bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+        Paylaşım.oturum_kimliği = oturum_kimliği;
         esas_paylaşım = TabanlıVeri.TekPaylaşım(paylaşım_kimliği);
         
         if (dönüş_sayacı == 1)
