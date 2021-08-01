@@ -2,6 +2,13 @@
 @namespace Bileşenler
 
 <div>
+    <button class="değerlendirme_düğmesi" disabled="@disabled[0]" @onclick="() => Değerle(-2)">-2</button>
+    <button class="değerlendirme_düğmesi" disabled="@disabled[1]" @onclick="() => Değerle(-1)">-1</button>
+    <button class="değerlendirme_düğmesi" disabled="@disabled[2]" @onclick="() => Değerle(0)">0</button>
+    <button class="değerlendirme_düğmesi" disabled="@disabled[3]" @onclick="() => Değerle(1)">+1</button>
+    <button class="değerlendirme_düğmesi" disabled="@disabled[4]" @onclick="() => Değerle(2)">+2</button>
+    <button class="değerlendirme_düğmesi" @onclick="Değersizleştir">Sil</button>
+    <!--<p>@a</p>-->
 </div>
 
 @code {
@@ -11,4 +18,36 @@
     public string değerlendiren {get; set;}
     [Parameter]
     public string oturum {get; set;}
+    private string a;
+    
+    private void Değerle(int değer)
+    {
+        Beğeni beğeni = new Beğeni(değerlendiren, değerlendirilen, değer, DateTime.Now, oturum);
+        Esas.VeriTabanı.Beğeni.BeğeniyiSil(değerlendiren, değerlendirilen);
+        Esas.VeriTabanı.Beğeni.Beğen(beğeni);
+        OnParametersSet();
+    }
+    private void Değersizleştir()
+    {
+        Esas.VeriTabanı.Beğeni.BeğeniyiSil(değerlendiren, değerlendirilen);
+        OnParametersSet();
+    }
+
+    private bool[] disabled = new bool[5];
+    protected override void OnParametersSet()
+    {
+        int[] değerlendirme = Esas.VeriTabanı.Beğeni.BakanKişininBeğenisi(değerlendiren, değerlendirilen);
+        for (int i = 0; i < 5; i++)
+        {
+            if (((değerlendirme[1] + 2) == i) && (değerlendirme[0] == 1))
+            {
+                disabled[i] = true;
+            }
+            else
+            {
+                disabled[i] = false;
+            }
+        }
+        a = $"{değerlendirme[0].ToString()} {değerlendirme[1].ToString()}";
+    }
 }
