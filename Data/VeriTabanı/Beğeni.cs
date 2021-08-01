@@ -25,6 +25,18 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
         }
+        public static void BeğeniyiSil(string beğenen, string beğenilen)
+        {
+            string komut_metni = $"DELETE FROM {TabloAdı()} WHERE Kim = @beğenen AND Neyi = @beğenilen;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@beğenen", beğenen);
+            komut.Parameters.AddWithValue("@beğenilen", beğenilen);
+            komut.ExecuteNonQuery();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+        }
         public static double BeğeniOrtalaması(string beğenilen)
         {
             string komut_metni = $"SELECT AVG(Ne_Kadar) FROM {TabloAdı()} WHERE Neyi = @beğenilen;";
@@ -48,6 +60,40 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
             return nicelik;
+        }
+        public static int[] BakanKişininBeğenisi(string bakan, string beğenilen)
+        {
+            // [0] == 0 ise hiç değerlendirme yapılmamıştır.
+            // [0] == 1 ise [1] beğenidir.
+            string komut_metni = $"SELECT COUNT(Ne_Kadar) FROM {TabloAdı()} WHERE Kim = @bakan AND Neyi = @beğenilen;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@bakan", bakan);
+            komut.Parameters.AddWithValue("@beğenilen", beğenilen);
+            int nicelik = int.Parse(komut.ExecuteScalar().ToString());
+
+            if (nicelik != 1)
+            {
+                komut.Dispose();
+                bağlantı.Close(); bağlantı.Dispose();
+                if (nicelik > 1)
+                {
+                    BeğeniyiSil(bakan, beğenilen);
+                }
+                return new int[]{0, 0};
+            }
+
+            komut_metni = $"SELECT Ne_Kadar FROM {TabloAdı()} WHERE Kim = @bakan AND Neyi = @beğenilen;";
+            komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@bakan", bakan);
+            komut.Parameters.AddWithValue("@beğenilen", beğenilen);
+            int beğeni = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            int[] sonuç = new int[]{1, beğeni};
+            return sonuç;
         }
         private static string TabloAdı()
         {
