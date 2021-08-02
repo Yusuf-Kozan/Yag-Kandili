@@ -49,6 +49,39 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             komut.Dispose();
         }
+        public static Esas.Paylaşım TekPaylaşım(string paylaşım_kimliği)
+        {
+            string komut_metni = $"SELECT * FROM {TabloAdı()} WHERE Kimlik2 = @paylaşım_kimliği;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@paylaşım_kimliği", paylaşım_kimliği);
+            CultureInfo TR = new CultureInfo("tr-TR");
+            MySqlDataReader veri_okuyucu = komut.ExecuteReader();
+            int döngü_turu = 0;
+            Esas.Paylaşım paylaşım = new Esas.Paylaşım();
+            while (veri_okuyucu.Read())
+            {
+                if (döngü_turu > 0)
+                {
+                    break;
+                }
+                paylaşım.KİMLİK_1 = long.Parse(veri_okuyucu["Kimlik1"].ToString());
+                paylaşım.KİMLİK_2 = veri_okuyucu["Kimlik2"].ToString();
+                paylaşım.BAŞLIK = veri_okuyucu["Başlık"].ToString();
+                paylaşım.İÇERİK = veri_okuyucu["İçerik"].ToString();
+                paylaşım.EKLENTİ = veri_okuyucu["Eklenti"].ToString();
+                paylaşım.PAYLAŞAN = veri_okuyucu["Paylaşan"].ToString();
+                paylaşım.OTURUM = veri_okuyucu["Oturum"].ToString();
+                paylaşım.TARİH = DateTime.ParseExact(veri_okuyucu["Tarih"].ToString(), "yyyyMMddHHmmss", TR);
+                paylaşım.LİSANS = veri_okuyucu["Lisans"].ToString();
+                döngü_turu++;
+            }
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+            return paylaşım;
+        }
         public static Esas.Paylaşım[] TümPaylaşımlar()
         {
             string komut_metni = $"SELECT COUNT(Kimlik1) FROM {TabloAdı()} WHERE Eklenti NOT LIKE '%>gizli%';";
