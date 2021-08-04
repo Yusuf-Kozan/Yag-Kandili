@@ -12,13 +12,15 @@ namespace Esas.VeriTabanı
         public static void Yorumla(Esas.Yorum yorum)
         {
             string komut_metni = $"INSERT INTO {TabloAdı()} (Tür, Kimden, Neye, İçerik, Kimlik, Ne_Zaman, Oturum) " +
-                        $"VALUES ('Yorum', @kimden, '{yorum.NEYE}', @içerik, '{yorum.KİMLİK}', " +
-                        $"'{yorum.NE_ZAMAN.ToString("yyyyMMddHHmmss")}', @oturum_kimliği);";
+                        "VALUES ('Yorum', @kimden, @neye, @içerik, @yorum_kimliği, @ne_zaman, @oturum_kimliği);";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
             komut.Parameters.AddWithValue("@kimden", yorum.KİM);
+            komut.Parameters.AddWithValue("@neye", yorum.NEYE);
             komut.Parameters.AddWithValue("@içerik", yorum.İÇERİK);
+            komut.Parameters.AddWithValue("@yorum_kimliği", yorum.KİMLİK);
+            komut.Parameters.AddWithValue("@ne_zaman", yorum.NE_ZAMAN.ToString("yyyyMMddHHmmss"));
             komut.Parameters.AddWithValue("@oturum_kimliği", yorum.OTURUM);
             komut.ExecuteNonQuery();
             bağlantı.Close(); bağlantı = null;
