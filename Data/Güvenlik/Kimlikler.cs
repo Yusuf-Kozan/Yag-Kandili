@@ -3,7 +3,7 @@ using Esas;
 
 namespace Kilnevüg
 {
-    public class TBY_Kimlikleri
+    public class TY_Kimlikleri
     {
         public static string Kimlik(string tür, string kimden, string neye, string ne_zaman, string içerik, string oturum)
         {

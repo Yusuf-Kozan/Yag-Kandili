@@ -51,7 +51,7 @@ namespace İşlemler
         public static void YorumYap(string kullanıcı_kimliği, string neye, string içerik,
                                     DateTime ne_zaman, string oturum_kimliği)
         {
-            string yorum_kimliği = TBY_Kimlikleri.Kimlik("Yorum", kullanıcı_kimliği, neye,
+            string yorum_kimliği = TY_Kimlikleri.Kimlik("Yorum", kullanıcı_kimliği, neye,
                                     ne_zaman.ToString("yyyyMMddHHmmss"), içerik, oturum_kimliği);
             Yorum yorum = new Yorum(kullanıcı_kimliği, neye, içerik, ne_zaman, oturum_kimliği, yorum_kimliği);
             Esas.VeriTabanı.Yorum.Yorumla(yorum);
