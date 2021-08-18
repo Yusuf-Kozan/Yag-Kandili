@@ -26,7 +26,7 @@
                     style="width: 80%; font-size: large; color: black;" @bind="yorum_içeriği"/>
                 <button class="D1ykG" style="font-size: large; border-width: 2px;" @onclick="Yorumla">Yorumla</button>
 
-                <BirincilYorumlar gösterilecek_yorumlar=@Esas.VeriTabanı.Yorum.PaylaşımınBirincilYorumları(esas_paylaşım.KİMLİK_2) />
+                <BirincilYorumlar gösterilecek_sözler=@Esas.VeriTabanı.Söyleşi.Yorumlar(esas_paylaşım.KİMLİK_2) />
             </div>
         </div>
     }
