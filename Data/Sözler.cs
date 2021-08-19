@@ -4,8 +4,12 @@ namespace Esas
 {
     public struct söz
     {
-        public string SÖZ, SÖYLEYEN, OTURUM, SÖYLEŞİ,
-            TARİH, BAŞLATAN_PAYLAŞIM;
+        public string SÖZ;
+        public string SÖYLEYEN;
+        public string OTURUM;
+        public string SÖYLEŞİ;
+        public string TARİH;
+        public string BAŞLATAN_PAYLAŞIM;
         public bool BU_İLK;
         public long GENEL_SIRA;
 
@@ -30,8 +34,12 @@ namespace Esas
     }
     public struct yeni_söz
     {
-        public string SÖZ, SÖYLEYEN, OTURUM, SÖYLEŞİ,
-            TARİH, BAŞLATAN_PAYLAŞIM;
+        public string SÖZ;
+        public string SÖYLEYEN;
+        public string OTURUM;
+        public string SÖYLEŞİ;
+        public string TARİH;
+        public string BAŞLATAN_PAYLAŞIM;
         public bool BU_İLK;
 
         public yeni_söz(string söz, string söyleyen, string oturum,
