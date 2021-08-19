@@ -95,6 +95,7 @@ namespace Esas.VeriTabanı
             if (paylaşım_niceliği < 1)
             {
                 paylaşımlar = new Esas.Paylaşım[0];
+                bağlantı.Close(); bağlantı.Dispose();
                 return paylaşımlar;
             }
 
