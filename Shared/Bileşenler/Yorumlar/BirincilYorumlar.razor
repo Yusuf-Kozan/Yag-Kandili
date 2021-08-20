@@ -1,12 +1,12 @@
 @using Esas
 @namespace Bileşenler
 
-@for (int kaçıncı_yorum = 0; kaçıncı_yorum < gösterilecek_yorumlar.Length; kaçıncı_yorum++)
+@for (int kaçıncı_yorum = 0; kaçıncı_yorum < gösterilecek_sözler.Length; kaçıncı_yorum++)
 {
-    <TekYorum gösterilecek_yorum=@gösterilecek_yorumlar[kaçıncı_yorum]/><br/>
+    <TekYorum gösterilecek_söz=@gösterilecek_sözler[kaçıncı_yorum]/><br/>
 }
 
 @code {
     [Parameter]
-    public Esas.Yorum[] gösterilecek_yorumlar {get; set;}
+    public Esas.söz[] gösterilecek_sözler {get; set;}
 }

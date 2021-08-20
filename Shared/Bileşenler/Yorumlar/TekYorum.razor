@@ -1,19 +1,28 @@
 @using Esas
+@using System.Globalization
 @namespace Bileşenler
 
 <div class="birincil-yorum">
     <p>
-        <b>@yorumlayan().KULLANICI_ADI:</b> @gösterilecek_yorum.İÇERİK <br/>
-        <span style="font-size: small;">@gösterilecek_yorum.NE_ZAMAN</span>
+        <b>@yorumlayan().KULLANICI_ADI:</b> @gösterilecek_söz.SÖZ <br/>
+        <span style="font-size: small;">@tarih</span>
+        <span style="font-size: small;">
+            <a href="/söyleşi/@gösterilecek_söz.SÖYLEŞİ">Söyleşiye Git</a>
+        </span>
     </p>
 </div>
 
 @code {
     [Parameter]
-    public Esas.Yorum gösterilecek_yorum {get; set;}
-
+    public Esas.söz gösterilecek_söz {get; set;}
+    DateTime tarih;
     private ÜyeBil yorumlayan()
     {
-        return Esas.VeriTabanı.Üyelik.Kimliğinİyesi(gösterilecek_yorum.KİM);
+        return Esas.VeriTabanı.Üyelik.Kimliğinİyesi(gösterilecek_söz.SÖYLEYEN);
+    }
+    protected override void OnParametersSet()
+    {
+        CultureInfo TR = new CultureInfo("tr-TR");
+        tarih = DateTime.ParseExact(gösterilecek_söz.TARİH, "yyyyMMddHHmmss", TR);
     }
 }

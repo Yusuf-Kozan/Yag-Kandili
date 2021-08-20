@@ -16,3 +16,26 @@
     color: salmon;
     transition: 0.1s;
 }
+
+.düğme_0_120_0 {
+    border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: sans-serif;
+	color: rgb(255,255,255);
+	background-color: rgb(0,120,0);
+	border-color: rgb(0,120,0);
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+	outline-style: none;
+}
+.düğme_0_120_0:hover {
+    color: rgb(0,120,0);
+	background-color: #ccf0cc;
+	border-color: #ccf0cc;
+}

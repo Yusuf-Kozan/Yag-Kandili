@@ -5,3 +5,11 @@
 
     color: #000000;
 }
+
+.söz {
+    border: none;
+    margin-bottom: 1%;
+
+    color: #000000;
+    font-family: sans-serif;
+}
