@@ -22,16 +22,16 @@
         söz söz = new söz(söyleşi[i,0]);
         parolasız_üye söyleyen = new parolasız_üye(söyleşi[i,1]);
 
-        <div class="birincil-yorum">
+        <div class="söz">
             <p>
-                <b>@söyleyen.KULLANICI_ADI:</b> @söz.SÖZ <br/>
+                <b style="color: rgb(0,120,0);">@söyleyen.KULLANICI_ADI:</b> @söz.SÖZ <br/>
                 <span style="font-size: small;">@(söz.DönüştürülmüşTarih())</span>
             </p>
         </div>
     }
-    <input type="text" placeholder="Bir şey söyle" class="MetinKutusu1g"
+    <input type="text" placeholder="Bir şey söyle" class="MetinKutusu1"
             style="width: 80%; font-size: large; color: black;" @bind="söylenecek_söz"/>
-    <button class="D1ykG" style="font-size: large; border-width: 2px;" @onclick="Söyle">Söyle</button>
+    <button class="düğme_0_120_0" style="font-size: large; border-width: 2px;" @onclick="Söyle">Söyle</button>
     </div>
 }
 else
@@ -58,10 +58,14 @@ else
     private string söylenecek_söz;
     private void Söyle()
     {
-        yeni_söz söylenecek = new yeni_söz(söylenecek_söz, kullanıcı, oturum,
-                                söyleşi_kimliği, DateTime.Now, false, başlatan.KİMLİK_2);
-        Esas.VeriTabanı.Söyleşi.Söyle(söylenecek);
-        OnParametersSet();
+        if (!String.IsNullOrWhiteSpace(söylenecek_söz))
+        {
+            yeni_söz söylenecek = new yeni_söz(söylenecek_söz, kullanıcı, oturum,
+                                    söyleşi_kimliği, DateTime.Now, false, başlatan.KİMLİK_2);
+            Esas.VeriTabanı.Söyleşi.Söyle(söylenecek);
+            söylenecek_söz = null;
+            OnParametersSet();
+        }
     }
 
 
@@ -82,6 +86,7 @@ else
         }
         catch
         {
+            NavigationManager.NavigateTo("/");
         }
     }
     private void devam(string kullanıcı_kimliği, string oturum_kimliği)
