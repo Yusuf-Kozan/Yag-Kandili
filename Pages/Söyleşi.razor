@@ -10,11 +10,19 @@
 @if (oturum_açık)
 {
     string yön = $"/paylaşım/{başlatan.KİMLİK_2}";
+    parolasız_üye paylaşımı_yapan = new parolasız_üye(söyleşi[0,1]);
     <div class="p-sayfa">
     
-        <div style="text-align: center;">
-            <YönlendirenBaşlık şuraya_yönlendir="@yön" ilk_başlık="Söyleşi"
+        <div style="text-align: center; margin: 1%;">
+            <YönlendirenBaşlık şuraya_yönlendir="@yön" ilk_başlık="@başlatan.BAŞLIK"
             ikinci_başlık="Geri Dön" ilk_renk="rgb(0,120,0)" ikinci_renk="black"/>
+        </div>
+
+        <div class="söz">
+            <p>
+                <b style="color: rgb(0,120,0);">@paylaşımı_yapan.KULLANICI_ADI:</b> @başlatan.İÇERİK <br/>
+                <span style="font-size: small;">@(başlatan.TARİH)</span>
+            </p>
         </div>
 
     @for (int i = 1; i < söyleşi.GetLength(0); i++)
