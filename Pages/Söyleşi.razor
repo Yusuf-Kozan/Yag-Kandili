@@ -1,0 +1,96 @@
+@page "/söyleşi/{söyleşi_kimliği}"
+@layout AnaTaslak
+@using System.Threading.Tasks
+@using Esas
+@using Kilnevüg
+@using Bileşenler
+@inject IJSRuntime JSruntime
+@inject NavigationManager NavigationManager
+
+@if (oturum_açık)
+{
+    string yön = $"/paylaşım/{başlatan.KİMLİK_2}";
+    <div class="p-sayfa">
+    
+        <div style="text-align: center;">
+            <YönlendirenBaşlık şuraya_yönlendir="@yön" ilk_başlık="Söyleşi"
+            ikinci_başlık="Geri Dön" ilk_renk="rgb(0,120,0)" ikinci_renk="black"/>
+        </div>
+
+    @for (int i = 1; i < söyleşi.GetLength(0); i++)
+    {
+        söz söz = new söz(söyleşi[i,0]);
+        parolasız_üye söyleyen = new parolasız_üye(söyleşi[i,1]);
+
+        <div class="birincil-yorum">
+            <p>
+                <b>@söyleyen.KULLANICI_ADI:</b> @söz.SÖZ <br/>
+                <span style="font-size: small;">@(söz.DönüştürülmüşTarih())</span>
+            </p>
+        </div>
+    }
+    <input type="text" placeholder="Bir şey söyle" class="MetinKutusu1g"
+            style="width: 80%; font-size: large; color: black;" @bind="söylenecek_söz"/>
+    <button class="D1ykG" style="font-size: large; border-width: 2px;" @onclick="Söyle">Söyle</button>
+    </div>
+}
+else
+{
+    <h1 class="Yükleniyor">Yükleniyor</h1>
+}
+
+@code {
+    [Parameter]
+    public string söyleşi_kimliği {get; set;}
+    private string[,][] söyleşi;
+    private paylaşım başlatan;
+
+    protected override void OnParametersSet()
+    {
+        söyleşi = Esas.VeriTabanı.Söyleşi.TümBilgileriyleSöyleşi(söyleşi_kimliği);
+        başlatan = new paylaşım(söyleşi[0,0]);
+        if (söyleşi.GetLength(0) < 1)
+        {
+            NavigationManager.NavigateTo("/ana");
+        }
+    }
+
+    private string söylenecek_söz;
+    private void Söyle()
+    {
+        yeni_söz söylenecek = new yeni_söz(söylenecek_söz, kullanıcı, oturum,
+                                söyleşi_kimliği, DateTime.Now, false, başlatan.KİMLİK_2);
+        Esas.VeriTabanı.Söyleşi.Söyle(söylenecek);
+        OnParametersSet();
+    }
+
+
+    private string kullanıcı, oturum;
+    private bool oturum_açık;
+    public static ÜyeBil bakan_kullanıcı;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            var a = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
+            kullanıcı = a.ToString(); a = null;
+            var b = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
+            oturum = b.ToString(); b = null;
+            devam(kullanıcı, oturum);
+            StateHasChanged();
+        }
+        catch
+        {
+        }
+    }
+    private void devam(string kullanıcı_kimliği, string oturum_kimliği)
+    {
+        oturum_açık = Esas.VeriTabanı.Oturum.BuOturumAçık(oturum_kimliği, kullanıcı_kimliği);
+        if (!oturum_açık)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+    }
+}
