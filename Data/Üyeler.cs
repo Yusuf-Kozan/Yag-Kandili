@@ -66,16 +66,6 @@ namespace Esas
             BAŞLANGIÇ = üye.BAŞLANGIÇ;
             RESİM = üye.RESİM;
         }
-        public ÜyeBil(çÜye üye)
-        {
-            AD = üye.AD;
-            SOYADI = üye.SOYADI;
-            KULLANICI_ADI = üye.KULLANICI_ADI;
-            PAROLA = üye.PAROLA;
-            E_POSTA = üye.E_POSTA;
-            BAŞLANGIÇ = üye.BAŞLANGIÇ;
-            ÜSTÜNLÜK = üye.ÜSTÜNLÜK;
-        }
         public ÜyeBil() { }
 
         public override string ToString()
@@ -161,39 +151,4 @@ namespace Esas
             KİMLİK = üye_bilgileri[7];
         }
     }
-    public struct çÜye
-    {
-        //Üye bilgisi çekirdeği: Aslında pek de gerekli olmayan Resim değişkenini taşımıyor.
-        public string AD {get; set;}
-        public string SOYADI;
-        public string KULLANICI_ADI;
-        public string PAROLA;
-        public string E_POSTA;
-        public DateTime BAŞLANGIÇ;
-        public string ÜSTÜNLÜK;
-
-        public çÜye(string ad, string soyadı, string kullanıcı_adı, string parola, string e_posta, DateTime Başlangıç, string üstünlük)
-        {
-            this.AD = ad; this.SOYADI = soyadı; this.KULLANICI_ADI = kullanıcı_adı;
-            this.PAROLA = parola; this.E_POSTA = e_posta; this.BAŞLANGIÇ = Başlangıç;
-            this.ÜSTÜNLÜK = üstünlük;
-        }
-        public string DizinYolu()
-        {
-            string üstDizin = @"./Kullanıcılar";
-            return System.IO.Path.Combine(üstDizin, KULLANICI_ADI);
-        }
-        public override string ToString()
-        {
-            return "Ad: " + AD + " | Soyadı: " + SOYADI +
-            " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA +
-            " | Üstünlük: " + ÜSTÜNLÜK + " | Başlangıç: " + BAŞLANGIÇ.ToString();
-        }
-        public string[] MetinKümesiYap()
-        {
-            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString()};
-            return küme;
-        }
-    }
-
 }
