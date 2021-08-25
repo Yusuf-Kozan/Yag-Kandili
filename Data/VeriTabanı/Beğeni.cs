@@ -37,13 +37,27 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
         }
-        public static double BeğeniOrtalaması(string beğenilen)
+        public static double PaylaşımınBeğeniOrtalaması(string beğenilen)
         {
             string komut_metni = $"SELECT AVG(Ne_Kadar) FROM {TabloAdı()} WHERE Neyi = @beğenilen;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
             komut.Parameters.AddWithValue("@beğenilen", beğenilen);
+            double ortalama = double.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+            return ortalama;
+        }
+        public static double KişininBeğeniOrtalaması(string kullanıcı_kimliği)
+        {
+            string komut_metni = $"SELECT AVG(Ne_Kadar) FROM {TabloAdı()} INNER JOIN {Paylaşım.TabloAdı()} " +
+                                $"ON {Beğeni.TabloAdı()}.Neyi = {Paylaşım.TabloAdı()}.Kimlik2 " +
+                                $"WHERE Paylaşan = @beğenilen_kişi AND Eklenti NOT LIKE '%>gizli%';";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@beğenilen_kişi", kullanıcı_kimliği);
             double ortalama = double.Parse(komut.ExecuteScalar().ToString());
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
