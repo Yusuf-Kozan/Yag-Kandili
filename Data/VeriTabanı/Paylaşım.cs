@@ -185,6 +185,55 @@ namespace Esas.VeriTabanı
 
             return paylaşımlar;
         }
+        public static paylaşım[] KişininTümAçıkPaylaşımları(string kullanıcı_kimliği)
+        {
+            string komut_metni = $"SELECT COUNT(Kimlik1) FROM {TabloAdı()} " +
+                                "WHERE Paylaşan = @paylaşan AND Eklenti NOT LIKE '%>gizli%';";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@paylaşan", kullanıcı_kimliği);
+            int paylaşım_niceliği = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            paylaşım[] paylaşımlar;
+
+            if (paylaşım_niceliği < 1)
+            {
+                paylaşımlar = new paylaşım[0];
+                bağlantı.Close(); bağlantı.Dispose();
+                return paylaşımlar;
+            }
+
+            komut_metni = $"SELECT * FROM {TabloAdı()} WHERE Paylaşan = @paylaşan AND " +
+                        "Eklenti NOT LIKE '%>gizli%' ORDER BY Tarih DESC, Kimlik1 DESC;";
+            komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@paylaşan", kullanıcı_kimliği);
+            CultureInfo TR = new CultureInfo("tr-TR");
+            MySqlDataReader veri_okuyucu = komut.ExecuteReader();
+            int döngü_turu = 0;
+            paylaşımlar = new paylaşım[paylaşım_niceliği];
+            while (veri_okuyucu.Read())
+            {
+                paylaşımlar[döngü_turu] = new paylaşım();
+                paylaşımlar[döngü_turu].KİMLİK_1 = long.Parse(veri_okuyucu["Kimlik1"].ToString());
+                paylaşımlar[döngü_turu].KİMLİK_2 = veri_okuyucu["Kimlik2"].ToString();
+                paylaşımlar[döngü_turu].BAŞLIK = veri_okuyucu["Başlık"].ToString();
+                paylaşımlar[döngü_turu].İÇERİK = veri_okuyucu["İçerik"].ToString();
+                paylaşımlar[döngü_turu].EKLENTİ = veri_okuyucu["Eklenti"].ToString();
+                paylaşımlar[döngü_turu].PAYLAŞAN = veri_okuyucu["Paylaşan"].ToString();
+                paylaşımlar[döngü_turu].OTURUM = veri_okuyucu["Oturum"].ToString();
+                string tarih = veri_okuyucu["Tarih"].ToString();
+                paylaşımlar[döngü_turu].TARİH = DateTime.ParseExact(tarih, "yyyyMMddHHmmss", TR);
+                paylaşımlar[döngü_turu].LİSANS = veri_okuyucu["Lisans"].ToString();
+
+                döngü_turu++;
+            }
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            return paylaşımlar;
+        }
         public static int TümPaylaşımlarınNiceliği()
         {
             string komut_metni = $"SELECT COUNT(Kimlik1) FROM {TabloAdı()} WHERE Eklenti NOT LIKE '%>gizli%';";
