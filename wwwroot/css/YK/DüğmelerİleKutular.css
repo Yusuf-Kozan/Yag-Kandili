@@ -39,3 +39,24 @@
 	background-color: #ccf0cc;
 	border-color: #ccf0cc;
 }
+
+.kutu_098bdc {
+	border: solid 2px #098bdc;
+	border-radius: 4px;
+	padding: 3px;
+	color: #098bdc;
+	font-size: x-large;
+	font-family: sans-serif;
+	margin: 3px;
+	outline-style: none;
+}
+.kutu_0_120_0 {
+	border: solid 2px rgb(0,120,0);
+	border-radius: 4px;
+	padding: 3px;
+	color: rgb(0,120,0);
+	font-size: x-large;
+	font-family: sans-serif;
+	margin: 3px;
+	outline-style: none;
+}
