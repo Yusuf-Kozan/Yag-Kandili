@@ -21,6 +21,16 @@
     border: none;
     text-decoration: none;
 }
+.p-başlık-bileşen-mavi {
+    font-family: sans-serif, Helvetica, Arial;
+    font-size: x-large;
+    text-align: center;
+    color: #098bdc;
+    font-weight: bold;
+    margin: 1%;
+    border: none;
+    text-decoration: none;
+}
 .p-kutu-bileşen {
     width: 80%;
     margin: auto;
