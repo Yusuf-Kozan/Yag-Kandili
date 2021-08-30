@@ -39,10 +39,21 @@ namespace Esas.VeriTabanı
         }
         public static double PaylaşımınBeğeniOrtalaması(string beğenilen)
         {
-            string komut_metni = $"SELECT AVG(Ne_Kadar) FROM {TabloAdı()} WHERE Neyi = @beğenilen;";
+            string komut_metni = $"SELECT COUNT(Ne_Kadar) FROM {TabloAdı()} WHERE Neyi = @beğenilen;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@beğenilen", beğenilen);
+            long beğeni_niceliği = long.Parse(komut.ExecuteScalar().ToString());
+            if (beğeni_niceliği < 1)
+            {
+                komut.Dispose();
+                bağlantı.Close(); bağlantı.Dispose();
+                return 0;
+            }
+
+            komut_metni = $"SELECT AVG(Ne_Kadar) FROM {TabloAdı()} WHERE Neyi = @beğenilen;";
+            komut = new MySqlCommand(komut_metni, bağlantı);
             komut.Parameters.AddWithValue("@beğenilen", beğenilen);
             double ortalama = double.Parse(komut.ExecuteScalar().ToString());
             komut.Dispose();
@@ -51,12 +62,25 @@ namespace Esas.VeriTabanı
         }
         public static double KişininBeğeniOrtalaması(string kullanıcı_kimliği)
         {
-            string komut_metni = $"SELECT AVG(Ne_Kadar) FROM {TabloAdı()} INNER JOIN {Paylaşım.TabloAdı()} " +
+            string komut_metni = $"SELECT COUNT(Ne_Kadar) FROM {TabloAdı()} INNER JOIN {Paylaşım.TabloAdı()} " +
                                 $"ON {Beğeni.TabloAdı()}.Neyi = {Paylaşım.TabloAdı()}.Kimlik2 " +
                                 $"WHERE Paylaşan = @beğenilen_kişi AND Eklenti NOT LIKE '%>gizli%';";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@beğenilen_kişi", kullanıcı_kimliği);
+            long beğeni_niceliği = long.Parse(komut.ExecuteScalar().ToString());
+            if (beğeni_niceliği < 1)
+            {
+                komut.Dispose();
+                bağlantı.Close(); bağlantı.Dispose();
+                return 0;
+            }
+
+            komut_metni = $"SELECT AVG(Ne_Kadar) FROM {TabloAdı()} INNER JOIN {Paylaşım.TabloAdı()} " +
+                                $"ON {Beğeni.TabloAdı()}.Neyi = {Paylaşım.TabloAdı()}.Kimlik2 " +
+                                $"WHERE Paylaşan = @beğenilen_kişi AND Eklenti NOT LIKE '%>gizli%';";
+            komut = new MySqlCommand(komut_metni, bağlantı);
             komut.Parameters.AddWithValue("@beğenilen_kişi", kullanıcı_kimliği);
             double ortalama = double.Parse(komut.ExecuteScalar().ToString());
             komut.Dispose();
