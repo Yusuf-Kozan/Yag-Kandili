@@ -1,0 +1,49 @@
+@inject NavigationManager NavigationManager
+@using Esas
+@namespace Bileşenler
+
+@for (int i = 0; i < paylaşımlar().Length; i++)
+{
+    int döngü_turu = i;
+
+    <div id="@(paylaşımlar()[i].KİMLİK_2)"
+    class="kutu_098bdc p-kutu-bileşen" style="text-align: justify; overflow: hidden;">
+        <a style="display: block; text-align: start;"
+        class="p-başlık-bileşen-mavi" href="/paylaşım/@(paylaşımlar()[i].KİMLİK_2)">@(paylaşımlar()[i].BAŞLIK)</a>
+        <p style="white-space: pre-line; color: black;">@(paylaşımlar()[i].İÇERİK)</p>
+        
+        <div style="text-align: center; width: 100%;">
+            <Değerlendir değerlendirilen="@(paylaşımlar()[i].KİMLİK_2)"
+            değerlendiren="@bakan" oturum="@oturum"/>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string paylaşan {get; set;}
+    [Parameter]
+    public string bakan {get; set;}
+    [Parameter]
+    public string oturum {get; set;}
+
+    private paylaşım[] paylaşımlar()
+    {
+        return Esas.VeriTabanı.Paylaşım.KişininTümAçıkPaylaşımları(paylaşan);
+    }
+    private ÜyeBil paylaşanın_bilgileri;
+
+    protected override void OnParametersSet()
+    {
+        paylaşanın_bilgileri = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(paylaşan);
+        bool bakan_kendisi = (paylaşan == bakan);
+        if (!bakan_kendisi)
+        {
+            //paylaşımlar = Esas.VeriTabanı.Paylaşım.KişininTümAçıkPaylaşımları(paylaşan);
+        }
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        //paylaşımlar = Esas.VeriTabanı.Paylaşım.KişininTümAçıkPaylaşımları(paylaşan);
+    }
+}
