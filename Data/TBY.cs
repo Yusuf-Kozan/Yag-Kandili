@@ -5,29 +5,36 @@ namespace Esas
 {
     public class Takip
     {
-        public string KİM {get; set;} //Takip edenin kullanıcı kimliği
-        public string KİMİ {get; set;} //Takip edilenin kullanıcı kimliği
-        public DateTime NE_ZAMAN {get; set;} //Takip etme düğmesine basılan anın zaman damgası
-        public string OTURUM {get; set;} //Takip edenin o andaki oturum kimliği
-        public string KİMLİK {get; set;} //Takip kaydının kimliği
+        public string TAKİP_EDEN {get; set;}
+        public string TAKİP_EDİLEN {get; set;}
+        public short TAKİP_DÜZEYİ {get; set;}
+        public DateTime TARİH {get; set;}
+        public string OTURUM {get; set;}
 
         public Takip() {}
-        public Takip(string kim, string kimi, string ne_zaman, string oturum, string kimlik)
+        public Takip(string takip_eden, string takip_edilen, short takip_düzeyi,
+                    DateTime tarih, string oturum)
         {
-            CultureInfo TR = new CultureInfo("tr-TR");
-            KİM = kim;
-            KİMİ = kimi;
-            NE_ZAMAN = DateTime.ParseExact(ne_zaman, "yyyyMMddHHmmss", TR);
+            TAKİP_EDEN = takip_eden;
+            TAKİP_EDİLEN = takip_edilen;
+            TAKİP_DÜZEYİ = takip_düzeyi;
+            TARİH = tarih;
             OTURUM = oturum;
-            KİMLİK = kimlik;
         }
-        public Takip(string kim, string kimi, DateTime ne_zaman, string oturum, string kimlik)
+        public Takip(string takip_eden, string takip_edilen, short takip_düzeyi,
+                    string tarih, string oturum)
         {
-            KİM = kim;
-            KİMİ = kimi;
-            NE_ZAMAN = ne_zaman;
+            TAKİP_EDEN = takip_eden;
+            TAKİP_EDİLEN = takip_edilen;
+            TAKİP_DÜZEYİ = takip_düzeyi;
+            CultureInfo TR = new CultureInfo("tr-TR");
+            TARİH = DateTime.ParseExact(tarih, "yyyyMMddHHmmss", TR);
             OTURUM = oturum;
-            KİMLİK = kimlik;
+        }
+
+        public string DönüştürülmüşTarih()
+        {
+            return TARİH.ToString("yyyyMMddHHmmss");
         }
     }
 
