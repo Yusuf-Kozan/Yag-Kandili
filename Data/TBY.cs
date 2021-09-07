@@ -9,30 +9,27 @@ namespace Esas
         public string TAKİP_EDİLEN {get; set;}
         public short TAKİP_DÜZEYİ {get; set;}
         public DateTime TARİH {get; set;}
-        public string OTURUM {get; set;}
 
         public Takip() {}
-        public Takip(string takip_eden, string takip_edilen, short takip_düzeyi,
-                    DateTime tarih, string oturum)
+        public Takip(string takip_eden, string takip_edilen,
+                    short takip_düzeyi, DateTime tarih)
         {
             TAKİP_EDEN = takip_eden;
             TAKİP_EDİLEN = takip_edilen;
             TAKİP_DÜZEYİ = takip_düzeyi;
             TARİH = tarih;
-            OTURUM = oturum;
         }
-        public Takip(string takip_eden, string takip_edilen, short takip_düzeyi,
-                    string tarih, string oturum)
+        public Takip(string takip_eden, string takip_edilen,
+                    short takip_düzeyi, string tarih)
         {
             TAKİP_EDEN = takip_eden;
             TAKİP_EDİLEN = takip_edilen;
             TAKİP_DÜZEYİ = takip_düzeyi;
             CultureInfo TR = new CultureInfo("tr-TR");
             TARİH = DateTime.ParseExact(tarih, "yyyyMMddHHmmss", TR);
-            OTURUM = oturum;
         }
 
-        public string DönüştürülmüşTarih()
+        public string TarihMetni()
         {
             return TARİH.ToString("yyyyMMddHHmmss");
         }
