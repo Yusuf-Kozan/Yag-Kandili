@@ -1,0 +1,18 @@
+@using Esas
+@namespace Bileşenler
+
+<BelirliPaylaşımlar bakan=@bakan oturum=@oturum paylaşımlar=@paylaşımlar />
+
+@code {
+    [Parameter]
+    public string bakan {get; set;}
+    [Parameter]
+    public string oturum {get; set;}
+    private string[,][] paylaşımlar;
+
+    protected override void OnParametersSet()
+    {
+        string[,] takip_edilenler = Esas.VeriTabanı.Takip.TakipEdilenKullanıcılarınKimlikleri(bakan);
+        paylaşımlar = Esas.VeriTabanı.Paylaşım.TakipEdilenlerinBilgileriylePaylaşımları(takip_edilenler);
+    }
+}
