@@ -58,4 +58,14 @@ namespace İşlemler
             Esas.VeriTabanı.Söyleşi.Söyle(yorum);
         }
     }
+    public class Takipİşlemleri
+    {
+        public static void TakipEt(string takip_edecek, string takip_edilecek,
+                                    short takip_düzeyi, DateTime tarih)
+        {
+            Takip yeni_takip = new Takip(takip_edecek,takip_edilecek,
+                                        takip_düzeyi, tarih);
+            Esas.VeriTabanı.Takip.TakipEt(yeni_takip);
+        }
+    }
 }
