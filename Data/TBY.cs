@@ -8,6 +8,7 @@ namespace Esas
         public string TAKİP_EDEN {get; set;}
         public string TAKİP_EDİLEN {get; set;}
         public short TAKİP_DÜZEYİ {get; set;}
+        // 1- bildirimli , 2- bildirimsiz
         public DateTime TARİH {get; set;}
 
         public Takip() {}
