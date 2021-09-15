@@ -1,0 +1,38 @@
+@inject NavigationManager NavigationManager
+@using Esas
+@namespace Bileşenler
+
+@for (int i = 0; i < paylaşımlar.GetLength(0); i++)
+{
+    int döngü_turu = i;
+    paylaşım paylaşım = new paylaşım(paylaşımlar[i,0]);
+    parolasız_üye paylaşan = new parolasız_üye(paylaşımlar[i,1]);
+
+    <div id="@(paylaşım.KİMLİK_2)"
+    class="MetinKutusu1yk p-kutu-bileşen" style="text-align: justify; overflow: hidden;">
+        <a style="display: block; text-align: start;"
+        class="p-başlık-bileşen" href="/paylaşım/@(paylaşım.KİMLİK_2)">@(paylaşım.BAŞLIK)</a>
+        <p style="white-space: pre-line; color: black;">@(paylaşım.İÇERİK)</p>
+
+        <div style="text-align: left; width: 50%; float: left;">
+            <a href="/kişi/@paylaşan.KULLANICI_ADI">
+                @(paylaşan.KULLANICI_ADI)
+            </a>
+        </div>
+        
+        <div style="text-align: end; width: 50%; float: right;">
+            <Değerlendir değerlendirilen="@(paylaşım.KİMLİK_2)"
+            değerlendiren="@bakan" oturum="@oturum"/>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string bakan {get; set;}
+    [Parameter]
+    public string oturum {get; set;}
+    [Parameter]
+    public string[,][] paylaşımlar {get; set;}
+
+}
