@@ -11,19 +11,22 @@ namespace Esas.VeriTabanı
     {
         public static void TakipEt(Esas.Takip takip)
         {
-            string komut_metni = $"INSERT INTO {TabloAdı()} (Takip_Eden, Takip_Edilen, " +
-                                "Takip_Düzeyi, Tarih) VALUES (@takip_eden, " +
-                                "@takip_edilen, @takip_düzeyi, @tarih);";
-            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
-            bağlantı.Open();
-            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
-            komut.Parameters.AddWithValue("@takip_eden", takip.TAKİP_EDEN);
-            komut.Parameters.AddWithValue("@takip_edilen", takip.TAKİP_EDİLEN);
-            komut.Parameters.AddWithValue("@takip_düzeyi", takip.TAKİP_DÜZEYİ);
-            komut.Parameters.AddWithValue("@tarih", takip.TarihMetni());
-            komut.ExecuteNonQuery();
-            komut.Dispose();
-            bağlantı.Close(); bağlantı.Dispose();
+            if (!TakipEdiliyor(takip.TAKİP_EDEN, takip.TAKİP_EDİLEN))
+            {
+                string komut_metni = $"INSERT INTO {TabloAdı()} (Takip_Eden, Takip_Edilen, " +
+                                    "Takip_Düzeyi, Tarih) VALUES (@takip_eden, " +
+                                    "@takip_edilen, @takip_düzeyi, @tarih);";
+                MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+                bağlantı.Open();
+                MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+                komut.Parameters.AddWithValue("@takip_eden", takip.TAKİP_EDEN);
+                komut.Parameters.AddWithValue("@takip_edilen", takip.TAKİP_EDİLEN);
+                komut.Parameters.AddWithValue("@takip_düzeyi", takip.TAKİP_DÜZEYİ);
+                komut.Parameters.AddWithValue("@tarih", takip.TarihMetni());
+                komut.ExecuteNonQuery();
+                komut.Dispose();
+                bağlantı.Close(); bağlantı.Dispose();
+            }
         }
         public static string[,] TakipEdilenKullanıcılarınKimlikleri(string takip_eden)
         {
@@ -61,6 +64,29 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
             return kullanıcılar;
+        }
+        public static bool TakipEdiliyor(string takip_eden, string takip_edilen)
+        {
+            string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()} " +
+                                "WHERE Takip_Eden = @takip_eden AND " +
+                                "Takip_Edilen = @takip_edilen;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@takip_eden", takip_eden);
+            komut.Parameters.AddWithValue("@takip_edilen", takip_edilen);
+            int nicelik = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            if (nicelik == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         private static string TabloAdı()
         {
