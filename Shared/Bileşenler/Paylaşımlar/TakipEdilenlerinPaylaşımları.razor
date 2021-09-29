@@ -13,6 +13,13 @@
     protected override void OnParametersSet()
     {
         string[,] takip_edilenler = Esas.VeriTabanı.Takip.TakipEdilenKullanıcılarınKimlikleri(bakan);
-        paylaşımlar = Esas.VeriTabanı.Paylaşım.TakipEdilenlerinBilgileriylePaylaşımları(takip_edilenler);
+        if (takip_edilenler.GetLength(0) > 0)
+        {
+            paylaşımlar = Esas.VeriTabanı.Paylaşım.TakipEdilenlerinBilgileriylePaylaşımları(takip_edilenler);
+        }
+        else
+        {
+            paylaşımlar = new string[0,0][];
+        }
     }
 }
