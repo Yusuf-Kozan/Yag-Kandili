@@ -4,6 +4,10 @@
     <Kim kişi="@Kim"/>
     <OturumKapat kişi="@Kim" nerede="@Nerede" oturum_kimliği="@KimliğiNe"/>
     <PaylaşımYap/>
+    @if (Nerede == "/ana")
+    {
+        <TümPaylaşımlarGörünsünDüğmesi/>
+    }
 </div>
 
 @code {

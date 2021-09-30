@@ -1,0 +1,35 @@
+@namespace Bileşenler
+@inject NavigationManager NavigationManager
+
+<div style="padding: 2%; font-size: large;">
+    <button class="düğme_0_120_0" style=@tasarım @onclick="GörünümüDeğiştir">@Yazı()</button>
+</div>
+
+@code {
+    private string tasarım = "font-size: larger; word-break: break-word;";
+    private string Yazı()
+    {
+        if (sayfa.Ana.TümPaylaşımlarGörünsün)
+        {
+            return "Takip Edilenleri Göster";
+        }
+        else
+        {
+            return "Tüm Paylaşımları Göster";
+        }
+    }
+
+    private void GörünümüDeğiştir()
+    {
+        if (sayfa.Ana.TümPaylaşımlarGörünsün)
+        {
+            sayfa.Ana.TümPaylaşımlarGörünsün = false;
+        }
+        else
+        {
+            sayfa.Ana.TümPaylaşımlarGörünsün = true;
+        }
+        sayfa.EnHerŞey.her_şeyin_düğmesi();
+        OnParametersSet();
+    }
+}

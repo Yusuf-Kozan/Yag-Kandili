@@ -17,7 +17,15 @@
             <h1>@b</h1>
             <h2>@DateTime.Now.ToString("ddMMyyyyHHmmss")</h2>
             <h2>@oturum_açık.ToString()</h2>*@
-            <TümPaylaşımlar kim="@üye" oturum="@kimlik"/>
+            @if (TümPaylaşımlarGörünsün)
+            {
+                <TümPaylaşımlar kim="@üye" oturum="@kimlik"/>
+            }
+            else
+            {
+                <TakipEdilenlerinPaylaşımları bakan=@üye.KİMLİK oturum=@kimlik />
+            }
+            
         </div>
         <EnHerŞey aÜye="@üye" aKimlik="@kimlik" aKonum="/ana"/>
         <!--<h1 class="Yükleniyor">Yükleniyor</h1>-->
@@ -30,6 +38,9 @@
 
 
 @code {
+
+    public static bool TümPaylaşımlarGörünsün {get; set;} = false;
+
     private string a, b; //a == kullanıcı adı && b == kilmik
     private bool oturum_açık;
     public static ÜyeBil üye {get; set;}
