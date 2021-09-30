@@ -21,7 +21,7 @@
                 <img src="@bakılan_kullanıcı.RESİM" width="10%" height="auto" style="text-align: center;"/>
             <div class="kutu_0_120_0" style="width:25%; margin: 3% 8% 3% 0%; float:right;
             display:inline-block;">
-                Takipçi: 
+                Takipçi: @takipçi_niceliği
             </div>
         </div>
         <div style="margin-top:1%; text-align:center;">
@@ -44,12 +44,14 @@ else
     public string bakılan_kişi {get; set;}
     private ÜyeBil bakılan_kullanıcı;
     private double ortalama_beğeni;
+    private long takipçi_niceliği;
 
     protected override void OnParametersSet()
     {
         string bakılanın_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(bakılan_kişi);
         bakılan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(bakılanın_kimliği);
         ortalama_beğeni = Esas.VeriTabanı.Beğeni.KişininBeğeniOrtalaması(bakılanın_kimliği);
+        takipçi_niceliği = Esas.VeriTabanı.Takip.TakipçiNiceliği(bakılanın_kimliği);
     }
 
     

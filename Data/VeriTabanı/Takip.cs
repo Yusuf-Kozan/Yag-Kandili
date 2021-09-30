@@ -65,6 +65,19 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return kullanıcılar;
         }
+        public static long TakipçiNiceliği(string takip_edilen)
+        {
+            string komut_metni = $"SELECT COUNT(Takip_Eden) FROM {TabloAdı()} " +
+                                "WHERE Takip_Edilen = @takip_edilen;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@takip_edilen", takip_edilen);
+            long nicelik = long.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+            return nicelik;
+        }
         public static bool TakipEdiliyor(string takip_eden, string takip_edilen)
         {
             string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()} " +
