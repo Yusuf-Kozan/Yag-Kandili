@@ -26,7 +26,7 @@
         </div>
         <div style="margin-top:1%; text-align:center;">
             <button class="düğme_0_120_0" style="font-size:large; font-weight:normal;"
-            @onclick="TakipEt">Takip Et</button>
+            @onclick="TakipDüğmesi">@TakipDüğmesininYazısı</button>
         </div>
     </div>
     <div style="margin-top: 3%;">
@@ -45,6 +45,7 @@ else
     private ÜyeBil bakılan_kullanıcı;
     private double ortalama_beğeni;
     private long takipçi_niceliği;
+    private bool BakanTakipEdiyor;
 
     protected override void OnParametersSet()
     {
@@ -54,11 +55,19 @@ else
         takipçi_niceliği = Esas.VeriTabanı.Takip.TakipçiNiceliği(bakılanın_kimliği);
     }
 
-    
-    private void TakipEt()
+    private string TakipDüğmesininYazısı {get; set;}
+    private void TakipDüğmesi()
     {
-        İşlemler.Takipİşlemleri.TakipEt(bakan_kullanıcı.KİMLİK, bakılan_kullanıcı.KİMLİK,
-                                        1, DateTime.Now);
+        if (!BakanTakipEdiyor)
+        {
+            İşlemler.Takipİşlemleri.TakipEt(bakan_kullanıcı.KİMLİK, bakılan_kullanıcı.KİMLİK,
+                                            1, DateTime.Now);
+        }
+        else
+        {
+            Esas.VeriTabanı.Takip.TakibiBırak(bakan_kullanıcı.KİMLİK, bakılan_kullanıcı.KİMLİK);
+        }
+        OnParametersSet();
     }
 
 
@@ -90,5 +99,16 @@ else
             NavigationManager.NavigateTo("/");
         }
         bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+        
+        BakanTakipEdiyor = Esas.VeriTabanı.Takip.TakipEdiliyor(bakan_kullanıcı.KİMLİK,
+                                                            bakılan_kullanıcı.KİMLİK);
+        if (BakanTakipEdiyor)
+        {
+            TakipDüğmesininYazısı = "Takibi Bırak";
+        }
+        else 
+        {
+            TakipDüğmesininYazısı = "Takip Et";
+        }
     }
 }

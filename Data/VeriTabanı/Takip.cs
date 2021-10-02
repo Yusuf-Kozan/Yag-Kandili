@@ -28,6 +28,23 @@ namespace Esas.VeriTabanı
                 bağlantı.Close(); bağlantı.Dispose();
             }
         }
+        public static void TakibiBırak(string takip_eden, string takip_edilen)
+        {
+            if (TakipEdiliyor(takip_eden, takip_edilen))
+            {
+                string komut_metni = $"DELETE FROM {TabloAdı()} WHERE " +
+                                    "Takip_Eden = @takip_eden AND " +
+                                    "Takip_Edilen = @takip_edilen;";
+                MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+                bağlantı.Open();
+                MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+                komut.Parameters.AddWithValue("@takip_eden", takip_eden);
+                komut.Parameters.AddWithValue("@takip_edilen", takip_edilen);
+                komut.ExecuteNonQuery();
+                komut.Dispose();
+                bağlantı.Close(); bağlantı.Dispose();
+            }
+        }
         public static string[,] TakipEdilenKullanıcılarınKimlikleri(string takip_eden)
         {
             // a sıra sayısı olursa [a, 0] = kullanıcı kimliği, [a, 1] = takip düzeyi
