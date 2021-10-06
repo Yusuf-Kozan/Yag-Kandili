@@ -1,0 +1,41 @@
+@namespace Bileşenler
+
+<button class="düğme_0_120_0" style="font-size:large; font-weight:normal;"
+            @onclick="TakipEtYaDaTakibiBırak">@düğme_yazısı</button>
+
+@code {
+    [Parameter]
+    public string takip_eden {get; set;} // kimlik türünde
+    [Parameter]
+    public string takip_edilen {get; set;} // kimlik türünde
+    
+    public bool takip_ediyor {get; set;}
+
+    private string düğme_yazısı {get; set;}
+    private void TakipEtYaDaTakibiBırak()
+    {
+        if (!takip_ediyor)
+        {
+            İşlemler.Takipİşlemleri.TakipEt(takip_eden, takip_edilen,
+                                            1, DateTime.Now);
+        }
+        else
+        {
+            Esas.VeriTabanı.Takip.TakibiBırak(takip_eden, takip_edilen);
+        }
+        OnParametersSet();
+    }
+
+    protected override void OnParametersSet()
+    {
+        takip_ediyor = Esas.VeriTabanı.Takip.TakipEdiliyor(takip_eden, takip_edilen);
+        if (!takip_ediyor)
+        {
+            düğme_yazısı = "Takibi Bırak";
+        }
+        else
+        {
+            düğme_yazısı = "Takip Et";
+        }
+    }
+}
