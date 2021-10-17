@@ -49,7 +49,8 @@ namespace Esas.VeriTabanı
         {
             // a sıra sayısı olursa [a, 0] = kullanıcı kimliği, [a, 1] = takip düzeyi
             string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()}" +
-                                " WHERE Takip_Eden = @takip_eden;";
+                                " WHERE Takip_Eden = @takip_eden AND " +
+                                "Takip_Eden NOT LIKE '%₺%';";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
