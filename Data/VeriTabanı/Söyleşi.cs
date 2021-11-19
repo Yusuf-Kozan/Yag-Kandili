@@ -173,6 +173,68 @@ namespace Esas.VeriTabanı
 
             return söyleşi;
         }
+        public static string[,] TakipEdilenSöyleşiler(string[,] takip_edilenler)
+        {
+            // [sıra] [söyleşi kimliği, başlık] > iki boyutlu dizi
+            if (takip_edilenler.GetLength(0) < 1)
+            {
+                return new string[0,0];
+            }
+            string SorguİçinKimlikler = "";
+            for (long i = 0; i < takip_edilenler.GetLongLength(0); i++)
+            {
+                SorguİçinKimlikler += $"@takip{i.ToString()}, ";
+            }
+            SorguİçinKimlikler = $"({SorguİçinKimlikler.Substring(0,(SorguİçinKimlikler.Length-2))})";
+            string söyleşi_tablosu = TabloAdı();
+            string paylaşım_tablosu = Paylaşım.TabloAdı();
+            string takip_tablosu = Takip.TabloAdı();
+            string komut_metni = $"SELECT COUNT(DISTINCT Söyleşi) FROM {söyleşi_tablosu} " +
+                                $"INNER JOIN {paylaşım_tablosu} ON " +
+                                $"{paylaşım_tablosu}.Kimlik2 = {söyleşi_tablosu}.Başlatan_Paylaşım " +
+                                "WHERE Eklenti NOT LIKE '%>gizli%' AND " +
+                                $"Söyleşi IN {SorguİçinKimlikler};";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            for (int j = 0; j < takip_edilenler.GetLongLength(0); j++)
+            {
+                komut.Parameters.AddWithValue($"@takip{j.ToString()}", takip_edilenler[j,0]);
+            }
+            long söyleşi_niceliği = long.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+
+            if (söyleşi_niceliği < 1)
+            {
+                bağlantı.Close(); bağlantı.Dispose();
+                return new string[0,0];
+            }
+
+            komut_metni = $"SELECT DISTINCT Başlık, Söyleşi FROM {söyleşi_tablosu} " +
+                        $"INNER JOIN {paylaşım_tablosu} ON " +
+                        $"{paylaşım_tablosu}.Kimlik2 = {söyleşi_tablosu}.Başlatan_Paylaşım " +
+                        $"WHERE Eklenti NOT LIKE '%>gizli%' AND Söyleşi IN {SorguİçinKimlikler};";
+            komut = new MySqlCommand(komut_metni, bağlantı);
+            for (int j = 0; j < takip_edilenler.GetLongLength(0); j++)
+            {
+                komut.Parameters.AddWithValue($"@takip{j.ToString()}", takip_edilenler[j,0]);
+            }
+            MySqlDataReader veri_okuyucu = komut.ExecuteReader();
+            int döngü_turu = 0;
+            string[,] söyleşiler = new string[söyleşi_niceliği,2];
+            while (veri_okuyucu.Read())
+            {
+                söyleşiler[döngü_turu, 0] = veri_okuyucu["Söyleşi"].ToString();
+                söyleşiler[döngü_turu, 1] = veri_okuyucu["Başlık"].ToString();
+
+                döngü_turu++;
+            }
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            return söyleşiler;
+        }
         private static string TabloAdı()
         {
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt2");

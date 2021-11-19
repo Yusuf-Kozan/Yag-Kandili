@@ -1,0 +1,14 @@
+@using Esas
+@namespace Bileşenler
+
+@for (int i = 0; i < söyleşiler.GetLength(0); ++i)
+{
+    <a class="kutu_0_120_0" href="/söyleşi/@söyleşiler[i,0]"
+    style="display:block; width:80%; margin:auto;">@söyleşiler[i,1]</a>
+}
+
+@code {
+    [Parameter]
+    public string[,] söyleşiler {get; set;}
+    //[sıra] [söyleşi kimliği, başlık]
+}

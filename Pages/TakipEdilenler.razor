@@ -1,0 +1,70 @@
+@page "/takip_edilenler/{TakipEdileninTürü}"
+@layout AnaTaslak
+@using System.Threading.Tasks
+@using Esas
+@using Kilnevüg
+@using Bileşenler
+@inject IJSRuntime JSruntime
+@inject NavigationManager NavigationManager
+
+@if (oturum_açık)
+{
+    @if (TakipEdileninTürü == "söyleşi")
+    {
+        <YönlendirenBaşlık şuraya_yönlendir="/ana" ilk_başlık="Takip Edilen Söyleşiler"
+            ilk_renk="rgb(0,120,0)" ikinci_başlık="Ana Sayfaya Dön" ikinci_renk="#ff6600"/>
+        <SöyleşiBağlantılarıDizelgesi söyleşiler="@söyleşiler"/>
+    }
+}
+else
+{
+    <h1 class="Yükleniyor">Yükleniyor</h1>
+}
+
+@code {
+    [Parameter]
+    public string TakipEdileninTürü {get; set;}
+    // kişi, söyleşi
+
+    private string[,] söyleşiler;
+    protected override void OnParametersSet()
+    {
+        
+    }
+
+    private string kullanıcı, oturum;
+    private bool oturum_açık;
+    public static ÜyeBil bakan_kullanıcı;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            var a = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
+            kullanıcı = a.ToString(); a = null;
+            var b = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
+            oturum = b.ToString(); b = null;
+            devam(kullanıcı, oturum);
+            StateHasChanged();
+        }
+        catch
+        {
+            NavigationManager.NavigateTo("/");
+        }
+    }
+    private void devam(string kullanıcı_kimliği, string oturum_kimliği)
+    {
+        oturum_açık = Esas.VeriTabanı.Oturum.BuOturumAçık(oturum_kimliği, kullanıcı_kimliği);
+        if (!oturum_açık)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+
+        if (TakipEdileninTürü == "söyleşi")
+        {
+            string[,] söyleşilerin_kimlikleri = Esas.VeriTabanı.Takip.TakipEdilenSöyleşilerinKimlikleri(bakan_kullanıcı.KİMLİK);
+            söyleşiler = Esas.VeriTabanı.Söyleşi.TakipEdilenSöyleşiler(söyleşilerin_kimlikleri);
+        }
+    }
+}
