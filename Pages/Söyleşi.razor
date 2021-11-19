@@ -1,4 +1,4 @@
-@page "/söyleşi/{söyleşi_kimliği}"
+@page "/söyleşi/{söyleşi_kimliği}/{önceki_sayfa}"
 @layout AnaTaslak
 @using System.Threading.Tasks
 @using Esas
@@ -9,13 +9,29 @@
 
 @if (oturum_açık)
 {
-    string yön = $"/paylaşım/{başlatan.KİMLİK_2}";
+    string yön = string.Empty;
+    @if (önceki_sayfa == "yorum")
+    {
+        yön = $"/paylaşım/{başlatan.KİMLİK_2}";
+    }
+    else if (önceki_sayfa == "takip_dizelgesi")
+    {
+        yön = "/takip_edilenler/söyleşi";
+    }
     parolasız_üye paylaşımı_yapan = new parolasız_üye(söyleşi[0,1]);
     <div class="p-sayfa">
     
         <div style="text-align: center; margin: 1%;">
+        @if (önceki_sayfa == "yorum")
+        {
             <YönlendirenBaşlık şuraya_yönlendir="@yön" ilk_başlık="@başlatan.BAŞLIK"
             ikinci_başlık="Geri Dön" ilk_renk="rgb(0,120,0)" ikinci_renk="black"/>
+        }
+        else if (önceki_sayfa == "takip_dizelgesi")
+        {
+            <YönlendirenBaşlık şuraya_yönlendir="@yön" ilk_başlık="@başlatan.BAŞLIK"
+            ikinci_başlık="Geri Dön" ilk_renk="rgb(0,120,0)" ikinci_renk="#ff6600"/>
+        }
         </div>
 
         <div style="text-align: center; margin: 0.5%;">
@@ -54,6 +70,8 @@ else
 @code {
     [Parameter]
     public string söyleşi_kimliği {get; set;}
+    [Parameter]
+    public string önceki_sayfa {get; set;}
     private string[,][] söyleşi;
     private paylaşım başlatan;
 
