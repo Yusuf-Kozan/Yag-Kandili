@@ -11,8 +11,10 @@
 {
     @if (TakipEdileninTürü == "söyleşi")
     {
-        <YönlendirenBaşlık şuraya_yönlendir="/ana" ilk_başlık="Takip Edilen Söyleşiler"
-            ilk_renk="rgb(0,120,0)" ikinci_başlık="Ana Sayfaya Dön" ikinci_renk="#ff6600"/>
+        <div style="text-align: center; margin: 1%;">
+            <YönlendirenBaşlık şuraya_yönlendir="/ana" ilk_başlık="Takip Edilen Söyleşiler"
+                ilk_renk="rgb(0,120,0)" ikinci_başlık="Ana Sayfaya Dön" ikinci_renk="#ff6600"/>
+        </div>
         <SöyleşiBağlantılarıDizelgesi söyleşiler="@söyleşiler"/>
     }
 }
@@ -20,6 +22,8 @@ else
 {
     <h1 class="Yükleniyor">Yükleniyor</h1>
 }
+
+<!-- Renk henüz belirlenmedi. Geçici olarak rgb(0,120,0) kullanılıyor. -->
 
 @code {
     [Parameter]
