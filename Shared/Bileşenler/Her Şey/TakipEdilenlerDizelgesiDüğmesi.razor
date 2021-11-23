@@ -1,0 +1,20 @@
+@namespace Bileşenler
+@inject NavigationManager NavigationManager
+
+<div style="padding: 2%; font-size: large;">
+    <button class="D1ykG" style=@tasarım @onclick="Git">Takip Edilen Söyleşiler</button>
+    <!-- Takip edilen kullanıcıların dizelgesi henüz yapılmadığı için geçici süreliğine
+         söyleşilere özel bir düğme olacak. -->
+</div>
+
+<!-- Renk henüz belirlenmedi. Geçici olarak #808080 kullanılıyor. -->
+
+@code {
+    private string tasarım = "font-size: larger; word-break: break-word;";
+    
+    private void Git()
+    {
+        sayfa.EnHerŞey.her_şeyin_düğmesi();
+        NavigationManager.NavigateTo("/takip_edilenler/söyleşi");
+    }
+}
