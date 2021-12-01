@@ -1,0 +1,88 @@
+@page "/arayış"
+@layout AnaTaslak
+@using System.Threading.Tasks
+@using Esas
+@using Kilnevüg
+@using Bileşenler
+@inject IJSRuntime JSruntime
+@inject NavigationManager NavigationManager
+
+@if (oturum_açık)
+{
+    <div style="text-align: center; margin: 1%;">
+        <YönlendirenBaşlık şuraya_yönlendir="/ana" ilk_başlık="Takip Edilen Söyleşiler"
+            ilk_renk="#3baff7" ikinci_başlık="Ana Sayfaya Dön" ikinci_renk="#ff6600"/>
+    
+    
+    <input type="text" placeholder="Aranacak şeyi yazın" class="kutu_3baff7"
+        style="width: calc(80% - 10px); margin: 1%; margin-top: 2%;"
+        @bind="anahtar_söz" @onkeyup="GirişDüğmesineBasıldı"/>
+    <button class="düğme_3baff7" style="width: 80%; margin: 1%;" @onclick="Ara">Ara</button>
+
+    </div>
+
+    @if (sonuçlar.Length >= 1)
+    {
+    @for(int i = 0; i < sonuçlar.Length; i++)
+    {
+        <h3>@sonuçlar[i]</h3>
+    }
+    }
+}
+else
+{
+    <h1 class="Yükleniyor">Yükleniyor</h1>
+
+}
+
+@code {
+    private static string anahtar_söz{get; set;}
+    private string[] sonuçlar;
+    private void Ara()
+    {
+        sonuçlar = Esas.VeriTabanı.Arayış.KullanıcıAdınıAra(anahtar_söz);
+    }
+    private void GirişDüğmesineBasıldı(KeyboardEventArgs klavye_olayları)
+    {
+        if (klavye_olayları.Key == "Enter")
+        {
+            Ara();
+        }
+    }
+
+    private string kullanıcı, oturum;
+    private bool oturum_açık;
+    public static ÜyeBil bakan_kullanıcı;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            var a = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
+            kullanıcı = a.ToString(); a = null;
+            var b = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
+            oturum = b.ToString(); b = null;
+            devam(kullanıcı, oturum);
+            if(firstRender)
+            {
+                sonuçlar = new string[0];
+                anahtar_söz = null;
+            }
+            StateHasChanged();
+        }
+        catch
+        {
+            NavigationManager.NavigateTo("/");
+        }
+    }
+    private void devam(string kullanıcı_kimliği, string oturum_kimliği)
+    {
+        oturum_açık = Esas.VeriTabanı.Oturum.BuOturumAçık(oturum_kimliği, kullanıcı_kimliği);
+        if (!oturum_açık)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+        
+    }
+}
