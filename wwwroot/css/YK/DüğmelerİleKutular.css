@@ -40,12 +40,45 @@
 	background-color: #ccf0cc;
 	border-color: #ccf0cc;
 }
+.düğme_3baff7 {
+    border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: sans-serif;
+	color: rgb(255,255,255);
+	background-color: #3baff7;
+	border-color: #3baff7;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+	outline-style: none;
+	text-align: center;
+}
+.düğme_3baff7:hover {
+    color: #3baff7;
+	background-color: #ceebfd;
+	border-color: #ceebfd;
+}
 
 .kutu_098bdc {
 	border: solid 2px #098bdc;
 	border-radius: 4px;
 	padding: 3px;
 	color: #098bdc;
+	font-size: x-large;
+	font-family: sans-serif;
+	margin: 3px;
+	outline-style: none;
+}
+.kutu_3baff7 {
+	border: solid 2px #3baff7;
+	border-radius: 4px;
+	padding: 3px;
+	color: #3baff7;
 	font-size: x-large;
 	font-family: sans-serif;
 	margin: 3px;
