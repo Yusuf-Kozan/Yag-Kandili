@@ -94,3 +94,28 @@
 	margin: 3px;
 	outline-style: none;
 }
+
+.arama_sonucu {
+	border-style: none none solid none;
+    border-width: thin;
+    border-color: #3baff7;
+
+	margin: 1%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0.5%;
+	width: 80%;
+
+	font-size: x-large;
+	font-family: sans-serif;
+	font-weight: bold;
+	text-decoration: none;
+
+    color: #000000;
+	display: block;
+}
+.arama_sonucu:hover {
+	font-size: x-large;
+	color: #3baff7;
+	border-width: medium;
+}
