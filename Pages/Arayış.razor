@@ -10,14 +10,15 @@
 @if (oturum_açık)
 {
     <div style="text-align: center; margin: 1%;">
-        <YönlendirenBaşlık şuraya_yönlendir="/ana" ilk_başlık="Takip Edilen Söyleşiler"
+        <YönlendirenBaşlık şuraya_yönlendir="/ana" ilk_başlık="Kullanıcıları Ara"
             ilk_renk="#3baff7" ikinci_başlık="Ana Sayfaya Dön" ikinci_renk="#ff6600"/>
     
     
     <input type="text" placeholder="Aranacak şeyi yazın" class="kutu_3baff7"
         style="width: calc(80% - 10px); margin: 1%; margin-top: 2%;"
         @bind="anahtar_söz" @onkeyup="GirişDüğmesineBasıldı"/>
-    <button class="düğme_3baff7" style="width: 80%; margin: 1%;" @onclick="Ara">Ara</button>
+    <button class="düğme_3baff7" style="width: 80%; margin: 1%; margin-bottom: 3%;"
+        @onclick="Ara">Ara</button>
 
     </div>
 
@@ -25,7 +26,7 @@
     {
     @for(int i = 0; i < sonuçlar.Length; i++)
     {
-        <h3>@sonuçlar[i]</h3>
+        <a href="/kişi/@sonuçlar[i]" class="arama_sonucu">@sonuçlar[i]</a>
     }
     }
 }
@@ -40,7 +41,10 @@ else
     private string[] sonuçlar;
     private void Ara()
     {
-        sonuçlar = Esas.VeriTabanı.Arayış.KullanıcıAdınıAra(anahtar_söz);
+        if (!String.IsNullOrWhiteSpace(anahtar_söz))
+        {
+            sonuçlar = Esas.VeriTabanı.Arayış.KullanıcıAdınıAra(anahtar_söz);
+        }
     }
     private void GirişDüğmesineBasıldı(KeyboardEventArgs klavye_olayları)
     {
