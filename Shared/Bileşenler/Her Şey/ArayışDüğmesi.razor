@@ -1,0 +1,16 @@
+@namespace Bileşenler
+@inject NavigationManager NavigationManager
+
+<div style="padding: 2%; font-size: large;">
+    <button class="düğme_3baff7" style=@tasarım @onclick="Git">Arama Yap</button>
+</div>
+
+@code {
+    private string tasarım = "font-size: larger; word-break: break-word;";
+    
+    private void Git()
+    {
+        sayfa.EnHerŞey.her_şeyin_düğmesi();
+        NavigationManager.NavigateTo("/arayış");
+    }
+}
