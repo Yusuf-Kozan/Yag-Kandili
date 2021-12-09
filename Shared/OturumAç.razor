@@ -33,10 +33,11 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
         {
             Başlık = "Giriş Reddedildi";
         }
-        else
+        else if (Esas.VeriTabanı.Üyelik.KullanıcıAdıKullanımda(kullanıcı_adı))
         {
-            // Buraya parola karma komutu eklenecek.
-            if (Esas.VeriTabanı.Üyelik.GirişBilgileriDoğru(kullanıcı_adı, parola))
+            string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
+            string parola_bilgileri = Esas.VeriTabanı.Üyelik.KullanıcınınParolaBilgileri(kullanıcı_kimliği);
+            if (Parolalar.ParolaDoğru(parola_bilgileri, parola))
             {
                 Başlık = "Giriş Yap";
                 İşlemler.Oturumİşlemleri.Oturum_Başlat(kullanıcı_adı, JSRuntime);

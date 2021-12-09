@@ -107,6 +107,18 @@ namespace Esas.VeriTabanı
             komut.Dispose(); komut = null;
             return kullanıcı_kimliği;
         }
+        public static string KullanıcınınParolaBilgileri(string kullanıcı_kimliği)
+        {
+            string komut_metni = $"SELECT Parola FROM {TabloAdı()} WHERE Kimlik = @kimlik";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@kimlik", kullanıcı_kimliği);
+            string parola_bilgileri = komut.ExecuteScalar().ToString();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+            return parola_bilgileri;
+        }
 
         public static bool KullanıcıAdıKullanımda(string kullanıcı_adı)
         {
@@ -143,25 +155,6 @@ namespace Esas.VeriTabanı
                 return false;
             }
             return true;
-        }
-        public static bool GirişBilgileriDoğru(string kullanıcı_adı, string karılmış_parola)
-        {
-            string komut_metni = $"SELECT COUNT(Kimlik) FROM {TabloAdı()} " +
-                                    "WHERE Kullanıcı_Adı = @kullanıcı_adı AND Parola = @parola;";
-            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
-            bağlantı.Open();
-            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
-            komut.Parameters.AddWithValue("@kullanıcı_adı", kullanıcı_adı);
-            komut.Parameters.AddWithValue("@parola", karılmış_parola);
-            int nicelik = int.Parse(komut.ExecuteScalar().ToString());
-            komut.Dispose();
-            bağlantı.Close(); bağlantı.Dispose();
-
-            if (nicelik == 1)
-            {
-                return true;
-            }
-            return false;
         }
         
         internal static string TabloAdı()
