@@ -10,6 +10,7 @@
         <TümPaylaşımlarGörünsünDüğmesi/>
     }
     <TakipEdilenlerDizelgesiDüğmesi/>
+    <SeçeneklerDüğmesi/>
 </div>
 
 @code {
@@ -17,14 +18,14 @@
     public string Nerede {private get; set;} = "/ana";
     [Parameter]
     public static string yGenişlik {private get; set;} = "60";
-    [Parameter]
-    public static string yYükseklik {private get; set;} = "100";
+    //[Parameter]
+    //public static string yYükseklik {private get; set;} = "100";
     [Parameter]
     public ÜyeBil Kim {private get; set;}
     [Parameter]
     public string KimliğiNe {private get; set;}
 
-    private string üstBiçim = $"height: {yYükseklik}%; width: {yGenişlik}%;" +
+    private string üstBiçim = $"height: 80%; margin-bottom: 20%; width: {yGenişlik}%;" +
     $"margin-left: {((100 - Convert.ToInt32(yGenişlik))/2).ToString()}%;" +
     $"margin-right: {((100 - Convert.ToInt32(yGenişlik))/2).ToString()}%;" +
     " padding-top: 1%;" + "text-align: center;";
