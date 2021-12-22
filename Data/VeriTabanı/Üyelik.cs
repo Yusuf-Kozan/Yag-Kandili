@@ -39,6 +39,34 @@ namespace Esas.VeriTabanı
                 Directory.CreateDirectory(üye.DizinYolu());
             }
         }
+        public static bool BilinenParolayıDeğiştir(string kullanıcı_kimliği, string eski_parola, string yeni_parola)
+        {
+            // Eski parola doğruysa parola değiştirilip True değeri döndürülür.
+            // Eski parola yanlışsa işlem yapılmadan False değeri döndürülür.
+            string ŞimdikiKarılmışParola = KullanıcınınParolaBilgileri(kullanıcı_kimliği);
+            bool parola_doğru = Parolalar.ParolaDoğru(ŞimdikiKarılmışParola, eski_parola);
+            if (parola_doğru)
+            {
+                byte[] tuz = Parolalar.YeniTuz();
+                string YeniKarılmışParola = Parolalar.argon2id8_32_2_32(yeni_parola, tuz);
+                
+                string komut_metni = $"UPDATE {TabloAdı()} SET Parola = @yeni_parola " +
+                                        "WHERE Kimlik = @kullanıcı_kimliği;";
+                MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+                bağlantı.Open();
+                MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+                komut.Parameters.AddWithValue("@yeni_parola", YeniKarılmışParola);
+                komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
+                komut.ExecuteNonQuery();
+                komut.Dispose();
+                bağlantı.Close(); bağlantı.Dispose();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public static ÜyeBil ÜyeBilgileri(string kullanıcı_kimliği)
         {

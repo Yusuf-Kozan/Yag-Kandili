@@ -4,6 +4,7 @@
 @using Esas
 @using Kilnevüg
 @using Bileşenler
+@using Bileşenler.Seçenekler
 @inject IJSRuntime JSruntime
 @inject NavigationManager NavigationManager
 
@@ -13,6 +14,7 @@
         <YönlendirenBaşlık şuraya_yönlendir="/ana" ilk_başlık="Seçenekler"
             ilk_renk="#808080" ikinci_başlık="Ana Sayfaya Dön" ikinci_renk="#ff6600"/>
     </div>
+    <ParolaDeğiştir kullanıcı_kimliği="@kullanıcı"/>
 }
 else
 {
