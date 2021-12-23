@@ -11,8 +11,8 @@ namespace Esas.VeriTabanı
     {
         public static void Beğen(Esas.Beğeni beğeni)
         {
-            string komut_metni = $"INSERT INTO {TabloAdı()} (Kim, Neyi, Ne_Kadar, Ne_Zaman, Oturum) " +
-                                "VALUES (@kim, @neyi, @ne_kadar, @ne_zaman, @oturum);";
+            string komut_metni = $"INSERT INTO {TabloAdı()} (Kim, Neyi, Ne_Kadar, Ne_Zaman) " +
+                                "VALUES (@kim, @neyi, @ne_kadar, @ne_zaman);";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
@@ -20,7 +20,6 @@ namespace Esas.VeriTabanı
             komut.Parameters.AddWithValue("@neyi", beğeni.NEYİ);
             komut.Parameters.AddWithValue("@ne_kadar", beğeni.NE_KADAR);
             komut.Parameters.AddWithValue("@ne_zaman", beğeni.NE_ZAMAN.ToString("yyyyMMddHHmmss"));
-            komut.Parameters.AddWithValue("@oturum", beğeni.OTURUM);
             komut.ExecuteNonQuery();
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();

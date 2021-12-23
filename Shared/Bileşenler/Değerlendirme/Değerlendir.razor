@@ -16,13 +16,11 @@
     public string değerlendirilen {get; set;}
     [Parameter]
     public string değerlendiren {get; set;}
-    [Parameter]
-    public string oturum {get; set;}
     private string a;
     
     private void Değerle(int değer)
     {
-        Beğeni beğeni = new Beğeni(değerlendiren, değerlendirilen, değer, DateTime.Now, oturum);
+        Beğeni beğeni = new Beğeni(değerlendiren, değerlendirilen, değer, DateTime.Now);
         Esas.VeriTabanı.Beğeni.BeğeniyiSil(değerlendiren, değerlendirilen);
         Esas.VeriTabanı.Beğeni.Beğen(beğeni);
         OnParametersSet();

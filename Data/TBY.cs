@@ -42,25 +42,22 @@ namespace Esas
         public string NEYİ {get; set;} //Beğenilen paylaşımın Kimlik2'si
         public int NE_KADAR {get; set;}
         public DateTime NE_ZAMAN {get; set;} //Beğenme düğmesine basılan anın zaman damgası
-        public string OTURUM {get; set;} //Beğenenin o andaki oturum kimliği
 
         public Beğeni() {}
-        public Beğeni(string kim, string neyi, int ne_kadar, string ne_zaman, string oturum)
+        public Beğeni(string kim, string neyi, int ne_kadar, string ne_zaman)
         {
             CultureInfo TR = new CultureInfo("tr-TR");
             KİM = kim;
             NEYİ = neyi;
             NE_KADAR = ne_kadar;
             NE_ZAMAN = DateTime.ParseExact(ne_zaman, "yyyyMMddHHmmss", TR);
-            OTURUM = oturum;
         }
-        public Beğeni(string kim, string neyi, int ne_kadar, DateTime ne_zaman, string oturum)
+        public Beğeni(string kim, string neyi, int ne_kadar, DateTime ne_zaman)
         {
             KİM = kim;
             NEYİ = neyi;
             NE_KADAR = ne_kadar;
             NE_ZAMAN = ne_zaman;
-            OTURUM = oturum;
         }
     }
 
