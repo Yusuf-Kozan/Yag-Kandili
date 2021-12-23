@@ -42,7 +42,7 @@ namespace İşlemler
             ÜyeBil paylaşan = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
             string kimlik2 = PaylaşımKimliği.Kimlik2(başlık, içerik, paylaşan.KİMLİK, oturum_kimliği, tarih);
             yeni_paylaşım yeni_paylaşım = new yeni_paylaşım(kimlik2, başlık, içerik, eklenti, paylaşan.KİMLİK,
-                                                            oturum_kimliği, tarih, lisans);
+                                                            tarih, lisans);
             Esas.VeriTabanı.Paylaşım.PaylaşımYap(yeni_paylaşım);
         }
     }

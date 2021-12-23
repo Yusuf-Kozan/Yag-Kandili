@@ -143,7 +143,7 @@ namespace Esas.VeriTabanı
                 {
                     break;
                 }
-                söyleşi[0, 0] = new string[9]; // paylaşım bilgileri
+                söyleşi[0, 0] = new string[8]; // paylaşım bilgileri
                 söyleşi[0, 1] = new string[8]; // paylaşan bilgileri
 
                 söyleşi[0, 0][0] = veri_okuyucu["Kimlik1"].ToString();
@@ -152,9 +152,8 @@ namespace Esas.VeriTabanı
                 söyleşi[0, 0][3] = veri_okuyucu["İçerik"].ToString();
                 söyleşi[0, 0][4] = veri_okuyucu["Eklenti"].ToString();
                 söyleşi[0, 0][5] = veri_okuyucu["Paylaşan"].ToString();
-                söyleşi[0, 0][6] = veri_okuyucu["Oturum"].ToString();
-                söyleşi[0, 0][7] = veri_okuyucu["Tarih"].ToString();
-                söyleşi[0, 0][8] = veri_okuyucu["Lisans"].ToString();
+                söyleşi[0, 0][6] = veri_okuyucu["Tarih"].ToString();
+                söyleşi[0, 0][7] = veri_okuyucu["Lisans"].ToString();
 
                 söyleşi[0, 1][0] = veri_okuyucu["Ad"].ToString();
                 söyleşi[0, 1][1] = veri_okuyucu["Soyadı"].ToString();

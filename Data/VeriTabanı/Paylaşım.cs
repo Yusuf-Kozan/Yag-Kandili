@@ -12,8 +12,8 @@ namespace Esas.VeriTabanı
         public static void PaylaşımYap(Esas.Paylaşım paylaşım)
         {
             string komut_metni = $"INSERT INTO {TabloAdı()} (Kimlik2, Başlık, İçerik, Eklenti, " +
-                                "Paylaşan, Oturum, Tarih, Lisans) VALUES (@kimlik2, @başlık, " +
-                                "@içerik, @eklenti, @paylaşan, @oturum, @tarih, @lisans);";
+                                "Paylaşan, Tarih, Lisans) VALUES (@kimlik2, @başlık, " +
+                                "@içerik, @eklenti, @paylaşan, @tarih, @lisans);";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
@@ -22,7 +22,6 @@ namespace Esas.VeriTabanı
             komut.Parameters.AddWithValue("@içerik", paylaşım.İÇERİK);
             komut.Parameters.AddWithValue("@eklenti", paylaşım.EKLENTİ);
             komut.Parameters.AddWithValue("@paylaşan", paylaşım.PAYLAŞAN);
-            komut.Parameters.AddWithValue("@oturum", paylaşım.OTURUM);
             komut.Parameters.AddWithValue("@tarih", paylaşım.TARİH.ToString("yyyyMMddHHmmss"));
             komut.Parameters.AddWithValue("@lisans", paylaşım.LİSANS);
             komut.ExecuteNonQuery();
@@ -32,8 +31,8 @@ namespace Esas.VeriTabanı
         public static void PaylaşımYap(Esas.yeni_paylaşım paylaşım)
         {
             string komut_metni = $"INSERT INTO {TabloAdı()} (Kimlik2, Başlık, İçerik, Eklenti, " +
-                                "Paylaşan, Oturum, Tarih, Lisans) VALUES (@kimlik2, @başlık, " +
-                                "@içerik, @eklenti, @paylaşan, @oturum, @tarih, @lisans);";
+                                "Paylaşan, Tarih, Lisans) VALUES (@kimlik2, @başlık, " +
+                                "@içerik, @eklenti, @paylaşan, @tarih, @lisans);";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
@@ -42,7 +41,6 @@ namespace Esas.VeriTabanı
             komut.Parameters.AddWithValue("@içerik", paylaşım.İÇERİK);
             komut.Parameters.AddWithValue("@eklenti", paylaşım.EKLENTİ);
             komut.Parameters.AddWithValue("@paylaşan", paylaşım.PAYLAŞAN);
-            komut.Parameters.AddWithValue("@oturum", paylaşım.OTURUM);
             komut.Parameters.AddWithValue("@tarih", paylaşım.TARİH.ToString("yyyyMMddHHmmss"));
             komut.Parameters.AddWithValue("@lisans", paylaşım.LİSANS);
             komut.ExecuteNonQuery();
@@ -72,7 +70,6 @@ namespace Esas.VeriTabanı
                 paylaşım.İÇERİK = veri_okuyucu["İçerik"].ToString();
                 paylaşım.EKLENTİ = veri_okuyucu["Eklenti"].ToString();
                 paylaşım.PAYLAŞAN = veri_okuyucu["Paylaşan"].ToString();
-                paylaşım.OTURUM = veri_okuyucu["Oturum"].ToString();
                 paylaşım.TARİH = DateTime.ParseExact(veri_okuyucu["Tarih"].ToString(), "yyyyMMddHHmmss", TR);
                 paylaşım.LİSANS = veri_okuyucu["Lisans"].ToString();
                 döngü_turu++;
@@ -114,7 +111,6 @@ namespace Esas.VeriTabanı
                 paylaşımlar[döngü_turu].İÇERİK = veri_okuyucu["İçerik"].ToString();
                 paylaşımlar[döngü_turu].EKLENTİ = veri_okuyucu["Eklenti"].ToString();
                 paylaşımlar[döngü_turu].PAYLAŞAN = veri_okuyucu["Paylaşan"].ToString();
-                paylaşımlar[döngü_turu].OTURUM = veri_okuyucu["Oturum"].ToString();
                 string tarih = veri_okuyucu["Tarih"].ToString();
                 paylaşımlar[döngü_turu].TARİH = DateTime.ParseExact(tarih, "yyyyMMddHHmmss", TR);
                 paylaşımlar[döngü_turu].LİSANS = veri_okuyucu["Lisans"].ToString();
@@ -155,7 +151,7 @@ namespace Esas.VeriTabanı
             paylaşımlar = new string[paylaşım_niceliği, 2][];
             while (veri_okuyucu.Read())
             {
-                paylaşımlar[döngü_turu, 0] = new string[9]; //paylaşım bilgileri
+                paylaşımlar[döngü_turu, 0] = new string[8]; //paylaşım bilgileri
                 paylaşımlar[döngü_turu, 1] = new string[8]; //paylaşan bilgileri
 
                 paylaşımlar[döngü_turu, 0][0] = veri_okuyucu["Kimlik1"].ToString();
@@ -164,9 +160,8 @@ namespace Esas.VeriTabanı
                 paylaşımlar[döngü_turu, 0][3] = veri_okuyucu["İçerik"].ToString();
                 paylaşımlar[döngü_turu, 0][4] = veri_okuyucu["Eklenti"].ToString();
                 paylaşımlar[döngü_turu, 0][5] = veri_okuyucu["Paylaşan"].ToString();
-                paylaşımlar[döngü_turu, 0][6] = veri_okuyucu["Oturum"].ToString();
-                paylaşımlar[döngü_turu, 0][7] = veri_okuyucu["Tarih"].ToString();
-                paylaşımlar[döngü_turu, 0][8] = veri_okuyucu["Lisans"].ToString();
+                paylaşımlar[döngü_turu, 0][6] = veri_okuyucu["Tarih"].ToString();
+                paylaşımlar[döngü_turu, 0][7] = veri_okuyucu["Lisans"].ToString();
 
                 paylaşımlar[döngü_turu, 1][0] = veri_okuyucu["Ad"].ToString();
                 paylaşımlar[döngü_turu, 1][1] = veri_okuyucu["Soyadı"].ToString();
@@ -245,9 +240,8 @@ namespace Esas.VeriTabanı
                 paylaşımlar[döngü_turu, 0][3] = veri_okuyucu["İçerik"].ToString();
                 paylaşımlar[döngü_turu, 0][4] = veri_okuyucu["Eklenti"].ToString();
                 paylaşımlar[döngü_turu, 0][5] = veri_okuyucu["Paylaşan"].ToString();
-                paylaşımlar[döngü_turu, 0][6] = veri_okuyucu["Oturum"].ToString();
-                paylaşımlar[döngü_turu, 0][7] = veri_okuyucu["Tarih"].ToString();
-                paylaşımlar[döngü_turu, 0][8] = veri_okuyucu["Lisans"].ToString();
+                paylaşımlar[döngü_turu, 0][6] = veri_okuyucu["Tarih"].ToString();
+                paylaşımlar[döngü_turu, 0][7] = veri_okuyucu["Lisans"].ToString();
 
                 paylaşımlar[döngü_turu, 1][0] = veri_okuyucu["Ad"].ToString();
                 paylaşımlar[döngü_turu, 1][1] = veri_okuyucu["Soyadı"].ToString();
@@ -302,7 +296,6 @@ namespace Esas.VeriTabanı
                 paylaşımlar[döngü_turu].İÇERİK = veri_okuyucu["İçerik"].ToString();
                 paylaşımlar[döngü_turu].EKLENTİ = veri_okuyucu["Eklenti"].ToString();
                 paylaşımlar[döngü_turu].PAYLAŞAN = veri_okuyucu["Paylaşan"].ToString();
-                paylaşımlar[döngü_turu].OTURUM = veri_okuyucu["Oturum"].ToString();
                 string tarih = veri_okuyucu["Tarih"].ToString();
                 paylaşımlar[döngü_turu].TARİH = DateTime.ParseExact(tarih, "yyyyMMddHHmmss", TR);
                 paylaşımlar[döngü_turu].LİSANS = veri_okuyucu["Lisans"].ToString();
