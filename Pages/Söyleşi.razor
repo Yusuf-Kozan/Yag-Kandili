@@ -90,7 +90,7 @@ else
     {
         if (!String.IsNullOrWhiteSpace(söylenecek_söz))
         {
-            yeni_söz söylenecek = new yeni_söz(söylenecek_söz, kullanıcı, oturum,
+            yeni_söz söylenecek = new yeni_söz(söylenecek_söz, kullanıcı,
                                     söyleşi_kimliği, DateTime.Now, false, başlatan.KİMLİK_2);
             Esas.VeriTabanı.Söyleşi.Söyle(söylenecek);
             söylenecek_söz = null;

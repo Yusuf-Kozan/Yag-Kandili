@@ -11,16 +11,15 @@ namespace Esas.VeriTabanı
     {
         public static void Söyle(yeni_söz söz)
         {
-            string komut_metni = $"INSERT INTO {TabloAdı()} (Söz, Söyleyen, Oturum, " +
+            string komut_metni = $"INSERT INTO {TabloAdı()} (Söz, Söyleyen, " +
                                 "Tarih, Söyleşi, Başlatan_Paylaşım, Bu_İlk) VALUES " +
-                                "(@söz, @söyleyen, @oturum, @tarih, @söyleşi, " +
+                                "(@söz, @söyleyen, @tarih, @söyleşi, " +
                                 "@başlatan_paylaşım, @bu_ilk);";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
             komut.Parameters.AddWithValue("@söz", söz.SÖZ);
             komut.Parameters.AddWithValue("@söyleyen", söz.SÖYLEYEN);
-            komut.Parameters.AddWithValue("@oturum", söz.OTURUM);
             komut.Parameters.AddWithValue("@tarih", söz.TARİH);
             komut.Parameters.AddWithValue("@söyleşi", söz.SÖYLEŞİ);
             komut.Parameters.AddWithValue("@başlatan_paylaşım", söz.BAŞLATAN_PAYLAŞIM);
@@ -55,7 +54,6 @@ namespace Esas.VeriTabanı
             {
                 yorumlar[döngü_turu].SÖZ = veri_okuyucu["Söz"].ToString();
                 yorumlar[döngü_turu].SÖYLEYEN = veri_okuyucu["Söyleyen"].ToString();
-                yorumlar[döngü_turu].OTURUM = veri_okuyucu["Oturum"].ToString();
                 yorumlar[döngü_turu].TARİH = veri_okuyucu["Tarih"].ToString();
                 yorumlar[döngü_turu].SÖYLEŞİ = veri_okuyucu["Söyleşi"].ToString();
                 yorumlar[döngü_turu].BAŞLATAN_PAYLAŞIM = veri_okuyucu["Başlatan_Paylaşım"].ToString();
@@ -104,17 +102,16 @@ namespace Esas.VeriTabanı
             söyleşi = new string[sonuç_niceliği, 2][];
             while (veri_okuyucu.Read())
             {
-                söyleşi[döngü_turu, 0] = new string[8]; // söz bilgileri
+                söyleşi[döngü_turu, 0] = new string[7]; // söz bilgileri
                 söyleşi[döngü_turu, 1] = new string[8]; // söyleyen bilgileri
 
                 söyleşi[döngü_turu, 0][0] = veri_okuyucu["Söz"].ToString();
                 söyleşi[döngü_turu, 0][1] = veri_okuyucu["Söyleyen"].ToString();
-                söyleşi[döngü_turu, 0][2] = veri_okuyucu["Oturum"].ToString();
-                söyleşi[döngü_turu, 0][3] = veri_okuyucu["Tarih"].ToString();
-                söyleşi[döngü_turu, 0][4] = veri_okuyucu["Söyleşi"].ToString();
-                söyleşi[döngü_turu, 0][5] = veri_okuyucu["Başlatan_Paylaşım"].ToString();
-                söyleşi[döngü_turu, 0][6] = veri_okuyucu["Genel_Sıra"].ToString();
-                söyleşi[döngü_turu, 0][7] = veri_okuyucu["Bu_İlk"].ToString();
+                söyleşi[döngü_turu, 0][2] = veri_okuyucu["Tarih"].ToString();
+                söyleşi[döngü_turu, 0][3] = veri_okuyucu["Söyleşi"].ToString();
+                söyleşi[döngü_turu, 0][4] = veri_okuyucu["Başlatan_Paylaşım"].ToString();
+                söyleşi[döngü_turu, 0][5] = veri_okuyucu["Genel_Sıra"].ToString();
+                söyleşi[döngü_turu, 0][6] = veri_okuyucu["Bu_İlk"].ToString();
 
                 söyleşi[döngü_turu, 1][0] = veri_okuyucu["Ad"].ToString();
                 söyleşi[döngü_turu, 1][1] = veri_okuyucu["Soyadı"].ToString();
@@ -134,7 +131,7 @@ namespace Esas.VeriTabanı
                         $"ON {tablo_paylaşım}.Paylaşan = {tablo_üyelik}.Kimlik " +
                         $"WHERE {tablo_paylaşım}.Kimlik2 = @başlatan_paylaşım;";
             komut = new MySqlCommand(komut_metni, bağlantı);
-            komut.Parameters.AddWithValue("@başlatan_paylaşım", söyleşi[1,0][5]);
+            komut.Parameters.AddWithValue("@başlatan_paylaşım", söyleşi[1,0][4]);
             veri_okuyucu = komut.ExecuteReader();
             int tur = 0;
             while(veri_okuyucu.Read())
