@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 using Esas;
 
 namespace Kilnevüg
@@ -40,6 +41,30 @@ namespace Kilnevüg
             string tarih = üye.BAŞLANGIÇ.ToString("yyyyMMddHHmmss");
             string karılmamış = üye.KULLANICI_ADI + üye.AD + tarih + üye.SOYADI + üye.E_POSTA;
             return sha512.ComputeHash(karılmamış).HashString;
+        }
+    }
+    public class OturumKimliği
+    {
+        public static string YeniKimlik()
+        {
+            string gelişigüzel = GelişigüzelYazı();
+            bool kimlik_kullanımda = Esas.VeriTabanı.Oturum.KimlikKullanımda(gelişigüzel);
+
+            while (kimlik_kullanımda)
+            {
+                gelişigüzel = GelişigüzelYazı();
+                kimlik_kullanımda = Esas.VeriTabanı.Oturum.KimlikKullanımda(gelişigüzel);
+            }
+            
+            return gelişigüzel;
+        }
+        public static string GelişigüzelYazı()
+        {
+            RandomNumberGenerator üreteç = RandomNumberGenerator.Create();
+            byte[] ikili_yazı = new byte[32];
+            üreteç.GetBytes(ikili_yazı);
+            string yazı = Convert.ToBase64String(ikili_yazı);
+            return yazı;
         }
     }
 }

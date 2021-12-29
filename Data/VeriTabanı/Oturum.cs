@@ -85,6 +85,27 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             return kullanıcı_kimliği;
         }
+        public static bool KimlikKullanımda(string oturum_kimliği)
+        {
+            string komut_metni = $"SELECT COUNT(Oturum_Kimliği) FROM {TabloAdı()} " +
+                                    "WHERE Oturum_Kimliği = @oturum_kimliği;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@oturum_kimliği", oturum_kimliği);
+            int nicelik = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            if (nicelik == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         private static string TabloAdı()
         {
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt2");

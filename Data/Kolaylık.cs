@@ -10,7 +10,7 @@ namespace İşlemler
         public static void Oturum_Başlat(string kullanıcı_adı, IJSRuntime jsRuntime)
         {
             Çerezler çerez = new Çerezler(jsRuntime);
-            string oturum_kimliği = Kilnevüg.Kilnevüg.YeniEşsizKimlik(kullanıcı_adı);
+            string oturum_kimliği = OturumKimliği.YeniKimlik();
             string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
             çerez.ÇerezYap("kullanıcı", kullanıcı_kimliği, 4);
             çerez.ÇerezYap("oturum", oturum_kimliği, 4);
