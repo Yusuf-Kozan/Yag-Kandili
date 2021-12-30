@@ -1,0 +1,25 @@
+#resim {
+    text-align: center;
+    width: 30%;
+}
+#ortalama-beğeni, #takipçi-niceliği {
+    width: 80%;
+    margin: 2% auto;
+}
+
+@media (orientation: landscape)
+{
+    #ortalama-beğeni {
+        width:25%;
+        margin: 3% 0% 3% 8%;
+        float: left;
+    }
+    #takipçi-niceliği {
+        width:25%;
+        margin: 3% 8% 3% 0%;
+        float:right;
+    }
+    #resim {
+        width: 10%;
+    }
+}
