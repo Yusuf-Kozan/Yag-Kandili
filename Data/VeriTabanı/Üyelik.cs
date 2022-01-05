@@ -13,17 +13,16 @@ namespace Esas.VeriTabanı
         {
             // Üye türü bir YAPIDIR, sınıf değildir.
 
-            //INSERT INTO tablo_adı (Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, E_Posta, Başlangıç, Resim, Kimlik)
-            //VALUES (@kullanıcı_adı, @ad, @soyadı, @parola, @üstünlük, @e_posta, @başlangıç, @resim, @kimlik);
-            string komut_metni = $"INSERT INTO {TabloAdı()} (Kullanıcı_Adı, Ad, Soyadı, Parola, Üstünlük, " + 
-                                "E_Posta, Başlangıç, Resim, Kimlik) VALUES (@kullanıcı_adı, @ad, @soyadı, " +
+            //INSERT INTO tablo_adı (Kullanıcı_Adı, Ad, Parola, Üstünlük, E_Posta, Başlangıç, Resim, Kimlik)
+            //VALUES (@kullanıcı_adı, @ad, @parola, @üstünlük, @e_posta, @başlangıç, @resim, @kimlik);
+            string komut_metni = $"INSERT INTO {TabloAdı()} (Kullanıcı_Adı, Ad, Parola, Üstünlük, " + 
+                                "E_Posta, Başlangıç, Resim, Kimlik) VALUES (@kullanıcı_adı, @ad, " +
                                 "@parola, @üstünlük, @e_posta, @başlangıç, @resim, @kimlik);";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
             komut.Parameters.AddWithValue("@kullanıcı_adı", üye.KULLANICI_ADI);
             komut.Parameters.AddWithValue("@ad", üye.AD);
-            komut.Parameters.AddWithValue("@soyadı", üye.SOYADI);
             komut.Parameters.AddWithValue("@parola", üye.PAROLA);
             komut.Parameters.AddWithValue("@üstünlük", üye.ÜSTÜNLÜK);
             komut.Parameters.AddWithValue("@e_posta", üye.E_POSTA);
@@ -82,7 +81,6 @@ namespace Esas.VeriTabanı
             {
                 üye.KULLANICI_ADI = veri_okuyucu["Kullanıcı_Adı"].ToString();
                 üye.AD = veri_okuyucu["Ad"].ToString();
-                üye.SOYADI = veri_okuyucu["Soyadı"].ToString();
                 üye.PAROLA = veri_okuyucu["Parola"].ToString();
                 üye.ÜSTÜNLÜK = veri_okuyucu["Üstünlük"].ToString();
                 üye.E_POSTA = veri_okuyucu["E_Posta"].ToString();
@@ -111,7 +109,6 @@ namespace Esas.VeriTabanı
                 üye = new ÜyeBil();
                 üye.KULLANICI_ADI = veri_okuyucu["Kullanıcı_Adı"].ToString();
                 üye.AD = veri_okuyucu["Ad"].ToString();
-                üye.SOYADI = veri_okuyucu["Soyadı"].ToString();
                 üye.ÜSTÜNLÜK = veri_okuyucu["Üstünlük"].ToString();
                 üye.E_POSTA = veri_okuyucu["E_Posta"].ToString();
                 üye.BAŞLANGIÇ = DateTime.ParseExact(veri_okuyucu["Başlangıç"].ToString(), "yyyyMMddHHmmss", TR);

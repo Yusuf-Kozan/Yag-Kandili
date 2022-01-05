@@ -18,11 +18,10 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
     }
     <p style="color: #cc0000;">@p</p>
     <div><input type="text" style="width:100%;" placeholder="Adınız" class="MetinKutusu1" @bind="bilgiler[0]"/></div>
-    <div><input type="text" style="width:100%;" placeholder="Soyadınız" class="MetinKutusu1" @bind="bilgiler[1]"/></div>
-    <div><input type="text" style="width:100%;" placeholder="E-Posta Adresiniz" class="MetinKutusu1" @bind="bilgiler[3]"/></div>
-    <div><input type="text" style="width:100%;" placeholder="Kullanıcı Adınız" class="MetinKutusu1" @bind="bilgiler[2]"></div>
-    <div><input type="password" style="width:100%;" placeholder="Parolanız" class="MetinKutusu1" @bind="bilgiler[4]"/></div>
-    <div><input type="password" style="width:100%;" placeholder="Parolanız (Tekrar)" class="MetinKutusu1" @bind="bilgiler[5]"/></div>
+    <div><input type="text" style="width:100%;" placeholder="E-Posta Adresiniz" class="MetinKutusu1" @bind="bilgiler[2]"/></div>
+    <div><input type="text" style="width:100%;" placeholder="Kullanıcı Adınız" class="MetinKutusu1" @bind="bilgiler[1]"></div>
+    <div><input type="password" style="width:100%;" placeholder="Parolanız" class="MetinKutusu1" @bind="bilgiler[3]"/></div>
+    <div><input type="password" style="width:100%;" placeholder="Parolanız (Tekrar)" class="MetinKutusu1" @bind="bilgiler[4]"/></div>
     
     @*<div><input type="text" placeholder="@ph1" class="MetinKutusu1" @bind="bir"/></div>
     <div><input type="text" placeholder="@ph2" class="MetinKutusu1" @bind="iki"/></div>*@
@@ -33,36 +32,36 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
     private string Başlık {get; set;} = "Bir Kandil Yak";
     private string Düğme {get; set;} = "Bir Kandil Yak";
     private string p {get; set;} = "Bütün kutuları doldurmalısınız.";
-    private string[] bilgiler = new string[7]; //ad(0), soyadı(1), kullanıcı adı(2), e-posta(3), parola(4), parola(tekrar)(5), resim(6)
+    private string[] bilgiler = new string[6]; //ad(0), kullanıcı adı(1), e-posta(2), parola(3), parola(tekrar)(4), resim(5)
     private void KandilYak()
     {
-        if (bilgiler[4] != bilgiler[5])
+        if (bilgiler[3] != bilgiler[4])
         {
             Başlık = "Girilen iki parola farklı";
-            bilgiler[4] = null; bilgiler[5] = null;
+            bilgiler[3] = null; bilgiler[4] = null;
         }
         else
         {
-            bool KullanıcıAdıKullanımda = Esas.VeriTabanı.Üyelik.KullanıcıAdıKullanımda(bilgiler[2]);
-            bool EPostaKullanımda = Esas.VeriTabanı.Üyelik.EPostaKullanımda(bilgiler[3]);
+            bool KullanıcıAdıKullanımda = Esas.VeriTabanı.Üyelik.KullanıcıAdıKullanımda(bilgiler[1]);
+            bool EPostaKullanımda = Esas.VeriTabanı.Üyelik.EPostaKullanımda(bilgiler[2]);
             if (EPostaKullanımda)
             {
                 Başlık = "Bu e-posta adresi uygun değil";
-                bilgiler[3] = null;
+                bilgiler[2] = null;
             }
             else if (KullanıcıAdıKullanımda)
             {
                 Başlık = "Bu kullanıcı adı uygun değil";
-                bilgiler[2] = null;
+                bilgiler[1] = null;
             }
             else
             {
                 Başlık = "Bir Kandil Yak";
-                bilgiler[6] = "resimler/avatar/0069ff.svg";
+                bilgiler[5] = "resimler/avatar/0069ff.svg";
                 byte[] tuz = Parolalar.YeniTuz();
-                bilgiler[4] = Parolalar.argon2id8_32_2_32(bilgiler[4], tuz);
-                Üye yeni_üye = new Üye(bilgiler[0], bilgiler[1], bilgiler[2], bilgiler[4],
-                                        bilgiler[3], "kullanıcı", DateTime.Now, bilgiler[6]);
+                bilgiler[3] = Parolalar.argon2id8_32_2_32(bilgiler[3], tuz);
+                Üye yeni_üye = new Üye(bilgiler[0], bilgiler[1], bilgiler[3],
+                                        bilgiler[2], "kullanıcı", DateTime.Now, bilgiler[5]);
                 Üyelikİşlemleri.ÜyeOluştur(yeni_üye);
                 Oturumİşlemleri.Oturum_Başlat(yeni_üye.KULLANICI_ADI, JSRuntime);
                 NavigationManager.NavigateTo("/ana");

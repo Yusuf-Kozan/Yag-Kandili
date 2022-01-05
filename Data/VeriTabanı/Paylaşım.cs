@@ -152,7 +152,7 @@ namespace Esas.VeriTabanı
             while (veri_okuyucu.Read())
             {
                 paylaşımlar[döngü_turu, 0] = new string[8]; //paylaşım bilgileri
-                paylaşımlar[döngü_turu, 1] = new string[8]; //paylaşan bilgileri
+                paylaşımlar[döngü_turu, 1] = new string[7]; //paylaşan bilgileri
 
                 paylaşımlar[döngü_turu, 0][0] = veri_okuyucu["Kimlik1"].ToString();
                 paylaşımlar[döngü_turu, 0][1] = veri_okuyucu["Kimlik2"].ToString();
@@ -164,13 +164,12 @@ namespace Esas.VeriTabanı
                 paylaşımlar[döngü_turu, 0][7] = veri_okuyucu["Lisans"].ToString();
 
                 paylaşımlar[döngü_turu, 1][0] = veri_okuyucu["Ad"].ToString();
-                paylaşımlar[döngü_turu, 1][1] = veri_okuyucu["Soyadı"].ToString();
-                paylaşımlar[döngü_turu, 1][2] = veri_okuyucu["Kullanıcı_Adı"].ToString();
-                paylaşımlar[döngü_turu, 1][3] = veri_okuyucu["E_Posta"].ToString();
-                paylaşımlar[döngü_turu, 1][4] = veri_okuyucu["Üstünlük"].ToString();
-                paylaşımlar[döngü_turu, 1][5] = veri_okuyucu["Başlangıç"].ToString();
-                paylaşımlar[döngü_turu, 1][6] = veri_okuyucu["Resim"].ToString();
-                paylaşımlar[döngü_turu, 1][7] = veri_okuyucu["Kimlik"].ToString();
+                paylaşımlar[döngü_turu, 1][1] = veri_okuyucu["Kullanıcı_Adı"].ToString();
+                paylaşımlar[döngü_turu, 1][2] = veri_okuyucu["E_Posta"].ToString();
+                paylaşımlar[döngü_turu, 1][3] = veri_okuyucu["Üstünlük"].ToString();
+                paylaşımlar[döngü_turu, 1][4] = veri_okuyucu["Başlangıç"].ToString();
+                paylaşımlar[döngü_turu, 1][5] = veri_okuyucu["Resim"].ToString();
+                paylaşımlar[döngü_turu, 1][6] = veri_okuyucu["Kimlik"].ToString();
 
                 döngü_turu++;
             }
@@ -232,7 +231,7 @@ namespace Esas.VeriTabanı
             while (veri_okuyucu.Read())
             {
                 paylaşımlar[döngü_turu, 0] = new string[9]; //paylaşım bilgileri
-                paylaşımlar[döngü_turu, 1] = new string[8]; //paylaşan bilgileri
+                paylaşımlar[döngü_turu, 1] = new string[7]; //paylaşan bilgileri
 
                 paylaşımlar[döngü_turu, 0][0] = veri_okuyucu["Kimlik1"].ToString();
                 paylaşımlar[döngü_turu, 0][1] = veri_okuyucu["Kimlik2"].ToString();
@@ -244,13 +243,12 @@ namespace Esas.VeriTabanı
                 paylaşımlar[döngü_turu, 0][7] = veri_okuyucu["Lisans"].ToString();
 
                 paylaşımlar[döngü_turu, 1][0] = veri_okuyucu["Ad"].ToString();
-                paylaşımlar[döngü_turu, 1][1] = veri_okuyucu["Soyadı"].ToString();
-                paylaşımlar[döngü_turu, 1][2] = veri_okuyucu["Kullanıcı_Adı"].ToString();
-                paylaşımlar[döngü_turu, 1][3] = veri_okuyucu["E_Posta"].ToString();
-                paylaşımlar[döngü_turu, 1][4] = veri_okuyucu["Üstünlük"].ToString();
-                paylaşımlar[döngü_turu, 1][5] = veri_okuyucu["Başlangıç"].ToString();
-                paylaşımlar[döngü_turu, 1][6] = veri_okuyucu["Resim"].ToString();
-                paylaşımlar[döngü_turu, 1][7] = veri_okuyucu["Kimlik"].ToString();
+                paylaşımlar[döngü_turu, 1][1] = veri_okuyucu["Kullanıcı_Adı"].ToString();
+                paylaşımlar[döngü_turu, 1][2] = veri_okuyucu["E_Posta"].ToString();
+                paylaşımlar[döngü_turu, 1][3] = veri_okuyucu["Üstünlük"].ToString();
+                paylaşımlar[döngü_turu, 1][4] = veri_okuyucu["Başlangıç"].ToString();
+                paylaşımlar[döngü_turu, 1][5] = veri_okuyucu["Resim"].ToString();
+                paylaşımlar[döngü_turu, 1][6] = veri_okuyucu["Kimlik"].ToString();
 
                 döngü_turu++;
             }

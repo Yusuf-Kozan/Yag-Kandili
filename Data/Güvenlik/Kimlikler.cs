@@ -27,19 +27,19 @@ namespace Kilnevüg
     }
     public class KullanıcıKimliği
     {
-        public static string Kimlik(string kullanıcı_adı, string ad, string soyadı,
+        public static string Kimlik(string kullanıcı_adı, string ad,
                                     string e_posta, DateTime başlangıç_tarihi)
         {
             CryptHash.Net.Hash.Hash.SHA512 sha512 = new CryptHash.Net.Hash.Hash.SHA512();
             string tarih = başlangıç_tarihi.ToString("yyyyMMddHHmmss");
-            string karılmamış = kullanıcı_adı + ad + tarih + soyadı + e_posta;
+            string karılmamış = kullanıcı_adı + ad + tarih + e_posta;
             return sha512.ComputeHash(karılmamış).HashString;
         }
         public static string Kimlik(Üye üye)
         {
             CryptHash.Net.Hash.Hash.SHA512 sha512 = new CryptHash.Net.Hash.Hash.SHA512();
             string tarih = üye.BAŞLANGIÇ.ToString("yyyyMMddHHmmss");
-            string karılmamış = üye.KULLANICI_ADI + üye.AD + tarih + üye.SOYADI + üye.E_POSTA;
+            string karılmamış = üye.KULLANICI_ADI + üye.AD + tarih + üye.E_POSTA;
             return sha512.ComputeHash(karılmamış).HashString;
         }
     }

@@ -6,7 +6,6 @@ namespace Esas
     public class ÜyeBil
     {
         public string AD { get; set; }
-        public string SOYADI { get; set; }
         public string KULLANICI_ADI { get; set; }
         public string PAROLA { get; set; }
         public string E_POSTA { get; set; }
@@ -15,39 +14,35 @@ namespace Esas
         public string RESİM { get; set; }
         public string KİMLİK { get; set; }
 
-        public ÜyeBil(string ad, string soyadı, string kullanıcıAdı, string parola, string ePosta, string üstünlük, DateTime başlangıç)
+        public ÜyeBil(string ad, string kullanıcıAdı, string parola, string ePosta, string üstünlük, DateTime başlangıç)
         {
             AD = ad;
-            SOYADI = soyadı;
             KULLANICI_ADI = kullanıcıAdı;
             PAROLA = parola;
             E_POSTA = ePosta;
             ÜSTÜNLÜK = üstünlük;
             BAŞLANGIÇ = başlangıç;
         }
-        public ÜyeBil(string ad, string soyadı, string kullanıcıAdı, string parola, string ePosta, string üstünlük)
+        public ÜyeBil(string ad, string kullanıcıAdı, string parola, string ePosta, string üstünlük)
         {
             AD = ad;
-            SOYADI = soyadı;
             KULLANICI_ADI = kullanıcıAdı;
             PAROLA = parola;
             E_POSTA = ePosta;
             ÜSTÜNLÜK = üstünlük;
         }
-        public ÜyeBil(string ad, string soyadı, string kullanıcıAdı, string parola, string ePosta, string üstünlük, string resim)
+        public ÜyeBil(string ad, string kullanıcıAdı, string parola, string ePosta, string üstünlük, string resim)
         {
             AD = ad;
-            SOYADI = soyadı;
             KULLANICI_ADI = kullanıcıAdı;
             PAROLA = parola;
             E_POSTA = ePosta;
             ÜSTÜNLÜK = üstünlük;
             RESİM = resim;
         }
-        public ÜyeBil(string ad, string soyadı, string kullanıcıAdı, string parola, string ePosta, string üstünlük, DateTime başlangıç, string resim)
+        public ÜyeBil(string ad, string kullanıcıAdı, string parola, string ePosta, string üstünlük, DateTime başlangıç, string resim)
         {
             AD = ad;
-            SOYADI = soyadı;
             KULLANICI_ADI = kullanıcıAdı;
             PAROLA = parola;
             E_POSTA = ePosta;
@@ -58,7 +53,6 @@ namespace Esas
         public ÜyeBil(Üye üye)
         {
             AD = üye.AD;
-            SOYADI = üye.SOYADI;
             KULLANICI_ADI = üye.KULLANICI_ADI;
             PAROLA = üye.PAROLA;
             E_POSTA = üye.E_POSTA;
@@ -70,7 +64,7 @@ namespace Esas
 
         public override string ToString()
         {
-            return "Ad: " + AD + " | Soyadı: " + SOYADI +
+            return "Ad: " + AD +
             " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA + " | Üstünlük: "
             + ÜSTÜNLÜK + " | Başlangıç: " + BAŞLANGIÇ.ToString();
         }
@@ -81,7 +75,7 @@ namespace Esas
         }
         public string[] MetinKümesiYap()
         {
-            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString()};
+            string[] küme = new string[]{AD, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString()};
             return küme;
         }
     }
@@ -89,7 +83,6 @@ namespace Esas
     public struct Üye
     {
         public string AD {get; set;}
-        public string SOYADI {get; set;}
         public string KULLANICI_ADI {get; set;}
         public string PAROLA {get; set;}
         public string E_POSTA {get; set;}
@@ -97,11 +90,10 @@ namespace Esas
         public DateTime BAŞLANGIÇ {get; set;}
         public string RESİM {get; set;}
 
-        public Üye(string ad, string soyadı, string kullanıcı_adı, string parola,
+        public Üye(string ad, string kullanıcı_adı, string parola,
                     string e_posta, string üstünlük, DateTime başlangıç_tarihi, string resim)
         {
             AD = ad;
-            SOYADI = soyadı;
             KULLANICI_ADI = kullanıcı_adı;
             PAROLA = parola;
             E_POSTA = e_posta;
@@ -117,20 +109,19 @@ namespace Esas
         }
         public override string ToString()
         {
-            return "Ad: " + AD + " | Soyadı: " + SOYADI +
+            return "Ad: " + AD +
             " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA + " | Üstünlük: "
             + ÜSTÜNLÜK + " | Başlangıç: " + BAŞLANGIÇ.ToString();
         }
         public string[] MetinKümesiYap()
         {
-            string[] küme = new string[]{AD, SOYADI, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString("yyyyMMddHHmmss"), RESİM};
+            string[] küme = new string[]{AD, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString("yyyyMMddHHmmss"), RESİM};
             return küme;
         }
     }
     public struct parolasız_üye
     {
         public string AD { get; set; }
-        public string SOYADI { get; set; }
         public string KULLANICI_ADI { get; set; }
         public string E_POSTA { get; set; }
         public string ÜSTÜNLÜK { get; set; }
@@ -141,14 +132,13 @@ namespace Esas
         public parolasız_üye (string[] üye_bilgileri)
         {
             AD = üye_bilgileri[0];
-            SOYADI = üye_bilgileri[1];
-            KULLANICI_ADI = üye_bilgileri[2];
-            E_POSTA = üye_bilgileri[3];
-            ÜSTÜNLÜK = üye_bilgileri[4];
+            KULLANICI_ADI = üye_bilgileri[1];
+            E_POSTA = üye_bilgileri[2];
+            ÜSTÜNLÜK = üye_bilgileri[3];
             CultureInfo TR = new CultureInfo("tr-TR");
-            BAŞLANGIÇ = DateTime.ParseExact(üye_bilgileri[5], "yyyyMMddHHmmss", TR);
-            RESİM = üye_bilgileri[6];
-            KİMLİK = üye_bilgileri[7];
+            BAŞLANGIÇ = DateTime.ParseExact(üye_bilgileri[4], "yyyyMMddHHmmss", TR);
+            RESİM = üye_bilgileri[5];
+            KİMLİK = üye_bilgileri[6];
         }
     }
 }
