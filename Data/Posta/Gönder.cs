@@ -14,7 +14,6 @@ namespace Esas.Posta
             //      https://github.com/jstedfast/MailKit#using-mailkit
             //      https://dotnetcoretutorials.com/2017/11/02/using-mailkit-send-receive-email-asp-net-core/
 
-            // Daha sınama fırsatım olmadı.
             var ileti = new MimeMessage();
             ileti.From.Add(new MailboxAddress("Yağ Kandili" , gönderen.ADRES));
             ileti.To.Add(new MailboxAddress(üye.AD, üye.E_POSTA));
@@ -27,9 +26,8 @@ namespace Esas.Posta
 
             using (var istemci = new SmtpClient())
             {
-                istemci.Connect(gönderen.SUNUCU, int.Parse(gönderen.PORT), true);
-                string kullanıcı_adı = gönderen.ADRES.Split('@')[0];
-                istemci.Authenticate(kullanıcı_adı, gönderen.PAROLA);
+                istemci.Connect(gönderen.SUNUCU, int.Parse(gönderen.PORT), MailKit.Security.SecureSocketOptions.StartTls);
+                istemci.Authenticate(gönderen.ADRES, gönderen.PAROLA);
                 istemci.Send(ileti);
                 istemci.Disconnect(true);
             }
