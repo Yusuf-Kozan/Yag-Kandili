@@ -65,6 +65,14 @@
             if (değişti)
             {
                 başlık = "Değişim Başarılı";
+
+                ÜyeBil kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+                Esas.Posta.GönderenBilgisi gönderen = new Esas.Posta.GönderenBilgisi();
+                gönderen.AyarBelgesiniOku();
+                string konu = "Yağ Kandili Güvenlik Uyarısı";
+                string içerik = "Parolanız Değiştirildi.";
+                Esas.Posta.PostaGönder.TekKullanıcıyaGönder(gönderen, kullanıcı, konu, içerik);
+
                 StateHasChanged();
             }
             else
