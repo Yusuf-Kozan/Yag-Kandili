@@ -1,0 +1,48 @@
+@namespace Bileşenler.Seçenekler
+
+<div class="kutu_0069ff" style="text-align: center; width: 80%;
+    margin-left: auto; margin-right: auto; margin-top: 1%;
+    margin-bottom: 1%;" id="kişisel veriler" autocomplete="off">
+
+    @if (başlık == "Kişisel Verileri İndir")
+    {
+        <h4 style="color:#0069ff; font-size: xx-large;
+            text-align: center;">@başlık</h4>
+    }
+    else
+    {
+        <h4 style="color:#6900ff; font-size: xx-large;
+            text-align: center;">@başlık</h4>
+        <!-- #0069ff ile #4169e1 birbirine biraz benzediği için
+        kafa karışıklığını önlemek adına #6900ff kullanılıyor. -->
+    }
+
+    <input type="text" placeholder="Kullanıcı Adınız"
+        class="tek-kenarlı-kutu_0069ff"
+        style="width: 80%; text-align: start;
+        margin-left: auto; margin-right: auto;"
+        @bind="kullanıcı_adı" />
+
+    <input type="password" placeholder="Parolanız"
+        class="tek-kenarlı-kutu_0069ff"
+        style="width: 80%; text-align: start;
+        margin-left: auto; margin-right: auto;"
+        @bind="parola" />
+
+    <input type="button" value="Kişisel Verileri İste" class="düğme_0069ff"
+        style="width: 80%; margin: 1%;" @onclick="İste" />
+
+</div>
+
+@code {
+    [Parameter]
+    public string kullanıcı_kimliği {get; set;}
+
+    private string başlık = "Kişisel Verileri İndir";
+
+    private string kullanıcı_adı {get; set;}
+    private string parola {get; set;}
+
+    private void İste()
+    {}
+}
