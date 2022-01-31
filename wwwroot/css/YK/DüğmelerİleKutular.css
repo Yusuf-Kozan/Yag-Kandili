@@ -112,7 +112,7 @@
 
 .kutu_098bdc {
 	border: solid 2px #098bdc;
-	border-radius: 4px;
+	border-radius: 10px;
 	padding: 3px;
 	color: #098bdc;
 	font-size: x-large;
@@ -122,7 +122,7 @@
 }
 .kutu_3baff7 {
 	border: solid 2px #3baff7;
-	border-radius: 4px;
+	border-radius: 10px;
 	padding: 3px;
 	color: #3baff7;
 	font-size: x-large;
@@ -132,7 +132,7 @@
 }
 .kutu_0069ff {
 	border: solid 2px #0069ff;
-	border-radius: 4px;
+	border-radius: 10px;
 	padding: 3px;
 	color: #0069ff;
 	font-size: x-large;
@@ -142,7 +142,7 @@
 }
 .kutu_0_120_0 {
 	border: solid 2px rgb(0,120,0);
-	border-radius: 4px;
+	border-radius: 10px;
 	padding: 3px;
 	color: rgb(0,120,0);
 	font-size: x-large;
