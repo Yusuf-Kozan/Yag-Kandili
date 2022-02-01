@@ -43,7 +43,8 @@
     private void BaşlıkYazısınınRenginiDeğiştir(string yeni_renk)
     {
         BaşlıkYazısınınRengi = yeni_renk;
-        başlık_görünüşü = $"color: {BaşlıkYazısınınRengi}; font-family: sans-serif; font-size: x-large; font-weight: bold; border: none;";
+        başlık_görünüşü = $"color: {BaşlıkYazısınınRengi}; font-family: sans-serif; " + 
+            "font-size: x-large; font-weight: bold; border: none; background: none;";
     }
 
     protected override void OnParametersSet()

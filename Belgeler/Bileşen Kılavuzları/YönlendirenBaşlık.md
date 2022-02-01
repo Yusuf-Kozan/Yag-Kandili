@@ -52,5 +52,5 @@ font-family: sans-serif;
 font-size: x-large;
 font-weight: bold;
 border: none;
+background: none;
 ```
-Buradaki `border: none;`, *background-color*'ın ön tanımlı değerinin *transparent* olmasının da etkisiyle düğmenin sıradan bir yazı gibi görünmesini sağlamak için kullanılıyor.
