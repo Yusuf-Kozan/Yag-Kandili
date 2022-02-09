@@ -132,6 +132,72 @@ namespace Esas.VeriTabanı
             int[] sonuç = new int[]{1, beğeni};
             return sonuç;
         }
+
+        public static string[,][] KişininDeğerlendirdiğiPaylaşımlar(string kullanıcı_kimliği)
+        {
+            // a sıra sayısı olursa
+            // [a,0] == paylaşım bilgisi
+            // [a,1] == beğeni değeri
+
+            // Sonuçlar değerlendirme tarihine göre
+            // yeniden eskiye doğru sıralanır.
+
+            string komut_metni = $"SELECT COUNT(Neyi) FROM {Beğeni.TabloAdı()} " +
+                                $"INNER JOIN {Paylaşım.TabloAdı()} " +
+                                $"ON {Beğeni.TabloAdı()}.Neyi = {Paylaşım.TabloAdı()}.Kimlik2 " +
+                                "WHERE Eklenti NOT LIKE '%>gizli%' AND " +
+                                "Kim = @kullanıcı_kimliği;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
+            long paylaşım_niceliği = long.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+
+            if (paylaşım_niceliği < 1)
+            {
+                bağlantı.Close(); bağlantı.Dispose();
+                return new string[0,0][];
+            }
+
+            komut_metni = $"SELECT * FROM {Beğeni.TabloAdı()} " +
+                        $"INNER JOIN {Paylaşım.TabloAdı()} " +
+                        $"ON {Beğeni.TabloAdı()}.Neyi = {Paylaşım.TabloAdı()}.Kimlik2 " +
+                        "WHERE Eklenti NOT LIKE '%>gizli%' AND " +
+                        "Kim = @kullanıcı_kimliği;";
+            komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
+            MySqlDataReader veri_okuyucu = komut.ExecuteReader();
+            long döngü_turu = 0;
+            string[,][] sonuç = new string[paylaşım_niceliği, 2][];
+            while (veri_okuyucu.Read())
+            {
+                sonuç[döngü_turu, 0] = new string[8];
+                sonuç[döngü_turu, 1] = new string[4];
+
+                sonuç[döngü_turu, 0][0] = veri_okuyucu["Kimlik1"].ToString();
+                sonuç[döngü_turu, 0][1] = veri_okuyucu["Kimlik2"].ToString();
+                sonuç[döngü_turu, 0][2] = veri_okuyucu["Başlık"].ToString();
+                sonuç[döngü_turu, 0][3] = veri_okuyucu["İçerik"].ToString();
+                sonuç[döngü_turu, 0][4] = veri_okuyucu["Eklenti"].ToString();
+                sonuç[döngü_turu, 0][5] = veri_okuyucu["Paylaşan"].ToString();
+                sonuç[döngü_turu, 0][6] = veri_okuyucu["Tarih"].ToString();
+                sonuç[döngü_turu, 0][7] = veri_okuyucu["Lisans"].ToString();
+
+                sonuç[döngü_turu, 1][0] = veri_okuyucu["Kim"].ToString();
+                sonuç[döngü_turu, 1][1] = veri_okuyucu["Neyi"].ToString();
+                sonuç[döngü_turu, 1][2] = veri_okuyucu["Ne_Kadar"].ToString();
+                sonuç[döngü_turu, 1][3] = veri_okuyucu["Ne_Zaman"].ToString();
+
+                döngü_turu++;
+            }
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            return sonuç;
+        }
+
         private static string TabloAdı()
         {
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt2");
