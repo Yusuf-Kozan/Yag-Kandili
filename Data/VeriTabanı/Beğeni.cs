@@ -164,7 +164,8 @@ namespace Esas.VeriTabanı
                         $"INNER JOIN {Paylaşım.TabloAdı()} " +
                         $"ON {Beğeni.TabloAdı()}.Neyi = {Paylaşım.TabloAdı()}.Kimlik2 " +
                         "WHERE Eklenti NOT LIKE '%>gizli%' AND " +
-                        "Kim = @kullanıcı_kimliği;";
+                        "Kim = @kullanıcı_kimliği " +
+                        "ORDER BY Ne_Zaman DESC;";
             komut = new MySqlCommand(komut_metni, bağlantı);
             komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
             MySqlDataReader veri_okuyucu = komut.ExecuteReader();
