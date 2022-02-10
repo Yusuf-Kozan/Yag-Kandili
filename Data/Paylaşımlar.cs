@@ -89,4 +89,36 @@ namespace Esas
                 LİSANS = lisans;
         }
     }
+    public struct değerli_paylaşım
+    {
+        public long KİMLİK_1;
+        public string KİMLİK_2, BAŞLIK, İÇERİK, EKLENTİ, PAYLAŞAN, LİSANS;
+        public DateTime PAYLAŞIM_TARİHİ, DEĞERLENDİRME_TARİHİ;
+        public string DEĞERLENDİREN;
+        public int DEĞER;
+
+        public değerli_paylaşım(string[][] paylaşım_bilgileri)
+        {
+            CultureInfo TR = new CultureInfo("tr-TR");
+
+            KİMLİK_1 = long.Parse(paylaşım_bilgileri[0][0]);
+            KİMLİK_2 = paylaşım_bilgileri[0][1];
+            BAŞLIK = paylaşım_bilgileri[0][2];
+            İÇERİK = paylaşım_bilgileri[0][3];
+            EKLENTİ = paylaşım_bilgileri[0][4];
+            PAYLAŞAN = paylaşım_bilgileri[0][5];
+            PAYLAŞIM_TARİHİ = DateTime.ParseExact(
+                paylaşım_bilgileri[0][6],
+                "yyyyMMddHHmmss",
+                TR );
+            LİSANS = paylaşım_bilgileri[0][7];
+
+            DEĞERLENDİREN = paylaşım_bilgileri[1][0];
+            DEĞER = int.Parse(paylaşım_bilgileri[1][2]);
+            DEĞERLENDİRME_TARİHİ = DateTime.ParseExact(
+                paylaşım_bilgileri[1][3],
+                "yyyyMMddHHmmss",
+                TR );
+        }
+    }
 }
