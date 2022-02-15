@@ -85,4 +85,17 @@ namespace Esas
             return DateTime.ParseExact(TARİH, "yyyyMMddHHmmss", TR);
         }
     }
+
+    public struct köklü_söz
+    {
+        // Başlatan paylaşımı ve ilk sözü de içerdiği için "köklü" ön adı kullanıldı.
+        // Diğer söz yapılarında bu kısımlar yer gösterici kimlikleri içerir.
+
+        public paylaşım BAŞLATAN_PAYLAŞIM;
+        public söz İLK_SÖZ;
+        public bool BU_İLK;
+        public string SÖZ, SÖYLEYEN, SÖYLEŞİ;
+        public long GENEL_SIRA;
+        public DateTime TARİH;
+    }
 }
