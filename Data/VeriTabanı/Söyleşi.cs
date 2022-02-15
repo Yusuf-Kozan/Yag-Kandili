@@ -167,6 +167,84 @@ namespace Esas.VeriTabanı
 
             return söyleşi;
         }
+        public static köklü_söz[] KişininSöyledikleri(string kullanıcı_kimliği)
+        {
+            string komut_metni = $"SELECT COUNT(Söz) FROM {Söyleşi.TabloAdı()} " +
+                                $"INNER JOIN {Paylaşım.TabloAdı()} ON " +
+                                $"{Söyleşi.TabloAdı()}.Başlatan_Paylaşım = {Paylaşım.TabloAdı()}.Kimlik2 " +
+                                "WHERE Söyleyen = @kullanıcı_kimliği AND " +
+                                "Eklenti NOT LIKE '%>gizli%';";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
+            long söz_niceliği = long.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+
+            if (söz_niceliği < 1)
+            {
+                bağlantı.Close(); bağlantı.Dispose();
+                return new köklü_söz[0];
+            }
+
+            komut_metni = $"SELECT * FROM {Söyleşi.TabloAdı()} SÖZ, {Söyleşi.TabloAdı()} İLK_SÖZ " +
+                        $"INNER JOIN {Paylaşım.TabloAdı()} ON " +
+                        $"SÖZ.Başlatan_Paylaşım = {Paylaşım.TabloAdı()}.Kimlik2 " +
+                        "WHERE SÖZ.Söyleşi = İLK_SÖZ.Söyleşi AND " +
+                        "SÖZ.Söyleyen = @kullanıcı_kimliği AND " +
+                        "İLK_SÖZ.Bu_İlk = TRUE AND " +
+                        "Eklenti NOT LIKE '%>gizli%' " +
+                        "ORDER BY SÖZ.Tarih DESC;";
+            komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
+            MySqlDataReader veri_okuyucu = komut.ExecuteReader();
+            long döngü_turu = 0;
+            köklü_söz[] söylenenler = new köklü_söz[söz_niceliği];
+            paylaşım başlatan; söz ilk_söz;
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (veri_okuyucu.Read())
+            {
+                
+                başlatan.KİMLİK_1 = long.Parse(veri_okuyucu["Kimlik1"].ToString());
+                başlatan.KİMLİK_2 = veri_okuyucu["Kimlik2"].ToString();
+                başlatan.BAŞLIK = veri_okuyucu["Başlık"].ToString();
+                başlatan.İÇERİK = veri_okuyucu["İçerik"].ToString();
+                başlatan.EKLENTİ = veri_okuyucu["Eklenti"].ToString();
+                başlatan.PAYLAŞAN = veri_okuyucu["Paylaşan"].ToString();
+                başlatan.LİSANS = veri_okuyucu["Lisans"].ToString();
+                başlatan.TARİH = DateTime.ParseExact(veri_okuyucu["Tarih"].ToString(),
+                                                    "yyyyMMddHHmmss",
+                                                    TR);
+                
+                söylenenler[döngü_turu].BAŞLATAN_PAYLAŞIM = başlatan;
+
+                ilk_söz.SÖZ = veri_okuyucu["İLK_SÖZ.Söz"].ToString();
+                ilk_söz.SÖYLEYEN = veri_okuyucu["İLK_SÖZ.Söyleyen"].ToString();
+                ilk_söz.SÖYLEŞİ = veri_okuyucu["İLK_SÖZ.Söyleşi"].ToString();
+                ilk_söz.TARİH = veri_okuyucu["İLK_SÖZ.Tarih"].ToString();
+                ilk_söz.BAŞLATAN_PAYLAŞIM = veri_okuyucu["İLK_SÖZ.Başlatan_Paylaşım"].ToString();
+                ilk_söz.BU_İLK = bool.Parse(veri_okuyucu["İLK_SÖZ.Bu_İlk"].ToString());
+                ilk_söz.GENEL_SIRA = long.Parse(veri_okuyucu["İLK_SÖZ.Genel_Sıra"].ToString());
+
+                söylenenler[döngü_turu].İLK_SÖZ = ilk_söz;
+
+                söylenenler[döngü_turu].BU_İLK = bool.Parse(veri_okuyucu["SÖZ.Bu_İlk"].ToString());
+                söylenenler[döngü_turu].SÖZ = veri_okuyucu["SÖZ.Söz"].ToString();
+                söylenenler[döngü_turu].SÖYLEYEN = veri_okuyucu["SÖZ.Söyleyen"].ToString();
+                söylenenler[döngü_turu].SÖYLEŞİ = veri_okuyucu["SÖZ.Söyleşi"].ToString();
+                söylenenler[döngü_turu].GENEL_SIRA = long.Parse(veri_okuyucu["SÖZ.Tarih"].ToString());
+                söylenenler[döngü_turu].TARİH = DateTime.ParseExact(veri_okuyucu["SÖZ.Tarih"].ToString(),
+                                                                    "yyyyMMddHHmmss",
+                                                                    TR);
+
+                döngü_turu++;
+            }
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            return söylenenler;
+        }
         public static string[,] TakipEdilenSöyleşiler(string[,] takip_edilenler)
         {
             // [sıra] [söyleşi kimliği, başlık] > iki boyutlu dizi
