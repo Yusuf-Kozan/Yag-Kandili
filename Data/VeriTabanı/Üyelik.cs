@@ -93,6 +93,33 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             return üye;
         }
+        public static parolasız_üye ParolasızÜyeBilgileri(string kullanıcı_kimliği)
+        {
+            string komut_metni = $"SELECT * FROM {TabloAdı()} " +
+                                "WHERE Kimlik = @kullanıcı_kimliği " +
+                                "LIMIT 1;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
+            MySqlDataReader veri_okuyucu = komut.ExecuteReader();
+            CultureInfo TR = new CultureInfo("tr-TR");
+            parolasız_üye üye = new parolasız_üye();
+            while (veri_okuyucu.Read())
+            {
+                üye.KULLANICI_ADI = veri_okuyucu["Kullanıcı_Adı"].ToString();
+                üye.AD = veri_okuyucu["Ad"].ToString();
+                üye.ÜSTÜNLÜK = veri_okuyucu["Üstünlük"].ToString();
+                üye.E_POSTA = veri_okuyucu["E_Posta"].ToString();
+                üye.BAŞLANGIÇ = DateTime.ParseExact(veri_okuyucu["Başlangıç"].ToString(), "yyyyMMddHHmmss", TR);
+                üye.RESİM = veri_okuyucu["Resim"].ToString();
+                üye.KİMLİK = veri_okuyucu["Kimlik"].ToString();
+            }
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+            komut.Dispose();
+            return üye;
+        }
         public static ÜyeBil Kimliğinİyesi(string kullanıcı_kimliği)
         {
             //SELECT * FROM tablo_adı WHERE Kimlik=@kullanıcı_kimliği;
