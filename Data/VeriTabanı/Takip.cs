@@ -132,7 +132,7 @@ namespace Esas.VeriTabanı
         public static string[,] TakipEdilenSöyleşilerinKimlikleri(string takip_eden)
         {
             // a sıra sayısı olursa [a, 0] = söyleşi kimliği, [a, 1] = takip düzeyi
-            string komut_metni = $"SELECT COUNT(DISTINCT Takip_Edilen) FROM {TabloAdı()}" +
+            string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()}" +
                                 " WHERE Takip_Eden = @takip_eden AND " +
                                 "Takip_Edilen LIKE '%₺Y';";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -148,7 +148,7 @@ namespace Esas.VeriTabanı
                 return new string[0,0];
             }
 
-            komut_metni = $"SELECT DISTINCT Takip_Edilen, Takip_Düzeyi FROM {TabloAdı()} " +
+            komut_metni = $"SELECT Takip_Edilen, Takip_Düzeyi FROM {TabloAdı()} " +
                         "WHERE Takip_Eden = @takip_eden AND " +
                         "Takip_Edilen LIKE '%₺Y';";
             komut = new MySqlCommand(komut_metni, bağlantı);
@@ -167,6 +167,51 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
             return söyleşiler;
+        }
+        public static takip[] TakipEdilenSöyleşiler(string takip_eden)
+        {
+            string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()} " +
+                                "WHERE Takip_Eden = @takip_eden AND " +
+                                "Takip_Edilen LIKE '%₺Y';";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@takip_eden", takip_eden);
+            long takip_niceliği = long.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+
+            if (takip_niceliği < 1)
+            {
+                bağlantı.Close(); bağlantı.Dispose();
+                return new takip[0];
+            }
+
+            komut_metni = $"SELECT * FROM {TabloAdı()} " +
+                        "WHERE Takip_Eden = @takip_eden AND " +
+                        "Takip_Edilen LIKE '%₺Y' " +
+                        "ORDER BY Tarih DESC;";
+            komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@takip_eden", takip_eden);
+            MySqlDataReader veri_okuyucu = komut.ExecuteReader();
+            long tur = 0;
+            takip[] takip_edilenler = new takip[takip_niceliği];
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (veri_okuyucu.Read())
+            {
+                takip_edilenler[tur].TAKİP_EDEN = veri_okuyucu["Takip_Eden"].ToString();
+                takip_edilenler[tur].TAKİP_EDİLEN = veri_okuyucu["Takip_Edilen"].ToString();
+                takip_edilenler[tur].TAKİP_DÜZEYİ = short.Parse(veri_okuyucu["Takip_Düzeyi"].ToString());
+                takip_edilenler[tur].TARİH = DateTime.ParseExact(veri_okuyucu["Tarih"].ToString(),
+                                                                "yyyyMMddHHmmss",
+                                                                TR);
+
+                tur++;
+            }
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            return takip_edilenler;
         }
         public static long TakipçiNiceliği(string takip_edilen)
         {
