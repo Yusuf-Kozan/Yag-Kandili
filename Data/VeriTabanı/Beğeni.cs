@@ -133,12 +133,8 @@ namespace Esas.VeriTabanı
             return sonuç;
         }
 
-        public static string[,][] KişininDeğerlendirdiğiPaylaşımlar(string kullanıcı_kimliği)
+        public static değerli_paylaşım[] KişininDeğerlendirdiğiPaylaşımlar(string kullanıcı_kimliği)
         {
-            // a sıra sayısı olursa
-            // [a,0] == paylaşım bilgisi
-            // [a,1] == beğeni değeri
-
             // Sonuçlar değerlendirme tarihine göre
             // yeniden eskiye doğru sıralanır.
 
@@ -157,7 +153,7 @@ namespace Esas.VeriTabanı
             if (paylaşım_niceliği < 1)
             {
                 bağlantı.Close(); bağlantı.Dispose();
-                return new string[0,0][];
+                return new değerli_paylaşım[0];
             }
 
             komut_metni = $"SELECT * FROM {Beğeni.TabloAdı()} " +
@@ -170,25 +166,31 @@ namespace Esas.VeriTabanı
             komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
             MySqlDataReader veri_okuyucu = komut.ExecuteReader();
             long döngü_turu = 0;
-            string[,][] sonuç = new string[paylaşım_niceliği, 2][];
+            CultureInfo TR = new CultureInfo("tr-TR");
+            değerli_paylaşım[] sonuç = new değerli_paylaşım[paylaşım_niceliği];
             while (veri_okuyucu.Read())
             {
-                sonuç[döngü_turu, 0] = new string[8];
-                sonuç[döngü_turu, 1] = new string[4];
 
-                sonuç[döngü_turu, 0][0] = veri_okuyucu["Kimlik1"].ToString();
-                sonuç[döngü_turu, 0][1] = veri_okuyucu["Kimlik2"].ToString();
-                sonuç[döngü_turu, 0][2] = veri_okuyucu["Başlık"].ToString();
-                sonuç[döngü_turu, 0][3] = veri_okuyucu["İçerik"].ToString();
-                sonuç[döngü_turu, 0][4] = veri_okuyucu["Eklenti"].ToString();
-                sonuç[döngü_turu, 0][5] = veri_okuyucu["Paylaşan"].ToString();
-                sonuç[döngü_turu, 0][6] = veri_okuyucu["Tarih"].ToString();
-                sonuç[döngü_turu, 0][7] = veri_okuyucu["Lisans"].ToString();
-
-                sonuç[döngü_turu, 1][0] = veri_okuyucu["Kim"].ToString();
-                sonuç[döngü_turu, 1][1] = veri_okuyucu["Neyi"].ToString();
-                sonuç[döngü_turu, 1][2] = veri_okuyucu["Ne_Kadar"].ToString();
-                sonuç[döngü_turu, 1][3] = veri_okuyucu["Ne_Zaman"].ToString();
+                sonuç[döngü_turu].KİMLİK_1 = long.Parse(
+                                            veri_okuyucu["Kimlik1"].ToString());
+                sonuç[döngü_turu].KİMLİK_2 = veri_okuyucu["Kimlik2"].ToString();
+                sonuç[döngü_turu].BAŞLIK = veri_okuyucu["Başlık"].ToString();
+                sonuç[döngü_turu].İÇERİK = veri_okuyucu["İçerik"].ToString();
+                sonuç[döngü_turu].EKLENTİ = veri_okuyucu["Eklenti"].ToString();
+                sonuç[döngü_turu].PAYLAŞAN = veri_okuyucu["Paylaşan"].ToString();
+                sonuç[döngü_turu].PAYLAŞIM_TARİHİ = DateTime.ParseExact(
+                                            veri_okuyucu["Tarih"].ToString(),
+                                            "yyyyMMddHHmmss",
+                                            TR );
+                sonuç[döngü_turu].LİSANS = veri_okuyucu["Lisans"].ToString();
+                
+                sonuç[döngü_turu].DEĞERLENDİREN = veri_okuyucu["Kim"].ToString();
+                sonuç[döngü_turu].DEĞER = int.Parse(
+                                        veri_okuyucu["Ne_Kadar"].ToString());
+                sonuç[döngü_turu].DEĞERLENDİRME_TARİHİ = DateTime.ParseExact(
+                                            veri_okuyucu["Ne_Zaman"].ToString(),
+                                            "yyyyMMddHHmmss",
+                                            TR );
 
                 döngü_turu++;
             }
