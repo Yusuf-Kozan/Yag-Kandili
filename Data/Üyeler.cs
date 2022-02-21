@@ -140,5 +140,10 @@ namespace Esas
             RESİM = üye_bilgileri[5];
             KİMLİK = üye_bilgileri[6];
         }
+        public string DizinYolu()
+        {
+            string üst_dizin = @"./Kullanıcılar";
+            return System.IO.Path.Combine(üst_dizin, KULLANICI_ADI);
+        }
     }
 }
