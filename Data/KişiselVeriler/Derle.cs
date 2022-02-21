@@ -6,12 +6,12 @@ namespace Esas.KişiselVeriler
 {
     internal struct veri_derlemesi
     {
-        parolasız_üye ÜYELİK_BİLGİLERİ;
-        paylaşım[] YAPTIĞI_PAYLAŞIMLAR;
-        değerli_paylaşım[] DEĞERLENDİRDİĞİ_PAYLAŞIMLAR;
-        köklü_söz[] SÖZLERİ;
-        takip[] TAKİP_ETTİĞİ_KİŞİLER;
-        takip[] TAKİP_ETTİĞİ_SÖYLEŞİLER;
+        internal readonly parolasız_üye ÜYELİK_BİLGİLERİ;
+        internal readonly paylaşım[] YAPTIĞI_PAYLAŞIMLAR;
+        internal readonly değerli_paylaşım[] DEĞERLENDİRDİĞİ_PAYLAŞIMLAR;
+        internal readonly köklü_söz[] SÖZLERİ;
+        internal readonly takip[] TAKİP_ETTİĞİ_KİŞİLER;
+        internal readonly takip[] TAKİP_ETTİĞİ_SÖYLEŞİLER;
 
         internal veri_derlemesi(string kullanıcı_kimliği)
         {
