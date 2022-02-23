@@ -1,12 +1,13 @@
 using System;
 using System.IO;
+using System.IO.Compression;
 using Newtonsoft.Json;
 
 namespace Esas.KişiselVeriler
 {
     internal class BelgeyeYaz
     {
-        internal void JSON_BelgeleriOluştur(string kullanıcı_kimliği)
+        internal void VeriBelgeliğiOluştur(string kullanıcı_kimliği)
         {
             veri_derlemesi veriler = new veri_derlemesi(kullanıcı_kimliği);
             string kullanıcı_dizini = veriler.ÜYELİK_BİLGİLERİ.DizinYolu();
@@ -50,6 +51,15 @@ namespace Esas.KişiselVeriler
                 JsonConvert.SerializeObject(veriler.TAKİP_ETTİĞİ_SÖYLEŞİLER,
                                             Formatting.Indented)
             );
+
+            string kullanıcı_adı = veriler.ÜYELİK_BİLGİLERİ.KULLANICI_ADI;
+            ZipFile.CreateFromDirectory
+            (
+                veri_dizini,
+                Path.Combine(kullanıcı_dizini,
+                            $"vd-{kullanıcı_adı}-{tarih}")
+            );
+            Directory.Delete(veri_dizini);
         }
     }
 }
