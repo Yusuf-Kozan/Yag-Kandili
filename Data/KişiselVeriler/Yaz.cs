@@ -59,7 +59,7 @@ namespace Esas.KişiselVeriler
                 Path.Combine(kullanıcı_dizini,
                             $"vd-{kullanıcı_adı}-{tarih}")
             );
-            Directory.Delete(veri_dizini);
+            Directory.Delete(veri_dizini, true);
         }
     }
 }
