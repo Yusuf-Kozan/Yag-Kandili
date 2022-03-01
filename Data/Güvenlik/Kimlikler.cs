@@ -67,4 +67,28 @@ namespace Kilnevüg
             return yazı;
         }
     }
+    internal class KV_İşlemKimliği
+    {
+        public static string YeniKimlik()
+        {
+            string gelişigüzel = GelişigüzelYazı();
+            bool kimlik_kullanımda = Esas.VeriTabanı.KişiselVeri.BöyleİşlemVar(gelişigüzel);
+
+            while (kimlik_kullanımda)
+            {
+                gelişigüzel = GelişigüzelYazı();
+                kimlik_kullanımda = Esas.VeriTabanı.KişiselVeri.BöyleİşlemVar(gelişigüzel);
+            }
+            
+            return gelişigüzel;
+        }
+        public static string GelişigüzelYazı()
+        {
+            RandomNumberGenerator üreteç = RandomNumberGenerator.Create();
+            byte[] ikili_yazı = new byte[32];
+            üreteç.GetBytes(ikili_yazı);
+            string yazı = Convert.ToBase64String(ikili_yazı);
+            return yazı;
+        }
+    }
 }
