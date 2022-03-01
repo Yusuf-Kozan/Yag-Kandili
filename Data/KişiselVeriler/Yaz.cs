@@ -7,7 +7,7 @@ namespace Esas.KişiselVeriler
 {
     internal class BelgeyeYaz
     {
-        internal void VeriBelgeliğiOluştur(string kullanıcı_kimliği)
+        internal static string VeriBelgeliğiOluştur(string kullanıcı_kimliği)
         {
             veri_derlemesi veriler = new veri_derlemesi(kullanıcı_kimliği);
             string kullanıcı_dizini = veriler.ÜYELİK_BİLGİLERİ.DizinYolu();
@@ -53,13 +53,15 @@ namespace Esas.KişiselVeriler
             );
 
             string kullanıcı_adı = veriler.ÜYELİK_BİLGİLERİ.KULLANICI_ADI;
+            string ZIP_konumu = Path.Combine(kullanıcı_dizini,
+                            $"vd-{kullanıcı_adı}-{tarih}");
             ZipFile.CreateFromDirectory
             (
                 veri_dizini,
-                Path.Combine(kullanıcı_dizini,
-                            $"vd-{kullanıcı_adı}-{tarih}")
+                ZIP_konumu
             );
             Directory.Delete(veri_dizini, true);
+            return ZIP_konumu;
         }
     }
 }
