@@ -8,12 +8,12 @@ namespace Esas.GeçiciBağlantı
         internal static string Yeni()
         {
             string gelişigüzel = GelişigüzelYazı();
-            bool kimlik_kullanımda = false; //Veri tabanından denetleme komutu gelecek.
+            bool kimlik_kullanımda = Esas.VeriTabanı.GeçiciBağlantı.BuBağlantıKullanımda(gelişigüzel);
 
             while (kimlik_kullanımda)
             {
                 gelişigüzel = GelişigüzelYazı();
-                kimlik_kullanımda = false; //Veri tabanından denetleme komutu gelecek.
+                kimlik_kullanımda = Esas.VeriTabanı.GeçiciBağlantı.BuBağlantıKullanımda(gelişigüzel);
             }
 
             return gelişigüzel;

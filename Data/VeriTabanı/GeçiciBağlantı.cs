@@ -38,6 +38,27 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return;
         }
+        internal static bool BuBağlantıKullanımda(string bağlantı_değişkeni)
+        {
+            string komut_metni = $"SELECT COUNT (Bağlantı_Değişkeni) FROM {TabloAdı()} " +
+                                "WHERE Bağlantı_Değişkeni = @bağlantı_değişkeni;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@bağlantı_değişkeni", bağlantı_değişkeni);
+            short nicelik = short.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            if (nicelik == 0)
+            {
+                return false;
+            }
+            else 
+            {
+                return true;
+            }
+        }
 
         internal static string TabloAdı()
         {
