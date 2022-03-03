@@ -12,5 +12,26 @@ namespace Esas.GeçiciBağlantı
         internal string SAĞLANACAK_BELGE {get; set;}
 
         internal GeçiciBağlantı() {}
+
+        internal GeçiciBağlantı(string hedef_kullanıcı, DateTime başlangıç,
+                    DateTime bitiş, string içerik_türü, string belge)
+        {
+            BAĞLANTI_DEĞİŞKENİ = BağlantıDeğişkeni.Yeni();
+            HEDEF_KULLANICI = hedef_kullanıcı;
+            BAŞLANGIÇ_TARİHİ = başlangıç;
+            BİTİŞ_TARİHİ = bitiş;
+            İÇERİK_TÜRÜ = içerik_türü;
+            SAĞLANACAK_BELGE = belge;
+        }
+        internal GeçiciBağlantı(string hedef_kullanıcı, DateTime başlangıç,
+                    DateTime bitiş, string içerik_türü)
+        {
+            BAĞLANTI_DEĞİŞKENİ = BağlantıDeğişkeni.Yeni();
+            HEDEF_KULLANICI = hedef_kullanıcı;
+            BAŞLANGIÇ_TARİHİ = başlangıç;
+            BİTİŞ_TARİHİ = bitiş;
+            İÇERİK_TÜRÜ = içerik_türü;
+            SAĞLANACAK_BELGE = null;
+        }
     }
 }
