@@ -38,6 +38,49 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return;
         }
+        
+        internal static Esas.GeçiciBağlantı.GeçiciBağlantı BağlantıBilgisi(string bağlantı_değişkeni)
+        {
+            string komut_metni = $"SELECT * FROM {TabloAdı()} " +
+                                "WHERE Bağlantı_Değişkeni = @bağlantı_değişkeni;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@bağlantı_değişkeni", bağlantı_değişkeni);
+            short tur = 0;
+            MySqlDataReader veri_okuyucu = komut.ExecuteReader();
+            Esas.GeçiciBağlantı.GeçiciBağlantı sonuç = new Esas.GeçiciBağlantı.GeçiciBağlantı();
+            CultureInfo TR = new CultureInfo("tr-TR");
+            while (veri_okuyucu.Read())
+            {
+                sonuç.BAĞLANTI_DEĞİŞKENİ = veri_okuyucu["Bağlantı_Değişkeni"].ToString();
+                sonuç.HEDEF_KULLANICI = veri_okuyucu["Hedef_Kullanıcı"].ToString();
+                sonuç.BAŞLANGIÇ_TARİHİ = DateTime.ParseExact
+                                        (
+                                            veri_okuyucu["Başlangıç_Tarihi"].ToString(),
+                                            "yyyyMMddHHmmss",
+                                            TR
+                                        );
+                sonuç.BİTİŞ_TARİHİ = DateTime.ParseExact
+                                        (
+                                            veri_okuyucu["Bitiş_Tarihi"].ToString(),
+                                            "yyyyMMddHHmmss",
+                                            TR
+                                        );
+                sonuç.İÇERİK_TÜRÜ = veri_okuyucu["İçerik_Türü"].ToString();
+                sonuç.SAĞLANACAK_BELGE = veri_okuyucu["Sağlanacak_Belge"].ToString();
+                
+                tur++;
+                if (tur != 0)
+                    break;
+            }
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            return sonuç;
+        }
+
         internal static bool BuBağlantıKullanımda(string bağlantı_değişkeni)
         {
             string komut_metni = $"SELECT COUNT (Bağlantı_Değişkeni) FROM {TabloAdı()} " +
@@ -57,6 +100,59 @@ namespace Esas.VeriTabanı
             else 
             {
                 return true;
+            }
+        }
+        internal static short BağlantıSüresiDurumu(string bağlantı_değişkeni)
+        {
+            // -1: gelmemiş , 0: süre içinde , 1: geçmiş
+            string komut_metni = "SELECT Başlangıç_Tarihi, Bitiş_Tarihi " +
+                                $"FROM {TabloAdı()} WHERE " +
+                                "Bağlantı_Değişkeni = @bağlantı_değişkeni;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@bağlantı_değişkeni", bağlantı_değişkeni);
+            DateTime başlangıç = new DateTime();
+            DateTime bitiş = new DateTime();
+            short tur = 0;
+            CultureInfo TR = new CultureInfo("tr-TR");
+            MySqlDataReader veri_okuyucu = komut.ExecuteReader();
+            while (veri_okuyucu.Read())
+            {
+                başlangıç = DateTime.ParseExact
+                                (
+                                    veri_okuyucu["Başlangıç_Tarihi"].ToString(),
+                                    "yyyyMMddHHmmss",
+                                    TR
+                                );
+                bitiş = DateTime.ParseExact
+                                (
+                                    veri_okuyucu["Bitiş_Tarihi"].ToString(),
+                                    "yyyyMMddHHmmss",
+                                    TR
+                                );
+                tur++;
+                if (tur != 0)
+                    break;
+            }
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            bool başlamış = (DateTime.Compare(DateTime.Now, başlangıç) > 0);
+            bool bitmiş = (DateTime.Compare(DateTime.Now, bitiş) > 0);
+
+            if (!başlamış)
+            {
+                return -1;
+            }
+            else if (başlamış && !bitmiş)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
             }
         }
 
