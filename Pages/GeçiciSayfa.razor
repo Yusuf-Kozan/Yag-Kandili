@@ -1,0 +1,32 @@
+@page "/g/{bağlantı_değişkeni}"
+@*"geçici" anlamında 'g'*@
+@layout AnaTaslak
+@using Bileşenler
+@using Esas.VeriTabanı
+@inject NavigationManager NavigationManager
+
+
+
+@code {
+    [Parameter]
+    public string bağlantı_değişkeni {get; set;}
+
+    private Esas.GeçiciBağlantı.GeçiciBağlantı bağlantı;
+
+    protected override void OnParametersSet()
+    {
+        bool bağlantı_kullanımda = GeçiciBağlantı.BuBağlantıKullanımda(bağlantı_değişkeni);
+        if (!bağlantı_kullanımda)
+        {
+            NavigationManager.NavigateTo("/ana");
+        }
+        else if (GeçiciBağlantı.BağlantıSüresiDurumu(bağlantı_değişkeni) != 0)
+        {
+            NavigationManager.NavigateTo("/ana");
+        }
+        else
+        {
+            bağlantı = GeçiciBağlantı.BağlantıBilgisi(bağlantı_değişkeni);
+        }
+    }
+}
