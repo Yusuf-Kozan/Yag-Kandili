@@ -1,0 +1,15 @@
+@font-face {
+    font-family: Lexend;
+    src: url(/yazı_tipleri/Lexend/Lexend-Medium.ttf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: Lexend;
+    src: url(/yazı_tipleri/Lexend/Lexend-SemiBold.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: Lexend;
+    src: url(/yazı_tipleri/Lexend/Lexend-Regular.ttf);
+    font-weight: 300;
+}
