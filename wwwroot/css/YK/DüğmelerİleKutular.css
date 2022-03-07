@@ -109,6 +109,29 @@
 	background-color: #e2e2e2;
 	border-color: #e2e2e2;
 }
+.düğme_000000 {
+    border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: Lexend, sans-serif;
+	color: #ffffff;
+	background-color: #000000;
+	border-color: #000000;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+	outline-style: none;
+	text-align: center;
+}
+.düğme_000000:hover {
+    color: #000000;
+	background-color: #808080;
+	border-color: #808080;
+}
 
 .kutu_098bdc {
 	border: solid 2px #098bdc;
@@ -150,6 +173,16 @@
 	margin: 3px;
 	outline-style: none;
 }
+.kutu_000000 {
+	border: solid 2px #000000;
+	border-radius: 10px;
+	padding: 3px;
+	color: #000000;
+	font-size: x-large;
+	font-family: Lexend, sans-serif;
+	margin: 3px;
+	outline-style: none;
+}
 
 .tek-kenarlı-kutu_0_120_0 {
 	border-style: none none solid none;
@@ -178,6 +211,21 @@
 	outline-style: none;
 }
 .tek-kenarlı-kutu_0069ff:focus {
+	border-width: 3px;
+	font-weight: bold;
+}
+.tek-kenarlı-kutu_000000 {
+	border-style: none none solid none;
+	border-width: 1px;
+	border-color: #000000;
+	padding: 3px;
+	color: #000000;
+	font-size: x-large;
+	font-family: Lexend, sans-serif;
+	margin: 3px;
+	outline-style: none;
+}
+.tek-kenarlı-kutu_000000:focus {
 	border-width: 3px;
 	font-weight: bold;
 }
