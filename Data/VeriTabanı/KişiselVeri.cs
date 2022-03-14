@@ -50,7 +50,7 @@ namespace Esas.VeriTabanı
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt2");
             if (belge_içeriği.Length >= 8 && belge_içeriği[7].StartsWith("-"))
             {
-                return belge_içeriği[1].Substring(1);
+                return belge_içeriği[7].Substring(1);
             }
             else
             {
