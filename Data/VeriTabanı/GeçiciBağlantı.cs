@@ -83,7 +83,7 @@ namespace Esas.VeriTabanı
 
         internal static bool BuBağlantıKullanımda(string bağlantı_değişkeni)
         {
-            string komut_metni = $"SELECT COUNT (Bağlantı_Değişkeni) FROM {TabloAdı()} " +
+            string komut_metni = $"SELECT COUNT(Bağlantı_Değişkeni) FROM {TabloAdı()} " +
                                 "WHERE Bağlantı_Değişkeni = @bağlantı_değişkeni;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
@@ -161,7 +161,7 @@ namespace Esas.VeriTabanı
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt2");
             if (belge_içeriği.Length >= 9 && belge_içeriği[8].StartsWith("-"))
             {
-                return belge_içeriği[1].Substring(1);
+                return belge_içeriği[8].Substring(1);
             }
             else
             {
