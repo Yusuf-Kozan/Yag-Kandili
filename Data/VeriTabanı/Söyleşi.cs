@@ -187,13 +187,27 @@ namespace Esas.VeriTabanı
                 return new köklü_söz[0];
             }
 
-            komut_metni = $"SELECT * FROM {Söyleşi.TabloAdı()} SÖZ, {Söyleşi.TabloAdı()} İLK_SÖZ " +
+            string sütunlar = "SÖZ.Söz AS asıl_söz, SÖZ.Söyleyen AS asıl_söyleyen, " +
+                            "SÖZ.Tarih AS asıl_tarih, SÖZ.Söyleşi AS asıl_söyleşi, " +
+                            "SÖZ.Başlatan_Paylaşım AS asıl_başlatan_paylaşım, " +
+                            "SÖZ.Genel_Sıra AS asıl_genel_sıra, " +
+                            "SÖZ.Bu_İlk AS asıl_bu_ilk, " +
+            
+                        "İLK.Söz AS ilk_söz, İLK.Söyleyen AS ilk_söyleyen, " +
+                        "İLK.Tarih AS ilk_tarih, İLK.Söyleşi AS ilk_söyleşi, " +
+                        "İLK.Başlatan_Paylaşım AS ilk_başlatan_paylaşım, " +
+                        "İLK.Genel_Sıra AS ilk_genel_sıra, " +
+                        "İLK.Bu_İlk AS ilk_bu_ilk, " +
+
+                        $"{Paylaşım.TabloAdı()}.*";
+
+            komut_metni = $"SELECT {sütunlar} FROM {Söyleşi.TabloAdı()} SÖZ " +
+                        $"INNER JOIN {Söyleşi.TabloAdı()} İLK ON " +
+                        "SÖZ.Söyleşi = İLK.Söyleşi " +
                         $"INNER JOIN {Paylaşım.TabloAdı()} ON " +
                         $"SÖZ.Başlatan_Paylaşım = {Paylaşım.TabloAdı()}.Kimlik2 " +
-                        "WHERE SÖZ.Söyleşi = İLK_SÖZ.Söyleşi AND " +
-                        "SÖZ.Söyleyen = @kullanıcı_kimliği AND " +
-                        "İLK_SÖZ.Bu_İlk = TRUE AND " +
-                        "Eklenti NOT LIKE '%>gizli%' " +
+                        "WHERE SÖZ.Söyleyen = @kullanıcı_kimliği AND " +
+                        "İLK.Bu_İlk = TRUE AND Eklenti NOT LIKE '%>gizli%' " +
                         "ORDER BY SÖZ.Tarih DESC;";
             komut = new MySqlCommand(komut_metni, bağlantı);
             komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
@@ -218,22 +232,22 @@ namespace Esas.VeriTabanı
                 
                 söylenenler[döngü_turu].BAŞLATAN_PAYLAŞIM = başlatan;
 
-                ilk_söz.SÖZ = veri_okuyucu["İLK_SÖZ.Söz"].ToString();
-                ilk_söz.SÖYLEYEN = veri_okuyucu["İLK_SÖZ.Söyleyen"].ToString();
-                ilk_söz.SÖYLEŞİ = veri_okuyucu["İLK_SÖZ.Söyleşi"].ToString();
-                ilk_söz.TARİH = veri_okuyucu["İLK_SÖZ.Tarih"].ToString();
-                ilk_söz.BAŞLATAN_PAYLAŞIM = veri_okuyucu["İLK_SÖZ.Başlatan_Paylaşım"].ToString();
-                ilk_söz.BU_İLK = bool.Parse(veri_okuyucu["İLK_SÖZ.Bu_İlk"].ToString());
-                ilk_söz.GENEL_SIRA = long.Parse(veri_okuyucu["İLK_SÖZ.Genel_Sıra"].ToString());
+                ilk_söz.SÖZ = veri_okuyucu["ilk_söz"].ToString();
+                ilk_söz.SÖYLEYEN = veri_okuyucu["ilk_söyleyen"].ToString();
+                ilk_söz.SÖYLEŞİ = veri_okuyucu["ilk_söyleşi"].ToString();
+                ilk_söz.TARİH = veri_okuyucu["ilk_tarih"].ToString();
+                ilk_söz.BAŞLATAN_PAYLAŞIM = veri_okuyucu["ilk_başlatan_paylaşım"].ToString();
+                ilk_söz.BU_İLK = bool.Parse(veri_okuyucu["ilk_bu_ilk"].ToString());
+                ilk_söz.GENEL_SIRA = long.Parse(veri_okuyucu["ilk_genel_sıra"].ToString());
 
                 söylenenler[döngü_turu].İLK_SÖZ = ilk_söz;
 
-                söylenenler[döngü_turu].BU_İLK = bool.Parse(veri_okuyucu["SÖZ.Bu_İlk"].ToString());
-                söylenenler[döngü_turu].SÖZ = veri_okuyucu["SÖZ.Söz"].ToString();
-                söylenenler[döngü_turu].SÖYLEYEN = veri_okuyucu["SÖZ.Söyleyen"].ToString();
-                söylenenler[döngü_turu].SÖYLEŞİ = veri_okuyucu["SÖZ.Söyleşi"].ToString();
-                söylenenler[döngü_turu].GENEL_SIRA = long.Parse(veri_okuyucu["SÖZ.Tarih"].ToString());
-                söylenenler[döngü_turu].TARİH = DateTime.ParseExact(veri_okuyucu["SÖZ.Tarih"].ToString(),
+                söylenenler[döngü_turu].BU_İLK = bool.Parse(veri_okuyucu["asıl_bu_ilk"].ToString());
+                söylenenler[döngü_turu].SÖZ = veri_okuyucu["asıl_söz"].ToString();
+                söylenenler[döngü_turu].SÖYLEYEN = veri_okuyucu["asıl_söyleyen"].ToString();
+                söylenenler[döngü_turu].SÖYLEŞİ = veri_okuyucu["asıl_söyleşi"].ToString();
+                söylenenler[döngü_turu].GENEL_SIRA = long.Parse(veri_okuyucu["asıl_genel_sıra"].ToString());
+                söylenenler[döngü_turu].TARİH = DateTime.ParseExact(veri_okuyucu["asıl_tarih"].ToString(),
                                                                     "yyyyMMddHHmmss",
                                                                     TR);
 
