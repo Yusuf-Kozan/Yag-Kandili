@@ -2,10 +2,20 @@
 @*"geçici" anlamında 'g'*@
 @layout GeçiciSayfaDüzeni
 @using Bileşenler
+@using Bileşenler.GeçiciSayfa
 @using Esas.VeriTabanı
 @inject NavigationManager NavigationManager
 
-
+@if (bağlantı.İÇERİK_TÜRÜ == "kişisel veri")
+{
+    string belge_adı = $"{bağlantı.HEDEF_KULLANICI}-" +
+                $"{bağlantı.BAŞLANGIÇ_TARİHİ.ToString("yyyyMMddHHmmss")}" +
+                "-KV.zip";
+    <ÖzelBelgeİndir hedef_kullanıcı=@(bağlantı.HEDEF_KULLANICI)
+            sağlanacak_belge=@(bağlantı.SAĞLANACAK_BELGE)
+            belge_adı=@(belge_adı)
+            belge_türü="application/zip" />
+}
 
 @code {
     [Parameter]
