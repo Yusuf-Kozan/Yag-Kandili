@@ -1,6 +1,7 @@
 using System;
 using Esas;
 using Esas.VeriTabanı;
+using Esas.GeçiciBağlantı;
 using Kilnevüg;
 
 namespace Esas.KişiselVeriler
@@ -26,10 +27,35 @@ namespace Esas.KişiselVeriler
 
             string kv_konumu = BelgeyeYaz.VeriBelgeliğiOluştur(kullanıcı_kimliği);
 
-            /*
-                Bura indirilebilir belgeyi kullanıcıya gönderme kısmı olacak.
-            */
-            return "İşlem tamamlanamadı.";
+            
+            DateTime baş_tarih = DateTime.Now;
+            DateTime son_tarih = baş_tarih.AddHours(24);
+            GeçiciBağlantı.GeçiciBağlantı geçici_bağlantı = new GeçiciBağlantı.GeçiciBağlantı
+                                            (
+                                                kullanıcı_kimliği,
+                                                baş_tarih,
+                                                son_tarih,
+                                                "kişisel veri",
+                                                kv_konumu
+                                            );
+            VeriTabanı.GeçiciBağlantı.BağlantıEkle(geçici_bağlantı);
+
+            // Geçici bağlantıyı içeren e-posta
+            Posta.GönderenBilgisi gönderen = new Posta.GönderenBilgisi();
+            gönderen.AyarBelgesiniOku();
+            ÜyeBil alıcı = Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+            Posta.PostaGönder.TekKullanıcıyaGönder
+                            (
+                                gönderen,
+                                alıcı,
+                                "İstediğiniz Belge | Yağ Kandili",
+                                "İstediğiniz belgeye önümüzdeki 24 boyunca " +
+                                $"https://yağkandili.com.tr/g/{geçici_bağlantı.BAĞLANTI_DEĞİŞKENİ}" +
+                                " adresinden erişebilirsiniz."
+                            );
+            
+
+            return "Erişim bağlantısı e-posta yoluyla gönderildi.";
         }
     }
 }
