@@ -1,3 +1,4 @@
+@using Esas
 @namespace Bileşenler.Seçenekler
 
 <div class="kutu_0069ff" style="text-align: center; width: 80%;
@@ -44,5 +45,16 @@
     private string parola {get; set;}
 
     private void İste()
-    {}
+    {
+        if ( !( String.IsNullOrWhiteSpace(kullanıcı_adı) || String.IsNullOrWhiteSpace(parola) ) )
+        {
+            string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
+            string sonuç = Esas.KişiselVeriler.İşlemler.KV_İste(kullanıcı_kimliği, parola);
+            başlık = sonuç;
+        }
+        else
+        {
+            başlık = "İşlem tamamlanamadı.";
+        }
+    }
 }
