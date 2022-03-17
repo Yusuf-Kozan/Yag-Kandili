@@ -23,7 +23,7 @@ namespace Esas.GeçiciBağlantı
             RandomNumberGenerator üreteç = RandomNumberGenerator.Create();
             byte[] ikili_yazı = new byte[64];
             üreteç.GetBytes(ikili_yazı);
-            string yazı = Convert.ToBase64String(ikili_yazı);
+            string yazı = Convert.ToBase64String(ikili_yazı).Replace('/', 'ü');
             return yazı;
         }
     }
