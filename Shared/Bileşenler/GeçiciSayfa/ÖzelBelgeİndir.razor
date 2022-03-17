@@ -1,0 +1,105 @@
+@using Esas.VeriTabanı
+@using Kilnevüg
+@using System.IO
+@using BlazorDownloadFile
+@inject IBlazorDownloadFileService Belgeİndirici
+@namespace Bileşenler.GeçiciSayfa
+
+<div class="kutu_000000" style="text-align: center; width: 80%;
+margin-left: auto; margin-right: auto; margin-top: 1%;"
+autocomplete="off">
+
+    @if(izin_durumu == 0)
+    {
+        <h4 style="color: #000000; font-size: xx-large; font-weight: bold;
+            text-align: center;">Belgeyi İstemek İçin Giriş Yapın</h4>
+    }
+    else if (izin_durumu == -1)
+    {
+        <h4 style="color: #c80000; font-size: xx-large; font-weight: bold;
+            text-align: center;">Belgeye Erişim İzniniz Yok</h4>
+    }
+    else if (izin_durumu == 1)
+    {
+        <h4 style="color: #000000; font-size: xx-large; font-weight: bold;
+            text-align: center;">İndirme Başlamış Olmalı</h4>
+    }
+
+    <input type="text" placeholder="Kullanıcı Adınız"
+        class="tek-kenarlı-kutu_000000"
+        style="width: 80%; text-align: start;
+        margin-left: auto; margin-right: auto;"
+        @bind="kullanıcı_adı"/>
+    
+    <input type="password" placeholder="Parolanız"
+        class="tek-kenarlı-kutu_000000"
+        style="width: 80%; text-align: start;
+        margin-left: auto; margin-right: auto;"
+        @bind="parola"/>
+
+    <input type="button" value="Belgeyi İste"
+        class="düğme_000000"
+        style="width: 80%; margin: 1%;"
+        @onclick="Belgeyiİste"/>
+</div>
+
+@code {
+    [Parameter]
+    public string hedef_kullanıcı {get; set;}
+    [Parameter]
+    public string sağlanacak_belge {get; set;}
+    [Parameter]
+    public string belge_adı {get; set;}
+    [Parameter]
+    public string belge_türü {get; set;}
+
+    private short izin_durumu = 0;
+    // +1: izinli , 0: bilinmiyor , -1: izinsiz
+    private string kullanıcı_adı {get; set;}
+    private string parola {get; set;}
+
+    private async Task Belgeyiİste()
+    {
+        if (KimlikDoğru())
+        {
+            byte[] belge = File.ReadAllBytes(sağlanacak_belge);
+            await Belgeİndirici.DownloadFile(belge_adı, belge, belge_türü);
+        }
+    }
+    private bool KimlikDoğru()
+    {
+        if (String.IsNullOrWhiteSpace(kullanıcı_adı) || String.IsNullOrWhiteSpace(parola))
+        {
+            izin_durumu = -1;
+            return false;
+        }
+        else if (Üyelik.KullanıcıAdıKullanımda(kullanıcı_adı))
+        {
+            string kullanıcı_kimliği = Üyelik.KullanıcınınKimliği(kullanıcı_adı);
+            if (kullanıcı_kimliği == hedef_kullanıcı)
+            {
+                string parola_bilgisi = Üyelik.KullanıcınınParolaBilgileri(kullanıcı_kimliği);
+                if (Parolalar.ParolaDoğru(parola_bilgisi, parola))
+                {
+                    izin_durumu = 1;
+                    return true;
+                }
+                else
+                {
+                    izin_durumu = -1;
+                    return false;
+                }
+            }
+            else
+            {
+                izin_durumu = -1;
+                return false;
+            }
+        }
+        else
+        {
+            izin_durumu = -1;
+            return false;
+        }
+    }
+}
