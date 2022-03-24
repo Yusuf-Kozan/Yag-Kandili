@@ -49,13 +49,28 @@ namespace Esas.KişiselVeriler
                                 gönderen,
                                 alıcı,
                                 "İstediğiniz Belge | Yağ Kandili",
-                                "İstediğiniz belgeye önümüzdeki 24 boyunca " +
+                                "İstediğiniz belgeye önümüzdeki 24 saat boyunca " +
                                 $"https://yağkandili.com.tr/g/{geçici_bağlantı.BAĞLANTI_DEĞİŞKENİ}" +
                                 " adresinden erişebilirsiniz."
                             );
             
 
             return "Erişim bağlantısı e-posta yoluyla gönderildi.";
+        }
+        
+        internal static bool PaylaşımıGizle(string kullanıcı_kimliği, string kimlik2)
+        {
+            //İşlem başarıyla yapılırsa TRUE, yapılamazsa FALSE değerini döndürür.
+            string paylaşan = VeriTabanı.Paylaşım.PaylaşanınKimliği(kimlik2);
+            if (kullanıcı_kimliği != paylaşan)
+            {
+                return false;
+            }
+            else
+            {
+                VeriTabanı.Paylaşım.PaylaşımıGizle(kimlik2);
+                return true;
+            }
         }
     }
 }
