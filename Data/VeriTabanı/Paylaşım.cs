@@ -98,6 +98,90 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
         }
+        internal static void GizliPaylaşımıAç(string kimlik2)
+        {
+            string komut_metni = $"SELECT COUNT(Eklenti) FROM {TabloAdı()} " +
+                                "WHERE Kimlik2 = @kimlik2 AND " +
+                                "Eklenti LIKE '%>gizli%';";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@kimlik2", kimlik2);
+            short nicelik = short.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            
+            if (nicelik == 0)
+            {
+                bağlantı.Close(); bağlantı.Dispose();
+                return;
+            }
+            
+            komut_metni = $"SELECT Eklenti FROM {TabloAdı()} " +
+                        "WHERE Kimlik2 = @kimlik2;";
+            komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@kimlik2", kimlik2);
+            string eklenti = komut.ExecuteScalar().ToString();
+            komut.Dispose();
+            string[] eklentiler = eklenti.Split('>');
+            int sayaç = 0;
+            for (int i = 0; i < eklentiler.Length; i++)
+            {
+                if (eklentiler[i].StartsWith("gizli"))
+                {
+                    sayaç++;
+                }
+            }
+            if (sayaç != 0)
+            {
+                if (eklentiler.Length == 1)
+                {
+                    eklenti = "y";
+                }
+                else
+                {
+                    eklenti = String.Empty;
+                    for (int i = 0; i < eklentiler.Length; i++)
+                    {
+                        if (!(eklentiler[i].StartsWith("gizli")))
+                        {
+                            eklenti += $">{eklentiler[i]}";
+                        }
+                    }
+                }
+
+                komut_metni = $"UPDATE {TabloAdı()} SET Eklenti = @eklenti " +
+                            "WHERE Kimlik2 = @kimlik2;";
+                komut = new MySqlCommand(komut_metni, bağlantı);
+                komut.Parameters.AddWithValue("@kimlik2", kimlik2);
+                komut.Parameters.AddWithValue("@eklenti", eklenti);
+                komut.ExecuteNonQuery();
+                komut.Dispose();
+                bağlantı.Close(); bağlantı.Dispose();
+                return;
+            }
+            else
+            {
+                bağlantı.Close(); bağlantı.Dispose();
+                return;
+            }
+        }
+        internal static void PaylaşımıSil(string sildiren, string kimlik2)
+        {
+            // UYARI!
+            // Bu fonksiyon, belirtilen paylaşımı neredeyse yok edecektir.
+            // Çok dikkatli kullan.
+
+            string komut_metni = $"DELETE FROM {TabloAdı()} WHERE " +
+                                "Paylaşan = @sildiren AND Kimlik2 = @kimlik2;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@sildiren", sildiren);
+            komut.Parameters.AddWithValue("@kimlik2", kimlik2);
+            komut.ExecuteNonQuery();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+        }
         internal static string PaylaşanınKimliği(string kimlik2)
         {
             string komut_metni = $"SELECT Paylaşan FROM {TabloAdı()} " +

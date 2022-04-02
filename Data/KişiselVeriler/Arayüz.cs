@@ -66,11 +66,89 @@ namespace Esas.KişiselVeriler
             {
                 return false;
             }
-            else
+
+            string işlem_kimliği = KV_İşlemKimliği.YeniKimlik();
+            İşlemKaydı istek = new İşlemKaydı();
+            istek.KULLANICI_KİMLİĞİ = kullanıcı_kimliği;
+            istek.TARİH = DateTime.Now;
+            istek.İŞLEM_KİMLİĞİ = işlem_kimliği;
+            istek.İŞLEM = "Kendi Yaptığı Paylaşımın Diğer " +
+                        "Kullanıcılardan Gizlenmesi İsteği\n" +
+                        $"Paylaşım Kimliği: {kimlik2}";
+            KişiselVeri.İşlemYaz(istek);
+
+            VeriTabanı.Paylaşım.PaylaşımıGizle(kimlik2);
+
+            İşlemKaydı yapılan = new İşlemKaydı();
+            yapılan.KULLANICI_KİMLİĞİ = "Yağ Kandili";
+            yapılan.TARİH = DateTime.Now;
+            yapılan.İŞLEM_KİMLİĞİ = işlem_kimliği;
+            yapılan.İŞLEM = "Paylaşanın isteği üzerine ilgili paylaşım " +
+                            "diğer kullanıcılardan gizlendi.\n" +
+                            $"Paylaşım Kimliği: {kimlik2}";
+            KişiselVeri.İşlemYaz(yapılan);
+            return true;
+        }
+        internal static bool GizliPaylaşımıAç(string kullanıcı_kimliği, string kimlik2)
+        {
+            //İşlem başarıyla yapılırsa TRUE, yapılamazsa FALSE değerini döndürür.
+            string paylaşan = VeriTabanı.Paylaşım.PaylaşanınKimliği(kimlik2);
+            if (kullanıcı_kimliği != paylaşan)
             {
-                VeriTabanı.Paylaşım.PaylaşımıGizle(kimlik2);
-                return true;
+                return false;
             }
+            
+            string işlem_kimliği = KV_İşlemKimliği.YeniKimlik();
+            İşlemKaydı istek = new İşlemKaydı();
+            istek.KULLANICI_KİMLİĞİ = kullanıcı_kimliği;
+            istek.TARİH = DateTime.Now;
+            istek.İŞLEM_KİMLİĞİ = işlem_kimliği;
+            istek.İŞLEM = "Kendi Gizli Paylaşımının Diğer Kullanıcılar İçin " +
+                        "Yeniden Erişilebilir Olması İsteği\n" +
+                        $"Paylaşım Kimliği: {kimlik2}";
+            KişiselVeri.İşlemYaz(istek);
+
+            VeriTabanı.Paylaşım.GizliPaylaşımıAç(kimlik2);
+
+            İşlemKaydı yapılan = new İşlemKaydı();
+            yapılan.KULLANICI_KİMLİĞİ = "Yağ Kandili";
+            yapılan.TARİH = DateTime.Now;
+            yapılan.İŞLEM_KİMLİĞİ = işlem_kimliği;
+            yapılan.İŞLEM = "Paylaşanın isteği üzerine, gizli paylaşım " +
+                            "diğer kullanıcılar için erişilebilir duruma getirildi.\n" +
+                            $"Paylaşım Kimliği: {kimlik2}";
+            KişiselVeri.İşlemYaz(yapılan);
+            return true;
+        }
+
+        internal static bool PaylaşımıSil(string kullanıcı_kimliği, string kimlik2)
+        {
+            //İşlem başarıyla yapılırsa TRUE, yapılamazsa FALSE değerini döndürür.
+            string paylaşan = VeriTabanı.Paylaşım.PaylaşanınKimliği(kimlik2);
+            if (kullanıcı_kimliği != paylaşan)
+            {
+                return false;
+            }
+            
+            string işlem_kimliği = KV_İşlemKimliği.YeniKimlik();
+            İşlemKaydı istek = new İşlemKaydı();
+            istek.KULLANICI_KİMLİĞİ = kullanıcı_kimliği;
+            istek.TARİH = DateTime.Now;
+            istek.İŞLEM_KİMLİĞİ = işlem_kimliği;
+            istek.İŞLEM = "Kendi Yaptığı Paylaşımın Silinmesi İsteği\n" +
+                        $"Paylaşım Kimliği: {kimlik2}";
+            KişiselVeri.İşlemYaz(istek);
+
+            VeriTabanı.Paylaşım.PaylaşımıSil(kullanıcı_kimliği, kimlik2);
+
+            İşlemKaydı yapılan = new İşlemKaydı();
+            yapılan.KULLANICI_KİMLİĞİ = "Yağ Kandili";
+            yapılan.TARİH = DateTime.Now;
+            yapılan.İŞLEM_KİMLİĞİ = işlem_kimliği;
+            yapılan.İŞLEM = "Paylaşanın isteği üzerine ilgili paylaşım silindi.\n" +
+                            $"Paylaşım Kimliği: {kimlik2}";
+            KişiselVeri.İşlemYaz(yapılan);
+            return true;
         }
     }
 }
