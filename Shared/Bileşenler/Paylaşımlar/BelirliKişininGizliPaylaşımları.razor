@@ -1,0 +1,101 @@
+@inject NavigationManager NavigationManager
+@using System.Globalization
+@using Esas
+@namespace Bileşenler
+
+@for (int i = 0; i < paylaşımlar.Length; i++)
+{
+    <div class="kutu_9900ff p-kutu-bileşen"
+    style="text-align: justify; overflow: hidden;">
+        <a class="başlık_9900ff" style="display: block; text-align: start;"
+        href="paylaşım/@(paylaşımlar[i].KİMLİK_2)">@(paylaşımlar[i].BAŞLIK)</a>
+
+        <p style="white-space: pre-line; color: black;">@(paylaşımlar[i].İÇERİK)</p>
+        
+        <div style="text-align: left; width: 50%; float: left;">
+            <button class="düğme_0_120_0" @onclick="() => ErişimeAç(paylaşımlar[i].KİMLİK_2)"
+            >@erişim_düğmesi</button>
+        </div>
+        <div style="text-align: right; width: 50%; float: right;">
+            @if (SilmeyeUygun(paylaşımlar[i].EKLENTİ))
+            {
+                <button class="düğme_000000" @onclick="() => Sil(paylaşımlar[i].KİMLİK_2)"
+                >@silme_düğmesi</button>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string bakan {get; set;}
+
+    private string silme_düğmesi = "Paylaşımı Sil";
+    private short silme_sayacı = 0;
+    private void Sil(string kimlik2)
+    {
+        if (silme_sayacı == 0)
+        {
+            silme_düğmesi = "Evet, Gerçekten Sil";
+            silme_sayacı++;
+        }
+        else if (silme_sayacı == 1)
+        {
+            Esas.KişiselVeriler.İşlemler.PaylaşımıSil(bakan, kimlik2);
+            silme_sayacı--;
+            silme_düğmesi = "Paylaşımı Sil";
+        }
+        else
+        {
+            silme_düğmesi = "Paylaşımı Sil";
+            silme_sayacı = 0;
+        }
+    }
+
+    private string erişim_düğmesi = "Erişime Aç";
+    private short erişim_sayacı = 0;
+    private void ErişimeAç(string kimlik2)
+    {
+        if (erişim_sayacı == 0)
+        {
+            erişim_düğmesi = "Evet, Gerçekten Aç";
+            erişim_sayacı++;
+        }
+        else if (erişim_sayacı == 1)
+        {
+            Esas.KişiselVeriler.İşlemler.GizliPaylaşımıAç(bakan, kimlik2);
+            erişim_sayacı--;
+            erişim_düğmesi = "Erişime Aç";
+        }
+        else
+        {
+            erişim_düğmesi = "Erişime Aç";
+            erişim_sayacı = 0;
+        }
+    }
+
+    private bool SilmeyeUygun(string eklenti)
+    {
+        string[] ekler = eklenti.Split('>');
+        CultureInfo TR = new CultureInfo("tr-TR");
+        for (int i = 0;  i < ekler.Length; i++)
+        {
+            if(ekler[i].StartsWith("gizli"))
+            {
+                DateTime uygunluk_tarihi = DateTime.ParseExact(
+                                        ekler[i].Substring(6),
+                                        "yyyyMMddHHmmss",
+                                        TR).AddDays(1);
+                return (DateTime.Compare(DateTime.Now, uygunluk_tarihi) >= 0);
+            }
+        }
+        return false;
+    }
+
+
+    private paylaşım[] paylaşımlar;
+    protected override void OnParametersSet()
+    {
+        paylaşımlar = Esas.VeriTabanı.Paylaşım.KişininTümGizliPaylaşımları(bakan);
+    }
+}

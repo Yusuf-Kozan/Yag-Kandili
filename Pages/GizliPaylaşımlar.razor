@@ -1,0 +1,52 @@
+@page "/gizli_paylaşımlar"
+@layout AnaTaslak
+@using System.Threading.Tasks
+@using Esas
+@using Bileşenler
+@inject IJSRuntime JSruntime
+@inject NavigationManager NavigationManager
+@namespace sayfa
+
+@if(oturum_açık)
+{
+    <BelirliKişininGizliPaylaşımları bakan=@kullanıcı />
+}
+else
+{
+    <h1 class="Yükleniyor">Yükleniyor</h1>
+}
+
+@code {
+    
+
+
+    private string kullanıcı, oturum;
+    private bool oturum_açık;
+    internal static ÜyeBil bakan_kullanıcı;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            var a = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
+            kullanıcı = a.ToString(); a = null;
+            var b = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
+            oturum = b.ToString(); b = null;
+            devam(kullanıcı, oturum);
+            StateHasChanged();
+        }
+        catch
+        {
+            NavigationManager.NavigateTo("/");
+        }
+    }
+    private void devam(string kullanıcı_kimliği, string oturum_kimliği)
+    {
+        oturum_açık = Esas.VeriTabanı.Oturum.BuOturumAçık(oturum_kimliği, kullanıcı_kimliği);
+        if (!oturum_açık)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+    }
+}
