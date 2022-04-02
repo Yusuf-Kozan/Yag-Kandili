@@ -60,7 +60,8 @@ namespace Esas.KişiselVeriler
             yapılan.İŞLEM_KİMLİĞİ = işlem_kimliği;
             yapılan.İŞLEM = "Kullanıcının isteği üzerine, kendi kişisel verilerini " +
                             "indirebileceği bağlantı kendisine e-posta yoluyla iletildi.\n" +
-                            $"Kullanıcı Kimliği: {kullanıcı_kimliği}";
+                            $"Kullanıcı Kimliği: {kullanıcı_kimliği}\n" +
+                            $"Geçici Bağlantı Değişkeni: {geçici_bağlantı.BAĞLANTI_DEĞİŞKENİ}";
             KişiselVeri.İşlemYaz(yapılan);
 
             return "Erişim bağlantısı e-posta yoluyla gönderildi.";
