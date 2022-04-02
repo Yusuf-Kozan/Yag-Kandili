@@ -24,7 +24,7 @@
 	padding: 3px;
 	padding-left: 11px;
 	padding-right: 11px;
-	font-family: sans-serif;
+	font-family: Lexend, sans-serif;
 	color: rgb(255,255,255);
 	background-color: rgb(0,120,0);
 	border-color: rgb(0,120,0);
@@ -133,6 +133,16 @@
 	border-color: #808080;
 }
 
+.kutu_ff6600 {
+	border: solid 2px #ff6600;
+	border-radius: 10px;
+	padding: 3px;
+	color: #ff6600;
+	font-size: x-large;
+	font-family: Lexend, sans-serif;
+	margin: 3px;
+	outline-style: none;
+}
 .kutu_098bdc {
 	border: solid 2px #098bdc;
 	border-radius: 10px;
@@ -178,6 +188,16 @@
 	border-radius: 10px;
 	padding: 3px;
 	color: #000000;
+	font-size: x-large;
+	font-family: Lexend, sans-serif;
+	margin: 3px;
+	outline-style: none;
+}
+.kutu_9900ff {
+	border: solid 2px #9900ff;
+	border-radius: 10px;
+	padding: 3px;
+	color: #9900ff;
 	font-size: x-large;
 	font-family: Lexend, sans-serif;
 	margin: 3px;
