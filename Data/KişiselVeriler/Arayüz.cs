@@ -114,7 +114,7 @@ namespace Esas.KişiselVeriler
             yapılan.KULLANICI_KİMLİĞİ = "Yağ Kandili";
             yapılan.TARİH = DateTime.Now;
             yapılan.İŞLEM_KİMLİĞİ = işlem_kimliği;
-            yapılan.İŞLEM = "Paylaşanın isteği üzerine, gizli paylaşım " +
+            yapılan.İŞLEM = "Paylaşanın isteği üzerine ilgili gizli paylaşım " +
                             "diğer kullanıcılar için erişilebilir duruma getirildi.\n" +
                             $"Paylaşım Kimliği: {kimlik2}";
             KişiselVeri.İşlemYaz(yapılan);
