@@ -20,7 +20,7 @@ namespace Esas.KişiselVeriler
             string işlem_kimliği = KV_İşlemKimliği.YeniKimlik();
             İşlemKaydı işlem_kaydı = new İşlemKaydı();
             işlem_kaydı.KULLANICI_KİMLİĞİ = kullanıcı_kimliği;
-            işlem_kaydı.İŞLEM = "Kendi Kişisel Verilerini İsteme";
+            işlem_kaydı.İŞLEM = "Kendi Kişisel Verilerini İndirme İsteği";
             işlem_kaydı.TARİH = DateTime.Now;
             işlem_kaydı.İŞLEM_KİMLİĞİ = işlem_kimliği;
             KişiselVeri.İşlemYaz(işlem_kaydı);
@@ -54,6 +54,14 @@ namespace Esas.KişiselVeriler
                                 " adresinden erişebilirsiniz."
                             );
             
+            İşlemKaydı yapılan = new İşlemKaydı();
+            yapılan.KULLANICI_KİMLİĞİ = "Yağ Kandili";
+            yapılan.TARİH = DateTime.Now;
+            yapılan.İŞLEM_KİMLİĞİ = işlem_kimliği;
+            yapılan.İŞLEM = "Kullanıcının isteği üzerine, kendi kişisel verilerini " +
+                            "indirebileceği bağlantı kendisine e-posta yoluyla iletildi.\n" +
+                            $"Kullanıcı Kimliği: {kullanıcı_kimliği}";
+            KişiselVeri.İşlemYaz(yapılan);
 
             return "Erişim bağlantısı e-posta yoluyla gönderildi.";
         }
