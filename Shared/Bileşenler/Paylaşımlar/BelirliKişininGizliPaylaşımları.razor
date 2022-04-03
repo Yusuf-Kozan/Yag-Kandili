@@ -83,7 +83,7 @@
             if(ekler[i].StartsWith("gizli"))
             {
                 DateTime uygunluk_tarihi = DateTime.ParseExact(
-                                        ekler[i].Substring(6),
+                                        ekler[i].Split('/')[1],
                                         "yyyyMMddHHmmss",
                                         TR).AddDays(1);
                 return (DateTime.Compare(DateTime.Now, uygunluk_tarihi) >= 0);
