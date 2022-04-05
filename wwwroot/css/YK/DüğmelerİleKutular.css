@@ -35,10 +35,11 @@
 	outline-style: none;
 	text-align: center;
 }
-.düğme_0_120_0:hover {
+.düğme_0_120_0:hover, .düğme_0_120_0:disabled {
     color: rgb(0,120,0);
 	background-color: #ccf0cc;
 	border-color: #ccf0cc;
+	cursor: auto;
 }
 .düğme_3baff7 {
     border: solid;
@@ -58,10 +59,11 @@
 	outline-style: none;
 	text-align: center;
 }
-.düğme_3baff7:hover {
+.düğme_3baff7:hover, .düğme_3baff7:disabled {
     color: #3baff7;
 	background-color: #ceebfd;
 	border-color: #ceebfd;
+	cursor: auto;
 }
 .düğme_0069ff {
     border: solid;
@@ -81,10 +83,11 @@
 	outline-style: none;
 	text-align: center;
 }
-.düğme_0069ff:hover {
+.düğme_0069ff:hover, .düğme_0069ff:disabled {
     color: #0069ff;
 	background-color: #cce0ff;
 	border-color: #cce0ff;
+	cursor: auto;
 }
 .düğme_808080 {
     border: solid;
@@ -104,10 +107,11 @@
 	outline-style: none;
 	text-align: center;
 }
-.düğme_808080:hover {
+.düğme_808080:hover, .düğme_808080:disabled {
     color: #808080;
 	background-color: #e2e2e2;
 	border-color: #e2e2e2;
+	cursor: auto;
 }
 .düğme_000000 {
     border: solid;
@@ -127,10 +131,35 @@
 	outline-style: none;
 	text-align: center;
 }
-.düğme_000000:hover {
+.düğme_000000:hover, .düğme_000000:disabled {
     color: #000000;
 	background-color: #808080;
 	border-color: #808080;
+	cursor: auto;
+}
+.düğme_9900ff {
+    border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px;
+	padding-left: 11px;
+	padding-right: 11px;
+	font-family: Lexend, sans-serif;
+	color: #ffffff;
+	background-color: #9900ff;
+	border-color: #9900ff;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+	outline-style: none;
+	text-align: center;
+}
+.düğme_9900ff:hover, .düğme_9900ff:disabled {
+	color: #9900ff;
+	background-color: #ebccff;
+	border-color: #ebccff;
+	cursor: auto;
 }
 
 .kutu_ff6600 {
