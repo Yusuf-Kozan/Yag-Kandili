@@ -1,5 +1,14 @@
-.başlık_9900ff
-{
+.başlık_0-120-0 {
+    font-family: Lexend, sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0,120,0);
+    margin: 1%;
+    border: none;
+}
+.başlık_9900ff {
     font-family: Lexend, sans-serif;
     font-weight: bold;
     font-size: x-large;
