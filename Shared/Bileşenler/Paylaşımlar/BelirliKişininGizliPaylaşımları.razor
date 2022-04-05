@@ -5,6 +5,7 @@
 
 @for (int i = 0; i < paylaşımlar.Length; i++)
 {
+    int tur = i;
     <div class="kutu_9900ff p-kutu-bileşen"
     style="text-align: justify; overflow: hidden;">
         <a class="başlık_9900ff" style="display: block; text-align: start;"
@@ -13,14 +14,16 @@
         <p style="white-space: pre-line; color: black;">@(paylaşımlar[i].İÇERİK)</p>
         
         <div style="text-align: left; width: 50%; float: left;">
-            <button class="düğme_0_120_0" @onclick="() => ErişimeAç(paylaşımlar[i].KİMLİK_2)"
-            >@erişim_düğmesi</button>
+            <button class="düğme_0_120_0" style="font-size: large;"
+            @onclick="() => ErişimeAç(paylaşımlar[tur].KİMLİK_2, tur)"
+            >@(erişim_düğmesi[i])</button>
         </div>
         <div style="text-align: right; width: 50%; float: right;">
             @if (SilmeyeUygun(paylaşımlar[i].EKLENTİ))
             {
-                <button class="düğme_000000" @onclick="() => Sil(paylaşımlar[i].KİMLİK_2)"
-                >@silme_düğmesi</button>
+                <button class="düğme_000000" style="font-size: large;"
+                @onclick="() => Sil(paylaşımlar[tur].KİMLİK_2, tur)"
+                >@(silme_düğmesi[i])</button>
             }
         </div>
     </div>
@@ -30,47 +33,50 @@
     [Parameter]
     public string bakan {get; set;}
 
-    private string silme_düğmesi = "Paylaşımı Sil";
-    private short silme_sayacı = 0;
-    private void Sil(string kimlik2)
+    //private string silme_düğmesi = "Paylaşımı Sil";
+    private string[] silme_düğmesi;
+    private short[] silme_sayacı;
+    private void Sil(string kimlik2, int tur)
     {
-        if (silme_sayacı == 0)
+        if (silme_sayacı[tur] == 0)
         {
-            silme_düğmesi = "Evet, Gerçekten Sil";
-            silme_sayacı++;
+            silme_düğmesi[tur] = "Evet, Gerçekten Sil";
+            silme_sayacı[tur]++;
         }
-        else if (silme_sayacı == 1)
+        else if (silme_sayacı[tur] == 1)
         {
             Esas.KişiselVeriler.İşlemler.PaylaşımıSil(bakan, kimlik2);
-            silme_sayacı--;
-            silme_düğmesi = "Paylaşımı Sil";
+            silme_sayacı[tur]--;
+            silme_düğmesi[tur] = "Paylaşımı Sil";
+            OnParametersSet();
         }
         else
         {
-            silme_düğmesi = "Paylaşımı Sil";
-            silme_sayacı = 0;
+            silme_düğmesi[tur] = "Paylaşımı Sil";
+            silme_sayacı[tur] = 0;
         }
     }
 
-    private string erişim_düğmesi = "Erişime Aç";
-    private short erişim_sayacı = 0;
-    private void ErişimeAç(string kimlik2)
+    private string[] erişim_düğmesi;
+    private short[] erişim_sayacı;
+    private void ErişimeAç(string kimlik2, int tur)
     {
-        if (erişim_sayacı == 0)
+        if (erişim_sayacı[tur] == 0)
         {
-            erişim_düğmesi = "Evet, Gerçekten Aç";
-            erişim_sayacı++;
+            erişim_düğmesi[tur] = "Evet, Gerçekten Aç";
+            erişim_sayacı[tur]++;
         }
-        else if (erişim_sayacı == 1)
+        else if (erişim_sayacı[tur] == 1)
         {
             Esas.KişiselVeriler.İşlemler.GizliPaylaşımıAç(bakan, kimlik2);
-            erişim_sayacı--;
-            erişim_düğmesi = "Erişime Aç";
+            erişim_sayacı[tur]--;
+            erişim_düğmesi[tur] = "Erişime Aç";
+            OnParametersSet();
         }
         else
         {
-            erişim_düğmesi = "Erişime Aç";
-            erişim_sayacı = 0;
+            erişim_düğmesi[tur] = "Erişime Aç";
+            erişim_sayacı[tur] = 0;
         }
     }
 
@@ -97,5 +103,16 @@
     protected override void OnParametersSet()
     {
         paylaşımlar = Esas.VeriTabanı.Paylaşım.KişininTümGizliPaylaşımları(bakan);
+        erişim_düğmesi = new string[paylaşımlar.Length];
+        erişim_sayacı = new short[paylaşımlar.Length];
+        silme_düğmesi = new string[paylaşımlar.Length];
+        silme_sayacı = new short[paylaşımlar.Length];
+        for (int i = 0; i < paylaşımlar.Length; i++)
+        {
+            erişim_düğmesi[i] = "Erişime Aç";
+            erişim_sayacı[i] = 0;
+            silme_düğmesi[i] = "Paylaşımı Sil";
+            silme_sayacı[i] = 0;
+        }
     }
 }
