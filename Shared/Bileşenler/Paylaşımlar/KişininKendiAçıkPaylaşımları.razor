@@ -1,0 +1,66 @@
+@inject NavigationManager NavigationManager
+@using Esas
+@namespace Bileşenler
+
+@for (int i = 0; i < paylaşımlar.Length; i++)
+{
+    int tur = i;
+    <div class="kutu_0_120_0 p-kutu-bileşen"
+    style="text-align: justify; overflow: hidden;">
+        <a class="başlık_0-120-0" style="display: block; text-align: start;"
+        href="paylaşım/@(paylaşımlar[i].KİMLİK_2)">@(paylaşımlar[i].BAŞLIK)</a>
+
+        <p style="white-space: pre-line; color: black;">@(paylaşımlar[i].İÇERİK)</p>
+        
+        <div style="text-align: left; width: 50%; float: left;">
+            <button class="düğme_9900ff" style="font-size: large;"
+            @onclick="() => Gizle(paylaşımlar[tur].KİMLİK_2, tur)"
+            >@(erişim_düğmesi[i])</button>
+        </div>
+        <div style="text-align: right; width: 50%; float: right; font-size: x-large;">
+            <Değerlendir değerlendiren=@bakan değerlendirilen=@(paylaşımlar[tur].KİMLİK_2)/>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string bakan {get; set;}
+
+
+    private string[] erişim_düğmesi;
+    private short[] erişim_sayacı;
+    private void Gizle(string kimlik2, int tur)
+    {
+        if (erişim_sayacı[tur] == 0)
+        {
+            erişim_düğmesi[tur] = "Evet, Gerçekten Gizle";
+            erişim_sayacı[tur]++;
+        }
+        else if (erişim_sayacı[tur] == 1)
+        {
+            Esas.KişiselVeriler.İşlemler.PaylaşımıGizle(bakan, kimlik2);
+            erişim_sayacı[tur]--;
+            erişim_düğmesi[tur] = "Paylaşımı Gizle";
+            OnParametersSet();
+        }
+        else
+        {
+            erişim_düğmesi[tur] = "Paylaşımı Gizle";
+            erişim_sayacı[tur] = 0;
+        }
+    }
+
+    private paylaşım[] paylaşımlar;
+    protected override void OnParametersSet()
+    {
+        paylaşımlar = Esas.VeriTabanı.Paylaşım.KişininTümAçıkPaylaşımları(bakan);
+        erişim_düğmesi = new string[paylaşımlar.Length];
+        erişim_sayacı = new short[paylaşımlar.Length];
+        for (int i = 0; i < paylaşımlar.Length; i++)
+        {
+            erişim_düğmesi[i] = "Paylaşımı Gizle";
+            erişim_sayacı[i] = 0;
+        }
+    }
+}
