@@ -94,6 +94,7 @@ namespace Esas.KişiselVeriler
             yapılan.İŞLEM_KİMLİĞİ = işlem_kimliği;
             yapılan.İŞLEM = "Paylaşanın isteği üzerine ilgili paylaşım " +
                             "diğer kullanıcılardan gizlendi.\n" +
+                            $"Kullanıcı Kimliği: {kullanıcı_kimliği}\n" +
                             $"Paylaşım Kimliği: {kimlik2}";
             KişiselVeri.İşlemYaz(yapılan);
             return true;
@@ -125,6 +126,7 @@ namespace Esas.KişiselVeriler
             yapılan.İŞLEM_KİMLİĞİ = işlem_kimliği;
             yapılan.İŞLEM = "Paylaşanın isteği üzerine ilgili gizli paylaşım " +
                             "diğer kullanıcılar için erişilebilir duruma getirildi.\n" +
+                            $"Kullanıcı Kimliği: {kullanıcı_kimliği}\n" +
                             $"Paylaşım Kimliği: {kimlik2}";
             KişiselVeri.İşlemYaz(yapılan);
             return true;
@@ -155,6 +157,7 @@ namespace Esas.KişiselVeriler
             yapılan.TARİH = DateTime.Now;
             yapılan.İŞLEM_KİMLİĞİ = işlem_kimliği;
             yapılan.İŞLEM = "Paylaşanın isteği üzerine ilgili paylaşım silindi.\n" +
+                            $"Kullanıcı Kimliği: {kullanıcı_kimliği}\n" +
                             $"Paylaşım Kimliği: {kimlik2}";
             KişiselVeri.İşlemYaz(yapılan);
             return true;
