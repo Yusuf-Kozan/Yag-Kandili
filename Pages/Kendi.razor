@@ -14,6 +14,18 @@
         ikinci_başlık="Ana Sayfaya Git" ilk_renk="#0069ff"
         ikinci_renk="#ff6600"/>
         <br/>
+        <div style="margin-top: 2%; margin-bottom: 1%;">
+            <img src="@bakan_kullanıcı.RESİM" height="auto" id="resim"/>
+
+            <div class="kutu_0_120_0" id="ortalama-beğeni">
+                Beğeni: @ortalama_beğeni
+            </div>
+                
+            <div class="kutu_0_120_0" id="takipçi-niceliği">
+                Takipçi: @takipçi_niceliği
+            </div>
+        </div>
+        <br/>
         <button class="düğme_0_120_0" disabled="@görünenler_açık"
         @onclick="AçıklarıGöster">Açık Paylaşımlarınız</button>
         <button class="düğme_9900ff" disabled="@(!görünenler_açık)"
@@ -45,6 +57,9 @@ else
         görünenler_açık = false;
     }
 
+    private double ortalama_beğeni;
+    private long takipçi_niceliği;
+
     private string kullanıcı, oturum;
     private bool oturum_açık;
     internal static ÜyeBil bakan_kullanıcı;
@@ -57,7 +72,7 @@ else
             kullanıcı = a.ToString(); a = null;
             var b = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
             oturum = b.ToString(); b = null;
-            devam(kullanıcı, oturum);
+            devam();
             StateHasChanged();
         }
         catch
@@ -65,13 +80,15 @@ else
             NavigationManager.NavigateTo("/");
         }
     }
-    private void devam(string kullanıcı_kimliği, string oturum_kimliği)
+    private void devam()
     {
-        oturum_açık = Esas.VeriTabanı.Oturum.BuOturumAçık(oturum_kimliği, kullanıcı_kimliği);
+        oturum_açık = Esas.VeriTabanı.Oturum.BuOturumAçık(oturum, kullanıcı);
         if (!oturum_açık)
         {
             NavigationManager.NavigateTo("/");
         }
-        bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
+        bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı);
+        ortalama_beğeni = Esas.VeriTabanı.Beğeni.KişininBeğeniOrtalaması(kullanıcı);
+        takipçi_niceliği = Esas.VeriTabanı.Takip.TakipçiNiceliği(kullanıcı);
     }
 }
