@@ -20,7 +20,7 @@ GARANTİ VERMEMEKTEDİR, zımni PAZARLANABİLİRLİK veya BELİRLİ BİR
 AMACA UYGUNLUK garantisi bile. Daha çok ayrıntı için GNU Affero
 Genel Kamu Lisansı'na bakın.
 
-Yağ Kandili'nin  yanında GNU Affero Genel Kamu Lisansı'nın bir kopyasını
+Yağ Kandili'nin yanında GNU Affero Genel Kamu Lisansı'nın bir kopyasını
 almış olmalısınız. Almadıysanız, <https://www.gnu.org/licenses/>
 adresine bakın.
 
