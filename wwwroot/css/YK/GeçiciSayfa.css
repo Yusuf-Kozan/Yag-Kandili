@@ -17,6 +17,15 @@
     top: 5%;
     left: 2%;
 }
+#geçici-lisanslar {
+    position: absolute;
+    height: auto;
+    width: auto;
+    top: 10%;
+    right: 2%;
+    text-decoration: none;
+    cursor: pointer;
+}
 .geçici-içerik {
     display: block;
     height: auto;
