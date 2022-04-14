@@ -16,7 +16,6 @@
 	margin-right: 2%;
 	margin-top: 0.25%;
 	margin-bottom: 0.25%;
-	float: left;
 }
 .giriş-header h2 {
 	vertical-align: middle;
@@ -81,6 +80,41 @@
 	font-size: xx-large;
 	color: #ff6600;
 	font-family: Sans-Serif;
+}
+
+#jslicense-labels1
+{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+#jslicense-labels1 caption
+{
+	margin: 0.5%;
+	padding: 0.5%;
+	font-family: Lexend, sans-serif;
+	font-size: xx-large;
+	font-weight: bold;
+	border-bottom: 2px solid #00000055;
+}
+#jslicense-labels1 tr
+{
+	font-family: Lexend, sans-serif;
+	font-size: x-large;
+}
+#jslicense-labels1 tr:hover
+{
+	background-color: #80808044;
+}
+#jslicense-labels1 th
+{
+	text-align: start;
+	padding: 1%;
+}
+#jslicense-labels1 td
+{
+	text-align: start;
+	padding: 0.25% 1%;
 }
 
 /*.gir2 {
