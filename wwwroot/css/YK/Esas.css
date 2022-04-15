@@ -82,6 +82,19 @@
 	font-family: Sans-Serif;
 }
 
+.lisans_bildirimi
+{
+	border: none;
+	color: #000000;
+	font-family: Lexend, sans-serif;
+	font-size: large;
+}
+.lisans_bildirimi p
+{
+	padding: 1% 0;
+	text-align: justify;
+}
+
 #jslicense-labels1
 {
 	width: 80%;
