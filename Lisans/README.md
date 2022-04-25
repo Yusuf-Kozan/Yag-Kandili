@@ -45,47 +45,55 @@
 >Kullanılan sürüm: 2.3.1.1  
  Copyright (C) 2020 Anthony G. Rivera Cosme  
  Lisans: Expat  
- Kaynak: https://github.com/arivera12/BlazorDownloadFile
+ Kaynak: https://github.com/arivera12/BlazorDownloadFile  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/BlazorDownloadFile/2.3.1.1
 
 ### CryptHash.Net
 
 >Kullanılan sürüm: 3.6.0  
  Copyright (C) 2019 Alessandro Cagliostro Gonçalves Neves  
  Lisans: Expat  
- Kaynak: https://github.com/alecgn/crypthash-net/tree/v3.6.0
+ Kaynak: https://github.com/alecgn/crypthash-net/tree/v3.6.0  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/CryptHash.Net/3.6.0
 
 ### MailKit
 >Kullanılan sürüm: 3.0.0  
  Copyright (C) 2013-2021 .NET Foundation and Contributors  
  Lisans: Expat  
- Kaynak: https://github.com/jstedfast/MailKit/tree/3.0.0
+ Kaynak: https://github.com/jstedfast/MailKit/tree/3.0.0  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/MailKit/3.0.0
 
 ### Microsoft.AspNetCore.Http
 >Kullanılan sürüm: 2.2.2  
  Copyright (C) .NET Foundation and Contributors  
  Lisans: Apache 2.0  
- Kaynak: https://github.com/aspnet/AspNetCore/tree/522705f9a27b99ca4ad261f2e89fe51a77b2338e
+ Kaynak: https://github.com/aspnet/AspNetCore/tree/522705f9a27b99ca4ad261f2e89fe51a77b2338e  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/Microsoft.AspNetCore.Http/2.2.2
 
 ### Microsoft.AspNetCore.Http.Features
 >Kullanılan sürüm: 3.1.5  
  Copyright (C) .NET Foundation and Contributors  
  Lisans: Apache 2.0  
- Kaynak: https://github.com/aspnet/AspNetCore/tree/844a82e37cae48af2ab2ee4f39b41283e6bb4f0e
+ Kaynak: https://github.com/aspnet/AspNetCore/tree/844a82e37cae48af2ab2ee4f39b41283e6bb4f0e  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Features/3.1.5
 
 ### MySql.Data
 >Kullanılan sürüm: 8.0.20  
  Copyright (C) 2004, 2021 Oracle and/or its affiliates  
  Lisans: GPL 2.0 with The Universal FOSS Exception 1.0  
- Kaynak: https://github.com/mysql/mysql-connector-net
+ Kaynak: https://github.com/mysql/mysql-connector-net  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/MySql.Data/8.0.20
 
 ### Newtonsoft.Json
 >Kullanılan sürüm: 13.0.1  
  Copyright (C) 2007 James Newton-King  
  Lisans: Expat  
- Kaynak: https://github.com/JamesNK/Newtonsoft.Json/tree/13.0.1
+ Kaynak: https://github.com/JamesNK/Newtonsoft.Json/tree/13.0.1  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/Newtonsoft.Json/13.0.1
 
 ### System.Data.SqlClient
 >Kullanılan sürüm: 4.8.1  
  Copyright (C) .NET Foundation and Contributors  
  Lisans: Expat  
- Kaynak: https://github.com/dotnet/corefx/tree/v3.1.5/src/System.Data.SqlClient
+ Kaynak: https://github.com/dotnet/corefx/tree/v3.1.5/src/System.Data.SqlClient  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/System.Data.SqlClient/4.8.1
