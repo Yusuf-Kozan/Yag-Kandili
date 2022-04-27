@@ -1,41 +1,8 @@
 # Yağ Kandili'nin Lisans Bilgileri
 
 
->    Copyright (C) 2022 Yusuf Kozan
->
->    ---
->    Bu belge Yağ Kandili'nin bir parçasıdır.
->
->    Yağ Kandili bir özgür yazılımdır: GNU Affero Genel Kamu Lisansı'nın 3.
->    ya da (isteğinize göre) sonraki bir sürümünün Free Software Foundation
->    tarafından yayınlandığı durumunun koşulları altında Yağ Kandili'ni
->    dağıtabilir veya Yağ Kandili üzerinde değişiklik yapabilirsiniz.
->
->    Yağ Kandili kullanışlı olması umuduyla dağıtılmaktadır ancak HİÇBİR
->    GARANTİ VERMEMEKTEDİR, zımni PAZARLANABİLİRLİK veya BELİRLİ BİR
->    AMACA UYGUNLUK garantisi bile. Daha çok ayrıntı için GNU Affero
->    Genel Kamu Lisansı'na bakın.
->
->    Yağ Kandili'nin yanında [GNU Affero Genel Kamu Lisansı'nın bir kopyasını](
->    ./agpl-3.0.md) almış olmalısınız.
->    Almadıysanız, <https://www.gnu.org/licenses/> adresine bakın.
->
->    ---
->    This file is part of Yağ Kandili.
->
->    Yağ Kandili is free software: you can redistribute it and/or modify
->    it under the terms of the GNU Affero General Public License as
->    published by the Free Software Foundation, either version 3 of the
->    License, or (at your option) any later version.
->
->    Yağ Kandili is distributed in the hope that it will be useful,
->    but WITHOUT ANY WARRANTY; without even the implied warranty of
->    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
->    GNU Affero General Public License for more details.
->
->    You should have received [a copy of the GNU Affero General Public License](
->    ./agpl-3.0.md) along with Yağ Kandili.
->    If not, see <https://www.gnu.org/licenses/>.
+* [Kütüphaneler](#kütüphanelerin-lisansları)
+* [Başka Çalışmalardan Alınan Belgeler](#başka-çalışmalardan-alınıp-değiştirilmiş-belgeler)
 
 
 ## Kütüphanelerin Lisansları
@@ -97,3 +64,76 @@
  Lisans: [Expat](/Lisans/Kütüphanelerin_Lisansları/System.Data.SqlClient-lisans.txt)  
  Kaynak: https://github.com/dotnet/corefx/tree/v3.1.5/src/System.Data.SqlClient  
  NuGet Gallery sayfası: https://www.nuget.org/packages/System.Data.SqlClient/4.8.1
+
+---
+## Başka Çalışmalardan Alınıp Değiştirilmiş Belgeler
+
+Bu belgeler başka çalışmalardan alınıp üzerinde değişiklik
+yapılarak Yağ Kandili'ne eklenmiştir. Bu belgelerin tümü,
+Yağ Kandili'ne eklenirken GNU Affero Genel Kamu Lisansı'nın 3.
+sürümü altında yeniden lisanslanmıştır. Değiştirilmiş
+biçimleri Yağ Kandili ile aynı lisans koşulları altında
+kullanılabilir.
+
+### Startup.cs
+>Belge yolu: [/Startup.cs](/Startup.cs)  
+ Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/Components/Samples/BlazorServerApp/Startup.cs  
+ Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
+ Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
+
+### Program.cs
+>Belge yolu: [/Program.cs](/Program.cs)  
+ Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/Components/Samples/BlazorServerApp/Program.cs  
+ Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
+ Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
+
+### App.razor
+>Belge yolu: [/App.razor](/App.razor)  
+ Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/Components/Samples/BlazorServerApp/App.razor  
+ Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
+ Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
+
+### Pages/Error.razor
+>Belge yolu: [/Pages/Error.razor](/Pages/Error.razor)  
+ Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/ProjectTemplates/Web.ProjectTemplates/content/BlazorServerWeb-CSharp/Pages/Error.razor  
+ Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
+ Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
+
+
+---
+
+*Copyright (C) 2022 Yusuf Kozan*  
+
+*Bu belge Yağ Kandili'nin bir parçasıdır.*
+
+*Yağ Kandili bir özgür yazılımdır: GNU Affero Genel Kamu Lisansı'nın 3.
+ya da (isteğinize göre) sonraki bir sürümünün Free Software Foundation
+tarafından yayınlandığı durumunun koşulları altında Yağ Kandili'ni
+dağıtabilir veya Yağ Kandili üzerinde değişiklik yapabilirsiniz.*
+
+*Yağ Kandili kullanışlı olması umuduyla dağıtılmaktadır ancak HİÇBİR
+GARANTİ VERMEMEKTEDİR, zımni PAZARLANABİLİRLİK veya BELİRLİ BİR
+AMACA UYGUNLUK garantisi bile. Daha çok ayrıntı için GNU Affero
+Genel Kamu Lisansı'na bakın.*
+
+*Yağ Kandili'nin yanında [GNU Affero Genel Kamu Lisansı'nın bir kopyasını](
+./agpl-3.0.md) almış olmalısınız.
+Almadıysanız, <https://www.gnu.org/licenses/> adresine bakın.*
+
+ --  
+
+*This file is part of Yağ Kandili.*
+
+*Yağ Kandili is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.*
+
+*Yağ Kandili is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.*
+
+*You should have received [a copy of the GNU Affero General Public License](
+./agpl-3.0.md) along with Yağ Kandili.
+If not, see <https://www.gnu.org/licenses/>.*
