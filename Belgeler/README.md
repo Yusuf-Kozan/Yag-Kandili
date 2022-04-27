@@ -5,9 +5,9 @@ nasıl kullanıldığı gibi konulardaki yazılar bu dizinde
 bulunur.
 
 Bu dizindeki ve bu dizinin alt dizinlerindeki tüm
-belgeler, belge içeriğinde aksi belirtilmedikçe,
-GNU Affero Genel Kamu Lisansı'nın 3. sürümü
-altında dağıtılmaktadır.
+belgeler Yağ Kandili'nin parçasıdır ve -belge
+içeriğinde aksi belirtilmedikçe- GNU Affero Genel
+Kamu Lisansı'nın 3. sürümü altında dağıtılmaktadır.
 
 Bu belgeleri GNU Affero Genel Kamu Lisansı'nın 3.
 ya da (isteğinize göre) sonraki bir sürümünün
@@ -19,3 +19,9 @@ GNU Affero Genel Kamu Lisansı'nın bir kopyasına
 [/Lisans/agpl-3.0.md](/Lisans/agpl-3.0.md)
 veya <https://www.gnu.org/licenses/agpl-3.0.html>
 adresinden erişebilirsiniz.
+
+Yağ Kandili'nin lisansıyla ilgili daha çok bilgi
+edinmek için [/Lisans](/Lisans) dizinine bakın.
+
+---
+*Copyright (C) 2022 Yusuf Kozan*
