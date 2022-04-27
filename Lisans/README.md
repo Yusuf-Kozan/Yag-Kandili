@@ -4,8 +4,22 @@
 * [Kütüphaneler](#kütüphanelerin-lisansları)
 * [Başka Çalışmalardan Alınan Belgeler](#başka-çalışmalardan-alınıp-değiştirilmiş-belgeler)
 
+Yağ Kandili bir özgür yazılımdır: GNU Affero Genel Kamu Lisansı'nın 3.
+ya da (isteğinize göre) sonraki bir sürümünün Free Software Foundation
+tarafından yayınlandığı durumunun koşulları altında Yağ Kandili'ni
+dağıtabilir veya Yağ Kandili üzerinde değişiklik yapabilirsiniz.
 
-## Kütüphanelerin Lisansları
+Yağ Kandili kullanışlı olması umuduyla dağıtılmaktadır ancak HİÇBİR
+GARANTİ VERMEMEKTEDİR, zımni PAZARLANABİLİRLİK veya BELİRLİ BİR
+AMACA UYGUNLUK garantisi bile. Daha çok ayrıntı için GNU Affero
+Genel Kamu Lisansı'na bakın.
+
+Yağ Kandili'nin yanında [GNU Affero Genel Kamu Lisansı'nın bir kopyasını](
+./agpl-3.0.md) almış olmalısınız.
+Almadıysanız, <https://www.gnu.org/licenses/> adresine bakın.
+
+
+## Kütüphaneler
 
 ### BlazorDownloadFile
 
@@ -90,6 +104,12 @@ kullanılabilir.
 ### App.razor
 >Belge yolu: [/App.razor](/App.razor)  
  Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/Components/Samples/BlazorServerApp/App.razor  
+ Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
+ Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
+
+### _Host.cshtml
+>Belge yolu: [/Pages/_Host.cshtml](/Pages/_Host.cshtml)  
+ Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/ProjectTemplates/Web.ProjectTemplates/content/BlazorServerWeb-CSharp/Pages/_Host.cshtml  
  Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
  Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
 
