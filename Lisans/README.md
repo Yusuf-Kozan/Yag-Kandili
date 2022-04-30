@@ -3,6 +3,7 @@
 
 * [Kütüphaneler](#kütüphanelerin-lisansları)
 * [Başka Çalışmalardan Alınan Belgeler](#başka-çalışmalardan-alınıp-değiştirilmiş-belgeler)
+* [Yazı Tipleri](#dış-kaynaklı-yazı-tipleri)
 
 Yağ Kandili bir özgür yazılımdır: GNU Affero Genel Kamu Lisansı'nın 3.
 ya da (isteğinize göre) sonraki bir sürümünün Free Software Foundation
@@ -119,6 +120,19 @@ kullanılabilir.
  Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
  Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
 
+---
+## Dış Kaynaklı Yazı Tipleri
+
+Bu yazı tipleri tarayıcılarda ön yüklü olarak
+bulunmayıp Yağ Kandili tarafından sağlanmaktadır.
+
+### Lexend
+> Copyright 2018 The Lexend Project Authors (https://github.com/thomasjockin/lexend), 
+with Reserved Font Name “RevReading Lexend”.
+>
+> Lisans: [OFL 1.1](/wwwroot/yazı_tipleri/Lexend/OFL.txt)  
+Bulunduğu Dizin: [/wwwroot/yazı_tipleri/Lexend](/wwwroot/yazı_tipleri/Lexend)  
+CSS Tanımları: [/wwwroot/css/yazı_tipi/Lexend.css](/wwwroot/css/yazı_tipi/Lexend.css)
 
 ---
 
