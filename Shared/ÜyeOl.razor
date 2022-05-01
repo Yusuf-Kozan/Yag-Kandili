@@ -84,11 +84,17 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
 @code {
     private string Başlık {get; set;} = "Bir Kandil Yak";
     private string Düğme {get; set;} = "Bir Kandil Yak";
-    private string p {get; set;} = "Bütün kutuları doldurmalısınız.";
+    private string p {get; set;} = "Tüm kutuları doldurmalısınız.";
     private string[] bilgiler = new string[6]; //ad(0), kullanıcı adı(1), e-posta(2), parola(3), parola(tekrar)(4), resim(5)
     private void KandilYak()
     {
-        if (bilgiler[3] != bilgiler[4])
+        if (String.IsNullOrWhiteSpace(bilgiler[0]) || String.IsNullOrWhiteSpace(bilgiler[1]) ||
+            String.IsNullOrWhiteSpace(bilgiler[2]) || String.IsNullOrWhiteSpace(bilgiler[3]) ||
+            String.IsNullOrWhiteSpace(bilgiler[4]) || String.IsNullOrWhiteSpace(bilgiler[5]))
+        {
+            Başlık = "Tüm Kutuları Doldurmalısınız";
+        }
+        else if (bilgiler[3] != bilgiler[4])
         {
             Başlık = "Girilen iki parola farklı";
             bilgiler[3] = null; bilgiler[4] = null;
