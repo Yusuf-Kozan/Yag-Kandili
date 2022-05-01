@@ -50,7 +50,7 @@ For more information about the license of Yağ Kandili, see
 @namespace Bileşenler
 
 <div style="display: block; text-align: center; font-family: sans-serif; width: 90%;
-margin:auto; max-width:15cm; padding-bottom: 5%;">
+margin:auto; max-width:15cm; padding-bottom: 5%;" @onkeyup="DüğmeyeBasıldı">
     @if(Başlık == "Giriş Yap")
     {
         <h4 style="color:rgb(0,120,0); font-size: xx-large;">@Başlık</h4>
@@ -100,6 +100,13 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
             {
                 Başlık = "Giriş Reddedildi";
             }
+        }
+    }
+    private void DüğmeyeBasıldı(KeyboardEventArgs klavye_olayları)
+    {
+        if (klavye_olayları.Key == "Enter")
+        {
+            GirişYap();
         }
     }
 }
