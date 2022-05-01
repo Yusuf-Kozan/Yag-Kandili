@@ -51,24 +51,24 @@ For more information about the license of Yağ Kandili, see
     @if (düğme == 0) //ana sayfa
     {
         <div style="text-align: center; position: sticky;">
-            <button class="D3 gir2" @onclick="gir">Giriş Yap</button>
-            <button class="D1 gir2" @onclick="yak">Bir Kandil Yak</button>
+            <button class="D3" @onclick="gir">Giriş Yap</button>
+            <button class="D1" @onclick="yak">Bir Kandil Yak</button>
         </div>
         <div></div>
     }
     else if (düğme == 1) //giriş formu
     {
         <div style="text-align: center; position: sticky;">
-            <button class="D3g gir2" @onclick="dön">Geri Dön</button>
-            <button class="D1 gir2" @onclick="yak">Bir Kandil Yak</button>
+            <button class="D3g" @onclick="dön">Geri Dön</button>
+            <button class="D1" @onclick="yak">Bir Kandil Yak</button>
         </div>
         <OturumAç yön="/ana" />
     }
     else if (düğme == 2) //kayıt formu
     {
         <div style="text-align: center; position: sticky;">
-            <button class="D3g gir2" @onclick="dön">Geri Dön</button>
-            <button class="D1 gir2" @onclick="gir">Giriş Yap</button>
+            <button class="D3g" @onclick="dön">Geri Dön</button>
+            <button class="D1" @onclick="gir">Giriş Yap</button>
         </div>
         <ÜyeOl />
     }
@@ -92,10 +92,3 @@ For more information about the license of Yağ Kandili, see
             düğme = 0;
     }
 }
-
-@*<div id="giriş-yap" class="giriş-iki">
-<OturumAç yön="/ana" />
-</div>
-<div id="üye-ol" class="giriş-iki">
-
-</div>*@
