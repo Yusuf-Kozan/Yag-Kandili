@@ -59,10 +59,16 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
     {
         <h4 style="color:#4169e1; font-size: xx-large;">@Başlık</h4>
     }
-    <div><input type="text" style="width:100%;" placeholder="Kullanıcı Adı" class="MetinKutusu1" @bind="kullanıcı_adı"/></div>
-    <div><input type="password" style="width:100%;" placeholder="Parola" class="MetinKutusu1" @bind="parola"/></div>
-    <div><button class="D1" @onclick="GirişYap">Giriş Yap</button>
-    <button class="D2" @onclick="ParolaSıfırla">Parola Sıfırla</button></div>
+
+    <input type="text" style="width:100%;" placeholder="Kullanıcı Adı"
+    class="tek-kenarlı-kutu_0_120_0" @bind="kullanıcı_adı"/>
+
+    <input type="password" style="width:100%;" placeholder="Parola"
+    class="tek-kenarlı-kutu_0_120_0" @bind="parola"/>
+    
+    <button class="düğme_0_120_0" @onclick="GirişYap"
+    style="font-size: large; margin-top: 3%;"
+    >Giriş Yap</button>
 </div>
 
 @code {
@@ -96,6 +102,4 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
             }
         }
     }
-    private void ParolaSıfırla()
-    {}
 }
