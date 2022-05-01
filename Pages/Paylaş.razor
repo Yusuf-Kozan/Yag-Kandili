@@ -76,11 +76,15 @@ For more information about the license of Yağ Kandili, see
     private string lisans = "CC BY-NC-ND";
     private void Paylaş_Düğmesi()
     {
-        İşlemler.Paylaşımİşlemleri.Paylaşım_Yap(başlık, içerik, "y", b, DateTime.Now, lisans);//b == kilmik
-        başlık = null;
-        içerik = null;
-        NavigationManager.NavigateTo("/ana");
+        if (!String.IsNullOrWhiteSpace(başlık) && !String.IsNullOrWhiteSpace(içerik))
+        {
+            İşlemler.Paylaşımİşlemleri.Paylaşım_Yap(başlık, içerik, "y", b, DateTime.Now, lisans);//b == kilmik
+            başlık = null;
+            içerik = null;
+            NavigationManager.NavigateTo("/ana");
+        }
     }
+    
     private string a, b; //a == kullanıcı adı && b == kilmik
     private bool oturum_açık;
     public static ÜyeBil üye {get; set;}
