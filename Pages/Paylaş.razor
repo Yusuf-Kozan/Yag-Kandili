@@ -58,9 +58,18 @@ For more information about the license of Yağ Kandili, see
         <div class="p-genel">
             <YönlendirenBaşlık css_sınıfı="p-başlık" ilk_başlık="Paylaşım Yap"
             ikinci_başlık="Ana Sayfaya Dön" ilk_renk="#cc22b2" ikinci_renk="#ff6600"/><br/>
-            <input type="text" class="MetinKutusu1m-saydam" style="text-align: center; font-size: xx-large; width: 70%; margin: 1%;" placeholder="Başlığı Buraya Yazın" maxlength="50" @bind="başlık"/><br/>
-            <textarea class="MetinKutusu1m-saydam" style="font-size: x-large; width: 80%; margin: 1%;" rows="10" placeholder="İçeriği Buraya Yazın" maxlength="2000" @bind="içerik"></textarea><br/>
+            <input type="text" class="MetinKutusu1m-saydam"
+            style="text-align: center; font-size: xx-large; width: 70%; margin: 1%;"
+            placeholder="Başlığı Buraya Yazın" maxlength="50" @bind="başlık"/>
+            <br/>
+            <textarea class="MetinKutusu1m-saydam"
+            style="font-size: x-large; width: 80%; margin: 1%;" rows="10"
+            placeholder="İçeriği Buraya Yazın" maxlength="2000"
+            @bind="içerik"></textarea>
+            <br/>
             <!--Buraya lisans ekleme seçeneği gelecek. Beklediğimden uzun sürdüğü için özelliği erteledim.-->
+            <div class="uyarı sayfanın_altı" style=@uyarı_görünümü
+            @onclick="UyarıyıKapat">@uyarı_yazısı</div>
             <button class="D1ykM" @onclick="Paylaş_Düğmesi">Paylaş</button>
         </div>
     }
@@ -78,13 +87,31 @@ For more information about the license of Yağ Kandili, see
     {
         if (!String.IsNullOrWhiteSpace(başlık) && !String.IsNullOrWhiteSpace(içerik))
         {
+            UyarıyıKapat();
             İşlemler.Paylaşımİşlemleri.Paylaşım_Yap(başlık, içerik, "y", b, DateTime.Now, lisans);//b == kilmik
             başlık = null;
             içerik = null;
             NavigationManager.NavigateTo("/ana");
         }
+        else
+        {
+            UyarıYap("Paylaşım yapabilmek için tüm kutuları doldurun.");
+        }
     }
-    
+
+    private string uyarı_görünümü = "display: none;";
+    private string uyarı_yazısı;
+    private void UyarıYap(string yazı)
+    {
+        uyarı_yazısı = yazı;
+        uyarı_görünümü = "display: block;";
+    }
+    private void UyarıyıKapat()
+    {
+        uyarı_yazısı = null;
+        uyarı_görünümü = "display: none;";
+    }
+
     private string a, b; //a == kullanıcı adı && b == kilmik
     private bool oturum_açık;
     public static ÜyeBil üye {get; set;}

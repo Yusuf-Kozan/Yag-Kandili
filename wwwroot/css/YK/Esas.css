@@ -127,6 +127,28 @@ For more information about the license of Yağ Kandili, see
 	font-family: Sans-Serif;
 }
 
+.uyarı {
+	border: 3px #ff4d4dee;
+	border-radius: 10px;
+	padding: 1% 1%;
+	background-color: #ff4d4dee;
+	color: #ffffff;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	font-family: Lexend, sans-serif;
+	font-weight: bold;
+	font-size: x-large;
+	width: 80%;
+	margin: 2% 10%;
+	z-index: 2;
+}
+.sayfanın_altı {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
 .lisans_bildirimi
 {
 	border: none;
