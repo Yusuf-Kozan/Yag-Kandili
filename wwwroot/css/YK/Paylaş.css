@@ -85,6 +85,7 @@ For more information about the license of Yağ Kandili, see
     padding-right: 2%;
     border-width: 3px;
     border-radius: 10px;
+    word-break: break-word;
 }
 .p-başlık-yeşil {
     font-family: sans-serif, Helvetica, Arial;
