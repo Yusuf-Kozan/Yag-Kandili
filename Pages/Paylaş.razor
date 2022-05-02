@@ -67,7 +67,10 @@ For more information about the license of Yağ Kandili, see
             placeholder="İçeriği Buraya Yazın" maxlength="2000"
             @bind="içerik"></textarea>
             <br/>
-            <!--Buraya lisans ekleme seçeneği gelecek. Beklediğimden uzun sürdüğü için özelliği erteledim.-->
+            @*
+                Buraya lisans ekleme seçeneği gelecek.
+                Beklediğimden uzun sürdüğü için özelliği erteledim.
+            *@
             <button class="D1ykM" style="width: 80%; margin: 1% auto;"
             @onclick="Paylaş_Düğmesi">Paylaş</button>
             
@@ -100,7 +103,8 @@ For more information about the license of Yağ Kandili, see
         else
         {
             UyarıyıKapat();
-            İşlemler.Paylaşımİşlemleri.Paylaşım_Yap(başlık, içerik, "y", b, DateTime.Now, lisans);//b == kilmik
+            İşlemler.Paylaşımİşlemleri.Paylaşım_Yap(başlık, içerik, "y", oturum,
+                                                    DateTime.Now, lisans);
             başlık = null;
             içerik = null;
             NavigationManager.NavigateTo("/ana");
@@ -120,19 +124,18 @@ For more information about the license of Yağ Kandili, see
         uyarı_görünümü = "display: none;";
     }
 
-    private string a, b; //a == kullanıcı adı && b == kilmik
+    private string kullanıcı, oturum;
     private bool oturum_açık;
     public static ÜyeBil üye {get; set;}
-    public static string kimlik {get; private set;}
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
         {
             var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
-            a = c.ToString(); c = null;
+            kullanıcı = c.ToString(); c = null;
             var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
-            b = d.ToString(); d = null;
-            devam(a, b);
+            oturum = d.ToString(); d = null;
+            devam(kullanıcı, oturum);
             StateHasChanged();
         }
         catch
@@ -148,6 +151,5 @@ For more information about the license of Yağ Kandili, see
             NavigationManager.NavigateTo("/");
         }
         üye = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
-        Paylaş.kimlik = oturum_kimliği;
     }
 }
