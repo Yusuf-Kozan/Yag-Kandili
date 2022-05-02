@@ -88,7 +88,7 @@ For more information about the license of Yağ Kandili, see
 	border-radius: 7px;
 	border-width: 3px;
 	padding: 3px 11px;
-	font-family: sans-serif;
+	font-family: Lexend, sans-serif;
 	color: rgb(255,255,255);
 	background-color: #3baff7;
 	border-color: #3baff7;
@@ -110,7 +110,7 @@ For more information about the license of Yağ Kandili, see
 	border-radius: 7px;
 	border-width: 3px;
 	padding: 3px 11px;
-	font-family: sans-serif;
+	font-family: Lexend, sans-serif;
 	color: rgb(255,255,255);
 	background-color: #0069ff;
 	border-color: #0069ff;
@@ -132,7 +132,7 @@ For more information about the license of Yağ Kandili, see
 	border-radius: 7px;
 	border-width: 3px;
 	padding: 3px 11px;
-	font-family: sans-serif;
+	font-family: Lexend, sans-serif;
 	color: rgb(255,255,255);
 	background-color: #808080;
 	border-color: #808080;
@@ -215,6 +215,28 @@ For more information about the license of Yağ Kandili, see
 	border-color: #f2c6ed;
 	cursor: auto;
 }
+.düğme_c80000 {
+    border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px 11px;
+	font-family: Lexend, sans-serif;
+	color: #ffffff;
+	background-color: #c80000;
+	border-color: #c80000;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+	outline-style: none;
+	text-align: center;
+}
+.düğme_c80000:hover, .düğme_c80000:disabled {
+	color: #c80000;
+	background-color: #ffc8c8;
+	border-color: #ffc8c8;
+	cursor: auto;
+}
 
 .kutu_ff6600 {
 	border: solid 2px #ff6600;
@@ -232,7 +254,7 @@ For more information about the license of Yağ Kandili, see
 	padding: 3px;
 	color: #098bdc;
 	font-size: x-large;
-	font-family: sans-serif;
+	font-family: Lexend, sans-serif;
 	margin: 3px;
 	outline-style: none;
 }
@@ -242,7 +264,7 @@ For more information about the license of Yağ Kandili, see
 	padding: 3px;
 	color: #3baff7;
 	font-size: x-large;
-	font-family: sans-serif;
+	font-family: Lexend, sans-serif;
 	margin: 3px;
 	outline-style: none;
 }
@@ -252,7 +274,7 @@ For more information about the license of Yağ Kandili, see
 	padding: 3px;
 	color: #0069ff;
 	font-size: x-large;
-	font-family: sans-serif;
+	font-family: Lexend, sans-serif;
 	margin: 3px;
 	outline-style: none;
 }
@@ -262,7 +284,7 @@ For more information about the license of Yağ Kandili, see
 	padding: 3px;
 	color: rgb(0,120,0);
 	font-size: x-large;
-	font-family: sans-serif;
+	font-family: Lexend, sans-serif;
 	margin: 3px;
 	outline-style: none;
 }

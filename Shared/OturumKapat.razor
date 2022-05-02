@@ -46,7 +46,9 @@ For more information about the license of Yağ Kandili, see
 @inject IJSRuntime JSruntime
 @namespace Bileşenler
 
-<button class="D1ykK" style="margin: 2%;" @onclick="oturumKapat">Çık</button>
+<div style="padding: 2%; font-size: large;">
+    <button class="düğme_c80000" style=@tasarım @onclick="oturumKapat">Çık</button>
+</div>
 
 @code {
     [Parameter]
@@ -55,6 +57,8 @@ For more information about the license of Yağ Kandili, see
     public string nerede {private get; set;} = "/ana";
     [Parameter]
     public string oturum_kimliği {private get; set;}
+
+    private string tasarım = "font-size: larger; word-break: break-word;";
 
     private void oturumKapat()
     {
