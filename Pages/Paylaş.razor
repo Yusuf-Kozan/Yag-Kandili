@@ -89,17 +89,21 @@ For more information about the license of Yağ Kandili, see
     private string lisans = "yok";
     private void Paylaş_Düğmesi()
     {
-        if (!String.IsNullOrWhiteSpace(başlık) && !String.IsNullOrWhiteSpace(içerik))
+        if (String.IsNullOrWhiteSpace(başlık) || String.IsNullOrWhiteSpace(içerik))
+        {
+            UyarıYap("Paylaşım yapabilmek için tüm kutuları doldurun.");
+        }
+        else if ((başlık.Length > 50) || (içerik.Length > 2000))
+        {
+            UyarıYap("Karakter sınırına uyun:\nBaşlık için 50, İçerik için 2000");
+        }
+        else
         {
             UyarıyıKapat();
             İşlemler.Paylaşımİşlemleri.Paylaşım_Yap(başlık, içerik, "y", b, DateTime.Now, lisans);//b == kilmik
             başlık = null;
             içerik = null;
             NavigationManager.NavigateTo("/ana");
-        }
-        else
-        {
-            UyarıYap("Paylaşım yapabilmek için tüm kutuları doldurun.");
         }
     }
 
