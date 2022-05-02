@@ -65,9 +65,7 @@ For more information about the license of Yağ Kandili, see
     border: solid;
 	border-radius: 7px;
 	border-width: 3px;
-	padding: 3px;
-	padding-left: 11px;
-	padding-right: 11px;
+	padding: 3px 11px;
 	font-family: Lexend, sans-serif;
 	color: rgb(255,255,255);
 	background-color: rgb(0,120,0);
@@ -89,9 +87,7 @@ For more information about the license of Yağ Kandili, see
     border: solid;
 	border-radius: 7px;
 	border-width: 3px;
-	padding: 3px;
-	padding-left: 11px;
-	padding-right: 11px;
+	padding: 3px 11px;
 	font-family: sans-serif;
 	color: rgb(255,255,255);
 	background-color: #3baff7;
@@ -113,9 +109,7 @@ For more information about the license of Yağ Kandili, see
     border: solid;
 	border-radius: 7px;
 	border-width: 3px;
-	padding: 3px;
-	padding-left: 11px;
-	padding-right: 11px;
+	padding: 3px 11px;
 	font-family: sans-serif;
 	color: rgb(255,255,255);
 	background-color: #0069ff;
@@ -137,9 +131,7 @@ For more information about the license of Yağ Kandili, see
     border: solid;
 	border-radius: 7px;
 	border-width: 3px;
-	padding: 3px;
-	padding-left: 11px;
-	padding-right: 11px;
+	padding: 3px 11px;
 	font-family: sans-serif;
 	color: rgb(255,255,255);
 	background-color: #808080;
@@ -161,9 +153,7 @@ For more information about the license of Yağ Kandili, see
     border: solid;
 	border-radius: 7px;
 	border-width: 3px;
-	padding: 3px;
-	padding-left: 11px;
-	padding-right: 11px;
+	padding: 3px 11px;
 	font-family: Lexend, sans-serif;
 	color: #ffffff;
 	background-color: #000000;
@@ -185,9 +175,7 @@ For more information about the license of Yağ Kandili, see
     border: solid;
 	border-radius: 7px;
 	border-width: 3px;
-	padding: 3px;
-	padding-left: 11px;
-	padding-right: 11px;
+	padding: 3px 11px;
 	font-family: Lexend, sans-serif;
 	color: #ffffff;
 	background-color: #9900ff;
@@ -203,6 +191,28 @@ For more information about the license of Yağ Kandili, see
 	color: #9900ff;
 	background-color: #ebccff;
 	border-color: #ebccff;
+	cursor: auto;
+}
+.düğme_cc22b2 {
+    border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px 11px;
+	font-family: Lexend, sans-serif;
+	color: #ffffff;
+	background-color: #cc22b2;
+	border-color: #cc22b2;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+	outline-style: none;
+	text-align: center;
+}
+.düğme_cc22b2:hover, .düğme_cc22b2:disabled {
+	color: #cc22b2;
+	background-color: #f2c6ed;
+	border-color: #f2c6ed;
 	cursor: auto;
 }
 
