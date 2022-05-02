@@ -63,14 +63,17 @@ For more information about the license of Yağ Kandili, see
             placeholder="Başlığı Buraya Yazın" maxlength="50" @bind="başlık"/>
             <br/>
             <textarea class="MetinKutusu1m-saydam"
-            style="font-size: x-large; width: 80%; margin: 1%;" rows="10"
+            style="font-size: x-large; width: 80%; margin: 1% auto;" rows="10"
             placeholder="İçeriği Buraya Yazın" maxlength="2000"
             @bind="içerik"></textarea>
             <br/>
             <!--Buraya lisans ekleme seçeneği gelecek. Beklediğimden uzun sürdüğü için özelliği erteledim.-->
-            <div class="uyarı sayfanın_altı" style=@uyarı_görünümü
-            @onclick="UyarıyıKapat">@uyarı_yazısı</div>
             <button class="D1ykM" @onclick="Paylaş_Düğmesi">Paylaş</button>
+            @*style="width: 80%; margin: 1% auto;"*@
+            <div class="sayfanın_altı">
+                <div class="uyarı" style=@uyarı_görünümü
+                @onclick="UyarıyıKapat">@uyarı_yazısı</div>
+            </div>
         </div>
     }
     else

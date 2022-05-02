@@ -139,14 +139,14 @@ For more information about the license of Yağ Kandili, see
 	font-family: Lexend, sans-serif;
 	font-weight: bold;
 	font-size: x-large;
-	width: 80%;
-	margin: 2% 10%;
+	margin: 2% calc(10% - 3px);
 	z-index: 2;
 }
 .sayfanın_altı {
 	position: fixed;
 	bottom: 0;
 	left: 0;
+	width: 100%;
 }
 
 .lisans_bildirimi
