@@ -50,6 +50,9 @@ For more information about the license of Yağ Kandili, see
     outline: none;
     display: inline-block;
     padding: auto;
+	font-family: sans-serif;
+	font-size: medium;
+	font-weight: bold;
 
     transition: 0.3s;
 }
