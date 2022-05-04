@@ -103,5 +103,15 @@ For more information about the license of Yağ Kandili, see
 .p-sayfa {
     width: 80%;
     margin: auto;
+    font-family: Lexend, sans-serif;
     font-size: large;
+    line-height: 150%;
+    word-break: break-word;
+    text-align: start;
+}
+.p-sayfa a {
+    color: #000000;
+}
+.p-sayfa a:hover {
+    color: #ff6600;
 }

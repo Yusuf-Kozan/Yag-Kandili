@@ -45,88 +45,98 @@ For more information about the license of Yağ Kandili, see
 @page "/paylaşım/{paylaşım_kimliği}"
 @layout AnaTaslak
 @using System.Threading.Tasks
-@using Esas
-@using Kilnevüg
-@using Bileşenler
 @inject IJSRuntime JSruntime
 @inject NavigationManager NavigationManager
 @namespace sayfa
 
-
-    @if (oturum_açık)
-    {
-        <div class="p-genel p-sayfa" style="font-family: sans-serif;">
-            <button class="p-başlık" style="@başlık_görünüşü" @onclick="Geri_Dön">@başlık_metni</button><br/>
-            <p style="text-align: justify; white-space: pre-line; color: black;">@(esas_paylaşım.İÇERİK)</p>
-
-            <div style="text-align: center;">
-                <Değerlendir değerlendiren=@bakan_kullanıcı.KİMLİK değerlendirilen=@paylaşım_kimliği/>
-            </div>
-
-            <div style="color:black; text-align: start;">
-                <p style="font-size: larger; font-weight: bold; page-break-before: always;">Yorumlar ve Söyleşi</p>
-                <input type="text" placeholder="Yorum Yaz..." class="MetinKutusu1g"
-                    style="width: 80%; font-size: large; color: black;" @bind="yorum_içeriği"/>
-                <button class="D1ykG" style="font-size: large; border-width: 2px;" @onclick="Yorumla">Yorumla</button>
-
-                <BirincilYorumlar gösterilecek_sözler=@Esas.VeriTabanı.Söyleşi.Yorumlar(esas_paylaşım.KİMLİK_2) />
-            </div>
+@if (oturum_açık)
+{
+    <div class="p-genel p-sayfa">
+        <div style="text-align: center;">
+            <YönlendirenBaşlık şuraya_yönlendir="/ana" ilk_başlık=@(paylaşım.BAŞLIK)
+            ilk_renk="#000000" ikinci_başlık="Ana Sayfaya Dön" ikinci_renk="#ff6600"/>
         </div>
-    }
-    else
-    {
-        <h1>Oturum açık değil</h1>
-    }
+        <p style="white-space: pre-line; color: black;">@(paylaşım.İÇERİK)</p>
 
+        <p style="white-space: pre-line; color: gray; font-size: medium;"
+        >@(paylaşım.TARİH.ToString("dd.MM.yyyy HH.mm.ss"))</p>
+        <a style="font-size: large;" href="/kişi/@paylaşan.KULLANICI_ADI"
+        >@(paylaşan.KULLANICI_ADI)</a>
 
+        <div style="text-align: center;">
+            <Değerlendir değerlendiren=@bakan.KİMLİK değerlendirilen=@paylaşım_kimliği/>
+        </div>
+
+        <div style="color:black;">
+            <p style="font-size: larger; font-weight: bold; page-break-before: always;"
+            >Yorumlar ve Söyleşi</p>
+                
+            <input type="text" placeholder="Yorum Yaz..." class="kutu_808080" @bind="yorum_içeriği"
+            style="width: calc(100% - 9px); font-size: large; color: black; margin: 0.5%;"/>
+            <button class="düğme_808080" style="font-size: large; width: 100%; margin: 0.5%;"
+            @onclick="Yorumla">Yorumla</button>
+                
+            <BirincilYorumlar gösterilecek_sözler=@Esas.VeriTabanı.Söyleşi.Yorumlar(paylaşım.KİMLİK_2)/>
+        </div>
+
+        <div class="sayfanın_altı">
+            <div class="uyarı" style=@uyarı_görünümü
+            @onclick="UyarıyıKapat">@uyarı_yazısı</div>
+        </div>
+    </div>
+}
+else
+{
+    <h1 class="Yükleniyor">Yükleniyor</h1>
+}
 
 @code {
     [Parameter]
     public string paylaşım_kimliği {get; set;}
-    private Esas.Paylaşım esas_paylaşım {get; set;}
-    private string başlık_görünüşü = "color: black;";
-    private string başlık_metni {get; set;}
-    private int dönüş_sayacı = 0;
-    private void Geri_Dön()
-    {
-        if (dönüş_sayacı == 0)
-        {
-            başlık_görünüşü = "color: #ff6600;";
-            dönüş_sayacı++;
-        }
-        else if (dönüş_sayacı == 1)
-        {
-            başlık_görünüşü = "color: black;";
-            NavigationManager.NavigateTo($"/ana");
-            dönüş_sayacı--;
-        }
-        else
-        {
-            dönüş_sayacı = 0;
-        }
-    }
+    private Esas.Paylaşım paylaşım {get; set;}
+    private parolasız_üye paylaşan {get; set;}
+    private parolasız_üye bakan {get; set;}
+    
     private string yorum_içeriği;
     private void Yorumla()
     {
-        İşlemler.Yorumİşlemleri.YorumYap(bakan_kullanıcı.KİMLİK, esas_paylaşım.KİMLİK_2, yorum_içeriği,
-                                DateTime.Now, oturum_kimliği);
-        yorum_içeriği = null;
+        if (!String.IsNullOrWhiteSpace(yorum_içeriği))
+        {
+            UyarıyıKapat();
+            İşlemler.Yorumİşlemleri.YorumYap(bakan.KİMLİK, paylaşım.KİMLİK_2, yorum_içeriği,
+                                    DateTime.Now, oturum);
+            yorum_içeriği = null;
+        }
+        else
+        {
+            UyarıYap("Boş yorum yapamazsınız.");
+        }
     }
 
+    private string uyarı_görünümü = "display: none;";
+    private string uyarı_yazısı;
+    private void UyarıYap(string yazı)
+    {
+        uyarı_yazısı = yazı;
+        uyarı_görünümü = "display: block;";
+    }
+    private void UyarıyıKapat()
+    {
+        uyarı_yazısı = null;
+        uyarı_görünümü = "display: none;";
+    }
 
-    private string a, b; //a == kullanıcı adı && b == kilmik
+    private string kullanıcı, oturum;
     private bool oturum_açık;
-    public static ÜyeBil bakan_kullanıcı {get; set;}
-    public static string oturum_kimliği {get; private set;}
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
         {
-            var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
-            a = c.ToString(); c = null;
-            var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
-            b = d.ToString(); d = null;
-            devam(a, b);
+            var a = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
+            kullanıcı = a.ToString(); a = null;
+            var b = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
+            oturum = b.ToString(); b = null;
+            devam(kullanıcı, oturum);
             StateHasChanged();
         }
         catch
@@ -141,17 +151,8 @@ For more information about the license of Yağ Kandili, see
         {
             NavigationManager.NavigateTo("/");
         }
-        bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
-        Paylaşım.oturum_kimliği = oturum_kimliği;
-        esas_paylaşım = Esas.VeriTabanı.Paylaşım.TekPaylaşım(paylaşım_kimliği);
-        
-        if (dönüş_sayacı == 1)
-        {
-            başlık_metni = "Ana Sayfaya Dön";
-        }
-        else
-        {
-            başlık_metni = esas_paylaşım.BAŞLIK;
-        }
+        bakan = Esas.VeriTabanı.Üyelik.ParolasızÜyeBilgileri(kullanıcı_kimliği);
+        paylaşım = Esas.VeriTabanı.Paylaşım.TekPaylaşım(paylaşım_kimliği);
+        paylaşan = Esas.VeriTabanı.Üyelik.ParolasızÜyeBilgileri(paylaşım.PAYLAŞAN);
     }
 }
