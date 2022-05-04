@@ -46,7 +46,8 @@ For more information about the license of Yağ Kandili, see
 @namespace Bileşenler
 
 <div>
-    <div class="değerlendirme_düğmesi" style="cursor:default;">O:@ortalama_değer T:@toplam_değer</div>
+    <div class="değerlendirme_düğmesi" style="cursor:default;"
+    >N:@değer_niceliği T:@toplam_değer O:@ortalama_değer</div>
     <button class="değerlendirme_düğmesi" disabled="@disabled[0]" @onclick="() => Değerle(-2)">-2</button>
     <button class="değerlendirme_düğmesi" disabled="@disabled[1]" @onclick="() => Değerle(-1)">-1</button>
     <button class="değerlendirme_düğmesi" disabled="@disabled[2]" @onclick="() => Değerle(0)">0</button>
@@ -61,7 +62,7 @@ For more information about the license of Yağ Kandili, see
     [Parameter]
     public string değerlendiren {get; set;}
 
-    private double ortalama_değer, toplam_değer;
+    private double ortalama_değer, toplam_değer, değer_niceliği;
     
     private void Değerle(int değer)
     {
@@ -93,5 +94,6 @@ For more information about the license of Yağ Kandili, see
         }
         ortalama_değer = Esas.VeriTabanı.Beğeni.PaylaşımınBeğeniOrtalaması(değerlendirilen);
         toplam_değer = Esas.VeriTabanı.Beğeni.PaylaşımınToplamDeğeri(değerlendirilen);
+        değer_niceliği = Esas.VeriTabanı.Beğeni.DeğerlendirmeNiceliği(değerlendirilen);
     }
 }
