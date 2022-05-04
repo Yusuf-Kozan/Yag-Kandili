@@ -291,6 +291,16 @@ For more information about the license of Yağ Kandili, see
 	margin: 3px;
 	outline-style: none;
 }
+.kutu_808080 {
+	border: solid 2px #808080;
+	border-radius: 10px;
+	padding: 3px;
+	color: #808080;
+	font-size: x-large;
+	font-family: Lexend, sans-serif;
+	margin: 3px;
+	outline-style: none;
+}
 .kutu_000000 {
 	border: solid 2px #000000;
 	border-radius: 10px;
@@ -364,6 +374,21 @@ For more information about the license of Yağ Kandili, see
 	outline-style: none;
 }
 .tek-kenarlı-kutu_cc22b2:focus {
+	border-width: 3px;
+	font-weight: bold;
+}
+.tek-kenarlı-kutu_808080 {
+	border-style: none none solid none;
+	border-width: 1px;
+	border-color: #808080;
+	padding: 3px;
+	color: #808080;
+	font-size: x-large;
+	font-family: Lexend, sans-serif;
+	margin: 3px;
+	outline-style: none;
+}
+.tek-kenarlı-kutu_808080:focus {
 	border-width: 3px;
 	font-weight: bold;
 }
