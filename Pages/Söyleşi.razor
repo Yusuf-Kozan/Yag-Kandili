@@ -45,9 +45,6 @@ For more information about the license of Yağ Kandili, see
 @page "/söyleşi/{söyleşi_kimliği}/{önceki_sayfa}"
 @layout AnaTaslak
 @using System.Threading.Tasks
-@using Esas
-@using Kilnevüg
-@using Bileşenler
 @inject IJSRuntime JSruntime
 @inject NavigationManager NavigationManager
 
@@ -84,8 +81,11 @@ For more information about the license of Yağ Kandili, see
 
         <div class="söz">
             <p>
-                <b style="color: rgb(0,120,0);">@paylaşımı_yapan.KULLANICI_ADI:</b> @başlatan.İÇERİK <br/>
-                <span style="font-size: small;">@(başlatan.TARİH)</span>
+                <a class="söyleyen" href="/kişi/@paylaşımı_yapan.KULLANICI_ADI"
+                >@paylaşımı_yapan.KULLANICI_ADI:</a>
+                @başlatan.İÇERİK<br/>
+                <span style="font-size: small;"
+                >@(başlatan.TARİH.ToString("dd.MM.yyyy HH.mm.ss"))</span>
             </p>
         </div>
 
@@ -96,14 +96,18 @@ For more information about the license of Yağ Kandili, see
 
         <div class="söz">
             <p>
-                <b style="color: rgb(0,120,0);">@söyleyen.KULLANICI_ADI:</b> @söz.SÖZ <br/>
-                <span style="font-size: small;">@(söz.DönüştürülmüşTarih())</span>
+                <a class="söyleyen" href="/kişi/@söyleyen.KULLANICI_ADI"
+                >@söyleyen.KULLANICI_ADI:</a>
+                @söz.SÖZ <br/>
+                <span style="font-size: small;"
+                >@(söz.DönüştürülmüşTarih().ToString("dd.MM.yyyy HH.mm.ss"))</span>
             </p>
         </div>
     }
-    <input type="text" placeholder="Bir şey söyle" class="MetinKutusu1"
-            style="width: 80%; font-size: large; color: black;" @bind="söylenecek_söz"/>
-    <button class="düğme_0_120_0" style="font-size: large; border-width: 2px;" @onclick="Söyle">Söyle</button>
+    <input type="text" placeholder="Bir şey söyle" class="kutu_0_120_0" @bind="söylenecek_söz"
+    style="width: calc(100% - 9px); font-size: large; color: black; margin: 0.5%"/>
+    <button class="düğme_0_120_0" @onclick="Söyle"
+    style="font-size: large; width: 100%; margin: 0.5%">Söyle</button>
     </div>
 }
 else

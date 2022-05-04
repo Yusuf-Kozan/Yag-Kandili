@@ -57,3 +57,14 @@ For more information about the license of Yağ Kandili, see
     color: #000000;
     font-family: sans-serif;
 }
+.söz a {
+    color: rgb(0, 120, 0);
+}
+.söyleyen {
+    text-decoration: none;
+    color: rgb(0, 120, 0);
+    font-weight: bold;
+}
+.söyleyen:hover .söz a:hover {
+    color: #ff6600;
+}
