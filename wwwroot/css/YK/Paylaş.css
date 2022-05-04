@@ -77,12 +77,8 @@ For more information about the license of Yağ Kandili, see
 }
 .p-kutu-bileşen {
     width: 80%;
-    margin: auto;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    padding: 0.5%;
-    padding-left: 2%;
-    padding-right: 2%;
+    margin: 1% auto;
+    padding: 0.5% 2%;
     border-width: 3px;
     border-radius: 10px;
     word-break: break-word;
