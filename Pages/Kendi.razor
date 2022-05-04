@@ -62,7 +62,7 @@ For more information about the license of Yağ Kandili, see
             <img src="@bakan_kullanıcı.RESİM" height="auto" id="resim"/>
 
             <div class="kutu_0_120_0" id="ortalama-beğeni">
-                Beğeni: @ortalama_beğeni
+                Beğeni: @ortalama_beğeni<br/>Toplam Değer: @toplam_değer
             </div>
                 
             <div class="kutu_0_120_0" id="takipçi-niceliği">
@@ -102,6 +102,7 @@ else
     }
 
     private double ortalama_beğeni;
+    private double toplam_değer;
     private long takipçi_niceliği;
 
     private string kullanıcı, oturum;
@@ -133,6 +134,7 @@ else
         }
         bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı);
         ortalama_beğeni = Esas.VeriTabanı.Beğeni.KişininBeğeniOrtalaması(kullanıcı);
+        toplam_değer = Esas.VeriTabanı.Beğeni.KişininToplamDeğeri(kullanıcı);
         takipçi_niceliği = Esas.VeriTabanı.Takip.TakipçiNiceliği(kullanıcı);
     }
 }
