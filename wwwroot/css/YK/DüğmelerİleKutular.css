@@ -86,15 +86,15 @@ For more information about the license of Yağ Kandili, see
 	border-color: #ccf0cc;
 	cursor: auto;
 }
-.düğme_2eb82e {
+.düğme_31a58e {
     border: solid;
 	border-radius: 7px;
 	border-width: 3px;
 	padding: 3px 11px;
 	font-family: Lexend, sans-serif;
 	color: #ffffff;
-	background-color: #2eb82e;
-	border-color: #2eb82e;
+	background-color: #31a58e;
+	border-color: #31a58e;
 	cursor: pointer;
 	margin: 4px;
 	font-size: x-large;
@@ -102,10 +102,10 @@ For more information about the license of Yağ Kandili, see
 	outline-style: none;
 	text-align: center;
 }
-.düğme_2eb82e:hover, .düğme_2eb82e:disabled {
-    color: #2eb82e;
-	background-color: #ebfaeb;
-	border-color: #ebfaeb;
+.düğme_31a58e:hover, .düğme_31a58e:disabled {
+    color: #31a58e;
+	background-color: #d8f3ee;
+	border-color: #d8f3ee;
 	cursor: auto;
 }
 .düğme_3baff7 {
@@ -313,11 +313,11 @@ For more information about the license of Yağ Kandili, see
 	margin: 3px;
 	outline-style: none;
 }
-.kutu_2eb82e {
-	border: solid 2px #2eb82e;
+.kutu_31a58e {
+	border: solid 2px #31a58e;
 	border-radius: 10px;
 	padding: 3px;
-	color: #2eb82e;
+	color: #31a58e;
 	font-size: x-large;
 	font-family: Lexend, sans-serif;
 	margin: 3px;
@@ -379,18 +379,18 @@ For more information about the license of Yağ Kandili, see
 	border-width: 3px;
 	font-weight: bold;
 }
-.tek-kenarlı-kutu_2eb82e {
+.tek-kenarlı-kutu_31a58e {
 	border-style: none none solid none;
 	border-width: 1px;
-	border-color: #2eb82e;
+	border-color: #31a58e;
 	padding: 3px;
-	color: #2eb82e;
+	color: #31a58e;
 	font-size: x-large;
 	font-family: sans-serif;
 	margin: 3px;
 	outline-style: none;
 }
-.tek-kenarlı-kutu_2eb82e:focus {
+.tek-kenarlı-kutu_31a58e:focus {
 	border-width: 3px;
 	font-weight: bold;
 }
