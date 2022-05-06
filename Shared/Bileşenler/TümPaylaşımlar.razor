@@ -43,14 +43,13 @@ For more information about the license of Yağ Kandili, see
 /Lisans directory.
 *@
 @inject NavigationManager NavigationManager
-@using Esas
 @namespace Bileşenler
 
 @for (int i = 0; i < paylaşım_bilgileri.GetLength(0); i++)
 {
     int döngü_turu = i;
-    paylaşım paylaşım = new paylaşım(paylaşım_bilgileri[i,0]);
-    parolasız_üye paylaşan = new parolasız_üye(paylaşım_bilgileri[i,1]);
+    Paylaşım paylaşım = new Paylaşım(paylaşım_bilgileri[i,0]);
+    ParolasızÜye paylaşan = new ParolasızÜye(paylaşım_bilgileri[i,1]);
 
     <div id="@(paylaşım.KİMLİK_2)"
     class="kutu_ff6600 p-kutu-bileşen" style="text-align: start; overflow: hidden;">
@@ -77,9 +76,10 @@ For more information about the license of Yağ Kandili, see
 @code {
     [Parameter]
     public ÜyeBil kim {get; set;}
-    [Parameter]
-    public string oturum {get; set;}
-    private string[,][] paylaşım_bilgileri = Esas.VeriTabanı.Paylaşım.KullanıcıBilgileriyleTümPaylaşımlar();
+    private string[,][] paylaşım_bilgileri;
 
-    
+    protected override void OnParametersSet()
+    {
+        paylaşım_bilgileri = Esas.VeriTabanı.Paylaşım.KullanıcıBilgileriyleTümPaylaşımlar();
+    }
 }

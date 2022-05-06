@@ -45,9 +45,6 @@ For more information about the license of Yağ Kandili, see
 @page "/ana"
 @layout AnaTaslak
 @using System.Threading.Tasks
-@using Esas
-@using Kilnevüg
-@using Bileşenler
 @inject IJSRuntime JSruntime
 @inject NavigationManager NavigationManager
 @namespace sayfa
@@ -57,13 +54,9 @@ For more information about the license of Yağ Kandili, see
     {
 
         <div class="ana-beden">
-            @*<h1>@a</h1>
-            <h1>@b</h1>
-            <h2>@DateTime.Now.ToString("ddMMyyyyHHmmss")</h2>
-            <h2>@oturum_açık.ToString()</h2>*@
             @if (TümPaylaşımlarGörünsün)
             {
-                <TümPaylaşımlar kim="@üye" oturum="@kimlik"/>
+                <TümPaylaşımlar kim="@üye"/>
             }
             else
             {
@@ -72,7 +65,6 @@ For more information about the license of Yağ Kandili, see
             
         </div>
         <EnHerŞey aÜye="@üye" aKimlik="@kimlik" aKonum="/ana"/>
-        <!--<h1 class="Yükleniyor">Yükleniyor</h1>-->
     }
     else
     {

@@ -46,34 +46,29 @@ For more information about the license of Yağ Kandili, see
 @inject NavigationManager NavigationManager
 
 <div style="padding: 2%; font-size: large;">
-    <button class="düğme_0_120_0" style=@tasarım @onclick="GörünümüDeğiştir">@Yazı()</button>
+    <button class="düğme_0_120_0" style=@tasarım @onclick="GörünümüDeğiştir">@yazı</button>
 </div>
 
 @code {
     private string tasarım = "font-size: larger; word-break: break-word;";
-    private string Yazı()
-    {
-        if (sayfa.Ana.TümPaylaşımlarGörünsün)
-        {
-            return "Takip Edilenleri Göster";
-        }
-        else
-        {
-            return "Tüm Paylaşımları Göster";
-        }
-    }
+    private string yazı;
 
     private void GörünümüDeğiştir()
     {
+        sayfa.EnHerŞey.her_şeyin_düğmesi();
+        sayfa.Ana.TümPaylaşımlarGörünsün = !sayfa.Ana.TümPaylaşımlarGörünsün;
+        OnParametersSet();
+    }
+
+    protected override void OnParametersSet()
+    {
         if (sayfa.Ana.TümPaylaşımlarGörünsün)
         {
-            sayfa.Ana.TümPaylaşımlarGörünsün = false;
+            yazı = "Takip Edilenleri Göster";
         }
         else
         {
-            sayfa.Ana.TümPaylaşımlarGörünsün = true;
+            yazı = "Tüm Paylaşımları Göster";
         }
-        sayfa.EnHerŞey.her_şeyin_düğmesi();
-        OnParametersSet();
     }
 }
