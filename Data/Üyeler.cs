@@ -105,22 +105,11 @@ namespace Esas
             RESİM = üye.RESİM;
         }
         public ÜyeBil() { }
-
-        public override string ToString()
-        {
-            return "Ad: " + AD +
-            " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA + " | Üstünlük: "
-            + ÜSTÜNLÜK + " | Başlangıç: " + BAŞLANGIÇ.ToString();
-        }
+        
         public string DizinYolu()
         {
             string üstDizin = @"./Kullanıcılar";
             return System.IO.Path.Combine(üstDizin, KULLANICI_ADI);
-        }
-        public string[] MetinKümesiYap()
-        {
-            string[] küme = new string[]{AD, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString()};
-            return küme;
         }
     }
 
@@ -150,17 +139,6 @@ namespace Esas
         {
             string üst_dizin = @"./Kullanıcılar";
             return System.IO.Path.Combine(üst_dizin, KULLANICI_ADI);
-        }
-        public override string ToString()
-        {
-            return "Ad: " + AD +
-            " | Kullanıcı Adı: " + KULLANICI_ADI + " | E-Posta: " + E_POSTA + " | Üstünlük: "
-            + ÜSTÜNLÜK + " | Başlangıç: " + BAŞLANGIÇ.ToString();
-        }
-        public string[] MetinKümesiYap()
-        {
-            string[] küme = new string[]{AD, KULLANICI_ADI, PAROLA, E_POSTA, ÜSTÜNLÜK, BAŞLANGIÇ.ToString("yyyyMMddHHmmss"), RESİM};
-            return küme;
         }
     }
     public struct parolasız_üye
