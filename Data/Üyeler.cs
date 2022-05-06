@@ -105,7 +105,7 @@ namespace Esas
             RESİM = üye.RESİM;
         }
         public ÜyeBil() { }
-        
+
         public string DizinYolu()
         {
             string üstDizin = @"./Kullanıcılar";
@@ -152,6 +152,33 @@ namespace Esas
         public string KİMLİK { get; set; }
 
         public parolasız_üye (string[] üye_bilgileri)
+        {
+            AD = üye_bilgileri[0];
+            KULLANICI_ADI = üye_bilgileri[1];
+            E_POSTA = üye_bilgileri[2];
+            ÜSTÜNLÜK = üye_bilgileri[3];
+            CultureInfo TR = new CultureInfo("tr-TR");
+            BAŞLANGIÇ = DateTime.ParseExact(üye_bilgileri[4], "yyyyMMddHHmmss", TR);
+            RESİM = üye_bilgileri[5];
+            KİMLİK = üye_bilgileri[6];
+        }
+        public string DizinYolu()
+        {
+            string üst_dizin = @"./Kullanıcılar";
+            return System.IO.Path.Combine(üst_dizin, KULLANICI_ADI);
+        }
+    }
+    public class ParolasızÜye
+    {
+        public string AD { get; set; }
+        public string KULLANICI_ADI { get; set; }
+        public string E_POSTA { get; set; }
+        public string ÜSTÜNLÜK { get; set; }
+        public DateTime BAŞLANGIÇ { get; set; }
+        public string RESİM { get; set; }
+        public string KİMLİK { get; set; }
+
+        public ParolasızÜye (string[] üye_bilgileri)
         {
             AD = üye_bilgileri[0];
             KULLANICI_ADI = üye_bilgileri[1];
