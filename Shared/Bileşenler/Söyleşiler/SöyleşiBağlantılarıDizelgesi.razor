@@ -42,18 +42,17 @@ along with Yağ Kandili. If not, see <https://www.gnu.org/licenses/>.
 For more information about the license of Yağ Kandili, see
 /Lisans directory.
 *@
-@using Esas
 @namespace Bileşenler
+@inject NavigationManager NavigationManager
 
 @for (int i = 0; i < söyleşiler.GetLength(0); ++i)
 {
+    string ilk_söz = Esas.VeriTabanı.Söyleşi.İlkSöz(söyleşiler[i,0]);
     <a class="kutu_31a58e" href="/söyleşi/@söyleşiler[i,0]/takip_dizelgesi"
-    style="display:block; width:80%; margin:auto; margin-bottom:1%;"
-    >@söyleşiler[i,1]</a>
-    <!-- Bağlantı metinlerine ilk söz de eklenecek. -->
-
+    style="display:block; width:75%; margin: 1% auto; text-decoration: none;
+    padding: 1%;"><b>@söyleşiler[i,1]</b><br/>
+    <p style="color: #000000;">@ilk_söz</p></a>
 }
-<!-- Renk henüz belirlenmedi. Geçici olarak rgb(0,120,0) kullanılıyor. -->
 
 @code {
     [Parameter]

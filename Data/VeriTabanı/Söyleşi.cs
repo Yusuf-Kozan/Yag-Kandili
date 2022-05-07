@@ -72,6 +72,20 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
         }
+        public static string İlkSöz(string söyleşi_kimliği)
+        {
+            string komut_metni = $"SELECT Söz FROM {TabloAdı()} WHERE " +
+                                "Söyleşi = @kimlik AND Bu_İlk = @bu_ilk;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@kimlik", söyleşi_kimliği);
+            komut.Parameters.AddWithValue("@bu_ilk", true);
+            string söz = komut.ExecuteScalar().ToString();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+            return söz;
+        }
         public static söz[] Yorumlar(string paylaşım_kimliği)
         {
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -340,10 +354,13 @@ namespace Esas.VeriTabanı
                 return new string[0,0];
             }
 
-            komut_metni = $"SELECT DISTINCT Başlık, Söyleşi FROM {söyleşi_tablosu} " +
-                        $"INNER JOIN {paylaşım_tablosu} ON " +
-                        $"{paylaşım_tablosu}.Kimlik2 = {söyleşi_tablosu}.Başlatan_Paylaşım " +
-                        $"WHERE Eklenti NOT LIKE '%>gizli%' AND Söyleşi IN {SorguİçinKimlikler};";
+            komut_metni = $"SELECT DISTINCT Başlık, Söyleşi, T.Tarih FROM {söyleşi_tablosu} S " +
+                        $"INNER JOIN {paylaşım_tablosu} P ON " +
+                        "P.Kimlik2 = S.Başlatan_Paylaşım " +
+                        $"INNER JOIN {Takip.TabloAdı()} T ON " +
+                        "T.Takip_Edilen = S.Söyleşi " +
+                        $"WHERE Eklenti NOT LIKE '%>gizli%' AND Söyleşi IN {SorguİçinKimlikler} " +
+                        $"ORDER BY T.Tarih DESC;";
             komut = new MySqlCommand(komut_metni, bağlantı);
             for (int j = 0; j < takip_edilenler.GetLongLength(0); j++)
             {
