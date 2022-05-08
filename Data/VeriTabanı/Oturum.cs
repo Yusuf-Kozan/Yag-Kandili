@@ -51,9 +51,9 @@ using Kilnevüg;
 
 namespace Esas.VeriTabanı
 {
-    public class Oturum
+    internal class Oturum
     {
-        public static void OturumAç(string oturum_kimliği, string kullanıcı_kimliği)
+        internal static void OturumAç(string oturum_kimliği, string kullanıcı_kimliği)
         {
             // Kullanıcı_Kimliği, Oturum_Kimliği, Başlangıç_Tarihi, Son_Tarih
             string komut_metni = $"INSERT INTO {TabloAdı()}(Kullanıcı_Kimliği, Oturum_Kimliği, Başlangıç_Tarihi, Son_Tarih) "+
@@ -70,7 +70,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı = null;
             komut.Dispose(); komut = null;
         }
-        public static void OturumKapat(string oturum_kimliği)
+        internal static void OturumKapat(string oturum_kimliği)
         {
             string komut_metni = $"DELETE FROM {TabloAdı()} WHERE Oturum_Kimliği = @oturum_kimliği;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -81,7 +81,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı = null;
             komut.Dispose(); komut = null;
         }
-        public static bool BuOturumAçık(string oturum_kimliği, string kullanıcı_kimliği)
+        internal static bool BuOturumAçık(string oturum_kimliği, string kullanıcı_kimliği)
         {
             string komut_metni = $"SELECT COUNT(Oturum_Kimliği) FROM {TabloAdı()} WHERE Oturum_Kimliği = @oturum_kimliği AND " +
                                 $"Kullanıcı_Kimliği = @kullanıcı_kimliği;";
@@ -115,7 +115,7 @@ namespace Esas.VeriTabanı
             }
             return false;
         }
-        public static string Oturumunİyesi(string oturum_kimliği)
+        internal static string Oturumunİyesi(string oturum_kimliği)
         {
             // Oturum kimliği bilinen kullanıcının kullanıcı kimliğini döndürür.
             string komut_metni = $"SELECT Kullanıcı_Kimliği FROM {TabloAdı()} " + 
@@ -129,7 +129,7 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             return kullanıcı_kimliği;
         }
-        public static bool KimlikKullanımda(string oturum_kimliği)
+        internal static bool KimlikKullanımda(string oturum_kimliği)
         {
             string komut_metni = $"SELECT COUNT(Oturum_Kimliği) FROM {TabloAdı()} " +
                                     "WHERE Oturum_Kimliği = @oturum_kimliği;";

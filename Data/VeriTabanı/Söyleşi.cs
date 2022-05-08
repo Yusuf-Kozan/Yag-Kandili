@@ -51,9 +51,9 @@ using Kilnevüg;
 
 namespace Esas.VeriTabanı
 {
-    class Söyleşi
+    internal class Söyleşi
     {
-        public static void Söyle(yeni_söz söz)
+        internal static void Söyle(yeni_söz söz)
         {
             string komut_metni = $"INSERT INTO {TabloAdı()} (Söz, Söyleyen, " +
                                 "Tarih, Söyleşi, Başlatan_Paylaşım, Bu_İlk) VALUES " +
@@ -72,7 +72,7 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
         }
-        public static string İlkSöz(string söyleşi_kimliği)
+        internal static string İlkSöz(string söyleşi_kimliği)
         {
             string komut_metni = $"SELECT Söz FROM {TabloAdı()} WHERE " +
                                 "Söyleşi = @kimlik AND Bu_İlk = @bu_ilk;";
@@ -86,7 +86,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return söz;
         }
-        public static söz[] Yorumlar(string paylaşım_kimliği)
+        internal static söz[] Yorumlar(string paylaşım_kimliği)
         {
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
@@ -125,7 +125,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return yorumlar;
         }
-        public static string[,][] TümBilgileriyleSöyleşi(string söyleşi_kimliği)
+        internal static string[,][] TümBilgileriyleSöyleşi(string söyleşi_kimliği)
         {
             string komut_metni = $"SELECT COUNT(Söz) FROM {Söyleşi.TabloAdı()} INNER JOIN {Üyelik.TabloAdı()} " +
                                 $"ON {Söyleşi.TabloAdı()}.Söyleyen = {Üyelik.TabloAdı()}.Kimlik " +
@@ -225,7 +225,7 @@ namespace Esas.VeriTabanı
 
             return söyleşi;
         }
-        public static köklü_söz[] KişininSöyledikleri(string kullanıcı_kimliği)
+        internal static köklü_söz[] KişininSöyledikleri(string kullanıcı_kimliği)
         {
             string komut_metni = $"SELECT COUNT(Söz) FROM {Söyleşi.TabloAdı()} " +
                                 $"INNER JOIN {Paylaşım.TabloAdı()} ON " +
@@ -317,7 +317,7 @@ namespace Esas.VeriTabanı
 
             return söylenenler;
         }
-        public static string[,] TakipEdilenSöyleşiler(string[,] takip_edilenler)
+        internal static string[,] TakipEdilenSöyleşiler(string[,] takip_edilenler)
         {
             // [sıra] [söyleşi kimliği, başlık] > iki boyutlu dizi
             if (takip_edilenler.GetLength(0) < 1)

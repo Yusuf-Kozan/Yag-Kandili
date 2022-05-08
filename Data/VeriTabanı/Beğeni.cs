@@ -51,9 +51,9 @@ using Kilnevüg;
 
 namespace Esas.VeriTabanı
 {
-    public class Beğeni
+    internal class Beğeni
     {
-        public static void Beğen(Esas.Beğeni beğeni)
+        internal static void Beğen(Esas.Beğeni beğeni)
         {
             string komut_metni = $"INSERT INTO {TabloAdı()} (Kim, Neyi, Ne_Kadar, Ne_Zaman) " +
                                 "VALUES (@kim, @neyi, @ne_kadar, @ne_zaman);";
@@ -68,7 +68,7 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
         }
-        public static void BeğeniyiSil(string beğenen, string beğenilen)
+        internal static void BeğeniyiSil(string beğenen, string beğenilen)
         {
             string komut_metni = $"DELETE FROM {TabloAdı()} WHERE Kim = @beğenen AND Neyi = @beğenilen;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -80,7 +80,7 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             bağlantı.Close(); bağlantı.Dispose();
         }
-        public static double PaylaşımınBeğeniOrtalaması(string beğenilen)
+        internal static double PaylaşımınBeğeniOrtalaması(string beğenilen)
         {
             string komut_metni = $"SELECT COUNT(Ne_Kadar) FROM {TabloAdı()} WHERE Neyi = @beğenilen;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -103,7 +103,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return ortalama;
         }
-        public static double PaylaşımınToplamDeğeri(string beğenilen)
+        internal static double PaylaşımınToplamDeğeri(string beğenilen)
         {
             string komut_metni = $"SELECT COUNT(Ne_Kadar) FROM {TabloAdı()} WHERE Neyi = @beğenilen;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -126,7 +126,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return değer;
         }
-        public static double KişininBeğeniOrtalaması(string kullanıcı_kimliği)
+        internal static double KişininBeğeniOrtalaması(string kullanıcı_kimliği)
         {
             string komut_metni = $"SELECT COUNT(Ne_Kadar) FROM {TabloAdı()} INNER JOIN {Paylaşım.TabloAdı()} " +
                                 $"ON {Beğeni.TabloAdı()}.Neyi = {Paylaşım.TabloAdı()}.Kimlik2 " +
@@ -153,7 +153,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return ortalama;
         }
-        public static double KişininToplamDeğeri(string kullanıcı_kimliği)
+        internal static double KişininToplamDeğeri(string kullanıcı_kimliği)
         {
             string komut_metni = $"SELECT COUNT(Ne_Kadar) FROM {TabloAdı()} INNER JOIN {Paylaşım.TabloAdı()} " +
                                 $"ON {Beğeni.TabloAdı()}.Neyi = {Paylaşım.TabloAdı()}.Kimlik2 " +
@@ -180,7 +180,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return değer;
         }
-        public static int DeğerlendirmeNiceliği(string beğenilen)
+        internal static int DeğerlendirmeNiceliği(string beğenilen)
         {
             string komut_metni = $"SELECT COUNT(Neyi) FROM {TabloAdı()} WHERE Neyi = @beğenilen;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -192,7 +192,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return nicelik;
         }
-        public static int[] BakanKişininBeğenisi(string bakan, string beğenilen)
+        internal static int[] BakanKişininBeğenisi(string bakan, string beğenilen)
         {
             // [0] == 0 ise hiç değerlendirme yapılmamıştır.
             // [0] == 1 ise [1] beğenidir.
@@ -227,7 +227,7 @@ namespace Esas.VeriTabanı
             return sonuç;
         }
 
-        public static değerli_paylaşım[] KişininDeğerlendirdiğiPaylaşımlar(string kullanıcı_kimliği)
+        internal static değerli_paylaşım[] KişininDeğerlendirdiğiPaylaşımlar(string kullanıcı_kimliği)
         {
             // Sonuçlar değerlendirme tarihine göre
             // yeniden eskiye doğru sıralanır.

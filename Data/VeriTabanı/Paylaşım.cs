@@ -51,9 +51,9 @@ using Kilnevüg;
 
 namespace Esas.VeriTabanı
 {
-    public class Paylaşım
+    internal class Paylaşım
     {
-        public static void PaylaşımYap(Esas.Paylaşım paylaşım)
+        internal static void PaylaşımYap(Esas.Paylaşım paylaşım)
         {
             string komut_metni = $"INSERT INTO {TabloAdı()} (Kimlik2, Başlık, İçerik, Eklenti, " +
                                 "Paylaşan, Tarih, Lisans) VALUES (@kimlik2, @başlık, " +
@@ -72,7 +72,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             komut.Dispose();
         }
-        public static void PaylaşımYap(Esas.yeni_paylaşım paylaşım)
+        internal static void PaylaşımYap(Esas.yeni_paylaşım paylaşım)
         {
             string komut_metni = $"INSERT INTO {TabloAdı()} (Kimlik2, Başlık, İçerik, Eklenti, " +
                                 "Paylaşan, Tarih, Lisans) VALUES (@kimlik2, @başlık, " +
@@ -240,7 +240,7 @@ namespace Esas.VeriTabanı
 
             return paylaşan;
         }
-        public static Esas.Paylaşım TekPaylaşım(string paylaşım_kimliği)
+        internal static Esas.Paylaşım TekPaylaşım(string paylaşım_kimliği)
         {
             string komut_metni = $"SELECT * FROM {TabloAdı()} WHERE Kimlik2 = @paylaşım_kimliği;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -272,7 +272,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return paylaşım;
         }
-        public static Esas.Paylaşım[] TümPaylaşımlar()
+        internal static Esas.Paylaşım[] TümPaylaşımlar()
         {
             string komut_metni = $"SELECT COUNT(Kimlik1) FROM {TabloAdı()} WHERE Eklenti NOT LIKE '%>gizli%';";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -316,7 +316,7 @@ namespace Esas.VeriTabanı
 
             return paylaşımlar;
         }
-        public static string[,][] KullanıcıBilgileriyleTümPaylaşımlar()
+        internal static string[,][] KullanıcıBilgileriyleTümPaylaşımlar()
         {
             string komut_metni = $"SELECT COUNT(Kimlik2) FROM {Paylaşım.TabloAdı()} INNER JOIN {Üyelik.TabloAdı()} " +
                                 $"ON {Paylaşım.TabloAdı()}.Paylaşan = {Üyelik.TabloAdı()}.Kimlik " +
@@ -372,7 +372,7 @@ namespace Esas.VeriTabanı
 
             return paylaşımlar;
         }
-        public static string[,][] TakipEdilenlerinBilgileriylePaylaşımları(string[,] takip_edilenler)
+        internal static string[,][] TakipEdilenlerinBilgileriylePaylaşımları(string[,] takip_edilenler)
         {
             // a sıra sayısı olursa
             // takip_edilenler[a, 0] = kullanıcı kimliği, takip_edilenler[a, 1] = takip düzeyi
@@ -451,7 +451,7 @@ namespace Esas.VeriTabanı
 
             return paylaşımlar;
         }
-        public static paylaşım[] KişininTümAçıkPaylaşımları(string kullanıcı_kimliği)
+        internal static paylaşım[] KişininTümAçıkPaylaşımları(string kullanıcı_kimliği)
         {
             string komut_metni = $"SELECT COUNT(Kimlik1) FROM {TabloAdı()} " +
                                 "WHERE Paylaşan = @paylaşan AND Eklenti NOT LIKE '%>gizli%';";
@@ -547,7 +547,7 @@ namespace Esas.VeriTabanı
 
             return paylaşımlar;
         }
-        public static paylaşım[] KişininTümPaylaşımları(string kullanıcı_kimliği)
+        internal static paylaşım[] KişininTümPaylaşımları(string kullanıcı_kimliği)
         {
             string komut_metni = $"SELECT COUNT(Kimlik1) FROM {TabloAdı()} " +
                                 "WHERE Paylaşan = @paylaşan;";
@@ -595,7 +595,7 @@ namespace Esas.VeriTabanı
 
             return paylaşımlar;
         }
-        public static int TümPaylaşımlarınNiceliği()
+        internal static int TümPaylaşımlarınNiceliği()
         {
             string komut_metni = $"SELECT COUNT(Kimlik1) FROM {TabloAdı()} WHERE Eklenti NOT LIKE '%>gizli%';";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);

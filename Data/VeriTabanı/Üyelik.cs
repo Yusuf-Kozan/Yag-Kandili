@@ -51,9 +51,9 @@ using Kilnevüg;
 
 namespace Esas.VeriTabanı
 {
-    public class Üyelik
+    internal class Üyelik
     {
-        public static void ÜyeEkle(Üye üye, string kullanıcı_kimliği)
+        internal static void ÜyeEkle(Üye üye, string kullanıcı_kimliği)
         {
             // Üye türü bir YAPIDIR, sınıf değildir.
 
@@ -82,7 +82,7 @@ namespace Esas.VeriTabanı
                 Directory.CreateDirectory(üye.DizinYolu());
             }
         }
-        public static bool BilinenParolayıDeğiştir(string kullanıcı_kimliği, string eski_parola, string yeni_parola)
+        internal static bool BilinenParolayıDeğiştir(string kullanıcı_kimliği, string eski_parola, string yeni_parola)
         {
             // Eski parola doğruysa parola değiştirilip True değeri döndürülür.
             // Eski parola yanlışsa işlem yapılmadan False değeri döndürülür.
@@ -111,7 +111,7 @@ namespace Esas.VeriTabanı
             }
         }
 
-        public static ÜyeBil ÜyeBilgileri(string kullanıcı_kimliği)
+        internal static ÜyeBil ÜyeBilgileri(string kullanıcı_kimliği)
         {
             string komut_metni = $"SELECT * FROM {TabloAdı()} WHERE Kimlik = @kullanıcı_kimliği LIMIT 1;";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -137,7 +137,7 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             return üye;
         }
-        public static parolasız_üye ParolasızÜyeBilgileri(string kullanıcı_kimliği)
+        internal static parolasız_üye ParolasızÜyeBilgileri(string kullanıcı_kimliği)
         {
             string komut_metni = $"SELECT * FROM {TabloAdı()} " +
                                 "WHERE Kimlik = @kullanıcı_kimliği " +
@@ -164,7 +164,7 @@ namespace Esas.VeriTabanı
             komut.Dispose();
             return üye;
         }
-        public static ÜyeBil Kimliğinİyesi(string kullanıcı_kimliği)
+        internal static ÜyeBil Kimliğinİyesi(string kullanıcı_kimliği)
         {
             //SELECT * FROM tablo_adı WHERE Kimlik=@kullanıcı_kimliği;
             string komut_metni = $"SELECT * FROM {TabloAdı()} WHERE Kimlik = @kullanıcı_kimliği;";
@@ -191,7 +191,7 @@ namespace Esas.VeriTabanı
             komut.Dispose(); komut = null;
             return üye;
         }
-        public static string KullanıcınınKimliği(string kullanıcı_adı)
+        internal static string KullanıcınınKimliği(string kullanıcı_adı)
         {
             string komut_metni = $"SELECT Kimlik FROM {TabloAdı()} WHERE Kullanıcı_Adı = @kullanıcı_adı";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -203,7 +203,7 @@ namespace Esas.VeriTabanı
             komut.Dispose(); komut = null;
             return kullanıcı_kimliği;
         }
-        public static string KullanıcınınParolaBilgileri(string kullanıcı_kimliği)
+        internal static string KullanıcınınParolaBilgileri(string kullanıcı_kimliği)
         {
             string komut_metni = $"SELECT Parola FROM {TabloAdı()} WHERE Kimlik = @kimlik";
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
@@ -216,7 +216,7 @@ namespace Esas.VeriTabanı
             return parola_bilgileri;
         }
 
-        public static bool KullanıcıAdıKullanımda(string kullanıcı_adı)
+        internal static bool KullanıcıAdıKullanımda(string kullanıcı_adı)
         {
             //SELECT COUNT(Kimlik) FROM tablo_adı WHERE Kullanıcı_Adı = @kullanıcı_adı;
             string komut_metni = $"SELECT COUNT(Kimlik) FROM {TabloAdı()} WHERE Kullanıcı_Adı = @kullanıcı_adı";
@@ -234,7 +234,7 @@ namespace Esas.VeriTabanı
             }
             return true;
         }
-        public static bool EPostaKullanımda(string e_posta)
+        internal static bool EPostaKullanımda(string e_posta)
         {
             //SELECT COUNT(Kimlik) FROM tablo_adı WHERE E_Posta = @e_posta;
             string komut_metni = $"SELECT COUNT(Kimlik) FROM {TabloAdı()} WHERE E_Posta = @e_posta";

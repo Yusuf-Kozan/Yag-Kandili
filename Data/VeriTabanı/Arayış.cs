@@ -51,9 +51,9 @@ using Kilnevüg;
 
 namespace Esas.VeriTabanı
 {
-    public class Arayış
+    internal class Arayış
     {
-        public static string[] KullanıcıAdınıAra(string aranan_söz)
+        internal static string[] KullanıcıAdınıAra(string aranan_söz)
         {
             string komut_metni = $"SELECT COUNT(Kullanıcı_Adı) FROM {Üyelik.TabloAdı()} " +
                                 "WHERE Kullanıcı_Adı LIKE @aranan_söz;";

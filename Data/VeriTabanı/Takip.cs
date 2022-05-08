@@ -51,9 +51,9 @@ using Kilnevüg;
 
 namespace Esas.VeriTabanı
 {
-    class Takip
+    internal class Takip
     {
-        public static void TakipEt(Esas.Takip takip)
+        internal static void TakipEt(Esas.Takip takip)
         {
             if (!TakipEdiliyor(takip.TAKİP_EDEN, takip.TAKİP_EDİLEN))
             {
@@ -72,7 +72,7 @@ namespace Esas.VeriTabanı
                 bağlantı.Close(); bağlantı.Dispose();
             }
         }
-        public static void TakibiBırak(string takip_eden, string takip_edilen)
+        internal static void TakibiBırak(string takip_eden, string takip_edilen)
         {
             if (TakipEdiliyor(takip_eden, takip_edilen))
             {
@@ -89,7 +89,7 @@ namespace Esas.VeriTabanı
                 bağlantı.Close(); bağlantı.Dispose();
             }
         }
-        public static string[,] TakipEdilenKullanıcılarınKimlikleri(string takip_eden)
+        internal static string[,] TakipEdilenKullanıcılarınKimlikleri(string takip_eden)
         {
             // a sıra sayısı olursa [a, 0] = kullanıcı kimliği, [a, 1] = takip düzeyi
             string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()}" +
@@ -128,7 +128,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return kullanıcılar;
         }
-        public static takip[] TakipEdilenKullanıcılar(string takip_eden)
+        internal static takip[] TakipEdilenKullanıcılar(string takip_eden)
         {
             string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()} " +
                                 "WHERE Takip_Eden = @takip_eden AND " +
@@ -173,7 +173,7 @@ namespace Esas.VeriTabanı
 
             return takip_edilenler;
         }
-        public static string[,] TakipEdilenSöyleşilerinKimlikleri(string takip_eden)
+        internal static string[,] TakipEdilenSöyleşilerinKimlikleri(string takip_eden)
         {
             // a sıra sayısı olursa [a, 0] = söyleşi kimliği, [a, 1] = takip düzeyi
             string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()}" +
@@ -212,7 +212,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return söyleşiler;
         }
-        public static takip[] TakipEdilenSöyleşiler(string takip_eden)
+        internal static takip[] TakipEdilenSöyleşiler(string takip_eden)
         {
             string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()} " +
                                 "WHERE Takip_Eden = @takip_eden AND " +
@@ -257,7 +257,7 @@ namespace Esas.VeriTabanı
 
             return takip_edilenler;
         }
-        public static long TakipçiNiceliği(string takip_edilen)
+        internal static long TakipçiNiceliği(string takip_edilen)
         {
             string komut_metni = $"SELECT COUNT(Takip_Eden) FROM {TabloAdı()} " +
                                 "WHERE Takip_Edilen = @takip_edilen;";
@@ -270,7 +270,7 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
             return nicelik;
         }
-        public static bool TakipEdiliyor(string takip_eden, string takip_edilen)
+        internal static bool TakipEdiliyor(string takip_eden, string takip_edilen)
         {
             string komut_metni = $"SELECT COUNT(Takip_Edilen) FROM {TabloAdı()} " +
                                 "WHERE Takip_Eden = @takip_eden AND " +

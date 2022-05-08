@@ -46,9 +46,9 @@ using System;
 using System.IO;
 namespace Esas.VeriTabanı
 {
-    public class Bağlantı
+    internal class Bağlantı
     {
-        public static string bağlantı_dizesi = $"Server={MySQL_SunucuAdresi()[0]};Port={MySQL_SunucuAdresi()[1]};" + 
+        internal static string bağlantı_dizesi = $"Server={MySQL_SunucuAdresi()[0]};Port={MySQL_SunucuAdresi()[1]};" + 
                                         $"Database={VeriTabanınınAdı()};User ID={MySQL_KullanıcıAdıİleParola()[0]};" + 
                                         $"Password={MySQL_KullanıcıAdıİleParola()[1]};Pooling=false;";
         private static string[] MySQL_SunucuAdresi()
