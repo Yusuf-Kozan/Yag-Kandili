@@ -44,22 +44,24 @@ For more information about the license of Yağ Kandili, see
 */
 using System;
 using MailKit.Net.Smtp;
+using MailKit.Net.Imap;
 using MailKit;
 using MimeKit;
 
 namespace Esas.Posta
 {
-    public class PostaGönder
+    internal class PostaGönder
     {
-        public static void TekKullanıcıyaGönder(GönderenBilgisi gönderen, ÜyeBil üye,
-                            string konu, string içerik)
+        internal static void TekKullanıcıyaGönder(GönderenSMTPBilgisi gönderen_s,
+                            GönderenIMAPBilgisi gönderen_i,
+                            ÜyeBil üye, string konu, string içerik)
         {
             // Bu fonksiyonun yapımında şu iki sayfadan yardım alındı:
             //      https://github.com/jstedfast/MailKit#using-mailkit
             //      https://dotnetcoretutorials.com/2017/11/02/using-mailkit-send-receive-email-asp-net-core/
 
             var ileti = new MimeMessage();
-            ileti.From.Add(new MailboxAddress("Yağ Kandili" , gönderen.ADRES));
+            ileti.From.Add(new MailboxAddress("Yağ Kandili" , gönderen_s.ADRES));
             ileti.To.Add(new MailboxAddress(üye.AD, üye.E_POSTA));
             
             ileti.Subject = konu;
@@ -70,9 +72,31 @@ namespace Esas.Posta
 
             using (var istemci = new SmtpClient())
             {
-                istemci.Connect(gönderen.SUNUCU, int.Parse(gönderen.PORT), MailKit.Security.SecureSocketOptions.StartTls);
-                istemci.Authenticate(gönderen.ADRES, gönderen.PAROLA);
+                istemci.Connect(gönderen_s.SUNUCU, int.Parse(gönderen_s.PORT), MailKit.Security.SecureSocketOptions.Auto);
+                istemci.Authenticate(gönderen_s.KULLANICI_ADI, gönderen_s.PAROLA);
                 istemci.Send(ileti);
+                istemci.Disconnect(true);
+            }
+
+            using (var istemci  = new ImapClient())
+            {
+                istemci.Connect(gönderen_i.SUNUCU, int.Parse(gönderen_i.PORT), MailKit.Security.SecureSocketOptions.Auto);
+                istemci.Authenticate(gönderen_i.KULLANICI_ADI, gönderen_i.PAROLA);
+                
+                IMailFolder gönderilen;
+                
+                if (istemci.Capabilities.HasFlag(ImapCapabilities.SpecialUse))
+                {
+                    gönderilen = istemci.GetFolder (SpecialFolder.Sent);
+                }
+                else
+                {
+                    var kişisel = istemci.GetFolder(istemci.PersonalNamespaces[0]);
+                    gönderilen = kişisel.GetSubfolder("Sent");
+                }
+                
+                gönderilen.Append(ileti, MessageFlags.Seen);
+                
                 istemci.Disconnect(true);
             }
         }

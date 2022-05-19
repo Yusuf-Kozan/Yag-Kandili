@@ -111,11 +111,13 @@ For more information about the license of Yağ Kandili, see
                 başlık = "Değişim Başarılı";
 
                 ÜyeBil kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
-                Esas.Posta.GönderenBilgisi gönderen = new Esas.Posta.GönderenBilgisi();
-                gönderen.AyarBelgesiniOku();
+                Esas.Posta.GönderenSMTPBilgisi gönderen_smtp = new Esas.Posta.GönderenSMTPBilgisi();
+                gönderen_smtp.AyarBelgesiniOku();
+                Esas.Posta.GönderenIMAPBilgisi gönderen_imap = new Esas.Posta.GönderenIMAPBilgisi();
+                gönderen_imap.AyarBelgesiniOku();
                 string konu = "Yağ Kandili Güvenlik Uyarısı";
                 string içerik = "Parolanız Değiştirildi.";
-                Esas.Posta.PostaGönder.TekKullanıcıyaGönder(gönderen, kullanıcı, konu, içerik);
+                Esas.Posta.PostaGönder.TekKullanıcıyaGönder(gönderen_smtp, gönderen_imap, kullanıcı, konu, içerik);
 
                 StateHasChanged();
             }

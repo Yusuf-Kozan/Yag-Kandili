@@ -85,12 +85,15 @@ namespace Esas.KişiselVeriler
             VeriTabanı.GeçiciBağlantı.BağlantıEkle(geçici_bağlantı);
 
             // Geçici bağlantıyı içeren e-posta
-            Posta.GönderenBilgisi gönderen = new Posta.GönderenBilgisi();
-            gönderen.AyarBelgesiniOku();
+            Posta.GönderenSMTPBilgisi gönderen_smtp = new Posta.GönderenSMTPBilgisi();
+            gönderen_smtp.AyarBelgesiniOku();
+            Posta.GönderenIMAPBilgisi gönderen_imap = new Posta.GönderenIMAPBilgisi();
+            gönderen_imap.AyarBelgesiniOku();
             ÜyeBil alıcı = Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
             Posta.PostaGönder.TekKullanıcıyaGönder
                             (
-                                gönderen,
+                                gönderen_smtp,
+                                gönderen_imap,
                                 alıcı,
                                 "İstediğiniz Belge | Yağ Kandili",
                                 "İstediğiniz belgeye önümüzdeki 24 saat boyunca " +
