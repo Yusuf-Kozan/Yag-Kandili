@@ -69,8 +69,8 @@ For more information about the license of Yağ Kandili, see
 	display: table-cell;
 }
 .giriş-body {
-    height: 90%;
-    margin-bottom: 5%;
+    height: 80%;
+    padding-bottom: 20%;
 }
 /*Giriş.razor*/
 .giriş-iki {
