@@ -45,7 +45,46 @@ For more information about the license of Yağ Kandili, see
 @using Esas
 @namespace Bileşenler
 
-<BelirliPaylaşımlar bakan=@bakan oturum=@oturum paylaşımlar=@paylaşımlar />
+@if (paylaşımlar.GetLength(0) > 0)
+{
+    @for (int i = 0; i < paylaşımlar.GetLength(0); i++)
+    {
+        int döngü_turu = i;
+        paylaşım paylaşım = new paylaşım(paylaşımlar[i,0]);
+        parolasız_üye paylaşan = new parolasız_üye(paylaşımlar[i,1]);
+
+        <div id="@(paylaşım.KİMLİK_2)"
+        class="kutu_ff6600 p-kutu-bileşen" style="text-align: start; overflow: hidden;">
+            <a style="display: block; text-align: start;"
+            class="p-başlık-bileşen" href="/paylaşım/@(paylaşım.KİMLİK_2)">@(paylaşım.BAŞLIK)</a>
+            <p style="white-space: pre-line; color: black;">@(paylaşım.İÇERİK)</p>
+
+            <p style="white-space: pre-line; color: gray; font-size: medium;"
+            >@(paylaşım.TARİH.ToString("dd.MM.yyyy HH.mm.ss"))</p>
+
+            <div style="text-align: left; width: 50%; float: left;">
+                <a href="/kişi/@paylaşan.KULLANICI_ADI">
+                    @(paylaşan.KULLANICI_ADI)
+                </a>
+            </div>
+        
+            <div style="text-align: end; width: 50%; float: right;">
+                <Değerlendir değerlendirilen="@(paylaşım.KİMLİK_2)"
+                değerlendiren="@bakan"/>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div id="boş"
+    class="kutu_ff6600 p-kutu-bileşen" style="text-align: start; overflow: hidden;">
+        <p style="color: black;"
+        >Takip ettiğiniz kişiler bir şey paylaşmamış ya da henüz kimseyi takip etmiyorsunuz.
+        <br/><br/>Her Şey menüsündeki "Tüm Paylaşımları Göster" düğmesine basarak Yağ Kandili'nde
+        yapılmış tüm paylaşımları görebilirsiniz.</p>
+    </div>
+}
 
 @code {
     [Parameter]
