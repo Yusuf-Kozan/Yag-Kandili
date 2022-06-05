@@ -69,8 +69,13 @@ For more information about the license of Yağ Kandili, see
 	display: table-cell;
 }
 .giriş-body {
-    height: 80%;
-    padding-bottom: 20%;
+    display: block;
+    height: auto;
+    width: 100%;
+    padding-bottom: 10%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 /*Giriş.razor*/
 .giriş-iki {
@@ -163,13 +168,13 @@ For more information about the license of Yağ Kandili, see
 	text-align: justify;
 }
 
-#jslicense-labels1
+#jslicense-labels1, #çerez_bilgileri
 {
 	width: 80%;
 	margin-left: 10%;
 	margin-right: 10%;
 }
-#jslicense-labels1 caption
+#jslicense-labels1 caption, #çerez_bilgileri caption
 {
 	margin: 0.5%;
 	padding: 0.5%;
@@ -178,21 +183,21 @@ For more information about the license of Yağ Kandili, see
 	font-weight: bold;
 	border-bottom: 2px solid #00000055;
 }
-#jslicense-labels1 tr
+#jslicense-labels1 tr, #çerez_bilgileri tr
 {
 	font-family: Lexend, sans-serif;
 	font-size: x-large;
 }
-#jslicense-labels1 tr:hover
+#jslicense-labels1 tr:hover, #çerez_bilgileri tr:hover
 {
 	background-color: #80808044;
 }
-#jslicense-labels1 th
+#jslicense-labels1 th, #çerez_bilgileri th
 {
 	text-align: start;
 	padding: 1%;
 }
-#jslicense-labels1 td
+#jslicense-labels1 td, #çerez_bilgileri td
 {
 	text-align: start;
 	padding: 0.25% 1%;
