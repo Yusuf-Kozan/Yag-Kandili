@@ -98,8 +98,6 @@ else
     {
         string bakılanın_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(bakılan_kişi);
         bakılan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(bakılanın_kimliği);
-        ortalama_beğeni = Esas.VeriTabanı.Beğeni.KişininBeğeniOrtalaması(bakılanın_kimliği);
-        toplam_değer = Esas.VeriTabanı.Beğeni.KişininToplamDeğeri(bakılanın_kimliği);
         takipçi_niceliği = Esas.VeriTabanı.Takip.TakipçiNiceliği(bakılanın_kimliği);
     }
 
@@ -146,6 +144,8 @@ else
         {
             NavigationManager.NavigateTo("/");
         }
+        ortalama_beğeni = Esas.VeriTabanı.Beğeni.KişininBeğeniOrtalaması(bakılan_kullanıcı.KİMLİK);
+        toplam_değer = Esas.VeriTabanı.Beğeni.KişininToplamDeğeri(bakılan_kullanıcı.KİMLİK);
         bakan_kullanıcı = Esas.VeriTabanı.Üyelik.ÜyeBilgileri(kullanıcı_kimliği);
         
         BakanTakipEdiyor = Esas.VeriTabanı.Takip.TakipEdiliyor(bakan_kullanıcı.KİMLİK,
