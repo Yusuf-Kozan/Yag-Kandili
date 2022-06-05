@@ -49,7 +49,7 @@ For more information about the license of Yağ Kandili, see
 @inject NavigationManager NavigationManager
 @namespace sayfa
 
-@if (oturum_açık)
+@if (göster)
 {
     <div class="p-genel p-sayfa">
         <div style="text-align: center;">
@@ -126,8 +126,10 @@ else
         uyarı_görünümü = "display: none;";
     }
 
+
     private string kullanıcı, oturum;
     private bool oturum_açık;
+    private bool göster = false;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         try
@@ -153,6 +155,12 @@ else
         }
         bakan = Esas.VeriTabanı.Üyelik.ParolasızÜyeBilgileri(kullanıcı_kimliği);
         paylaşım = Esas.VeriTabanı.Paylaşım.TekPaylaşım(paylaşım_kimliği);
+        bool paylaşım_gizli = paylaşım.EKLENTİ.Contains(">gizli");
         paylaşan = Esas.VeriTabanı.Üyelik.ParolasızÜyeBilgileri(paylaşım.PAYLAŞAN);
+        if (paylaşım_gizli && (bakan.KİMLİK != paylaşan.KİMLİK))
+        {
+            NavigationManager.NavigateTo("/ana");
+        }
+        göster = true;
     }
 }
