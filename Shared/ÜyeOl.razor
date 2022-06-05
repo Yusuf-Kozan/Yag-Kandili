@@ -45,6 +45,7 @@ For more information about the license of Yağ Kandili, see
 @using Esas
 @using Kilnevüg
 @using İşlemler
+@using Bileşenler.Giriş
 @inject IJSRuntime JSRuntime
 @inject NavigationManager NavigationManager
 
@@ -75,7 +76,16 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
 
     <input type="password" style="width:100%;" placeholder="Parolanız (Tekrar)"
     class="tek-kenarlı-kutu_0_120_0" @bind="bilgiler[4]"/>
-    
+
+    <div id="açık_rıza" style="width: 100%; margin: 5% 0; color: #004d00;">
+        <input type="checkbox" name="KV-rıza" @bind="açık_rıza"/>
+        <label @onclick="rıza" style="user-select: none;"
+        >Kişisel verilerimin Aydınlatma Metni'nde açıklandığı
+        biçimde toplanmasına ve işlenmesine açık rıza gösteriyorum.</label>
+    </div>
+
+    <KV_Aydınlatma/>
+
     <button class="düğme_0_120_0" @onclick="KandilYak"
     style="font-size: large; margin-top: 3%;"
     >@Düğme</button>
@@ -86,13 +96,23 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
     private string Düğme {get; set;} = "Bir Kandil Yak";
     private string p {get; set;} = "Tüm kutuları doldurmalısınız.";
     private string[] bilgiler = new string[6]; //ad(0), kullanıcı adı(1), e-posta(2), parola(3), parola(tekrar)(4), resim(5)
+    private bool açık_rıza;
+    private void rıza()
+    {
+        açık_rıza = !açık_rıza;
+    }
     private void KandilYak()
     {
         if (String.IsNullOrWhiteSpace(bilgiler[0]) || String.IsNullOrWhiteSpace(bilgiler[1]) ||
             String.IsNullOrWhiteSpace(bilgiler[2]) || String.IsNullOrWhiteSpace(bilgiler[3]) ||
-            String.IsNullOrWhiteSpace(bilgiler[4]) || String.IsNullOrWhiteSpace(bilgiler[5]))
+            String.IsNullOrWhiteSpace(bilgiler[4]))
         {
             Başlık = "Tüm Kutuları Doldurmalısınız";
+        }
+        else if (!açık_rıza)
+        {
+            Başlık = "Kişisel Verilerinizin İşlenmesi İçin " +
+                    "Açık Rıza Göstermeden Üye Olamazsınız";
         }
         else if (bilgiler[3] != bilgiler[4])
         {
