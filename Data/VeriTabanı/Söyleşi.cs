@@ -371,6 +371,11 @@ namespace Esas.VeriTabanı
             string[,] söyleşiler = new string[söyleşi_niceliği,2];
             while (veri_okuyucu.Read())
             {
+                if (döngü_turu == söyleşi_niceliği)
+                {
+                    break;
+                }
+
                 söyleşiler[döngü_turu, 0] = veri_okuyucu["Söyleşi"].ToString();
                 söyleşiler[döngü_turu, 1] = veri_okuyucu["Başlık"].ToString();
 
