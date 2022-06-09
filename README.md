@@ -1,7 +1,7 @@
 # Yağ Kandili
 
 
-Yağ Kandili özgür bir sosyal ortam yazılımıdır.
+Yağ Kandili özgür bir toplumsal iletişim ortamı (sosyal medya) yazılımıdır.
 
 [Belgelere buradan ulaşabilirsiniz.](/Belgeler)
 
