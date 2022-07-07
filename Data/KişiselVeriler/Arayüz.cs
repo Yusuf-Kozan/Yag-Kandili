@@ -97,7 +97,7 @@ namespace Esas.KişiselVeriler
                                 alıcı,
                                 "İstediğiniz Belge | Yağ Kandili",
                                 "İstediğiniz belgeye önümüzdeki 24 saat boyunca " +
-                                $"https://yağkandili.com.tr/g/{geçici_bağlantı.BAĞLANTI_DEĞİŞKENİ}" +
+                                $"https://yagkandili.com.tr/g/{geçici_bağlantı.BAĞLANTI_DEĞİŞKENİ}" +
                                 " adresinden erişebilirsiniz."
                             );
             
