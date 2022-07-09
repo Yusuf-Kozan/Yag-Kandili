@@ -81,7 +81,7 @@ else
 }
 
 @code {
-    private static string anahtar_söz{get; set;}
+    private string anahtar_söz;
     private string[] sonuçlar;
     private void Ara()
     {
@@ -100,7 +100,7 @@ else
 
     private string kullanıcı, oturum;
     private bool oturum_açık;
-    public static ÜyeBil bakan_kullanıcı;
+    public ÜyeBil bakan_kullanıcı;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
