@@ -44,6 +44,7 @@ For more information about the license of Yağ Kandili, see
 *@
 @namespace Bileşenler
 @inject NavigationManager NavigationManager
+@inject KullanıcıArayüzü.HerŞey her_şey
 
 <div style="padding: 2%; font-size: large;">
     <button class="düğme_0_120_0" style=@tasarım @onclick="GörünümüDeğiştir">@yazı</button>
@@ -55,7 +56,7 @@ For more information about the license of Yağ Kandili, see
 
     private void GörünümüDeğiştir()
     {
-        sayfa.EnHerŞey.her_şeyin_düğmesi();
+        her_şey.düğme();
         sayfa.Ana.TümPaylaşımlarGörünsün = !sayfa.Ana.TümPaylaşımlarGörünsün;
         OnParametersSet();
     }

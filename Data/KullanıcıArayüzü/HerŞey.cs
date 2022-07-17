@@ -1,4 +1,4 @@
-@*
+/*
 Copyright (C) 2022 Yusuf Kozan
 
 ---
@@ -41,27 +41,23 @@ along with Yağ Kandili. If not, see <https://www.gnu.org/licenses/>.
 
 For more information about the license of Yağ Kandili, see
 /Lisans directory.
-*@
-@inject NavigationManager NavigationManager
-@inject IJSRuntime JSruntime
-@inject KullanıcıArayüzü.HerŞey her_şey
-@namespace sayfa
+*/
 
-
-<div class="her_şey_bölgesi" style="height: @(her_şey.yükseklik)">
-    <HerŞey Kim="@aÜye" KimliğiNe="@aKimlik" Nerede="@aKonum"/>
-</div>
-<div class="ana-altlık">
-    <button class="D1yk" style="width: 90%; margin-left: 5%;
-    margin-right: 5%;"
-    @onclick="her_şey.düğme">HER ŞEY</button>
-</div>
-
-@code {
-    [Parameter]
-    public ÜyeBil aÜye {get; set;}
-    [Parameter]
-    public string aKimlik {get; set;}
-    [Parameter]
-    public string aKonum {get; set;}
+namespace KullanıcıArayüzü
+{
+    internal class HerŞey
+    {
+        internal string yükseklik = "0%";
+        internal void düğme()
+        {
+            if (yükseklik != "100%")
+            {
+                yükseklik = "100%";
+            }
+            else
+            {
+                yükseklik = "0%";
+            }
+        }
+    }
 }

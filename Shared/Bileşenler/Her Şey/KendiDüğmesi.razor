@@ -43,6 +43,7 @@ For more information about the license of Yağ Kandili, see
 /Lisans directory.
 *@
 @inject NavigationManager NavigationManager
+@inject KullanıcıArayüzü.HerŞey her_şey
 @namespace Bileşenler
 
 <div style="text-align: center; height: 20%; color: white; font-family: sans-serif;">
@@ -61,7 +62,7 @@ For more information about the license of Yağ Kandili, see
 
     private void KendineGit()
     {
-        sayfa.EnHerŞey.her_şeyin_düğmesi();
+        her_şey.düğme();
         NavigationManager.NavigateTo("/kendi");
     }
 }

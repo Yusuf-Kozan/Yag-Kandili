@@ -44,6 +44,7 @@ For more information about the license of Yağ Kandili, see
 *@
 @namespace Bileşenler
 @inject NavigationManager NavigationManager
+@inject KullanıcıArayüzü.HerŞey her_şey
 
 <div style="padding: 2%; font-size: large;">
     <button class="düğme_cc22b2" style=@tasarım @onclick="paylaş">Paylaş</button>
@@ -54,7 +55,7 @@ For more information about the license of Yağ Kandili, see
 
     private void paylaş()
     {
-        sayfa.EnHerŞey.her_şeyin_düğmesi();
+        her_şey.düğme();
         NavigationManager.NavigateTo("/paylaş");
     }
 }

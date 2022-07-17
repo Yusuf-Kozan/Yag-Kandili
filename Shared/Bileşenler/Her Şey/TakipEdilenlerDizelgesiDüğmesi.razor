@@ -44,6 +44,7 @@ For more information about the license of Yağ Kandili, see
 *@
 @namespace Bileşenler
 @inject NavigationManager NavigationManager
+@inject KullanıcıArayüzü.HerŞey her_şey
 
 <div style="padding: 2%; font-size: large;">
     <button class="düğme_31a58e" style=@tasarım @onclick="Git">Takip Edilen Söyleşiler</button>
@@ -58,7 +59,7 @@ For more information about the license of Yağ Kandili, see
     
     private void Git()
     {
-        sayfa.EnHerŞey.her_şeyin_düğmesi();
+        her_şey.düğme();
         NavigationManager.NavigateTo("/takip_edilenler/söyleşi");
     }
 }

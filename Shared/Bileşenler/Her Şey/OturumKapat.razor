@@ -44,6 +44,7 @@ For more information about the license of Yağ Kandili, see
 *@
 @using Esas
 @inject IJSRuntime JSruntime
+@inject KullanıcıArayüzü.HerŞey her_şey
 @namespace Bileşenler
 
 <div style="padding: 2%; font-size: large;">
@@ -62,7 +63,7 @@ For more information about the license of Yağ Kandili, see
 
     private void oturumKapat()
     {
-        sayfa.EnHerŞey.her_şeyin_düğmesi();
+        her_şey.düğme();
         İşlemler.Oturumİşlemleri.Oturum_Kapat(kişi.KİMLİK, oturum_kimliği, JSruntime);
     }
 }
