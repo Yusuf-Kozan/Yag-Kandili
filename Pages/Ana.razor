@@ -47,6 +47,7 @@ For more information about the license of Yağ Kandili, see
 @using System.Threading.Tasks
 @inject IJSRuntime JSruntime
 @inject NavigationManager NavigationManager
+@inject KullanıcıArayüzü.AnaSayfa ana_sayfa
 @namespace sayfa
 
 
@@ -54,7 +55,7 @@ For more information about the license of Yağ Kandili, see
     {
 
         <div class="ana-beden">
-            @if (TümPaylaşımlarGörünsün)
+            @if (ana_sayfa.TümPaylaşımlarGörünsün)
             {
                 <TümPaylaşımlar kim="@üye"/>
             }
@@ -74,12 +75,9 @@ For more information about the license of Yağ Kandili, see
 
 
 @code {
-
-    public static bool TümPaylaşımlarGörünsün {get; set;} = false;
-
     private string a, b; //a == kullanıcı adı && b == kilmik
     private bool oturum_açık;
-    public static ÜyeBil üye {get; set;}
+    public static ÜyeBil üye;
     public static string kimlik {get; private set;}
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

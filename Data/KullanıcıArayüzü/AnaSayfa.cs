@@ -1,4 +1,4 @@
-@*
+/*
 Copyright (C) 2022 Yusuf Kozan
 
 ---
@@ -41,36 +41,16 @@ along with Yağ Kandili. If not, see <https://www.gnu.org/licenses/>.
 
 For more information about the license of Yağ Kandili, see
 /Lisans directory.
-*@
-@namespace Bileşenler
-@inject NavigationManager NavigationManager
-@inject KullanıcıArayüzü.HerŞey her_şey
-@inject KullanıcıArayüzü.AnaSayfa ana_sayfa
+*/
 
-<div style="padding: 2%; font-size: large;">
-    <button class="düğme_0_120_0" style=@tasarım @onclick="GörünümüDeğiştir">@yazı</button>
-</div>
-
-@code {
-    private string tasarım = "font-size: larger; word-break: break-word;";
-    private string yazı;
-
-    private void GörünümüDeğiştir()
+namespace KullanıcıArayüzü
+{
+    internal class AnaSayfa
     {
-        her_şey.düğme();
-        ana_sayfa.TümPaylaşımlarGörünsünDüğmesi();
-        OnParametersSet();
-    }
-
-    protected override void OnParametersSet()
-    {
-        if (ana_sayfa.TümPaylaşımlarGörünsün)
+        internal bool TümPaylaşımlarGörünsün = false;
+        internal void TümPaylaşımlarGörünsünDüğmesi()
         {
-            yazı = "Takip Edilenleri Göster";
-        }
-        else
-        {
-            yazı = "Tüm Paylaşımları Göster";
+            TümPaylaşımlarGörünsün = !TümPaylaşımlarGörünsün;
         }
     }
 }

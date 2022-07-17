@@ -101,6 +101,7 @@ namespace YağKandili
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<KullanıcıArayüzü.HerŞey>();
+            services.AddScoped<KullanıcıArayüzü.AnaSayfa>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddHttpContextAccessor();
