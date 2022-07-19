@@ -109,6 +109,8 @@ autocomplete="off">
             byte[] belge = File.ReadAllBytes(sağlanacak_belge);
             await Belgeİndirici.DownloadFile(belge_adı, belge, belge_türü);
         }
+        kullanıcı_adı = null;
+        parola = null;
     }
     private bool KimlikDoğru()
     {
