@@ -109,7 +109,7 @@ For more information about the license of Yağ Kandili, see
 	bottom: 0;
 	background-color: rgba(0,0,0,0.9);
 	transition: 0.5s;
-	overflow: auto;
+	overflow-y: scroll;
 }
 
 @keyframes yükleniyor {
