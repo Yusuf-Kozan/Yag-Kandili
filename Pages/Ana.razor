@@ -57,10 +57,18 @@ For more information about the license of Yağ Kandili, see
         <div class="ana-beden">
             @if (ana_sayfa.TümPaylaşımlarGörünsün)
             {
+                <div style="color: #ff6600; font-family: sans-serif;
+                font-size: x-large; font-weight: bold; border: none;
+                background: none; text-align: center;"
+                >Yağ Kandili'ndeki Tüm Paylaşımlar</div>
                 <TümPaylaşımlar kim="@üye"/>
             }
             else
             {
+                <div style="color: #ff6600; font-family: sans-serif;
+                font-size: x-large; font-weight: bold; border: none;
+                background: none; text-align: center;"
+                >Takip Ettiğiniz Kişilerin Paylaşımları</div>
                 <TakipEdilenlerinPaylaşımları bakan=@üye.KİMLİK oturum=@kimlik />
             }
             
