@@ -121,6 +121,10 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
         }
         else
         {
+            while (bilgiler[1].EndsWith(' '))
+            {
+                bilgiler[1] = bilgiler[1].Substring(0, (bilgiler[1].Length - 1));
+            }
             bool KullanıcıAdıKullanımda = Esas.VeriTabanı.Üyelik.KullanıcıAdıKullanımda(bilgiler[1]);
             bool EPostaKullanımda = Esas.VeriTabanı.Üyelik.EPostaKullanımda(bilgiler[2]);
             if (EPostaKullanımda)
