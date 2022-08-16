@@ -46,6 +46,7 @@ For more information about the license of Yağ Kandili, see
 @using Kilnevüg
 @using İşlemler
 @using Bileşenler.Giriş
+@using EmailValidation
 @inject IJSRuntime JSRuntime
 @inject NavigationManager NavigationManager
 
@@ -118,6 +119,11 @@ margin:auto; max-width:15cm; padding-bottom: 5%;">
         {
             Başlık = "Girilen iki parola farklı";
             bilgiler[3] = null; bilgiler[4] = null;
+        }
+        else if (!EmailValidator.Validate(bilgiler[2], true, true))
+        {
+            Başlık = "Bu e-posta adresi uygun değil";
+            bilgiler[2] = null;
         }
         else
         {
