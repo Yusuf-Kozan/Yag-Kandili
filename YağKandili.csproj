@@ -49,6 +49,7 @@ For more information about the license of Yağ Kandili, see
   <ItemGroup>
     <PackageReference Include="BlazorDownloadFile" Version="2.3.1.1" />
     <PackageReference Include="CryptHash.Net" Version="3.6.0" />
+    <PackageReference Include="EmailValidation" Version="1.0.8" />
     <PackageReference Include="MailKit" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.5" />

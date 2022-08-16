@@ -38,6 +38,14 @@ Almadıysanız, <https://www.gnu.org/licenses/> adresine bakın.
  Kaynak: https://github.com/alecgn/crypthash-net/tree/v3.6.0  
  NuGet Gallery sayfası: https://www.nuget.org/packages/CryptHash.Net/3.6.0
 
+### EmailValidation
+
+>Kullanılan sürüm: 1.0.8  
+ Copyright (C) 2013-2022 Jeffrey Stedfast  
+ Lisans: [Expat](/Lisans/Kütüphanelerin_Lisansları/EmailValidation-lisans.txt)  
+ Kaynak: https://github.com/jstedfast/EmailValidation/tree/1.0.8  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/EmailValidation/1.0.8
+
 ### MailKit
 >Kullanılan sürüm: 3.0.0  
  Copyright (C) 2013-2021 .NET Foundation and Contributors  
