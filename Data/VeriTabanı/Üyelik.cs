@@ -252,6 +252,24 @@ namespace Esas.VeriTabanı
             }
             return true;
         }
+        internal static bool EPostaBuKullanıcının(string kullanıcı_adı, string e_posta)
+        {
+            string komut_metni = $"SELECT COUNT(Kimlik) FROM {TabloAdı()} WHERE E_Posta = @e_posta " +
+                                "AND Kullanıcı_Adı = @kullanıcı_adı;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@e_posta", e_posta);
+            komut.Parameters.AddWithValue("@kullanıcı_adı", kullanıcı_adı);
+            int kullanıcı_niceliği = int.Parse(komut.ExecuteScalar().ToString());
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+
+            if (kullanıcı_niceliği == 1)
+                return true;
+
+            return false;
+        }
         
         internal static string TabloAdı()
         {
