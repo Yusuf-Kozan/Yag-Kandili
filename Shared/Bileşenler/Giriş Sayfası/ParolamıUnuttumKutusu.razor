@@ -1,0 +1,140 @@
+@*
+Copyright (C) 2022 Yusuf Kozan
+
+---
+
+Bu belge Yağ Kandili'nin bir parçasıdır.
+
+Yağ Kandili bir özgür yazılımdır: GNU Affero Genel Kamu Lisansı'nın 3.
+ya da (isteğinize göre) sonraki bir sürümünün Free Software Foundation
+tarafından yayınlandığı durumunun koşulları altında Yağ Kandili'ni
+dağıtabilir veya Yağ Kandili üzerinde değişiklik yapabilirsiniz.
+
+Yağ Kandili kullanışlı olması umuduyla dağıtılmaktadır ancak HİÇBİR
+GARANTİ VERMEMEKTEDİR, zımni PAZARLANABİLİRLİK veya BELİRLİ BİR
+AMACA UYGUNLUK garantisi bile. Daha çok ayrıntı için GNU Affero
+Genel Kamu Lisansı'na bakın.
+
+Yağ Kandili'nin yanında GNU Affero Genel Kamu Lisansı'nın bir kopyasını
+almış olmalısınız. Almadıysanız, <https://www.gnu.org/licenses/>
+adresine bakın.
+
+Yağ Kandili'nin lisansıyla ilgili daha çok bilgi için /Lisans
+dizinine bakın.
+
+---
+
+This file is part of Yağ Kandili.
+
+Yağ Kandili is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+Yağ Kandili is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Yağ Kandili. If not, see <https://www.gnu.org/licenses/>.
+
+For more information about the license of Yağ Kandili, see
+/Lisans directory.
+*@
+@using EmailValidation
+@using Esas
+@using Esas.GeçiciBağlantı
+
+@namespace Bileşenler
+
+<div style="text-align: center; width: 80%;
+    margin-left: auto; margin-right: auto; margin-top: 1%"
+    id="parolamı-unuttum" autocomplete="off">
+
+    @if (başlık == esas_başlık)
+    {
+        <h4 style="color:rgb(0,120,0); font-size: xx-large;
+            text-align: center;">@başlık</h4>
+    }
+    else
+    {
+        <h4 style="color:#4169e1; font-size: xx-large;
+            text-align: center;">@başlık</h4>
+    }
+
+    <input type="text" placeholder="Kullanıcı Adınız"
+        class="tek-kenarlı-kutu_0_120_0"
+        style="width: 80%; text-align: start; 
+        margin-left: auto; margin-right:auto;"
+        @bind="kullanıcı_adı"/>
+
+    <input type="text" placeholder="E-Posta Adresiniz"
+        class="tek-kenarlı-kutu_0_120_0"
+        style="width: 80%; text-align: start; 
+        margin-left: auto; margin-right:auto;"
+        @bind="e_posta"/>
+    
+    <input type="button" value="Parolamı Yenile" class="düğme_0_120_0"
+        style="width: 80%; margin: 1%;" @onclick="Yenile"/>
+</div>
+
+@code {
+
+    private string başlık = "Buradan parola yenileme e-postası " +
+                            "isteyebilirsiniz.";
+    private const string esas_başlık = "Buradan parola yenileme e-postası " +
+                                        "isteyebilirsiniz.";
+
+    private string kullanıcı_adı;
+    private string e_posta;
+
+    private void Yenile()
+    {
+        if (string.IsNullOrWhiteSpace(kullanıcı_adı) || string.IsNullOrWhiteSpace(e_posta))
+        {
+            başlık = "Tüm Kutuları Doldurmalısınız";
+        }
+        else if (EmailValidator.Validate(e_posta, true, true))
+        {
+            if (Esas.VeriTabanı.Üyelik.EPostaBuKullanıcının(kullanıcı_adı, e_posta))
+            {
+                string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
+                DateTime baş_tarih = DateTime.Now;
+                DateTime son_tarih = baş_tarih.AddHours(2);
+                GeçiciBağlantı bağlantı = new GeçiciBağlantı
+                                    (
+                                        kullanıcı_kimliği,
+                                        baş_tarih,
+                                        son_tarih,
+                                        "parola unutma"
+                                    );
+                Esas.VeriTabanı.GeçiciBağlantı.BağlantıEkle(bağlantı);
+
+                try
+                {
+                    Esas.Posta.GönderenSMTPBilgisi gönderen_smtp = new Esas.Posta.GönderenSMTPBilgisi();
+                    gönderen_smtp.AyarBelgesiniOku();
+                    Esas.Posta.GönderenIMAPBilgisi gönderen_imap = new Esas.Posta.GönderenIMAPBilgisi();
+                    gönderen_imap.AyarBelgesiniOku();
+                    ÜyeBil alıcı = Esas.VeriTabanı.Üyelik.Kimliğinİyesi(kullanıcı_kimliği);
+                    Esas.Posta.PostaGönder.TekKullanıcıyaGönder
+                                (
+                                    gönderen_smtp,
+                                    gönderen_imap,
+                                    alıcı,
+                                    "Parola Yenileme | Yağ Kandili",
+                                    "Parolanızı unuttuysanız önümüzdeki 2 saat boyunca " +
+                                    $"https://yagkandili.com.tr/g/{bağlantı.BAĞLANTI_DEĞİŞKENİ} " +
+                                    "adresinden yeni parola oluşturabilirsiniz."
+                                );
+                }
+                catch
+                {}
+            }
+        }
+        kullanıcı_adı = null;
+        e_posta = null;
+        başlık = "Girdiğiniz bilgiler doğruysa parola yenileme e-postanız gönderildi.";
+    }
+}
