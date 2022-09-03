@@ -110,6 +110,26 @@ namespace Esas.VeriTabanı
                 return false;
             }
         }
+        internal static void BilinmeyenParolayıDeğiştir(string kullanıcı_kimliği, string e_posta, string yeni_parola)
+        {
+            // Kullanıcı kimliği ile e-posta eşleşirse yeni parola atanır.
+
+            byte[] tuz = Parolalar.YeniTuz();
+            string karılmış_parola = Parolalar.argon2id8_32_2_32(yeni_parola, tuz);
+
+            string komut_metni = $"UPDATE {TabloAdı()} SET Parola = @yeni_parola " +
+                                "WHERE Kimlik = @kimlik AND " +
+                                "E_Posta = @e_posta;";
+            MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
+            komut.Parameters.AddWithValue("@yeni_parola", karılmış_parola);
+            komut.Parameters.AddWithValue("@kimlik", kullanıcı_kimliği);
+            komut.Parameters.AddWithValue("@e_posta", e_posta);
+            komut.ExecuteNonQuery();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+        }
 
         internal static ÜyeBil ÜyeBilgileri(string kullanıcı_kimliği)
         {
