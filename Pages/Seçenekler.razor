@@ -75,9 +75,9 @@ else
     {
         try
         {
-            var a = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
+            var a = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "KULLANICI");
             kullanıcı = a.ToString(); a = null;
-            var b = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
+            var b = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "OTURUM");
             oturum = b.ToString(); b = null;
             devam(kullanıcı, oturum);
             StateHasChanged();

@@ -131,9 +131,9 @@ For more information about the license of Yağ Kandili, see
     {
         try
         {
-            var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "kullanıcı");
+            var c = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "KULLANICI");
             kullanıcı = c.ToString(); c = null;
-            var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "oturum");
+            var d = await JSruntime.InvokeAsync<string>("Çerezİşleri.ÇerezOku", "OTURUM");
             oturum = d.ToString(); d = null;
             devam(kullanıcı, oturum);
             StateHasChanged();

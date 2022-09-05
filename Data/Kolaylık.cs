@@ -56,15 +56,15 @@ namespace İşlemler
             Çerezler çerez = new Çerezler(jsRuntime);
             string oturum_kimliği = OturumKimliği.YeniKimlik();
             string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
-            çerez.ÇerezYap("kullanıcı", kullanıcı_kimliği, 4);
-            çerez.ÇerezYap("oturum", oturum_kimliği, 4);
+            çerez.ÇerezYap("KULLANICI", kullanıcı_kimliği, 4);
+            çerez.ÇerezYap("OTURUM", oturum_kimliği, 4);
             Esas.VeriTabanı.Oturum.OturumAç(oturum_kimliği, kullanıcı_kimliği);
         }
         public static void Oturum_Kapat(string kullanıcı_kimliği, string oturum_kimliği, IJSRuntime jsRuntime)
         {
             Çerezler çerez = new Çerezler(jsRuntime);
-            çerez.ÇerezSil("kullanıcı");
-            çerez.ÇerezSil("oturum");
+            çerez.ÇerezSil("KULLANICI");
+            çerez.ÇerezSil("OTURUM");
             if (Esas.VeriTabanı.Oturum.BuOturumAçık(oturum_kimliği, kullanıcı_kimliği))
                 Esas.VeriTabanı.Oturum.OturumKapat(oturum_kimliği);
         }
