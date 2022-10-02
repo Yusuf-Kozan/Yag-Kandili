@@ -1,0 +1,142 @@
+@*
+Copyright (C) 2022 Yusuf Kozan
+
+---
+
+Bu belge Yağ Kandili'nin bir parçasıdır.
+
+Yağ Kandili bir özgür yazılımdır: GNU Affero Genel Kamu Lisansı'nın 3.
+ya da (isteğinize göre) sonraki bir sürümünün Free Software Foundation
+tarafından yayınlandığı durumunun koşulları altında Yağ Kandili'ni
+dağıtabilir veya Yağ Kandili üzerinde değişiklik yapabilirsiniz.
+
+Yağ Kandili kullanışlı olması umuduyla dağıtılmaktadır ancak HİÇBİR
+GARANTİ VERMEMEKTEDİR, zımni PAZARLANABİLİRLİK veya BELİRLİ BİR
+AMACA UYGUNLUK garantisi bile. Daha çok ayrıntı için GNU Affero
+Genel Kamu Lisansı'na bakın.
+
+Yağ Kandili'nin yanında GNU Affero Genel Kamu Lisansı'nın bir kopyasını
+almış olmalısınız. Almadıysanız, <https://www.gnu.org/licenses/>
+adresine bakın.
+
+Yağ Kandili'nin lisansıyla ilgili daha çok bilgi için /Lisans
+dizinine bakın.
+
+---
+
+This file is part of Yağ Kandili.
+
+Yağ Kandili is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+Yağ Kandili is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Yağ Kandili. If not, see <https://www.gnu.org/licenses/>.
+
+For more information about the license of Yağ Kandili, see
+/Lisans directory.
+*@
+@using Kilnevüg
+@using EmailValidation
+@namespace Bileşenler.GeçiciSayfa
+
+<div class="kutu_000000" style="text-align: center; width: 80%;
+margin-left: auto; margin-right: auto; margin-top: 1%;"
+autocomplete="off">
+
+    @if(izin_durumu == 0)
+    {
+        <h4 style="color: #000000; font-size: xx-large; font-weight: bold;
+            text-align: center;">Parolanızı Yenilemek İçin Bilgileri Girin</h4>
+    }
+    else if (izin_durumu == -1)
+    {
+        <h4 style="color: #c80000; font-size: xx-large; font-weight: bold;
+            text-align: center;">Parolanız Yenilenemedi</h4>
+    }
+    else if (izin_durumu == 1)
+    {
+        <h4 style="color: #000000; font-size: xx-large; font-weight: bold;
+            text-align: center;">Parolanız Yenilendi</h4>
+    }
+
+    <input type="text" placeholder="Kullanıcı Adınız"
+        class="tek-kenarlı-kutu_000000"
+        style="width: 80%; text-align: start;
+        margin-left: auto; margin-right: auto;"
+        @bind="kullanıcı_adı"/>
+    
+    <input type="text" placeholder="E-Posta Adresiniz"
+        class="tek-kenarlı-kutu_000000"
+        style="width: 80%; text-align: start;
+        margin-left: auto; margin-right: auto;"
+        @bind="e_posta"/>
+
+    <input type="password" placeholder="Yeni Parolanız"
+        class="tek-kenarlı-kutu_000000"
+        style="width: 80%; text-align: start;
+        margin-left: auto; margin-right: auto;"
+        @bind="yeni_parola"/>
+
+    <input type="password" placeholder="Yeni Parolanız (Tekrar)"
+        class="tek-kenarlı-kutu_000000"
+        style="width: 80%; text-align: start;
+        margin-left: auto; margin-right: auto;"
+        @bind="tekrar_parola"/>
+
+    <input type="button" value="Parolayı Yenile"
+        class="düğme_000000"
+        style="width: 80%; margin: 1%;"
+        @onclick="ParolayıYenile"/>
+</div>
+
+@code {
+    [Parameter]
+    public string hedef_kullanıcı {get; set;}
+    
+    private short izin_durumu = 0;
+    // +1: izinli , 0: bilinmiyor , -1: izinsiz
+
+    private string kullanıcı_adı, e_posta;
+    private string yeni_parola, tekrar_parola;
+
+    private void ParolayıYenile()
+    {
+        if (String.IsNullOrWhiteSpace(kullanıcı_adı) || String.IsNullOrWhiteSpace(e_posta) ||
+            String.IsNullOrWhiteSpace(yeni_parola) || String.IsNullOrWhiteSpace(tekrar_parola))
+        {
+            izin_durumu = -1;
+            return;
+        }
+        else if (yeni_parola != tekrar_parola)
+        {
+            izin_durumu = -1;
+            return;
+        }
+        else if (!EmailValidator.Validate(e_posta, true, true))
+        {
+            izin_durumu = -1;
+            return;
+        }
+        else
+        {
+            bool başarılı = Parolalar.UnutulanParolayıYenile(
+                                kullanıcı_adı,
+                                hedef_kullanıcı,
+                                e_posta,
+                                yeni_parola
+                            );
+            if (başarılı)
+                izin_durumu = 1;
+            else
+                izin_durumu = -1;
+            return;
+        }
+    }
+}

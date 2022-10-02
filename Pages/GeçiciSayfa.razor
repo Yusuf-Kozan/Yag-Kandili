@@ -60,6 +60,10 @@ For more information about the license of Yağ Kandili, see
             belge_adı=@(belge_adı)
             belge_türü="application/zip" />
 }
+else if (bağlantı.İÇERİK_TÜRÜ == "parola unutma")
+{
+    <UnutulanParolayıYenile hedef_kullanıcı=@(bağlantı.HEDEF_KULLANICI)/>
+}
 
 @code {
     [Parameter]
