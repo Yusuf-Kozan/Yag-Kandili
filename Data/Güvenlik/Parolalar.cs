@@ -44,6 +44,7 @@ For more information about the license of Yağ Kandili, see
 */
 using System;
 using System.Security.Cryptography;
+using Esas;
 
 namespace Kilnevüg
 {
@@ -90,6 +91,45 @@ namespace Kilnevüg
             ).Success;
 
             return sonuç;
+        }
+        internal static bool UnutulanParolayıYenile(
+                            string kullanıcı_adı, string kullanıcı_kimliği,
+                            string e_posta, string yeni_parola)
+        {
+            ÜyeBil kullanıcı = Esas.VeriTabanı.Üyelik.Kimliğinİyesi(kullanıcı_kimliği);
+            if (kullanıcı.KULLANICI_ADI == kullanıcı_adı)
+            {
+                if (Esas.VeriTabanı.Üyelik.EPostaBuKullanıcının(kullanıcı_adı, e_posta))
+                {
+                    try
+                    {
+                        Esas.VeriTabanı.Üyelik.BilinmeyenParolayıDeğiştir(kullanıcı_kimliği,
+                                                e_posta, yeni_parola);
+                        string tarih = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
+                        Esas.Posta.GönderenSMTPBilgisi gönderen_smtp = new Esas.Posta.GönderenSMTPBilgisi();
+                        gönderen_smtp.AyarBelgesiniOku();
+                        Esas.Posta.GönderenIMAPBilgisi gönderen_imap = new Esas.Posta.GönderenIMAPBilgisi();
+                        gönderen_imap.AyarBelgesiniOku();
+                        Esas.Posta.PostaGönder.TekKullanıcıyaGönder(
+                            gönderen_smtp,
+                            gönderen_imap,
+                            kullanıcı,
+                            "Yağ Kandili Güvenlik Uyarısı",
+                            $"Parolanız {tarih} tarihinde " +
+                            "\"Parolamı Unuttum\" bölümünden değiştirildi."
+                        );
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
         }
 
         public static byte[] YeniTuz()

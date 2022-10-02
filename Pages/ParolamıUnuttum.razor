@@ -42,49 +42,14 @@ along with Yağ Kandili. If not, see <https://www.gnu.org/licenses/>.
 For more information about the license of Yağ Kandili, see
 /Lisans directory.
 *@
-@page "/g/{bağlantı_değişkeni}"
-@*"geçici" anlamında 'g'*@
-@layout GeçiciSayfaDüzeni
+@page "/parolamı_unuttum"
+@using Esas
 @using Bileşenler
-@using Bileşenler.GeçiciSayfa
-@using Esas.VeriTabanı
 @inject NavigationManager NavigationManager
 
-@if (bağlantı.İÇERİK_TÜRÜ == "kişisel veri")
-{
-    string belge_adı = $"{bağlantı.HEDEF_KULLANICI}-" +
-                $"{bağlantı.BAŞLANGIÇ_TARİHİ.ToString("yyyyMMddHHmmss")}" +
-                "-KV.zip";
-    <ÖzelBelgeİndir hedef_kullanıcı=@(bağlantı.HEDEF_KULLANICI)
-            sağlanacak_belge=@(bağlantı.SAĞLANACAK_BELGE)
-            belge_adı=@(belge_adı)
-            belge_türü="application/zip" />
-}
-else if (bağlantı.İÇERİK_TÜRÜ == "parola unutma")
-{
-    <UnutulanParolayıYenile hedef_kullanıcı=@(bağlantı.HEDEF_KULLANICI)/>
-}
+<div style="text-align:center; margin-top:1%;">
+    <YönlendirenBaşlık şuraya_yönlendir="/ana" ilk_başlık="Parolamı Unuttum"
+        ikinci_başlık="Ana Sayfaya Git" ilk_renk="rgb(0,120,0)" ikinci_renk="#ff6600"/>
 
-@code {
-    [Parameter]
-    public string bağlantı_değişkeni {get; set;}
-
-    private Esas.GeçiciBağlantı.GeçiciBağlantı bağlantı;
-
-    protected override void OnParametersSet()
-    {
-        bool bağlantı_kullanımda = GeçiciBağlantı.BuBağlantıKullanımda(bağlantı_değişkeni);
-        if (!bağlantı_kullanımda)
-        {
-            NavigationManager.NavigateTo("/ana");
-        }
-        else if (GeçiciBağlantı.BağlantıSüresiDurumu(bağlantı_değişkeni) != 0)
-        {
-            NavigationManager.NavigateTo("/ana");
-        }
-        else
-        {
-            bağlantı = GeçiciBağlantı.BağlantıBilgisi(bağlantı_değişkeni);
-        }
-    }
-}
+    <ParolamıUnuttumKutusu/>
+</div>
