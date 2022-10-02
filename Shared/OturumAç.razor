@@ -67,8 +67,12 @@ margin:auto; max-width:15cm; padding-bottom: 5%;" @onkeyup="DüğmeyeBasıldı">
     class="tek-kenarlı-kutu_0_120_0" @bind="parola"/>
     
     <button class="düğme_0_120_0" @onclick="GirişYap"
-    style="font-size: large; margin-top: 3%;"
+    style="font-size: x-large; margin-top: 4%;"
     >Giriş Yap</button>
+    <br/>
+    <button class="düğme_808080" @onclick="ParolamıUnuttum"
+    style="font-size: medium; margin-top: 5%;"
+    >Parolamı Unuttum</button>
 </div>
 
 @code {
@@ -105,6 +109,10 @@ margin:auto; max-width:15cm; padding-bottom: 5%;" @onkeyup="DüğmeyeBasıldı">
         {
             Başlık = "Giriş Reddedildi";
         }
+    }
+    private void ParolamıUnuttum()
+    {
+        NavigationManager.NavigateTo("/parolamı_unuttum");
     }
     private void DüğmeyeBasıldı(KeyboardEventArgs klavye_olayları)
     {

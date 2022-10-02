@@ -112,17 +112,14 @@ autocomplete="off">
             String.IsNullOrWhiteSpace(yeni_parola) || String.IsNullOrWhiteSpace(tekrar_parola))
         {
             izin_durumu = -1;
-            return;
         }
         else if (yeni_parola != tekrar_parola)
         {
             izin_durumu = -1;
-            return;
         }
         else if (!EmailValidator.Validate(e_posta, true, true))
         {
             izin_durumu = -1;
-            return;
         }
         else
         {
@@ -136,7 +133,10 @@ autocomplete="off">
                 izin_durumu = 1;
             else
                 izin_durumu = -1;
-            return;
         }
+        kullanıcı_adı = null;
+        e_posta = null;
+        yeni_parola = null;
+        tekrar_parola = null;
     }
 }
