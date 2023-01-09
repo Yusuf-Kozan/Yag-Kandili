@@ -8,7 +8,7 @@ Yağ Kandili özgür bir toplumsal iletişim ortamı (sosyal medya) yazılımıd
 [Belgelere buradan ulaşabilirsiniz.](/Belgeler)
 
 ## Lisans
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022-2023 Yusuf Kozan
 
 ---
 
