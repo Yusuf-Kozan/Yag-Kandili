@@ -1,0 +1,34 @@
+@namespace YağKandili.Pages
+@using Microsoft.AspNetCore.Components.Web
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Yağ Kandili, kandil, gaz lambası, gaz yağı, özgür, sosyal medya, özgür yazılım"/>
+    <meta name="application-name" content="Yağ Kandili"/>
+    <link rel="icon" href="logo/küçük-renkli.svg"/>
+    <title>Yağ Kandili</title>
+    <base href="~/" />
+
+    <link rel="stylesheet" href="css/yazı_tipi/Lexend.css"/>
+    <link rel="stylesheet" href="css/YK/Genel.css"/>
+    <link rel="stylesheet" href="css/YK/DüğmelerİleKutular.css"/>
+    <link rel="stylesheet" href="css/YK/Başlıklar.css"/>
+    <link rel="stylesheet" href="css/YK/Esas.css"/>
+    <link rel="stylesheet" href="css/YK/Paylaş.css"/>
+    <link rel="stylesheet" href="css/YK/Söyleşiler.css"/>
+    <link rel="stylesheet" href="css/YK/KişiSayfası.css"/>
+    <link rel="stylesheet" href="css/YK/GeçiciSayfa.css"/>
+
+    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+</head>
+<body style="height: max-content;">
+    @RenderBody()
+
+    <script src="_framework/blazor.server.js"></script>
+    <script src="JavaScript/Çerez.js"></script>
+</body>
+</html>

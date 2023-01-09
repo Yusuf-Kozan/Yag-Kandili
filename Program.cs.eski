@@ -1,4 +1,4 @@
-﻿@*
+/*
 Copyright (C) 2022 Yusuf Kozan
 
 ---
@@ -41,8 +41,8 @@ along with Yağ Kandili. If not, see <https://www.gnu.org/licenses/>.
 
 For more information about the license of Yağ Kandili, see
 /Lisans directory.
-*@
-@*
+*/
+/*
 This file incorporates work covered by the following copyright and
 permission notice:
 (Bu belge aşağıdaki telif hakkı ve izin bildirimince kapsanan
@@ -61,23 +61,42 @@ permission notice:
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-*@
-@*
+*/
+/*
 Bu belgenin değiştirilmemiş sürümüne aşağıdaki bağlantıdan erişebilirsiniz:
-https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/ProjectTemplates/Web.ProjectTemplates/content/BlazorServerWeb-CSharp/Pages/_Host.cshtml
+https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/Components/Samples/BlazorServerApp/Program.cs
 
 ---
 
 You can access the unmodified version of this file at
-https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/ProjectTemplates/Web.ProjectTemplates/content/BlazorServerWeb-CSharp/Pages/_Host.cshtml
-*@
+https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/Components/Samples/BlazorServerApp/Program.cs
+*/
 
-@page "/"
-@namespace YağKandili.Pages
-@using Microsoft.AspNetCore.Components.Web
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    Layout = "_Layout";
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+namespace YağKandili
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
 }
-
-<component type="typeof(App)" render-mode="ServerPrerendered" />
