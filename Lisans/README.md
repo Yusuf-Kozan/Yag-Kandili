@@ -24,11 +24,11 @@ Almadıysanız, <https://www.gnu.org/licenses/> adresine bakın.
 
 ### BlazorDownloadFile
 
->Kullanılan sürüm: 2.3.1.1  
+>Kullanılan sürüm: 2.4.0.2  
  Copyright (C) 2020 Anthony G. Rivera Cosme  
  Lisans: [Expat](/Lisans/Kütüphanelerin_Lisansları/BlazorDownloadFile-lisans.txt)  
  Kaynak: https://github.com/arivera12/BlazorDownloadFile  
- NuGet Gallery sayfası: https://www.nuget.org/packages/BlazorDownloadFile/2.3.1.1
+ NuGet Gallery sayfası: https://www.nuget.org/packages/BlazorDownloadFile/2.4.0.2
 
 ### CryptHash.Net
 
@@ -53,40 +53,19 @@ Almadıysanız, <https://www.gnu.org/licenses/> adresine bakın.
  Kaynak: https://github.com/jstedfast/MailKit/tree/3.0.0  
  NuGet Gallery sayfası: https://www.nuget.org/packages/MailKit/3.0.0
 
-### Microsoft.AspNetCore.Http
->Kullanılan sürüm: 2.2.2  
- Copyright (C) .NET Foundation and Contributors  
- Lisans: [Apache 2.0](/Lisans/Kütüphanelerin_Lisansları/Microsoft.AspNetCore.Http-lisans.txt)  
- Kaynak: https://github.com/aspnet/AspNetCore/tree/522705f9a27b99ca4ad261f2e89fe51a77b2338e  
- NuGet Gallery sayfası: https://www.nuget.org/packages/Microsoft.AspNetCore.Http/2.2.2
-
-### Microsoft.AspNetCore.Http.Features
->Kullanılan sürüm: 3.1.5  
- Copyright (C) .NET Foundation and Contributors  
- Lisans: [Apache 2.0](/Lisans/Kütüphanelerin_Lisansları/Microsoft.AspNetCore.Http.Features-lisans.txt)  
- Kaynak: https://github.com/aspnet/AspNetCore/tree/844a82e37cae48af2ab2ee4f39b41283e6bb4f0e  
- NuGet Gallery sayfası: https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Features/3.1.5
-
 ### MySql.Data
->Kullanılan sürüm: 8.0.20  
- Copyright (C) 2004, 2021 Oracle and/or its affiliates  
+>Kullanılan sürüm: 8.0.31  
+ Copyright (C) 2004, 2022 Oracle and/or its affiliates  
  Lisans: [GPL 2.0 with The Universal FOSS Exception 1.0](/Lisans/Kütüphanelerin_Lisansları/MySql.Data-lisans.txt)  
- Kaynak: https://github.com/mysql/mysql-connector-net  
- NuGet Gallery sayfası: https://www.nuget.org/packages/MySql.Data/8.0.20
+ Kaynak: https://github.com/mysql/mysql-connector-net/tree/8.0.31  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/MySql.Data/8.0.31
 
 ### Newtonsoft.Json
->Kullanılan sürüm: 13.0.1  
+>Kullanılan sürüm: 13.0.2  
  Copyright (C) 2007 James Newton-King  
  Lisans: [Expat](/Lisans/Kütüphanelerin_Lisansları/Newtonsoft.Json-lisans.md)  
- Kaynak: https://github.com/JamesNK/Newtonsoft.Json/tree/13.0.1  
- NuGet Gallery sayfası: https://www.nuget.org/packages/Newtonsoft.Json/13.0.1
-
-### System.Data.SqlClient
->Kullanılan sürüm: 4.8.1  
- Copyright (C) .NET Foundation and Contributors  
- Lisans: [Expat](/Lisans/Kütüphanelerin_Lisansları/System.Data.SqlClient-lisans.txt)  
- Kaynak: https://github.com/dotnet/corefx/tree/v3.1.5/src/System.Data.SqlClient  
- NuGet Gallery sayfası: https://www.nuget.org/packages/System.Data.SqlClient/4.8.1
+ Kaynak: https://github.com/JamesNK/Newtonsoft.Json/tree/13.0.2  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/Newtonsoft.Json/13.0.2
 
 ---
 ## Başka Çalışmalardan Alınıp Değiştirilmiş Belgeler
@@ -98,15 +77,9 @@ sürümü altında yeniden lisanslanmıştır. Değiştirilmiş
 biçimleri Yağ Kandili ile aynı lisans koşulları altında
 kullanılabilir.
 
-### Startup.cs
->Belge yolu: [/Startup.cs](/Startup.cs)  
- Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/Components/Samples/BlazorServerApp/Startup.cs  
- Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
- Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
-
 ### Program.cs
 >Belge yolu: [/Program.cs](/Program.cs)  
- Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/Components/Samples/BlazorServerApp/Program.cs  
+ Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/Components/Samples/BlazorServerApp/Startup.cs  
  Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
  Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
 
@@ -118,9 +91,15 @@ kullanılabilir.
 
 ### _Host.cshtml
 >Belge yolu: [/Pages/_Host.cshtml](/Pages/_Host.cshtml)  
- Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v3.1.5/src/ProjectTemplates/Web.ProjectTemplates/content/BlazorServerWeb-CSharp/Pages/_Host.cshtml  
+ Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v6.0.11/src/ProjectTemplates/Web.ProjectTemplates/content/BlazorServerWeb-CSharp/Pages/_Host.cshtml  
  Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
- Değiştirilmemiş Biçiminin Lisansı: [Apache 2.0](/Lisans/apache-2.0.txt)
+ Değiştirilmemiş Biçiminin Lisansı: [Expat](/Lisans/expat.txt)
+
+### _Layout.cshtml
+>Belge yolu: [/Pages/_Layout.cshtml](/Pages/_Layout.cshtml)  
+ Değiştirilmemiş Biçimi: https://github.com/dotnet/aspnetcore/blob/v6.0.11/src/ProjectTemplates/Web.ProjectTemplates/content/BlazorServerWeb-CSharp/Pages/_Layout.cshtml  
+ Değiştirilmemiş Biçiminin Telif Hakkı Bildirimi: Copyright (C) .NET Foundation and Contributors  
+ Değiştirilmemiş Biçiminin Lisansı: [Expat](/Lisans/expat.txt)
 
 ### Pages/Error.razor
 >Belge yolu: [/Pages/Error.razor](/Pages/Error.razor)  
@@ -144,7 +123,7 @@ CSS Tanımları: [/wwwroot/css/yazı_tipi/Lexend.css](/wwwroot/css/yazı_tipi/Le
 
 ---
 
-*Copyright (C) 2022 Yusuf Kozan*  
+*Copyright (C) 2022-2023 Yusuf Kozan*  
 
 *Bu belge Yağ Kandili'nin bir parçasıdır.*
 
