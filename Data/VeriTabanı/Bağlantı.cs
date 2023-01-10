@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022-2023 Yusuf Kozan
 
 ---
 
@@ -55,7 +55,7 @@ namespace Esas.VeriTabanı
         {
             // Sunucu ve Port
             string[] belge_içeriği = File.ReadAllLines("./.Ayarlar/vt1");
-            if (belge_içeriği.Length < 4 &&
+            if (belge_içeriği.Length >= 4 &&
                 belge_içeriği[0].StartsWith(">") && belge_içeriği[1].StartsWith(">"))
             {
                 string[] adres_bilgileri = new string[2];
