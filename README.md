@@ -3,7 +3,7 @@
 
 Yağ Kandili özgür bir toplumsal iletişim ortamı (sosyal medya) yazılımıdır.
 
-.NET Core 3.1'in parçası olan Blazor on Server çerçevesi ile yapılmıştır.
+.NET 6'nın parçası olan Blazor on Server çerçevesi ile yapılmıştır.
 
 [Belgelere buradan ulaşabilirsiniz.](/Belgeler)
 
