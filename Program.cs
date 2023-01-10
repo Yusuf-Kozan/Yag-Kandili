@@ -7,10 +7,11 @@ using BlazorDownloadFile;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
+
 builder.Services.AddScoped<KullanıcıArayüzü.HerŞey>();
 builder.Services.AddScoped<KullanıcıArayüzü.AnaSayfa>();
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
 builder.Services.AddBlazorDownloadFile(ServiceLifetime.Scoped);
 
 var app = builder.Build();
