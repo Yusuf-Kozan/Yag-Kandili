@@ -54,8 +54,8 @@ For more information about the license of Yağ Kandili, see
     <PackageReference Include="CryptHash.Net" Version="3.6.0" />
     <PackageReference Include="EmailValidation" Version="1.0.8" />
     <PackageReference Include="MailKit" Version="3.0.0" />
-    <PackageReference Include="MySql.Data" Version="8.0.20" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.31" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
 </Project>
