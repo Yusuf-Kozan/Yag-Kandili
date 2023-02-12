@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022-2023 Yusuf Kozan
 
 ---
 
@@ -260,6 +260,28 @@ For more information about the license of Yağ Kandili, see
 	color: #c80000;
 	background-color: #ffc8c8;
 	border-color: #ffc8c8;
+	cursor: auto;
+}
+.düğme_ff6600 {
+    border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px 11px;
+	font-family: Lexend, sans-serif;
+	color: #ffffff;
+	background-color: #ff6600;
+	border-color: #ff6600;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+	outline-style: none;
+	text-align: center;
+}
+.düğme_ff6600:hover, .düğme_ff6600:disabled {
+	color: #ff6600;
+	background-color: #ffe0cc;
+	border-color: #ffe0cc;
 	cursor: auto;
 }
 

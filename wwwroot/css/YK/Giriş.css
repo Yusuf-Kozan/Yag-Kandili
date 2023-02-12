@@ -1,5 +1,5 @@
-@*
-Copyright (C) 2022-2023 Yusuf Kozan
+/*
+Copyright (C) 2023 Yusuf Kozan
 
 ---
 
@@ -41,46 +41,42 @@ along with Yağ Kandili. If not, see <https://www.gnu.org/licenses/>.
 
 For more information about the license of Yağ Kandili, see
 /Lisans directory.
-*@
-@page "/"
-@layout AnaTaslak
-@using Esas
-@using Bileşenler
-@inject NavigationManager NavigationManager
+*/
 
-<div id="giriş-gövde">
-    <div id="giriş-işler">
-        <div style="text-align: center;">
-            <button class="düğme_0_120_0" disabled="@girişte"
-            @onclick="KandilYaktır">Giriş Yap</button>
-            <button class="düğme_ff6600" disabled="@(!girişte)"
-            @onclick="GirişYaptır">Kandil Yak</button>
-        </div>
-        @if (girişte)
-        {
-            <OturumAç/>
-        }
-        else
-        {
-            <ÜyeOl/>
-        }
-    </div>
-    <div id="giriş-bilgiler">
-        <img src="/logo/büyük-renkli.svg" id="giriş-marka"
-        alt="Yağ Kandili markası"/>
-    </div>
-</div>
+#giriş-gövde {
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+#giriş-işler {
+    display: block;
+    height: 80%;
+    width: auto;
+    margin: 3% 2% 3%;
+    overflow: scroll;
+}
+#giriş-bilgiler {
+    display: block;
+    height: 80%;
+    width: auto;
+    margin: 5% 2% 3%;
+    text-align: center;
+}
+#giriş-marka {
+    width: 50%;
+    height: auto;
+}
 
-@code {
-    private bool girişte = true;
-
-    private void KandilYaktır()
-    {
-        girişte = true;
+@media (orientation: landscape)
+{
+    #giriş-işler {
+        height: 100%;
+        width: 50%;
+        float: right;
     }
-
-    private void GirişYaptır()
-    {
-        girişte = false;
+    #giriş-bilgiler {
+        height: 100%;
+        width: 50%;
     }
 }
