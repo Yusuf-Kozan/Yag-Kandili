@@ -55,6 +55,8 @@ For more information about the license of Yağ Kandili, see
     width: auto;
     margin: 3% 2% 3%;
     overflow: scroll;
+    background-color: #fff0e6;
+    border-radius: 15px;
 }
 #giriş-bilgiler {
     display: block;
