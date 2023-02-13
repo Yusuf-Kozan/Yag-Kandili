@@ -284,6 +284,37 @@ For more information about the license of Yağ Kandili, see
 	border-color: #ffe0cc;
 	cursor: auto;
 }
+.sekme_ff6600 {
+    border: solid;
+	border-radius: 7px;
+	border-width: 3px;
+	padding: 3px 11px;
+	font-family: Lexend, sans-serif;
+	color: #ff751a;
+	background-color: #ffe0cc;
+	border-color: #ffe0cc;
+	cursor: pointer;
+	margin: 4px;
+	font-size: x-large;
+	font-weight: bold;
+	outline-style: none;
+	text-align: center;
+}
+.sekme_ff6600:disabled {
+	color: #ffffff;
+	background-color: #ff6600;
+	border-color: #ff6600;
+	font-weight: bold;
+	cursor: auto;
+}
+.sekme_ff6600:hover:enabled {
+	color: #ff6600;
+	border-radius: 0;
+	border-bottom: solid 3px #ff6600;
+	cursor: pointer;
+	font-weight: bold;
+	transition: 250ms;
+}
 
 .kutu_ff6600 {
 	border: solid 2px #ff6600;
