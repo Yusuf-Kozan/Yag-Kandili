@@ -50,13 +50,11 @@ For more information about the license of Yağ Kandili, see
 
 <div id="giriş-gövde">
     <div id="giriş-işler">
-        <div style="text-align: center; padding: 10px;
-        border-radius: 7px; background-color: #ffe0cc;
-        width: auto; margin: auto;">
+        <div id="giriş-işler-baş">
             <button class="sekme_ff6600" disabled="@girişte"
-            @onclick="KandilYaktır">Giriş Yap</button>
+            @onclick="KandilYaktır" id="giriş-gir">Giriş Yap</button>
             <button class="sekme_ff6600" disabled="@(!girişte)"
-            @onclick="GirişYaptır">Kandil Yak</button>
+            @onclick="GirişYaptır" id="giriş-yak">Kandil Yak</button>
         </div>
         @if (girişte)
         {
