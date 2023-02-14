@@ -45,13 +45,13 @@ For more information about the license of Yağ Kandili, see
 
 #giriş-gövde {
     display: block;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     overflow: scroll;
 }
 #giriş-işler {
     display: block;
-    height: 80%;
+    height: auto;
     width: auto;
     margin: 3% 3% 4%;
     overflow: scroll;
@@ -60,7 +60,7 @@ For more information about the license of Yağ Kandili, see
 }
 #giriş-bilgiler {
     display: block;
-    height: 80%;
+    height: auto;
     width: auto;
     margin: 3% 3% 4%;
     text-align: center;
@@ -75,21 +75,47 @@ For more information about the license of Yağ Kandili, see
 #giriş-işler-baş {
     text-align: center;
     padding: 10px;
-    border-radius: 7px;
+    border-radius: 10px;
     background-color: #ffe0cc;
     width: auto;
     margin: auto;
 }
+.giriş-düğme {
+    display: block;
+    width: 60%;
+    margin: 5% auto;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-@media (orientation: landscape)
+@media (orientation: landscape) and (min-height: 500px)
 {
     #giriş-işler {
-        height: 100%;
+        height: 80vh;
+        width: 46%;
+        float: right;
+    }
+    #giriş-işler-baş {
+        position: sticky;
+        top: 0;
+    }
+    #giriş-bilgiler {
+        height: 80vh;
+        width: 46%;
+    }
+    #giriş-marka {
+        margin-top: 10vh;
+    }
+}
+@media (orientation: landscape) and (max-height: 500px)
+{
+    #giriş-işler {
+        height: auto;
         width: 46%;
         float: right;
     }
     #giriş-bilgiler {
-        height: 100%;
+        height: auto;
         width: 46%;
     }
     #giriş-marka {
