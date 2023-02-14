@@ -64,11 +64,13 @@ For more information about the license of Yağ Kandili, see
     width: auto;
     margin: 3% 3% 4%;
     text-align: center;
+    font-family: Lexend, sans;
+    line-height: 1.5;
 }
 #giriş-marka {
     width: 50%;
     height: auto;
-    margin: auto;
+    margin: 15% auto 3.5%;
 }
 #giriş-işler-baş {
     text-align: center;
@@ -89,5 +91,8 @@ For more information about the license of Yağ Kandili, see
     #giriş-bilgiler {
         height: 100%;
         width: 46%;
+    }
+    #giriş-marka {
+        margin-top: 10%;
     }
 }
