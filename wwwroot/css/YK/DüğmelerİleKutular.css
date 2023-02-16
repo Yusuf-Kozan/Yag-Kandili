@@ -447,6 +447,7 @@ For more information about the license of Yağ Kandili, see
 	border-color: rgb(0,120,0);
 	padding: 3px;
 	color: rgb(0,120,0);
+	background-color: transparent;
 	font-size: x-large;
 	font-family: sans-serif;
 	margin: 3px;
@@ -462,6 +463,7 @@ For more information about the license of Yağ Kandili, see
 	border-color: #31a58e;
 	padding: 3px;
 	color: #31a58e;
+	background-color: transparent;
 	font-size: x-large;
 	font-family: sans-serif;
 	margin: 3px;
@@ -477,6 +479,7 @@ For more information about the license of Yağ Kandili, see
 	border-color: #0069ff;
 	padding: 3px;
 	color: #0069ff;
+	background-color: transparent;
 	font-size: x-large;
 	font-family: sans-serif;
 	margin: 3px;
@@ -492,6 +495,7 @@ For more information about the license of Yağ Kandili, see
 	border-color: #cc22b2;
 	padding: 3px;
 	color: #cc22b2;
+	background-color: transparent;
 	font-size: x-large;
 	font-family: sans-serif;
 	margin: 3px;
@@ -507,6 +511,7 @@ For more information about the license of Yağ Kandili, see
 	border-color: #808080;
 	padding: 3px;
 	color: #808080;
+	background-color: transparent;
 	font-size: x-large;
 	font-family: Lexend, sans-serif;
 	margin: 3px;
@@ -522,6 +527,7 @@ For more information about the license of Yağ Kandili, see
 	border-color: #000000;
 	padding: 3px;
 	color: #000000;
+	background-color: transparent;
 	font-size: x-large;
 	font-family: Lexend, sans-serif;
 	margin: 3px;
