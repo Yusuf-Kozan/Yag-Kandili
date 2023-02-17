@@ -58,7 +58,25 @@ For more information about the license of Yağ Kandili, see
         </div>
         @if (girişte)
         {
-            <OturumAç/>
+            <div class="kaydırmalı_sekme-dış">
+                <div class="kaydırmalı_sekme-iç"
+                style="height: @(giriş_boy); width: @(giriş_boy);
+                float: right;">
+                    <OturumAç/>
+                    <button class="düğme_808080" @onclick="ParolamıUnuttum"
+                    style="font-size: medium; margin: 3% 1%;
+                    width: 90%; max-width: 15cm;"
+                    >Parolamı Unuttum</button>
+                </div>
+                <div class="kaydırmalı_sekme-iç"
+                style="height: @(unuttum_boy); width: @(unuttum_boy);">
+                    <ParolamıUnuttumKutusu/>
+                    <button class="düğme_0_120_0" @onclick="GirişeDön"
+                    style="font-size: medium; margin: 3% 1%; width: 90%;
+                    max-width: 15cm;"
+                    >Geri Dön</button>
+                </div>
+            </div>
         }
         else
         {
@@ -81,14 +99,25 @@ For more information about the license of Yağ Kandili, see
 
 @code {
     private bool girişte = true;
-
     private void KandilYaktır()
     {
         girişte = true;
     }
-
     private void GirişYaptır()
     {
         girişte = false;
+    }
+
+    private string giriş_boy = "100%";
+    private string unuttum_boy = "0";
+    private void ParolamıUnuttum()
+    {
+        giriş_boy = "0";
+        unuttum_boy = "100%";
+    }
+    private void GirişeDön()
+    {
+        unuttum_boy = "0";
+        giriş_boy = "100%";
     }
 }

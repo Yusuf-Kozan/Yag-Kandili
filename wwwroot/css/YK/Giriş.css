@@ -57,6 +57,7 @@ For more information about the license of Yağ Kandili, see
     overflow: scroll;
     background-color: #fff0e6;
     border-radius: 15px;
+    position: relative;
 }
 #giriş-bilgiler {
     display: block;
@@ -86,6 +87,18 @@ For more information about the license of Yağ Kandili, see
     margin: 5% auto;
     text-decoration: none;
     cursor: pointer;
+}
+.kaydırmalı_sekme-dış {
+    overflow: scroll;
+}
+.kaydırmalı_sekme-iç {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    transition: 500ms;
+    transition-delay: 50ms;
+    text-align: center;
 }
 
 @media (orientation: landscape) and (min-height: 500px)
