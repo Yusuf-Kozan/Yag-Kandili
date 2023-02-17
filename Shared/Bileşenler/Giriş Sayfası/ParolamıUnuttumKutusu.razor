@@ -1,5 +1,5 @@
 @*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022-2023 Yusuf Kozan
 
 ---
 
@@ -48,43 +48,40 @@ For more information about the license of Yağ Kandili, see
 
 @namespace Bileşenler
 
-<div style="text-align: center; width: 80%;
-    margin-left: auto; margin-right: auto; margin-top: 1%"
+<div style="text-align: center; width: 100%;
+    margin: auto;"
     id="parolamı-unuttum" autocomplete="off">
 
     @if (başlık == esas_başlık)
     {
-        <h4 style="color:rgb(0,120,0); font-size: xx-large;
-            text-align: center; font-family: Lexend;">@başlık</h4>
+        <h1 style="color:#662900; font-size: xx-large;
+            font-family: sans-serif;">@başlık</h1>
     }
     else
     {
-        <h4 style="color:#4169e1; font-size: xx-large;
-            text-align: center; font-family: Lexend;">@başlık</h4>
+        <h1 style="color:#4169e1; font-size: xx-large;
+            font-family: sans-serif;">@başlık</h1>
     }
 
     <input type="text" placeholder="Kullanıcı Adınız"
-        class="tek-kenarlı-kutu_0_120_0"
-        style="width: 80%; text-align: start; 
-        margin-left: auto; margin-right:auto;"
+        class="tek-kenarlı-kutu_662900 giriş_girdi"
+        style=""
         @bind="kullanıcı_adı"/>
 
     <input type="text" placeholder="E-Posta Adresiniz"
-        class="tek-kenarlı-kutu_0_120_0"
-        style="width: 80%; text-align: start; 
-        margin-left: auto; margin-right:auto;"
+        class="tek-kenarlı-kutu_662900 giriş_girdi"
+        style=""
         @bind="e_posta"/>
     
-    <input type="button" value="Parolamı Yenile" class="düğme_0_120_0"
-        style="width: 80%; margin: 1%;" @onclick="Yenile"/>
+    <input type="button" value="Parolamı Yenile" class="düğme_662900"
+        style="width: 80%; margin: 7% 10% 3%; font-size: x-large;"
+        @onclick="Yenile"/>
 </div>
 
 @code {
 
-    private string başlık = "Buradan parola yenileme e-postası " +
-                            "isteyebilirsiniz.";
-    private const string esas_başlık = "Buradan parola yenileme e-postası " +
-                                        "isteyebilirsiniz.";
+    private string başlık = "Parolamı Unuttum";
+    private const string esas_başlık = "Parolamı Unuttum";
 
     private string kullanıcı_adı;
     private string e_posta;

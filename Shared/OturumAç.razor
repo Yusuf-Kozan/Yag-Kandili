@@ -1,5 +1,5 @@
 @*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022-2023 Yusuf Kozan
 
 ---
 
@@ -49,8 +49,8 @@ For more information about the license of Yağ Kandili, see
 
 @namespace Bileşenler
 
-<div style="display: block; text-align: center; font-family: sans-serif; width: 90%;
-margin:auto; max-width:15cm; padding-bottom: 5%;" @onkeyup="DüğmeyeBasıldı">
+<div style="text-align: center; font-family: sans-serif; width: 100%;
+margin:auto;" @onkeyup="DüğmeyeBasıldı">
     @if(Başlık == "Giriş Yap")
     {
         <h1 style="color:rgb(0,120,0); font-size: xx-large;">@Başlık</h1>
@@ -60,19 +60,15 @@ margin:auto; max-width:15cm; padding-bottom: 5%;" @onkeyup="DüğmeyeBasıldı">
         <h1 style="color:#4169e1; font-size: xx-large;">@Başlık</h1>
     }
 
-    <input type="text" style="width:100%;" placeholder="Kullanıcı Adı"
-    class="tek-kenarlı-kutu_0_120_0" @bind="kullanıcı_adı"/>
+    <input type="text" style="" placeholder="Kullanıcı Adı"
+    class="tek-kenarlı-kutu_0_120_0 giriş_girdi" @bind="kullanıcı_adı"/>
 
-    <input type="password" style="width:100%;" placeholder="Parola"
-    class="tek-kenarlı-kutu_0_120_0" @bind="parola"/>
+    <input type="password" style="" placeholder="Parola"
+    class="tek-kenarlı-kutu_0_120_0 giriş_girdi" @bind="parola"/>
 
     <button class="düğme_0_120_0" @onclick="GirişYap"
-    style="font-size: x-large; margin: 7% 1%; width: 100%;"
+    style="font-size: x-large; margin: 7% 10% 3%; width: 80%;"
     >Giriş Yap</button>
-    <br/>
-    <button class="düğme_808080" @onclick="ParolamıUnuttum"
-    style="font-size: medium; margin: 0 1%; width: 100%;"
-    >Parolamı Unuttum</button>
 </div>
 
 @code {
@@ -109,10 +105,6 @@ margin:auto; max-width:15cm; padding-bottom: 5%;" @onkeyup="DüğmeyeBasıldı">
         {
             Başlık = "Giriş Reddedildi";
         }
-    }
-    private void ParolamıUnuttum()
-    {
-        NavigationManager.NavigateTo("/parolamı_unuttum");
     }
     private void DüğmeyeBasıldı(KeyboardEventArgs klavye_olayları)
     {

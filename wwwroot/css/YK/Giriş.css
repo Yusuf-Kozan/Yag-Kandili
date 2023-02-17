@@ -89,7 +89,7 @@ For more information about the license of Yağ Kandili, see
     cursor: pointer;
 }
 .kaydırmalı_sekme-dış {
-    overflow: scroll;
+    overflow: hidden;
 }
 .kaydırmalı_sekme-iç {
     display: inline-block;
@@ -99,6 +99,9 @@ For more information about the license of Yağ Kandili, see
     transition: 500ms;
     transition-delay: 50ms;
     text-align: center;
+}
+.giriş_girdi {
+    width: calc(80% - 6px);
 }
 
 @media (orientation: landscape) and (min-height: 500px)
