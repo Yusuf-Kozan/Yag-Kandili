@@ -1,5 +1,5 @@
 @*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022-2023 Yusuf Kozan
 
 ---
 
@@ -45,11 +45,13 @@ For more information about the license of Yağ Kandili, see
 @namespace Bileşenler.Giriş
 
 <div class="lisans_bildirimi" style="margin: 2% auto; text-align: justify;">
-    <div style="text-align: center;">
-            <button class="düğme_808080" @onclick="AydınlatmaMetni"
-            style="font-size: large;">@düğme_yazısı</button>
-    </div>
-    <div class="kutu_000000" style="@style">
+    
+    <button class="düğme_808080" @onclick="AydınlatmaMetni"
+    style="font-size: large; width: 100%; margin: 1% 1%; text-align: center;"
+    >@düğme_yazısı</button>
+    
+    <div class="kutu_000000" style="padding: 2%; margin: auto 1%;
+    width: calc(96% - 4px); display: @(display);">
         <h3 style="text-align: center;">Kişisel Verilerin Korunmasına İlişkin Aydınlatma Metni</h3>
         <p>Bu aydınlatma metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun
         10. maddesi ile Aydınlatma Yükümlülüğünün Yerine Getirilmesinde Uyulacak
@@ -124,26 +126,26 @@ For more information about the license of Yağ Kandili, see
         göre <a href="mailto:destek@yagkandili.com.tr">destek@yagkandili.com.tr</a>
         e-posta adresine yazılı olarak iletebilirsiniz.</p>
 
-        <div style="text-align: center;">
-            <button class="düğme_808080" @onclick="AydınlatmaMetni"
-            style="font-size: large;">@düğme_yazısı</button>
-        </div>
+        
+        <button class="düğme_808080" @onclick="AydınlatmaMetni"
+        style="font-size: large; text-align: center; width: 90%;
+        margin: 1% 5%;">@düğme_yazısı</button>
     </div>
 </div>
 
 @code{
-    private string style = "display: none; padding: 2%;";
+    private string display = "none";
     private string düğme_yazısı = "Aydınlatma Metnini Göster";
     private void AydınlatmaMetni()
     {
-        if (!style.Contains("display: block;"))
+        if (display != "block")
         {
-            style = "display: block; padding: 2%;";
+            display = "block";
             düğme_yazısı = "Aydınlatma Metnini Gizle";
         }
-        else if (!style.Contains("display: none;"))
+        else if (display != "none")
         {
-            style = "display: none; padding: 2%;";
+            display = "none";
             düğme_yazısı = "Aydınlatma Metnini Göster";
         }
     }
