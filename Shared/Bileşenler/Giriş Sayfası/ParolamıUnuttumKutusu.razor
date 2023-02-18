@@ -48,9 +48,8 @@ For more information about the license of Yağ Kandili, see
 
 @namespace Bileşenler
 
-<div style="text-align: center; width: 100%;
-    margin: auto;"
-    id="parolamı-unuttum" autocomplete="off">
+<div style="text-align: center; width: 100%; margin: auto;"
+id="parolamı-unuttum" autocomplete="off">
 
     @if (başlık == esas_başlık)
     {
@@ -64,18 +63,18 @@ For more information about the license of Yağ Kandili, see
     }
 
     <input type="text" placeholder="Kullanıcı Adınız"
-        class="tek-kenarlı-kutu_662900 giriş_girdi"
-        style=""
-        @bind="kullanıcı_adı"/>
+    class="tek-kenarlı-kutu_662900 giriş_girdi"
+    style="margin: 2% 3px;"
+    @bind="kullanıcı_adı"/>
 
     <input type="text" placeholder="E-Posta Adresiniz"
-        class="tek-kenarlı-kutu_662900 giriş_girdi"
-        style=""
-        @bind="e_posta"/>
+    class="tek-kenarlı-kutu_662900 giriş_girdi"
+    style="margin: 2% 3px;"
+    @bind="e_posta"/>
     
-    <input type="button" value="Parolamı Yenile" class="düğme_662900"
-        style="width: 80%; margin: 7% 10% 3%; font-size: x-large;"
-        @onclick="Yenile"/>
+    <button class="düğme_662900" @onclick="Yenile"
+    style="width: 80%; margin: 5% 10% 3%; font-size: x-large;"
+    >Parolamı Yenile</button>
 </div>
 
 @code {

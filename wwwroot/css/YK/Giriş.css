@@ -88,18 +88,6 @@ For more information about the license of Yağ Kandili, see
     text-decoration: none;
     cursor: pointer;
 }
-.kaydırmalı_sekme-dış {
-    overflow: hidden;
-}
-.kaydırmalı_sekme-iç {
-    display: inline-block;
-    height: 0;
-    width: 0;
-    overflow: hidden;
-    transition: 500ms;
-    transition-delay: 50ms;
-    text-align: center;
-}
 .giriş_girdi {
     width: calc(80% - 6px);
 }
