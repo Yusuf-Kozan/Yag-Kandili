@@ -52,9 +52,9 @@ For more information about the license of Yağ Kandili, see
     <div id="giriş-işler">
         <div id="giriş-işler-baş">
             <button class="sekme_ff6600" disabled="@girişte"
-            @onclick="KandilYaktır" id="giriş-gir">Giriş Yap</button>
+            @onclick="GirişYaptır" id="giriş-gir">Giriş Yap</button>
             <button class="sekme_ff6600" disabled="@(!girişte)"
-            @onclick="GirişYaptır" id="giriş-yak">Kandil Yak</button>
+            @onclick="KandilYaktır" id="giriş-yak">Kandil Yak</button>
         </div>
         @if (girişte)
         {
@@ -98,11 +98,12 @@ For more information about the license of Yağ Kandili, see
 
 @code {
     private bool girişte = true;
-    private void KandilYaktır()
+    private void GirişYaptır()
     {
+        GirişeDön();
         girişte = true;
     }
-    private void GirişYaptır()
+    private void KandilYaktır()
     {
         girişte = false;
     }
