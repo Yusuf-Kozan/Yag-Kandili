@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022-2023 Yusuf Kozan
 
 ---
 
@@ -45,6 +45,7 @@ For more information about the license of Yağ Kandili, see
 .p-genel {
     text-align: center;
     height: 100%;
+    margin-top: 1%;
 }
 .p-başlık {
     font-family: sans-serif, Helvetica, Arial;
@@ -52,7 +53,7 @@ For more information about the license of Yağ Kandili, see
     text-align: center;
     color: #cc22b2;
     font-weight: bold;
-    margin: 1%;
+    margin: auto 1% 1% 1%;
     border: none;
 }
 .p-başlık-bileşen {
@@ -102,7 +103,8 @@ For more information about the license of Yağ Kandili, see
 }*/
 .p-sayfa {
     width: 80%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     font-family: Lexend, sans-serif;
     font-size: large;
     line-height: 150%;
