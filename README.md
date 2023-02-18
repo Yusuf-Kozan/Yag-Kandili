@@ -1,7 +1,8 @@
 # Yağ Kandili
 
 
-Yağ Kandili özgür bir toplumsal iletişim ortamı (sosyal medya) yazılımıdır.
+Yağ Kandili, büsbütütün özgür yazılım olan
+bir toplumsal iletişim ortamı yazılımıdır.
 
 .NET 6'nın parçası olan Blazor on Server çerçevesi ile yapılmıştır.
 
