@@ -92,46 +92,49 @@ For more information about the license of Yağ Kandili, see
         {
             başlık = "Tüm Kutuları Doldurmalısınız";
         }
-        else if (EmailValidator.Validate(e_posta, true, true))
+        else
         {
-            if (Esas.VeriTabanı.Üyelik.EPostaBuKullanıcının(kullanıcı_adı, e_posta))
+            if (EmailValidator.Validate(e_posta, true, true))
             {
-                string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
-                DateTime baş_tarih = DateTime.Now;
-                DateTime son_tarih = baş_tarih.AddHours(2);
-                GeçiciBağlantı bağlantı = new GeçiciBağlantı
-                                    (
-                                        kullanıcı_kimliği,
-                                        baş_tarih,
-                                        son_tarih,
-                                        "parola unutma"
-                                    );
-                Esas.VeriTabanı.GeçiciBağlantı.BağlantıEkle(bağlantı);
-
-                try
+                if (Esas.VeriTabanı.Üyelik.EPostaBuKullanıcının(kullanıcı_adı, e_posta))
                 {
-                    Esas.Posta.GönderenSMTPBilgisi gönderen_smtp = new Esas.Posta.GönderenSMTPBilgisi();
-                    gönderen_smtp.AyarBelgesiniOku();
-                    Esas.Posta.GönderenIMAPBilgisi gönderen_imap = new Esas.Posta.GönderenIMAPBilgisi();
-                    gönderen_imap.AyarBelgesiniOku();
-                    ÜyeBil alıcı = Esas.VeriTabanı.Üyelik.Kimliğinİyesi(kullanıcı_kimliği);
-                    Esas.Posta.PostaGönder.TekKullanıcıyaGönder
-                                (
-                                    gönderen_smtp,
-                                    gönderen_imap,
-                                    alıcı,
-                                    "Parola Yenileme | Yağ Kandili",
-                                    "Parolanızı unuttuysanız önümüzdeki 2 saat boyunca " +
-                                    $"https://yagkandili.com.tr/g/{bağlantı.BAĞLANTI_DEĞİŞKENİ} " +
-                                    "adresinden yeni parola oluşturabilirsiniz."
-                                );
+                    string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
+                    DateTime baş_tarih = DateTime.Now;
+                    DateTime son_tarih = baş_tarih.AddHours(2);
+                    GeçiciBağlantı bağlantı = new GeçiciBağlantı
+                                        (
+                                            kullanıcı_kimliği,
+                                            baş_tarih,
+                                            son_tarih,
+                                            "parola unutma"
+                                        );
+                    Esas.VeriTabanı.GeçiciBağlantı.BağlantıEkle(bağlantı);
+
+                    try
+                    {
+                        Esas.Posta.GönderenSMTPBilgisi gönderen_smtp = new Esas.Posta.GönderenSMTPBilgisi();
+                        gönderen_smtp.AyarBelgesiniOku();
+                        Esas.Posta.GönderenIMAPBilgisi gönderen_imap = new Esas.Posta.GönderenIMAPBilgisi();
+                        gönderen_imap.AyarBelgesiniOku();
+                        ÜyeBil alıcı = Esas.VeriTabanı.Üyelik.Kimliğinİyesi(kullanıcı_kimliği);
+                        Esas.Posta.PostaGönder.TekKullanıcıyaGönder
+                                    (
+                                        gönderen_smtp,
+                                        gönderen_imap,
+                                        alıcı,
+                                        "Parola Yenileme | Yağ Kandili",
+                                        "Parolanızı unuttuysanız önümüzdeki 2 saat boyunca " +
+                                        $"https://yagkandili.com.tr/g/{bağlantı.BAĞLANTI_DEĞİŞKENİ} " +
+                                        "adresinden yeni parola oluşturabilirsiniz."
+                                    );
+                    }
+                    catch
+                    {}
                 }
-                catch
-                {}
             }
+            kullanıcı_adı = null;
+            e_posta = null;
+            başlık = "Girdiğiniz bilgiler doğruysa parola yenileme e-postanız gönderildi.";
         }
-        kullanıcı_adı = null;
-        e_posta = null;
-        başlık = "Girdiğiniz bilgiler doğruysa parola yenileme e-postanız gönderildi.";
     }
 }
