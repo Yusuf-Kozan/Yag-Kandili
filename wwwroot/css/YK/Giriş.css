@@ -47,14 +47,14 @@ For more information about the license of Yağ Kandili, see
     display: block;
     height: 100vh;
     width: 100%;
-    overflow: scroll;
+    overflow: auto;
 }
 #giriş-işler {
     display: block;
     height: auto;
     width: auto;
     margin: 3% 3% 4%;
-    overflow: scroll;
+    overflow: auto;
     background-color: #fff0e6;
     border-radius: 15px;
     position: relative;
