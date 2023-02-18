@@ -58,24 +58,21 @@ For more information about the license of Yağ Kandili, see
         </div>
         @if (girişte)
         {
-            <div class="kaydırmalı_sekme-dış">
-                <div class="kaydırmalı_sekme-iç"
-                style="height: @(giriş_boy); width: @(giriş_boy);
-                float: right;">
-                    <OturumAç/>
-                    <button class="düğme_808080" @onclick="ParolamıUnuttum"
-                    style="font-size: medium; margin: 3% 10%;
-                    width: 80%;"
-                    >Parolamı Unuttum</button>
-                </div>
-                <div class="kaydırmalı_sekme-iç"
-                style="height: @(unuttum_boy); width: @(unuttum_boy);">
-                    <ParolamıUnuttumKutusu/>
-                    <button class="düğme_808080" @onclick="GirişeDön"
-                    style="font-size: medium; margin: 3% 10%; width: 80%;"
-                    >Geri Dön</button>
-                </div>
-            </div>
+            @if (!parolamı_unuttumda)
+            {
+                <OturumAç/>
+                <button class="düğme_808080" @onclick="ParolamıUnuttum"
+                style="font-size: medium; margin: 3% 10%;
+                width: 80%;"
+                >Parolamı Unuttum</button>
+            }
+            else
+            {
+                <ParolamıUnuttumKutusu/>
+                <button class="düğme_808080" @onclick="GirişeDön"
+                style="font-size: medium; margin: 3% 10%; width: 80%;"
+                >Geri Dön</button>
+            }
         }
         else
         {
@@ -100,7 +97,7 @@ For more information about the license of Yağ Kandili, see
     private bool girişte = true;
     private void GirişYaptır()
     {
-        GirişeDön();
+        parolamı_unuttumda = false;
         girişte = true;
     }
     private void KandilYaktır()
@@ -108,16 +105,13 @@ For more information about the license of Yağ Kandili, see
         girişte = false;
     }
 
-    private string giriş_boy = "100%";
-    private string unuttum_boy = "0";
+    private bool parolamı_unuttumda = false;
     private void ParolamıUnuttum()
     {
-        giriş_boy = "0";
-        unuttum_boy = "100%";
+        parolamı_unuttumda = true;
     }
     private void GirişeDön()
     {
-        unuttum_boy = "0";
-        giriş_boy = "100%";
+        parolamı_unuttumda = false;
     }
 }
