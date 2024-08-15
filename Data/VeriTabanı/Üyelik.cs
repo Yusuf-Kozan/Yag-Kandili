@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022,2024 Yusuf Kozan
 
 ---
 
@@ -43,11 +43,12 @@ For more information about the license of Yağ Kandili, see
 /Lisans directory.
 */
 using System;
-using System.IO;
 using System.Globalization;
 using MySql.Data.MySqlClient;
+using EmailValidation;
 using Esas;
 using Kilnevüg;
+using System.Text;
 
 namespace Esas.VeriTabanı
 {
@@ -213,14 +214,22 @@ namespace Esas.VeriTabanı
         }
         internal static string KullanıcınınKimliği(string kullanıcı_adı)
         {
-            string komut_metni = $"SELECT Kimlik FROM {TabloAdı()} WHERE Kullanıcı_Adı = @kullanıcı_adı";
+            StringBuilder komut_metni = new StringBuilder();
+            komut_metni.Append($"SELECT Kimlik FROM {TabloAdı()} WHERE ");
+
+            bool aslında_eposta = EmailValidator.Validate(kullanıcı_adı, true, true);
+            if (aslında_eposta)
+                komut_metni.Append("E_Posta = @girdi;");
+            else
+                komut_metni.Append("Kullanıcı_Adı = @girdi;");
+            
             MySqlConnection bağlantı = new MySqlConnection(Bağlantı.bağlantı_dizesi);
             bağlantı.Open();
-            MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
-            komut.Parameters.AddWithValue("@kullanıcı_adı", kullanıcı_adı);
+            MySqlCommand komut = new MySqlCommand(komut_metni.ToString(), bağlantı);
+            komut.Parameters.AddWithValue("@girdi", kullanıcı_adı);
             string kullanıcı_kimliği = komut.ExecuteScalar().ToString();
-            bağlantı.Close(); bağlantı = null;
-            komut.Dispose(); komut = null;
+            bağlantı.Close(); bağlantı.Dispose();
+            komut.Dispose();
             return kullanıcı_kimliği;
         }
         internal static string KullanıcınınParolaBilgileri(string kullanıcı_kimliği)

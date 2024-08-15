@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022,2024 Yusuf Kozan
 
 ---
 
@@ -51,11 +51,10 @@ namespace İşlemler
 {
     public class Oturumİşlemleri
     {
-        public static void Oturum_Başlat(string kullanıcı_adı, IJSRuntime jsRuntime)
+        public static void Oturum_Başlat(string kullanıcı_kimliği, IJSRuntime jsRuntime)
         {
             Çerezler çerez = new Çerezler(jsRuntime);
             string oturum_kimliği = OturumKimliği.YeniKimlik();
-            string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
             çerez.ÇerezYap("KULLANICI", kullanıcı_kimliği, 4);
             çerez.ÇerezYap("OTURUM", oturum_kimliği, 4);
             Esas.VeriTabanı.Oturum.OturumAç(oturum_kimliği, kullanıcı_kimliği);
@@ -67,14 +66,6 @@ namespace İşlemler
             çerez.ÇerezSil("OTURUM");
             if (Esas.VeriTabanı.Oturum.BuOturumAçık(oturum_kimliği, kullanıcı_kimliği))
                 Esas.VeriTabanı.Oturum.OturumKapat(oturum_kimliği);
-        }
-    }
-    public class Üyelikİşlemleri
-    {
-        public static void ÜyeOluştur(Üye üye)
-        {
-            string kullanıcı_kimliği = KullanıcıKimliği.Kimlik(üye);
-            Esas.VeriTabanı.Üyelik.ÜyeEkle(üye, kullanıcı_kimliği);
         }
     }
     public class Paylaşımİşlemleri

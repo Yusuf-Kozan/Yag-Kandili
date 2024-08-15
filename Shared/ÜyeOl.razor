@@ -1,5 +1,5 @@
 @*
-Copyright (C) 2022-2023 Yusuf Kozan
+Copyright (C) 2022-2024 Yusuf Kozan
 
 ---
 
@@ -139,7 +139,7 @@ margin:auto;">
                 Başlık = "Bu e-posta adresi uygun değil";
                 bilgiler[2] = null;
             }
-            else if (KullanıcıAdıKullanımda)
+            else if (KullanıcıAdıKullanımda || EmailValidator.Validate(bilgiler[1], true, true))
             {
                 Başlık = "Bu kullanıcı adı uygun değil";
                 bilgiler[1] = null;
@@ -152,8 +152,11 @@ margin:auto;">
                 bilgiler[3] = Parolalar.argon2id8_32_2_32(bilgiler[3], tuz);
                 Üye yeni_üye = new Üye(bilgiler[0], bilgiler[1], bilgiler[3],
                                         bilgiler[2], "kullanıcı", DateTime.Now, bilgiler[5]);
-                Üyelikİşlemleri.ÜyeOluştur(yeni_üye);
-                Oturumİşlemleri.Oturum_Başlat(yeni_üye.KULLANICI_ADI, JSRuntime);
+                
+                string kullanıcı_kimliği = KullanıcıKimliği.Kimlik(yeni_üye);
+                Esas.VeriTabanı.Üyelik.ÜyeEkle(yeni_üye, kullanıcı_kimliği);
+
+                Oturumİşlemleri.Oturum_Başlat(kullanıcı_kimliği, JSRuntime);
                 NavigationManager.NavigateTo("/ana");
             }
         }
