@@ -9,7 +9,7 @@ bir toplumsal iletişim ortamı yazılımıdır.
 [Belgelere buradan ulaşabilirsiniz.](/Belgeler)
 
 ## Lisans
-Copyright (C) 2022-2023 Yusuf Kozan
+Copyright (C) 2022-2024 Yusuf Kozan
 
 ---
 
