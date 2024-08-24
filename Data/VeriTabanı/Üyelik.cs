@@ -193,7 +193,7 @@ namespace Esas.VeriTabanı
             bağlantı.Open();
             MySqlCommand komut = new MySqlCommand(komut_metni, bağlantı);
             komut.Parameters.AddWithValue("@kullanıcı_kimliği", kullanıcı_kimliği);
-            ÜyeBil üye = new ÜyeBil();
+            ÜyeBil üye = null;
             CultureInfo TR = new CultureInfo("tr-TR");
             MySqlDataReader veri_okuyucu = komut.ExecuteReader();
             while (veri_okuyucu.Read())
@@ -207,9 +207,9 @@ namespace Esas.VeriTabanı
                 üye.RESİM = veri_okuyucu["Resim"].ToString();
                 üye.KİMLİK = veri_okuyucu["Kimlik"].ToString();
             }
-            veri_okuyucu.Close(); veri_okuyucu = null;
-            bağlantı.Close(); bağlantı = null;
-            komut.Dispose(); komut = null;
+            veri_okuyucu.Close(); veri_okuyucu.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
+            komut.Dispose();
             return üye;
         }
         internal static string KullanıcınınKimliği(string kullanıcı_adı)

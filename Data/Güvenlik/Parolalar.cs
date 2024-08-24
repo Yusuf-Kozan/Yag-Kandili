@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022,2024 Yusuf Kozan
 
 ---
 
@@ -92,41 +92,34 @@ namespace Kilnevüg
 
             return sonuç;
         }
-        internal static bool UnutulanParolayıYenile(
-                            string kullanıcı_adı, string kullanıcı_kimliği,
-                            string e_posta, string yeni_parola)
+        internal static bool UnutulanParolayıYenile(string kullanıcı_kimliği, string yeni_parola)
         {
             ÜyeBil kullanıcı = Esas.VeriTabanı.Üyelik.Kimliğinİyesi(kullanıcı_kimliği);
-            if (kullanıcı.KULLANICI_ADI == kullanıcı_adı)
+            if (kullanıcı != null)
             {
-                if (Esas.VeriTabanı.Üyelik.EPostaBuKullanıcının(kullanıcı_adı, e_posta))
+                try
                 {
-                    try
-                    {
-                        Esas.VeriTabanı.Üyelik.BilinmeyenParolayıDeğiştir(kullanıcı_kimliği,
-                                                e_posta, yeni_parola);
-                        string tarih = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
-                        Esas.Posta.GönderenSMTPBilgisi gönderen_smtp = new Esas.Posta.GönderenSMTPBilgisi();
-                        gönderen_smtp.AyarBelgesiniOku();
-                        Esas.Posta.GönderenIMAPBilgisi gönderen_imap = new Esas.Posta.GönderenIMAPBilgisi();
-                        gönderen_imap.AyarBelgesiniOku();
-                        Esas.Posta.PostaGönder.TekKullanıcıyaGönder(
-                            gönderen_smtp,
-                            gönderen_imap,
-                            kullanıcı,
-                            "Yağ Kandili Güvenlik Uyarısı",
-                            $"Parolanız {tarih} tarihinde " +
-                            "\"Parolamı Unuttum\" bölümünden değiştirildi."
-                        );
-                        return true;
-                    }
-                    catch
-                    {
-                        return false;
-                    }
+                    Esas.VeriTabanı.Üyelik.BilinmeyenParolayıDeğiştir(kullanıcı_kimliği,
+                                            kullanıcı.E_POSTA, yeni_parola);
+                    string tarih = DateTime.Now.ToString("dd.MM.yyyy HH.mm.ss");
+                    Esas.Posta.GönderenSMTPBilgisi gönderen_smtp = new Esas.Posta.GönderenSMTPBilgisi();
+                    gönderen_smtp.AyarBelgesiniOku();
+                    Esas.Posta.GönderenIMAPBilgisi gönderen_imap = new Esas.Posta.GönderenIMAPBilgisi();
+                    gönderen_imap.AyarBelgesiniOku();
+                    Esas.Posta.PostaGönder.TekKullanıcıyaGönder(
+                        gönderen_smtp,
+                        gönderen_imap,
+                        kullanıcı,
+                        "Yağ Kandili Güvenlik Uyarısı",
+                        $"Parolanız {tarih} tarihinde " +
+                        "\"Parolamı Unuttum\" bölümünden değiştirildi."
+                    );
+                    return true;
                 }
-                else
+                catch
+                {
                     return false;
+                }
             }
             else
                 return false;

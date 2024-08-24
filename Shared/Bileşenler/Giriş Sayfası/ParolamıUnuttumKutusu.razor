@@ -1,5 +1,5 @@
 @*
-Copyright (C) 2022-2023 Yusuf Kozan
+Copyright (C) 2022-2024 Yusuf Kozan
 
 ---
 
@@ -62,15 +62,10 @@ id="parolamı-unuttum" autocomplete="off" @onkeyup="DüğmeyeBasıldı">
             font-family: sans-serif;">@başlık</h1>
     }
 
-    <input type="text" placeholder="Kullanıcı Adınız"
+    <input type="text" placeholder="Kullanıcı Adınız ya da E-Posta Adresiniz"
     class="tek-kenarlı-kutu_662900 giriş_girdi"
     style="margin: 2% 3px;"
     @bind="kullanıcı_adı"/>
-
-    <input type="text" placeholder="E-Posta Adresiniz"
-    class="tek-kenarlı-kutu_662900 giriş_girdi"
-    style="margin: 2% 3px;"
-    @bind="e_posta"/>
     
     <button class="düğme_662900" @onclick="Yenile"
     style="width: 80%; margin: 5% 10% 3%; font-size: x-large;"
@@ -83,57 +78,68 @@ id="parolamı-unuttum" autocomplete="off" @onkeyup="DüğmeyeBasıldı">
     private const string esas_başlık = "Parolamı Unuttum";
 
     private string kullanıcı_adı;
-    private string e_posta;
 
     private void Yenile()
     {
-        if (string.IsNullOrWhiteSpace(kullanıcı_adı) || string.IsNullOrWhiteSpace(e_posta))
+        if (string.IsNullOrWhiteSpace(kullanıcı_adı))
         {
-            başlık = "Tüm Kutuları Doldurmalısınız";
+            başlık = "Kullanıcı Adınızı ya da E-Posta Adresinizi Girmelisiniz";
         }
         else
         {
-            if (EmailValidator.Validate(e_posta, true, true))
+            bool aslında_eposta = EmailValidator.Validate(kullanıcı_adı, true, true);
+            bool yenileyebilir = false;
+            if (aslında_eposta)
             {
-                if (Esas.VeriTabanı.Üyelik.EPostaBuKullanıcının(kullanıcı_adı, e_posta))
-                {
-                    string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
-                    DateTime baş_tarih = DateTime.Now;
-                    DateTime son_tarih = baş_tarih.AddHours(2);
-                    GeçiciBağlantı bağlantı = new GeçiciBağlantı
-                                        (
-                                            kullanıcı_kimliği,
-                                            baş_tarih,
-                                            son_tarih,
-                                            "parola unutma"
-                                        );
-                    Esas.VeriTabanı.GeçiciBağlantı.BağlantıEkle(bağlantı);
-
-                    try
-                    {
-                        Esas.Posta.GönderenSMTPBilgisi gönderen_smtp = new Esas.Posta.GönderenSMTPBilgisi();
-                        gönderen_smtp.AyarBelgesiniOku();
-                        Esas.Posta.GönderenIMAPBilgisi gönderen_imap = new Esas.Posta.GönderenIMAPBilgisi();
-                        gönderen_imap.AyarBelgesiniOku();
-                        ÜyeBil alıcı = Esas.VeriTabanı.Üyelik.Kimliğinİyesi(kullanıcı_kimliği);
-                        Esas.Posta.PostaGönder.TekKullanıcıyaGönder
-                                    (
-                                        gönderen_smtp,
-                                        gönderen_imap,
-                                        alıcı,
-                                        "Parola Yenileme | Yağ Kandili",
-                                        "Parolanızı unuttuysanız önümüzdeki 2 saat boyunca " +
-                                        $"https://yagkandili.com.tr/g/{bağlantı.BAĞLANTI_DEĞİŞKENİ} " +
-                                        "adresinden yeni parola oluşturabilirsiniz."
-                                    );
-                    }
-                    catch
-                    {}
-                }
+                yenileyebilir = Esas.VeriTabanı.Üyelik.EPostaKullanımda(kullanıcı_adı);
             }
-            kullanıcı_adı = null;
-            e_posta = null;
-            başlık = "Girdiğiniz bilgiler doğruysa parola yenileme e-postanız gönderildi.";
+            else
+            {
+                yenileyebilir = Esas.VeriTabanı.Üyelik.KullanıcıAdıKullanımda(kullanıcı_adı);
+            }
+
+            başlık = "Parola yenileme e-postanız gönderildi.";
+
+            if (yenileyebilir)
+            {
+                string kullanıcı_kimliği = Esas.VeriTabanı.Üyelik.KullanıcınınKimliği(kullanıcı_adı);
+                kullanıcı_adı = null;
+                DateTime baş_tarih = DateTime.Now;
+                DateTime son_tarih = baş_tarih.AddHours(2);
+                GeçiciBağlantı bağlantı = new GeçiciBağlantı
+                                    (
+                                        kullanıcı_kimliği,
+                                        baş_tarih,
+                                        son_tarih,
+                                        "parola unutma"
+                                    );
+                Esas.VeriTabanı.GeçiciBağlantı.BağlantıEkle(bağlantı);
+            
+                try
+                {
+                    Esas.Posta.GönderenSMTPBilgisi gönderen_smtp = new Esas.Posta.GönderenSMTPBilgisi();
+                    gönderen_smtp.AyarBelgesiniOku();
+                    Esas.Posta.GönderenIMAPBilgisi gönderen_imap = new Esas.Posta.GönderenIMAPBilgisi();
+                    gönderen_imap.AyarBelgesiniOku();
+                    ÜyeBil alıcı = Esas.VeriTabanı.Üyelik.Kimliğinİyesi(kullanıcı_kimliği);
+                    Esas.Posta.PostaGönder.TekKullanıcıyaGönder
+                                (
+                                    gönderen_smtp,
+                                    gönderen_imap,
+                                    alıcı,
+                                    "Parola Yenileme | Yağ Kandili",
+                                    "Parolanızı unuttuysanız önümüzdeki 2 saat boyunca " +
+                                    $"https://yagkandili.com.tr/g/{bağlantı.BAĞLANTI_DEĞİŞKENİ} " +
+                                    "adresinden yeni parola oluşturabilirsiniz."
+                                );
+                }
+                catch
+                {}
+            }
+            else
+            {
+                kullanıcı_adı = null;
+            }
         }
     }
     private void DüğmeyeBasıldı(KeyboardEventArgs klavye_olayları)
