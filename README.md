@@ -4,12 +4,23 @@
 Yağ Kandili, büsbütütün özgür yazılım olan
 bir toplumsal iletişim ortamı yazılımıdır.
 
-.NET 6'nın parçası olan Blazor on Server çerçevesi ile yapılmıştır.
+.NET 8'in parçası olan Blazor Server çerçevesi ile yapılmıştır.
 
 [Belgelere buradan ulaşabilirsiniz.](/Belgeler)
 
+## Güncel Sürüm: ***flamingo-0***
+> 30 Eylül 2025
+
+- Sürüm notları yazılmaya başladı.
+
+- .NET sürümü 6'dan 8'e yükseltildi.
+
+- `MySql.Data` kütüphanesinin sürümü 8.0.31'den 9.4.0'a
+    yükseltildi.
+
+
 ## Lisans
-Copyright (C) 2022-2024 Yusuf Kozan
+Copyright (C) 2022-2025 Yusuf Kozan
 
 ---
 

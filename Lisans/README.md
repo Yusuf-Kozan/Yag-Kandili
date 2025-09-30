@@ -54,11 +54,11 @@ Almadıysanız, <https://www.gnu.org/licenses/> adresine bakın.
  NuGet Gallery sayfası: https://www.nuget.org/packages/MailKit/3.0.0
 
 ### MySql.Data
->Kullanılan sürüm: 8.0.31  
- Copyright (C) 2004, 2022 Oracle and/or its affiliates  
+>Kullanılan sürüm: 9.4.0  
+ Copyright (c) 2004, 2025, Oracle and/or its affiliates  
  Lisans: [GPL 2.0 with The Universal FOSS Exception 1.0](/Lisans/Kütüphanelerin_Lisansları/MySql.Data-lisans.txt)  
- Kaynak: https://github.com/mysql/mysql-connector-net/tree/8.0.31  
- NuGet Gallery sayfası: https://www.nuget.org/packages/MySql.Data/8.0.31
+ Kaynak: https://github.com/mysql/mysql-connector-net/tree/9.4.0  
+ NuGet Gallery sayfası: https://www.nuget.org/packages/MySql.Data/9.4.0
 
 ### Newtonsoft.Json
 >Kullanılan sürüm: 13.0.2  
@@ -123,7 +123,7 @@ CSS Tanımları: [/wwwroot/css/yazı_tipi/Lexend.css](/wwwroot/css/yazı_tipi/Le
 
 ---
 
-*Copyright (C) 2022-2023 Yusuf Kozan*  
+*Copyright (C) 2022-2023,2025 Yusuf Kozan*  
 
 *Bu belge Yağ Kandili'nin bir parçasıdır.*
 

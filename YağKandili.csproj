@@ -1,5 +1,5 @@
 <!--
-Copyright (C) 2022-2023 Yusuf Kozan
+Copyright (C) 2022-2023,2025 Yusuf Kozan
 ___
 
 Bu belge Yağ Kandili'nin bir parçasıdır.
@@ -43,7 +43,7 @@ For more information about the license of Yağ Kandili, see
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>YağKandili</RootNamespace>
@@ -54,7 +54,7 @@ For more information about the license of Yağ Kandili, see
     <PackageReference Include="CryptHash.Net" Version="3.6.0" />
     <PackageReference Include="EmailValidation" Version="1.0.8" />
     <PackageReference Include="MailKit" Version="3.0.0" />
-    <PackageReference Include="MySql.Data" Version="8.0.31" />
+    <PackageReference Include="MySql.Data" Version="9.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
