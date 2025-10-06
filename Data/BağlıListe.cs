@@ -52,7 +52,7 @@ namespace Esas
         /**
             <summary>Düğümde tutulan veri</summary>
         */
-        private T veri;
+        protected T veri;
         /**
             <summary>Düğümde tutulan veriye erişim sağlar.</summary>
         */
@@ -71,7 +71,7 @@ namespace Esas
         /**
             <summary>Listedeki bir sonraki düğüm</summary>
         */
-        private BağlıListe<T> sonraki;
+        protected BağlıListe<T> sonraki;
         /**
             <summary>Listedeki bir sonraki düğüme erişim sağlar.</summary>
         */
