@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022,2025 Yusuf Kozan
 
 ---
 
@@ -48,31 +48,57 @@ using Kilnevüg;
 
 namespace Esas
 {
-    public class Paylaşım
+    internal class Paylaşım
     {
-        public long KİMLİK_1 {get; set;} // Veri tabanı tarafından otomatik artırılan sayılı kimlik
-        public string KİMLİK_2 {get; set;} // Yağ Kandili'nin oluşturmaya çalışacağı eşsizimsi kimlik
-        public string BAŞLIK {get; set;} // Paylaşımın başlığı
-        public string İÇERİK {get; set;} // Paylaşımın içerik kısmı (Asıl olay burada dönecek.)
-        public string EKLENTİ {get; set;} // Paylaşıma yerleştirilecek köprü, resim, video vb. şeyler
-        public string PAYLAŞAN {get; set;} // Paylaşımı yapan kişinin kullanıcı kimliği
-        public DateTime TARİH {get; set;} // Paylaşımın yapıldığı tarih
-        public string LİSANS {get; set;} // Paylaşımın kullanım koşulları
+        /**
+            <summary>
+                Veri tabanı tarafından otomatik artırılan sayılı kimlik
+            </summary>
+        */
+        private protected long kimlik1;
+        /**
+            <summary>Yağ Kandili'nin atadığı eşsiz kimlik</summary>
+        */
+        private protected string kimlik2;
+        /**
+            <summary>Paylaşımın başlık bölümü</summary>
+        */
+        private protected string başlık;
+        /**
+            <summary>Paylaşımın metin içeriği</summary>
+        */
+        private protected string içerik;
+        /**
+            <summary>Paylaşımla ilgili ek bilgiler</summary>
+        */
+        private protected string eklenti;
+        /**
+            <summary>Paylaşan kişinin kullanıcı kimliği</summary>
+        */
+        private protected string paylaşan;
+        /**
+            <summary>Paylaşımın yapıldığı tarih</summary>
+        */
+        private protected DateTime tarih;
+        /**
+            <summary>Paylaşımın kullanım koşulları</summary>
+        */
+        private protected string lisans;
 
-        public Paylaşım()
+        /**
+            <summary>Boş bir paylaşım nesnesi oluşturur.</summary>
+        */
+        internal Paylaşım()
         {}
-        public Paylaşım (long kimlik1, string kimlik2, string başlık, string içerik, string eklenti,
-                        string paylaşan, DateTime tarih)
-        {
-                KİMLİK_1 = kimlik1;
-                KİMLİK_2 = kimlik2;
-                BAŞLIK = başlık;
-                İÇERİK = içerik;
-                EKLENTİ = eklenti;
-                PAYLAŞAN = paylaşan;
-                TARİH = tarih;
-        }
-        public Paylaşım (string[] paylaşım_bilgileri)
+        /**
+            <summary>Bir string dizisinden paylaşım nesnesi oluşturur.</summary>
+
+            <param name="paylaşım_bilgileri">
+                Paylaşımın bilgilerinin sınıftaki tanım sırasıyla yer aldığı
+                bir string dizisi
+            </param>
+        */
+        internal Paylaşım (string[] paylaşım_bilgileri)
         {
             KİMLİK_1 = long.Parse(paylaşım_bilgileri[0]);
             KİMLİK_2 = paylaşım_bilgileri[1];
@@ -84,7 +110,113 @@ namespace Esas
             TARİH = DateTime.ParseExact(paylaşım_bilgileri[6], "yyyyMMddHHmmss", TR);
             LİSANS = paylaşım_bilgileri[7];
         }
+
+        /**
+            <summary>Otomatik artırılan sayılı kimliğe erişim sağlar.</summary>
+        */
+        internal long KİMLİK_1 {
+            get
+            {
+                return kimlik1;
+            }
+            set
+            {
+                kimlik1 = value;
+            }
+        }
+        /**
+            <summary>Yağ Kandili'nin atadığı kimliğe erişim sağlar.</summary>
+        */
+        internal string KİMLİK_2 {
+            get
+            {
+                return kimlik2;
+            }
+            set
+            {
+                kimlik2 = value;
+            }
+        }
+        /**
+            <summary>Paylaşımın başlığına erişim sağlar.</summary>
+        */
+        internal string BAŞLIK {
+            get
+            {
+                return başlık;
+            }
+            set
+            {
+                başlık = value;
+            }
+        }
+        /**
+            <summary>Paylaşımın metin içeriğine erişim sağlar.</summary>
+        */
+        internal string İÇERİK {
+            get
+            {
+                return içerik;
+            }
+            set
+            {
+                içerik = value;
+            }
+        }
+        /**
+            <summary>Paylaşımla ilgili ek bilgilere erişim sağlar.</summary>
+        */
+        internal string EKLENTİ {
+            get
+            {
+                return eklenti;
+            }
+            set
+            {
+                eklenti = value;
+            }
+        }
+        /**
+            <summary>Paylaşan kişinin kullanıcı kimliğine erişim sağlar.</summary>
+        */
+        internal string PAYLAŞAN {
+            get
+            {
+                return paylaşan;
+            }
+            set
+            {
+                paylaşan = value;
+            }
+        }
+        /**
+            <summary>Paylaşımın yapıldığı tarihe erişim sağlar.</summary>
+        */
+        internal DateTime TARİH {
+            get
+            {
+                return tarih;
+            }
+            set
+            {
+                tarih = value;
+            }
+        }
+        /**
+            <summary>Paylaşımın kullanım koşullarına erişim sağlar.</summary>
+        */
+        internal string LİSANS {
+            get
+            {
+                return lisans;
+            }
+            set
+            {
+                lisans = value;
+            }
+        }
     }
+    
     public struct paylaşım
     {
         public long KİMLİK_1;
