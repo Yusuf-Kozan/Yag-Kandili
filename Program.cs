@@ -81,6 +81,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<KullanıcıArayüzü.HerŞey>();
 builder.Services.AddScoped<KullanıcıArayüzü.AnaSayfa>();
+builder.Services.AddScoped<OturumBağlamı>();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddBlazorDownloadFile(ServiceLifetime.Scoped);

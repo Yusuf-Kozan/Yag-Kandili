@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022, 2025 Yusuf Kozan
 
 ---
 
@@ -48,6 +48,8 @@ using System.Globalization;
 using MySql.Data.MySqlClient;
 using Esas;
 using Kilnevüg;
+using System.Text;
+using System.Data;
 
 namespace Esas.VeriTabanı
 {
@@ -371,6 +373,81 @@ namespace Esas.VeriTabanı
             bağlantı.Close(); bağlantı.Dispose();
 
             return paylaşımlar;
+        }
+        internal static void TümPaylaşımlarıBağlamaGetir(OturumBağlamı bağlam)
+        {
+            StringBuilder sorgu_metni = new StringBuilder();
+            sorgu_metni.Append($"SELECT * FROM {Paylaşım.TabloAdı()} p ");
+            sorgu_metni.Append($"INNER JOIN {Üyelik.TabloAdı()} ü ");
+            sorgu_metni.Append("ON p.Paylaşan = ü.Kimlik ");
+            sorgu_metni.Append("WHERE Eklenti NOT LIKE '%>gizli%' ");
+            sorgu_metni.Append("ORDER BY Tarih DESC, Kimlik1 DESC;");
+
+            MySqlConnection bağlantı = new MySqlConnection(
+                Bağlantı.bağlantı_dizesi
+            );
+            bağlantı.Open();
+            MySqlCommand komut = new MySqlCommand(
+                sorgu_metni.ToString(),
+                bağlantı
+            );
+
+            CultureInfo TR = new CultureInfo("tr-TR");
+            
+            bağlam.TümPaylaşımlar = new BağlıListe<ÜyeliPaylaşım>(null);
+            BağlıListe<ÜyeliPaylaşım> kafa = bağlam.TümPaylaşımlar;
+
+            MySqlDataReader okuyucu = komut.ExecuteReader();
+            while (okuyucu.Read())
+            {
+                try
+                {
+                    ÜyeliPaylaşım yeni = new ÜyeliPaylaşım();
+                    ÜyeBil paylaşan = new ÜyeBil();
+
+                    yeni.KİMLİK_1 = okuyucu.GetInt64("Kimlik1");
+                    yeni.KİMLİK_2 = okuyucu.GetString("Kimlik2");
+                    yeni.BAŞLIK = okuyucu.GetString("Başlık");
+                    yeni.İÇERİK = okuyucu.GetString("İçerik");
+                    yeni.EKLENTİ = okuyucu.GetString("Eklenti");
+                    yeni.TARİH = DateTime.ParseExact(
+                        okuyucu.GetString("Tarih"),
+                        "yyyyMMddHHmmss",
+                        TR
+                    );
+                    yeni.LİSANS = okuyucu.GetString("Lisans");
+
+                    paylaşan.KULLANICI_ADI = okuyucu.GetString("Kullanıcı_Adı");
+                    paylaşan.AD = okuyucu.GetString("Ad");
+                    paylaşan.PAROLA = null;
+                    paylaşan.ÜSTÜNLÜK = okuyucu.GetString("Üstünlük");
+                    paylaşan.E_POSTA = okuyucu.GetString("E_Posta");
+                    paylaşan.BAŞLANGIÇ = DateTime.ParseExact(
+                        okuyucu.GetString("Başlangıç"),
+                        "yyyyMMddHHmmss",
+                        TR
+                    );
+                    paylaşan.RESİM = okuyucu.GetString("Resim");
+                    paylaşan.KİMLİK = okuyucu.GetString("Kimlik");
+
+                    yeni.PAYLAŞAN = paylaşan;
+
+                    if (kafa.Veri == null)
+                    {
+                        kafa.Veri = yeni;
+                    }
+                    else
+                    {
+                        kafa.Sonraki = new BağlıListe<ÜyeliPaylaşım>(yeni);
+                        kafa = kafa.Sonraki;
+                    }
+                }
+                finally
+                {}
+            }
+            okuyucu.Close(); okuyucu.Dispose();
+            komut.Dispose();
+            bağlantı.Close(); bağlantı.Dispose();
         }
         internal static string[,][] TakipEdilenlerinBilgileriylePaylaşımları(string[,] takip_edilenler)
         {
