@@ -48,7 +48,15 @@ using Kilnevüg;
 
 namespace Esas
 {
-    internal class Paylaşım
+    /**
+        <summary>
+            Alışılagelmiş paylaşım nesnesi.
+        </summary>
+        <remarks>
+            Kimlik1'i var. Paylaşanı string türünde.
+        </remarks>
+    */
+    internal class Paylaşım : PaylaşımÖzü
     {
         /**
             <summary>
@@ -57,34 +65,10 @@ namespace Esas
         */
         private protected long kimlik1;
         /**
-            <summary>Yağ Kandili'nin atadığı eşsiz kimlik</summary>
-        */
-        private protected string kimlik2;
-        /**
-            <summary>Paylaşımın başlık bölümü</summary>
-        */
-        private protected string başlık;
-        /**
-            <summary>Paylaşımın metin içeriği</summary>
-        */
-        private protected string içerik;
-        /**
-            <summary>Paylaşımla ilgili ek bilgiler</summary>
-        */
-        private protected string eklenti;
-        /**
             <summary>Paylaşan kişinin kullanıcı kimliği</summary>
         */
         private protected string paylaşan;
-        /**
-            <summary>Paylaşımın yapıldığı tarih</summary>
-        */
-        private protected DateTime tarih;
-        /**
-            <summary>Paylaşımın kullanım koşulları</summary>
-        */
-        private protected string lisans;
-
+        
         /**
             <summary>Boş bir paylaşım nesnesi oluşturur.</summary>
         */
@@ -124,6 +108,117 @@ namespace Esas
                 kimlik1 = value;
             }
         }
+        /**
+            <summary>Paylaşan kişinin kullanıcı kimliğine erişim sağlar.</summary>
+        */
+        internal string PAYLAŞAN {
+            get
+            {
+                return paylaşan;
+            }
+            set
+            {
+                paylaşan = value;
+            }
+        }
+    }
+
+    /**
+        <summary>
+            Paylaşanı ÜyeBil türünde olan
+            alışılagelmiş paylaşım nesnesi
+        </summary>
+        <remarks>
+            Kimlik1'i var. Paylaşanı ÜyeBil türünde.
+        </remarks>
+    */
+    internal class ÜyeliPaylaşım : PaylaşımÖzü
+    {
+        /**
+            <summary>
+                Veri tabanı tarafından otomatik artırılan sayılı kimlik
+            </summary>
+        */
+        private protected long kimlik1;
+        /**
+            <summary>Paylaşan kişinin üye nesnesi</summary>
+        */
+        private protected ÜyeBil paylaşan;
+        
+        /**
+            <summary>Boş bir paylaşım nesnesi oluşturur.</summary>
+        */
+        internal ÜyeliPaylaşım()
+        {}
+
+        /**
+            <summary>Otomatik artırılan sayılı kimliğe erişim sağlar.</summary>
+        */
+        internal long KİMLİK_1 {
+            get
+            {
+                return kimlik1;
+            }
+            set
+            {
+                kimlik1 = value;
+            }
+        }
+        /**
+            <summary>Paylaşan kişinin kullanıcı kimliğine erişim sağlar.</summary>
+        */
+        internal ÜyeBil PAYLAŞAN {
+            get
+            {
+                return paylaşan;
+            }
+            set
+            {
+                paylaşan = value;
+            }
+        }
+    }
+
+
+    /**
+        <summary>
+            Paylaşanı bile olmayan bir öz paylaşım.
+        </summary>
+        <remarks>
+            Kimlik1, Paylaşan, değer vb. özellikleri farklı
+            farklı yollarla uyarlarken her şeyi tekrar
+            tanımlamanın önüne geçmek için.
+        </remarks>
+    */
+    internal abstract class PaylaşımÖzü
+    {
+        
+        /**
+            <summary>Yağ Kandili'nin atadığı eşsiz kimlik</summary>
+        */
+        private protected string kimlik2;
+        /**
+            <summary>Paylaşımın başlık bölümü</summary>
+        */
+        private protected string başlık;
+        /**
+            <summary>Paylaşımın metin içeriği</summary>
+        */
+        private protected string içerik;
+        /**
+            <summary>Paylaşımla ilgili ek bilgiler</summary>
+        */
+        private protected string eklenti;
+        /**
+            <summary>Paylaşımın yapıldığı tarih</summary>
+        */
+        private protected DateTime tarih;
+        /**
+            <summary>Paylaşımın kullanım koşulları</summary>
+        */
+        private protected string lisans;
+
+
         /**
             <summary>Yağ Kandili'nin atadığı kimliğe erişim sağlar.</summary>
         */
@@ -176,19 +271,7 @@ namespace Esas
                 eklenti = value;
             }
         }
-        /**
-            <summary>Paylaşan kişinin kullanıcı kimliğine erişim sağlar.</summary>
-        */
-        internal string PAYLAŞAN {
-            get
-            {
-                return paylaşan;
-            }
-            set
-            {
-                paylaşan = value;
-            }
-        }
+
         /**
             <summary>Paylaşımın yapıldığı tarihe erişim sağlar.</summary>
         */
