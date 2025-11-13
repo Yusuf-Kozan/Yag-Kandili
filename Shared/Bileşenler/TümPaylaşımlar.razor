@@ -1,5 +1,5 @@
 @*
-Copyright (C) 2022 Yusuf Kozan
+Copyright (C) 2022,2025 Yusuf Kozan
 
 ---
 
@@ -43,13 +43,12 @@ For more information about the license of Yağ Kandili, see
 /Lisans directory.
 *@
 @inject NavigationManager NavigationManager
+@inject OturumBağlamı Bağlam
 @namespace Bileşenler
 
-@for (int i = 0; i < paylaşım_bilgileri.GetLength(0); i++)
+@while (kafa.Sonraki != null)
 {
-    int döngü_turu = i;
-    Paylaşım paylaşım = new Paylaşım(paylaşım_bilgileri[i,0]);
-    ParolasızÜye paylaşan = new ParolasızÜye(paylaşım_bilgileri[i,1]);
+    Esas.ÜyeliPaylaşım paylaşım = kafa.Veri;
 
     <div id="@(paylaşım.KİMLİK_2)"
     class="kutu_ff6600 p-kutu-bileşen" style="text-align: start; overflow: hidden;">
@@ -61,8 +60,8 @@ For more information about the license of Yağ Kandili, see
         >@(paylaşım.TARİH.ToString("dd.MM.yyyy HH.mm.ss"))</p>
 
         <div style="text-align: left; width: 50%; float: left;">
-            <a href="/kişi/@paylaşan.KULLANICI_ADI">
-                @(paylaşan.KULLANICI_ADI)
+            <a href="/kişi/@paylaşım.PAYLAŞAN.KULLANICI_ADI">
+                @(paylaşım.PAYLAŞAN.KULLANICI_ADI)
             </a>
         </div>
         
@@ -71,15 +70,19 @@ For more information about the license of Yağ Kandili, see
             değerlendiren="@kim.KİMLİK"/>
         </div>
     </div>
+
+    kafa = kafa.Sonraki;
 }
 
 @code {
     [Parameter]
     public ÜyeBil kim {get; set;}
-    private string[,][] paylaşım_bilgileri;
+
+    private Esas.BağlıListe<Esas.ÜyeliPaylaşım> kafa;
 
     protected override void OnParametersSet()
     {
-        paylaşım_bilgileri = Esas.VeriTabanı.Paylaşım.KullanıcıBilgileriyleTümPaylaşımlar();
+        Esas.VeriTabanı.Paylaşım.TümPaylaşımlarıBağlamaGetir(Bağlam);
+        kafa = Bağlam.TümPaylaşımlar;
     }
 }
